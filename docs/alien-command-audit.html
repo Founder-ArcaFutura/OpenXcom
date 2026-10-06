@@ -1,0 +1,207 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Alien command audit</title>
+<style>
+:root{color-scheme:dark;font:15px/1.5 system-ui,sans-serif;background:#0b1421;color:#e3ecf3}
+*{box-sizing:border-box}body{margin:0}main{max-width:1440px;margin:auto;padding:32px}
+h1{font-size:32px;letter-spacing:-.02em;margin:4px 0}h2{font-size:20px;margin:0 0 12px}h3{font-size:16px;margin:20px 0 8px}
+p{margin:8px 0 16px;color:#b1c4d3}.eyebrow{color:#7fc9c3;letter-spacing:.14em;text-transform:uppercase;font-size:12px}
+.controls{display:flex;flex-wrap:wrap;gap:16px;align-items:center;margin:24px 0}
+input,select,button{font:inherit;background:#15283b;color:#e3ecf3;border:1px solid #46647a;border-radius:6px;padding:9px}
+input[type=search]{flex:1;min-width:240px}input[type=file]{max-width:100%}button{cursor:pointer}button:hover{border-color:#83e4da}
+.notice{padding:12px 16px;border-left:3px solid #70c7c1;background:#122538;color:#c5d9e7}
+.stats{display:flex;flex-wrap:wrap;gap:10px;margin:20px 0}.stat{padding:12px 20px;background:#152334;border-radius:8px;min-width:160px}
+.stat b{display:block;font-size:26px;color:#92e3d8}.stat span{color:#b5c8d8;font-size:13px}
+.layout{display:grid;grid-template-columns:380px minmax(0,1fr);gap:20px}.panel{border:1px solid #294255;border-radius:9px;background:#101e2d;padding:20px;min-width:0}
+#events{max-height:75vh;overflow:auto;padding:10px}.event{display:block;text-align:left;width:100%;border:0;border-left:3px solid transparent;margin:0 0 7px;background:#162738;padding:14px}
+.event[aria-current=true]{border-left-color:#92e3d8;background:#213b4c}.event strong,.event small{display:block}.event small{color:#acc2d4}.event span{font-size:13px;color:#94d8d1}
+table{width:100%;border-collapse:collapse;font-size:14px}th,td{padding:9px 8px;border-bottom:1px solid #2c4051;text-align:left;vertical-align:top}th{color:#9db8cd;font-weight:500}
+.scroll{overflow:auto}pre{overflow:auto;white-space:pre-wrap;overflow-wrap:anywhere;font-size:12px;background:#0a1623;padding:14px;border-radius:5px}
+.tag{display:inline-block;padding:3px 8px;border:1px solid #486d78;border-radius:5px;color:#a8e4dc;margin-bottom:8px}
+details{margin-top:16px}summary{cursor:pointer;color:#a8cfec}.error{color:#ffbaad}.empty{padding:25px;color:#a8bdcd}
+.references button{font-size:13px;margin:0 6px 6px 0;padding:5px 9px}
+@media(max-width:900px){main{padding:20px}.layout{grid-template-columns:1fr}#events{max-height:350px}}
+</style>
+</head>
+<body><main>
+<div class="eyebrow">Adaptive OpenXcom Â· developer view</div>
+<h1>Alien command audit</h1>
+<p>Trace an interception report into a belief, a shadow proposal, and the mission the engine actually created.</p>
+<div class="notice">Default shadow mode: the existing commander executes game missions. Explicit ModelExecute tests may execute model operations. Offline replays execute no missions. Scores express an uncalibrated heuristic, not a probability of an X-COM base.</div>
+<div class="controls">
+<label>Open audit file <input id="file" type="file" accept=".jsonl,.log,.txt"></label>
+<select id="kind" aria-label="Event type"><option value="">All events</option><option value="decision">Decisions</option><option value="interception">Interception reports</option><option value="base_discovery">Base discoveries</option><option value="budget_fact">Budget facts</option><option value="portfolio">Monthly portfolios</option></select>
+<input id="search" type="search" aria-label="Search events" placeholder="Search region, script, UFO ID, or reason">
+</div>
+<p id="status" role="status">Choose a saved game's .alien-command.jsonl sidecar, or an openxcom.log file. Files stay in this browser; no server or network access is used.</p>
+<div id="stats" class="stats"></div>
+<div class="layout"><nav id="events" class="panel" aria-label="Audit events"><div class="empty">No audit loaded.</div></nav><article id="detail" class="panel"><h2>Evidence before inference</h2><p>Select an event to inspect exactly what alien command received. Rejected reports remain outside its knowledge.</p></article></div>
+</main>
+<script>
+"use strict";
+let events = [], selected = -1;
+const $ = id => document.getElementById(id);
+function el(tag, text, parent, className) {
+  const node = document.createElement(tag);
+  if (text !== undefined && text !== null) node.textContent = String(text);
+  if (className) node.className = className;
+  if (parent) parent.append(node);
+  return node;
+}
+function label(value) { return value ? String(value).replace(/^STR_/, "").replace(/_/g, " ") : "â€”"; }
+function list(value) { return Array.isArray(value) ? value : []; }
+function table(parent, headers, rows) {
+  const wrap = el("div", null, parent, "scroll"), t = el("table", null, wrap);
+  const head = el("tr", null, el("thead", null, t));
+  headers.forEach(h => el("th", h, head));
+  const body = el("tbody", null, t);
+  rows.forEach(row => { const tr = el("tr", null, body); row.forEach(v => el("td", v ?? "â€”", tr)); });
+  if (!rows.length) { const td = el("td", "None", el("tr", null, body)); td.colSpan = headers.length; }
+}
+function parseAudit(text) {
+  const result = [], errors = [];
+  const log = text.includes("AlienCommandAudit ");
+  text.split(/\r?\n/).forEach((line, index) => {
+    if (!line.trim()) return;
+    const marker = line.indexOf("AlienCommandAudit ");
+    if (log && marker < 0) return;
+    const payload = marker >= 0 ? line.slice(marker + "AlienCommandAudit ".length) : line;
+    try {
+      const event = JSON.parse(payload);
+      if (!event || event.schemaVersion !== 1 || !["decision", "interception", "base_discovery", "budget_fact", "portfolio"].includes(event.kind)
+          || !Number.isInteger(event.id) || event.id < 1) throw new Error("Unsupported event schema");
+      result.push(event);
+    } catch (error) { errors.push("Line " + (index + 1) + ": " + error.message); }
+  });
+  return {events: result, errors};
+}
+function refreshStats() {
+  $("stats").replaceChildren();
+  const counts = [
+    [events.length, "Events"],
+    [events.filter(e => e.kind === "interception" && e.admission === "ADMITTED").length, "Admitted reports"],
+    [events.filter(e => e.kind === "interception" && e.admission !== "ADMITTED").length, "Rejected reports"],
+    [events.filter(e => e.kind === "decision" && e.validation?.status === "STATIC_MENU_VALID_SHADOW_ONLY").length, "Valid policy proposals"],
+    [events.filter(e => ["MODEL_PROPOSAL_VALID_SHADOW_ONLY", "MODEL_PROPOSAL_EXECUTED"].includes(e.model?.status)).length, "Valid model proposals"]
+  ];
+  counts.forEach(([count, name]) => { const c = el("div", null, $("stats"), "stat"); el("b", count, c); el("span", name, c); });
+}
+function refreshEvents() {
+  $("events").replaceChildren();
+  const filter = $("search").value.toLowerCase(), kind = $("kind").value;
+  events.forEach((e, index) => {
+    if ((kind && e.kind !== kind) || (filter && !JSON.stringify(e).toLowerCase().includes(filter))) return;
+    const button = el("button", null, $("events"), "event");
+    button.type = "button"; button.setAttribute("aria-current", index === selected ? "true" : "false");
+    el("small", "#" + e.id + " Â· " + (e.gameTime || "Unknown time"), button);
+    el("strong", e.kind === "decision" ? label(e.script) + " Â· " + label(e.scope) : label(e.admission || e.kind), button);
+    el("span", e.kind === "decision" ? label(e.proposal?.reason) : "UFO " + (e.debugOutcome?.sourceUfoId ?? "â€”") + " Â· " + label(e.debugOutcome?.status), button);
+    button.addEventListener("click", () => showEvent(index));
+  });
+  if (!$("events").children.length) el("div", "No matching events.", $("events"), "empty");
+}
+function evidenceTable(parent, evidence) {
+  table(parent, ["Evidence", "Reporting UFO", "Region", "Observed / reported"], list(evidence).map(e => [
+    "#" + e.id, e.sourceUfoId, label(e.region), (e.observedAt || "â€”") + " / " + (e.reportedAt || "â€”")
+  ]));
+}
+function showEvent(index) {
+  selected = index; refreshEvents();
+  const e = events[index], root = $("detail");
+  root.replaceChildren();
+  el("span", "#" + e.id + " Â· " + (e.gameTime || "Unknown time"), root, "tag");
+  if (e.kind === "portfolio") {
+    el("h2", "Monthly portfolio: " + label(e.status), root);
+    const b = e.input?.budget || {}, after = e.budgetAfter || {};
+    table(root, ["Month", "Starting resources", "Remaining", "Next month bonus"], [[b.epochMonth, b.remaining, after.remaining, after.pendingBonus]]);
+    let response = {}; try { response = JSON.parse(e.response || "{}"); } catch {}
+    table(root, ["Proposed operation", "Region"], list(response.operations).map(o => [label(o.mission), label(o.region)]));
+    el("p", "Portfolio replaces routine monthly mission scripts. The engine validates costs and prerequisites. Missing interception reports mean unknown risk. Searches do not auto-assault.", root);
+    el("h3", "Exact model response", root); el("pre", e.response || "No response", root);
+  } else if (e.kind === "budget_fact") {
+    el("h2", label(e.event), root);
+    el("p", (e.mode === "ENFORCED_ACCOUNTING" ? "Enforced budget fact. Mission " : "Shadow budget fact. Mission ") + e.missionId + ": " + label(e.mission) + ". Reporting UFO: " + (e.sourceUfoId || "—") + (e.mode === "ENFORCED_ACCOUNTING" ? ". Native budget accounting is active." : ". No allocation was enforced."), root);
+  } else if (e.kind === "base_discovery") {
+    el("h2", "Base discovered by engine scan", root);
+    el("p", "Reporting UFO: " + e.sourceUfoId + ". Mission: " + e.sourceMissionId + ". This is the engine discovery flag; it is not an admitted interception report.", root);
+  } else if (e.kind === "interception") {
+    el("h2", label(e.admission), root);
+    el("p", e.admission === "ADMITTED" ? "A surviving UFO transmitted its own interception contact at the end of the encounter." : "This event was retained for auditing. Its location was not admitted to alien knowledge.", root);
+    table(root, ["Reporting UFO", "Mission", "Encounter outcome"], [[e.debugOutcome?.sourceUfoId, e.debugOutcome?.sourceMissionId, label(e.debugOutcome?.status)]]);
+    el("h3", "Admitted evidence", root); evidenceTable(root, e.evidence ? [e.evidence] : []);
+  } else {
+    const p = e.proposal || {}, x = e.execution || {}, input = e.input || {};
+    el("h2", label(e.script) + " decision", root);
+    table(root, ["", "Mission", "Region", "Result"], [
+      ["Deterministic proposal", label(p.mission), label(p.region), label(p.reason)],
+      ["Learned model proposal", label(e.model?.proposal?.mission), label(e.model?.proposal?.region), label(e.model?.status)],
+      ["Actual engine action", label(x.mission), label(x.region), label(x.status)]
+    ]);
+    el("p", "Validation: " + label(e.validation?.status) + ". Proposal executed: " + (e.validation?.executedProposal ? "yes" : "no") + ". Outcome: " + label(e.outcome) + ".", root);
+    el("p", "Model intent: " + label(e.modelIntent) + ". Expected gain: " + label(e.expectedGain) + ". Execution source: " + label(x.source) + ". Operation: " + label(x.operationalStatus) + ".", root);
+    el("p", "Proposal score: " + (p.score ?? "â€”") + " (uncalibrated). Engine mission ID: " + (x.missionId || "â€”") + ". Race: " + label(x.race) + ".", root);
+    if (e.model && e.model.status !== "DISABLED") {
+      el("h3", "Learned classifier", root);
+      el("p", "Status: " + label(e.model.status) + ". Proposal executed: " + (e.model.executedProposal ? "yes" : "no") + ".", root);
+      el("p", "Checkpoint SHA-256: " + (e.model.checkpointSha256 || "unavailable"), root);
+      if (e.model.rawResponse) {
+        try {
+          const response = JSON.parse(e.model.rawResponse);
+          el("p", "Protocol: " + (response.protocol || "â€”") + ". Device: " + (response.device || "â€”")
+            + ". Inference: " + (response.latencyMs ?? "â€”") + " ms. Tokens: " + (response.tokenCount ?? "â€”") + ".", root);
+          el("p", "This checkpoint was trained for career evidence. Its scores have not been validated or calibrated for X-COM.", root);
+          const definitions = response.questions?.recon?.criteria || {};
+          table(root, ["Option", "Meaning", "Model score"], Object.entries(response.answer?.probabilities || {}).map(([key,value]) =>
+            [key, definitions[key] || "â€”", value]));
+          const packet = el("details", null, root);
+          el("summary", "Exact classifier state and question", packet);
+          el("pre", JSON.stringify({state: response.state, questions: response.questions}, null, 2), packet);
+        } catch (_) { el("p", "Raw model reply is available in the exact receipt.", root); }
+      }
+    }
+    el("h3", "Beliefs supplied to the policy", root);
+    table(root, ["Region", "Confidence", "Independent UFOs", "Supporting evidence"], list(input.beliefs).map(b => [
+      label(b.region), b.confidence + " / 100", b.independentSources, list(b.evidenceIds).map(id => "#" + id).join(", ")
+    ]));
+    el("h3", "Permitted observations", root); evidenceTable(root, input.evidence);
+    if (list(p.evidenceIds).length) {
+      const refs = el("div", null, root, "references");
+      list(p.evidenceIds).forEach(id => {
+        const supporting = list(input.evidence).find(v => v.id === id);
+        // Engine logs can contain multiple campaigns with reused event IDs.
+        // Link only a preceding report whose complete evidence matches this input.
+        let target = -1;
+        for (let i = index - 1; i >= 0; --i) {
+          if (events[i].kind === "interception" && supporting
+              && JSON.stringify(events[i].evidence) === JSON.stringify(supporting)) { target = i; break; }
+        }
+        if (target >= 0) { const b = el("button", "Open report #" + id, refs); b.addEventListener("click", () => { $("kind").value = ""; $("search").value = ""; showEvent(target); }); }
+      });
+    }
+    el("h3", "Candidate menu", root);
+    el("p", "Static ruleset catalog only. Campaign eligibility, active missions, and dynamic execution constraints remain with the existing engine.", root);
+    table(root, ["Mission", "Region"], list(input.candidates).map(c => [label(c.mission), label(c.region)]));
+    el("p", "Engine RNG: " + (x.rngBefore || "â€”") + " â†’ " + (x.rngAfter || "â€”") + ". Shadow scoring does not consume it.", root);
+  }
+  const raw = el("details", null, root);
+  el("summary", "Exact stored receipt", raw); el("pre", JSON.stringify(e, null, 2), raw);
+}
+$("file").addEventListener("change", async event => {
+  const file = event.target.files[0]; if (!file) return;
+  if (file.size > 50 * 1024 * 1024) { $("status").textContent = "File exceeds 50 MB. Open the smaller save sidecar."; $("status").className = "error"; return; }
+  try {
+    const parsed = parseAudit(await file.text());
+    events = parsed.events; selected = -1;
+    $("status").textContent = file.name + ": " + events.length + " events loaded." + (parsed.errors.length ? " " + parsed.errors.length + " invalid or unsupported lines omitted. " + parsed.errors.slice(0, 3).join("; ") : "");
+    $("status").className = parsed.errors.length ? "error" : "";
+    refreshStats(); refreshEvents();
+    if (events.length) showEvent(0); else $("detail").replaceChildren(el("p", "No supported events in this file."));
+  } catch (error) { $("status").textContent = "Could not read audit: " + error.message; $("status").className = "error"; }
+});
+$("kind").addEventListener("change", refreshEvents);
+$("search").addEventListener("input", refreshEvents);
+</script>
+</body></html>

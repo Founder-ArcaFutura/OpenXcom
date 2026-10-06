@@ -1,0 +1,242 @@
+{
+  "schemaVersion": 1,
+  "policyVersion": "allowance-to-local-income-prototype-v3",
+  "mode": "SHADOW_ONLY",
+  "allocation": {
+    "carryNumerator": 1,
+    "carryDenominator": 2,
+    "bonusCapNumerator": 1,
+    "bonusCapDenominator": 2,
+    "profiles": [
+      {
+        "name": "Beginner",
+        "monthly": [
+          6,
+          6,
+          7,
+          7,
+          8,
+          9,
+          10,
+          11,
+          12,
+          13,
+          14,
+          14,
+          15,
+          15,
+          16,
+          16,
+          16,
+          16
+        ]
+      },
+      {
+        "name": "Experienced",
+        "monthly": [
+          7,
+          7,
+          8,
+          9,
+          10,
+          11,
+          13,
+          15,
+          17,
+          18,
+          19,
+          20,
+          21,
+          22,
+          22,
+          23,
+          23,
+          23
+        ]
+      },
+      {
+        "name": "Veteran",
+        "monthly": [
+          8,
+          9,
+          10,
+          12,
+          14,
+          16,
+          19,
+          21,
+          23,
+          24,
+          26,
+          28,
+          29,
+          30,
+          31,
+          32,
+          32,
+          32
+        ]
+      },
+      {
+        "name": "Genius",
+        "monthly": [
+          9,
+          10,
+          11,
+          13,
+          15,
+          18,
+          21,
+          24,
+          27,
+          29,
+          31,
+          33,
+          35,
+          36,
+          37,
+          38,
+          38,
+          38
+        ]
+      },
+      {
+        "name": "Superhuman",
+        "monthly": [
+          10,
+          11,
+          12,
+          14,
+          17,
+          20,
+          24,
+          28,
+          32,
+          35,
+          38,
+          41,
+          43,
+          45,
+          46,
+          47,
+          48,
+          48
+        ]
+      }
+    ]
+  },
+  "capabilities": {
+    "basic": {},
+    "logistics_network": {
+      "earliestMonth": 1,
+      "progress": {
+        "logistics": 2
+      }
+    },
+    "assault_fleet": {
+      "earliestMonth": 2,
+      "progress": {
+        "intelligence": 2,
+        "logistics": 1
+      }
+    },
+    "infiltration_network": {
+      "earliestMonth": 2,
+      "progress": {
+        "adaptation": 2,
+        "intelligence": 1
+      }
+    }
+  },
+  "operations": {
+    "STR_ALIEN_RESEARCH": {
+      "cost": 2,
+      "requires": "basic",
+      "bonus": 1,
+      "progress": "intelligence",
+      "gainEvent": "RESEARCH_FLIGHT_COMPLETED"
+    },
+    "STR_ALIEN_PROBE_MISSION": {
+      "cost": 2,
+      "requires": "basic",
+      "bonus": 1,
+      "progress": "intelligence",
+      "gainEvent": "RESEARCH_FLIGHT_COMPLETED"
+    },
+    "STR_ALIEN_HARVEST": {
+      "cost": 3,
+      "requires": "basic",
+      "bonus": 2,
+      "progress": "logistics",
+      "gainEvent": "PRODUCTIVE_ACTIVITY_COMPLETED"
+    },
+    "STR_ALIEN_ABDUCTION": {
+      "cost": 3,
+      "requires": "basic",
+      "bonus": 2,
+      "progress": "adaptation",
+      "gainEvent": "PRODUCTIVE_ACTIVITY_COMPLETED"
+    },
+    "STR_ALIEN_TERROR": {
+      "cost": 4,
+      "requires": "basic",
+      "bonus": 0,
+      "progress": null,
+      "gainEvent": null
+    },
+    "STR_ALIEN_SURFACE_ATTACK": {
+      "cost": 4,
+      "requires": "basic",
+      "bonus": 0,
+      "progress": null,
+      "gainEvent": null
+    },
+    "STR_ALIEN_RETALIATION": {
+      "cost": 0,
+      "requires": "basic",
+      "bonus": 0,
+      "progress": null,
+      "gainEvent": null,
+      "phase": "RETALIATION_REQUEST"
+    },
+    "STR_ALIEN_BASE": {
+      "cost": 6,
+      "requires": "logistics_network",
+      "bonus": 0,
+      "progress": null,
+      "gainEvent": null
+    },
+    "STR_ALIEN_SUPPLY": {
+      "cost": 2,
+      "requires": "logistics_network",
+      "bonus": 0,
+      "progress": null,
+      "gainEvent": null
+    },
+    "STR_ALIEN_INFILTRATION": {
+      "cost": 6,
+      "requires": "infiltration_network",
+      "bonus": 0,
+      "progress": null,
+      "gainEvent": null
+    }
+  },
+  "assault": {
+    "cost": 6,
+    "requires": "assault_fleet",
+    "event": "BASE_ASSAULT_COMMITTED"
+  },
+  "search": {
+    "cost": 2,
+    "requires": "basic",
+    "event": "BASE_SEARCH_COMMITTED"
+  },
+  "incomeDesign": {
+    "status": "NOT_YET_ACCOUNTED",
+    "allowanceMeaning": "Off-world support; growth tapers through month 18, baseline support continues thereafter.",
+    "earthIncome": "Productive alien infrastructure and verified operations should drive subsequent variable income.",
+    "baseEligibility": "Existing base must be operational and adequately supplied; construction alone does not imply indefinite productive income.",
+    "supplyMeaning": "Completed delivery sustains or restores productive capacity; avoid paying twice for both delivery and the same base output.",
+    "missingEvidence": "Do not reconstruct historical base productivity or supply success from mission disappearance."
+  }
+}

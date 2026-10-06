@@ -19,6 +19,12 @@ OPT SDL_GrabMode captureMouse;
 OPT TextWrapping wordwrap;
 OPT SDLKey keyOk, keyCancel, keyScreenshot, keyFps, keyQuickLoad, keyQuickSave;
 
+// Alien-command audit is opt-in; it never controls mission execution.
+OPT bool alienCommandAudit;
+OPT int alienCommandModelPort;
+OPT bool alienCommandModelExecute;
+OPT bool alienCommandPortfolio;
+
 // Geoscape options
 OPT int geoClockSpeed, dogfightSpeed, geoScrollSpeed, geoDragScrollButton, geoscapeScale;
 OPT bool includePrimeStateInSavedLayout, anytimePsiTraining, weaponSelfDestruction, retainCorpses, craftLaunchAlways,

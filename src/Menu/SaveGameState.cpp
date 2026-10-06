@@ -194,6 +194,11 @@ void SaveGameState::think()
 				throw Exception("Save backed up in " + backup);
 			}
 
+			const std::string auditBackup = bakPath + ".alien-command.jsonl";
+			if (CrossPlatform::fileExists(auditBackup)
+				&& !CrossPlatform::moveFile(auditBackup, fullPath + ".alien-command.jsonl"))
+				Log(LOG_WARNING) << "Saved game, but audit export remains at: " << auditBackup;
+
 			if (_type == SAVE_IRONMAN_END)
 			{
 				Screen::updateScale(Options::geoscapeScale, Options::baseXGeoscape, Options::baseYGeoscape, true);

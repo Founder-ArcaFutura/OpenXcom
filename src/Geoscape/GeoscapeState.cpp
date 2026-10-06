@@ -111,6 +111,7 @@
 #include "../Mod/RuleCountry.h"
 #include "../Mod/RuleAlienMission.h"
 #include "../Savegame/AlienStrategy.h"
+#include "AlienCommandAudit.h"
 #include "../Savegame/AlienMission.h"
 #include "../Savegame/GeoscapeEvent.h"
 #include "GeoscapeEventState.h"
@@ -1588,6 +1589,13 @@ void GeoscapeState::time10Minutes()
 			if (uu != _game->getSavedGame()->getUfos()->end())
 			{
 				// Base found
+				if (Options::alienCommandAudit && !xbase->getRetaliationTarget())
+				{
+					auto &ledger = _game->getSavedGame()->getAlienCommand();
+					ledger.recordBaseDiscovery(captureAlienInterceptionContact(*_game->getMod(), **uu, *_game->getSavedGame()->getTime()),
+						xbase->getLongitude(), xbase->getLatitude(), _game->getSavedGame()->getTime()->getFullString());
+					Log(LOG_INFO) << "AlienCommandAudit " << ledger.getAudit().back();
+				}
 				xbase->setRetaliationTarget(true);
 			}
 		}
@@ -1596,6 +1604,7 @@ void GeoscapeState::time10Minutes()
 	{
 		// Only remember last base in each region.
 		std::map<const Region *, Base *> discovered;
+		std::map<Base *, const Ufo *> observers;
 		for (auto* xbase : *_game->getSavedGame()->getBases())
 		{
 			// Find a UFO that detected this base, if any.
@@ -1603,11 +1612,19 @@ void GeoscapeState::time10Minutes()
 			if (uu != _game->getSavedGame()->getUfos()->end())
 			{
 				discovered[_game->getSavedGame()->locateRegion(*xbase)] = xbase;
+				observers[xbase] = *uu;
 			}
 		}
 		// Now mark the bases as discovered.
 		for (auto& pair : discovered)
 		{
+			if (Options::alienCommandAudit && !pair.second->getRetaliationTarget())
+			{
+				auto &ledger = _game->getSavedGame()->getAlienCommand();
+				ledger.recordBaseDiscovery(captureAlienInterceptionContact(*_game->getMod(), *observers[pair.second], *_game->getSavedGame()->getTime()),
+					pair.second->getLongitude(), pair.second->getLatitude(), _game->getSavedGame()->getTime()->getFullString());
+				Log(LOG_INFO) << "AlienCommandAudit " << ledger.getAudit().back();
+			}
 			pair.second->setRetaliationTarget(true);
 		}
 	}
@@ -3577,6 +3594,8 @@ void GeoscapeState::handleBaseDefense(Base *base, Ufo *ufo)
  */
 void GeoscapeState::determineAlienMissions(bool isNewMonth, const RuleEvent* p_eventRules)
 {
+ if (Options::alienCommandPortfolio && isNewMonth && !p_eventRules)
+  executeAlienPortfolio(*_game,*_globe);
 	SavedGame *save = _game->getSavedGame();
 	AlienStrategy &strategy = save->getAlienStrategy();
 	Mod *mod = _game->getMod();
@@ -3961,6 +3980,8 @@ void GeoscapeState::determineAlienMissions(bool isNewMonth, const RuleEvent* p_e
 	// start processing command array.
 	for (auto* command : availableMissions)
 	{
+  // The portfolio owns routine monthly mission spending; event scripts still run.
+  if (Options::alienCommandPortfolio && isNewMonth && !p_eventRules) continue;
 		bool process = true;
 		bool success = false;
 		// level three condition check: make sure our conditionals are met, if any. this list is dynamic, and must be checked here.
@@ -4299,6 +4320,8 @@ bool GeoscapeState::attemptAlienRaceEvolution(int month, AlienBase* ab) const
 bool GeoscapeState::processCommand(RuleMissionScript *command)
 {
 	SavedGame *save = _game->getSavedGame();
+	AlienCommandMissionAudit commandAudit(Options::alienCommandAudit ? &save->getAlienCommand() : nullptr,
+		*_game->getMod(), *command, save->getTime()->getFullString(), (int)save->getDifficulty());
 	AlienStrategy &strategy = save->getAlienStrategy();
 	Mod *mod = _game->getMod();
 	int month = _game->getSavedGame()->getMonthsPassed();
@@ -4635,6 +4658,26 @@ bool GeoscapeState::processCommand(RuleMissionScript *command)
 		return false;
 	}
 
+	AlienReconProposal operationalProposal;
+	if (commandAudit.executableProposal(operationalProposal))
+	{
+		bool duplicate = false;
+		const auto *regionRules = mod->getRegion(operationalProposal.region);
+		const std::string actualRegion = regionRules->getMissionRegion().empty()
+			? operationalProposal.region : regionRules->getMissionRegion();
+		for (const auto *existing : save->getAlienMissions())
+			if (existing->getRules().getType() == operationalProposal.mission && existing->getRegion() == actualRegion) duplicate = true;
+		if (duplicate) commandAudit.operationalStatus("FALLBACK_DUPLICATE_ACTIVE_MISSION");
+		else
+		{
+			missionType = operationalProposal.mission;
+			targetRegion = operationalProposal.region;
+			commandAudit.operationalStatus("MODEL_OPERATION_SELECTED");
+		}
+	}
+	else if (Options::alienCommandModelExecute && command->getType() == "recon")
+		commandAudit.operationalStatus("FALLBACK_NO_VALID_MODEL_PROPOSAL");
+
 	missionRules = mod->getAlienMission(missionType);
 
 	// we're bound to end up with typos, so let's throw an exception instead of simply returning false
@@ -4675,6 +4718,7 @@ bool GeoscapeState::processCommand(RuleMissionScript *command)
 	strategy.addMissionRun(command->getVarName());
 	mission->start(*_game, *_globe, command->getDelay());
 	_game->getSavedGame()->getAlienMissions().push_back(mission);
+	commandAudit.executed(mission->getId(), missionType, mission->getRegion(), missionRace);
 	// if this flag is set, we want to delete it from the table so it won't show up again until the schedule resets.
 	if (command->getUseTable())
 	{

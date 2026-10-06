@@ -32,6 +32,7 @@
 #include "../Mod/RuleCraft.h"
 #include "../Engine/Script.h"
 #include "ResearchDiary.h"
+#include "AlienCommand.h"
 
 namespace OpenXcom
 {
@@ -140,6 +141,7 @@ private:
 	std::vector<MissionSite*> _missionSites;
 	std::vector<AlienBase*> _alienBases;
 	AlienStrategy *_alienStrategy;
+	AlienCommand _alienCommand;
 	SavedBattleGame *_battleGame;
 	std::vector<const RuleResearch*> _discovered;
 	std::vector<ResearchDiaryEntry*> _researchDiary;
@@ -397,6 +399,8 @@ public:
 	AlienStrategy &getAlienStrategy() { return *_alienStrategy; }
 	/// Read-only access to the alien strategy data.
 	const AlienStrategy &getAlienStrategy() const { return *_alienStrategy; }
+	AlienCommand &getAlienCommand() { return _alienCommand; }
+	const AlienCommand &getAlienCommand() const { return _alienCommand; }
 	/// Full access to the current alien missions.
 	std::vector<AlienMission*> &getAlienMissions() { return _activeMissions; }
 	/// Read-only access to the current alien missions.

@@ -24,6 +24,8 @@
 #include "../Engine/Game.h"
 #include "../Engine/Logger.h"
 #include "../Engine/RNG.h"
+#include "../Engine/Options.h"
+#include "GameTime.h"
 #include "../Geoscape/Globe.h"
 #include "../Mod/RuleAlienMission.h"
 #include "../Mod/RuleRegion.h"
@@ -528,6 +530,15 @@ Ufo *AlienMission::spawnUfo(SavedGame &game, const Mod &mod, const Globe &globe,
 
 		if (xcombase)
 		{
+   // A funded search can discover a base, but cannot spend an assault commitment.
+   // Existing retaliation missions also cannot bypass portfolio assault gating.
+   if (Options::alienCommandPortfolio || game.getAlienCommand().searchOnly(getId()))
+   {
+    _interrupted=true;
+    game.getAlienCommand().recordBudgetFact("ASSAULT_DEFERRED_SEPARATE_COMMITMENT_REQUIRED",getId(),_rule.getType(),game.getTime()->getFullString());
+    Log(LOG_INFO)<<"AlienCommandAudit "<<game.getAlienCommand().getAudit().back();
+    return nullptr;
+   }
 			// Spawn a battleship straight for the XCOM base.
 			const RuleUfo &battleshipRule = _rule.getSpawnUfo().empty() ? *ufoRule : *mod.getUfo(_rule.getSpawnUfo(), true);
 			const UfoTrajectory &assaultTrajectory = *mod.getUfoTrajectory(UfoTrajectory::RETALIATION_ASSAULT_RUN, true);
@@ -560,6 +571,12 @@ Ufo *AlienMission::spawnUfo(SavedGame &game, const Mod &mod, const Globe &globe,
 			wp->setLongitude(xcombase->getLongitude());
 			wp->setLatitude(xcombase->getLatitude());
 			ufo->setDestination(wp);
+            if ((Options::alienCommandAudit || Options::alienCommandPortfolio) && getId() > 0)
+            {
+                auto &ledger = game.getAlienCommand();
+                ledger.recordBudgetFact("BASE_ASSAULT_COMMITTED", getId(), _rule.getType(), game.getTime()->getFullString(), ufo->getUniqueId());
+                Log(LOG_INFO) << "AlienCommandAudit " << ledger.getAudit().back();
+            }
 			logUfo(ufo, game, this);
 			return ufo;
 		}
@@ -712,12 +729,30 @@ Ufo *AlienMission::spawnUfo(SavedGame &game, const Mod &mod, const Globe &globe,
 			}
 		}
 	}
+ if ((Options::alienCommandAudit || Options::alienCommandPortfolio) && getId() > 0 && _rule.getObjective() == OBJECTIVE_RETALIATION)
+ {
+  auto &ledger = game.getAlienCommand();
+  ledger.recordBudgetFact("BASE_SEARCH_COMMITTED", getId(), _rule.getType(), game.getTime()->getFullString(), ufo->getUniqueId());
+  Log(LOG_INFO) << "AlienCommandAudit " << ledger.getAudit().back();
+ }
 	logUfo(ufo, game, this);
 	return ufo;
 }
 
 void AlienMission::start(Game &engine, const Globe &globe, size_t initialCount)
 {
+ if (Options::alienCommandPortfolio)
+ {
+  auto &save=*engine.getSavedGame(); auto &ledger=save.getAlienCommand();
+  ledger.beginBudgetMonth(std::max(0,save.getMonthsPassed()),(int)save.getDifficulty());
+  if (!ledger.fundMission(getId(),_rule.getType()))
+  {
+   _interrupted=true; _liveUfos=0;
+   ledger.recordBudgetFact("MISSION_DENIED_BUDGET_OR_PREREQUISITE",getId(),_rule.getType(),save.getTime()->getFullString());
+   Log(LOG_INFO)<<"AlienCommandAudit "<<ledger.getAudit().back();
+   return;
+  }
+ }
 	_nextWave = 0;
 	_nextUfoCounter = 0;
 	_liveUfos = 0;
@@ -829,6 +864,14 @@ void AlienMission::start(Game &engine, const Globe &globe, size_t initialCount)
 			}
 		}
 	}
+ if ((Options::alienCommandAudit || Options::alienCommandPortfolio) && getId() > 0 && !_interrupted)
+ {
+  auto &save = *engine.getSavedGame();
+  auto &ledger = save.getAlienCommand();
+  ledger.recordBudgetFact("MISSION_COMMITTED", getId(), _rule.getType(), save.getTime()->getFullString());
+  Log(LOG_INFO) << "AlienCommandAudit " << ledger.getAudit().back();
+ }
+
 }
 
 /**
@@ -863,6 +906,12 @@ void AlienMission::ufoReachedWaypoint(Ufo &ufo, Game &engine, const Globe &globe
 	const MissionWave &wave = _rule.getWave(waveNumber);
 	if (nextWaypoint >= trajectory.getWaypointCount())
 	{
+  if ((Options::alienCommandAudit || Options::alienCommandPortfolio) && getId() > 0 && (_rule.getType() == "STR_ALIEN_RESEARCH" || _rule.getType() == "STR_ALIEN_PROBE_MISSION"))
+  {
+   auto &ledger = game.getAlienCommand();
+   ledger.recordBudgetFact("RESEARCH_FLIGHT_COMPLETED", getId(), _rule.getType(), game.getTime()->getFullString(), ufo.getUniqueId());
+   Log(LOG_INFO) << "AlienCommandAudit " << ledger.getAudit().back();
+  }
 		ufo.setDetected(false);
 		ufo.setStatus(Ufo::DESTROYED);
 		return;
@@ -1129,6 +1178,13 @@ void AlienMission::addScore(double lon, double lat, SavedGame &game) const
 {
 	if (_rule.getObjective() == OBJECTIVE_INFILTRATION)
 		return; // pact score is a special case
+ if ((Options::alienCommandAudit || Options::alienCommandPortfolio) && getId() > 0 && (_rule.getType() == "STR_ALIEN_HARVEST" || _rule.getType() == "STR_ALIEN_ABDUCTION"))
+ {
+  auto &ledger = game.getAlienCommand();
+  ledger.recordBudgetFact("PRODUCTIVE_ACTIVITY_COMPLETED", getId(), _rule.getType(), game.getTime()->getFullString());
+  Log(LOG_INFO) << "AlienCommandAudit " << ledger.getAudit().back();
+ }
+
 	for (auto* region : *game.getRegions())
 	{
 		if (region->getRules()->insideRegion(lon, lat))

@@ -1,0 +1,97 @@
+Adaptive OpenXcom — Dynamic Alien Command Design Notes
+A design for making X-COM difficulty mean smarter alien play: persistent intelligence, coordinated tactics, adaptive strategy, and bounded decision models layered over deterministic OpenXcom behavior.
+Traditional X-COM difficulty is largely a numbers game: tougher aliens, more activity, stronger economics, altered scoring, more Time Units, or other parameter advantages. The aliens become harder, but not necessarily smarter.
+The proposal is to redefine difficulty so that higher levels primarily represent increasingly capable alien command. The rules of the world remain substantially the same. A Chryssalid does not need extra Time Units merely because the player selected Superhuman. Superhuman should mean that the aliens coordinate, learn, cross-reference evidence, adapt to the player, and deliberately play the campaign to win.
+The core fantasy is: X-COM has always been a game in which the player learns the aliens. This design allows the aliens to learn the player.
+OpenXcom already supplies the game: Geoscape, Battlescape, bases, UFOs, research, manufacturing, interception, soldiers, aliens, maps, mission types, and a mature tactical ruleset. The project should avoid rebuilding those systems. The new work is an intelligence and command layer that observes permitted game state, maintains persistent alien knowledge, chooses strategy, and hands bounded intents back to deterministic game code.
+This makes the project dramatically more tractable than building a new 3D game while still testing the same underlying research question: is it fun to fight an opponent that reasons from incomplete information and adapts to what the player actually does?
+The intended model class is a small decision/classifier model such as Jev or a Laya-like model, not a general-purpose LLM. The model does not pathfind, calculate line of sight, spend Time Units, aim weapons, or invent arbitrary action sequences.
+OpenXcom continues to handle low-level behavior deterministically. The model receives a compressed representation of what the aliens legitimately know plus a bounded menu of available strategies. It returns typed decisions, scores, or probabilities. Human-authored game logic then implements the selected doctrine.
+Conceptual command packet: objective, doctrine, aggression level, formation, target priority, information confidence, and any requested resource allocation. The engine validates the packet and executes legal behavior.
+Rather than allowing the model to invent tactics, designers implement a library of legitimate tactical doctrines. The model decides when each doctrine is appropriate.
+- DEFEND_UFO
+- OBSERVE
+- ESTABLISH_CROSSFIRE
+- SUPPRESS_AND_FLANK
+- CONCEAL_AND_AMBUSH
+- GRENADE_AMBUSH
+- FEIGNED_WITHDRAWAL
+- RUSH_ISOLATED_TARGET
+- PRIORITY_TARGET
+- BREAK_CONTACT
+- FALLBACK_TO_UFO
+- ENCIRCLE
+- SEARCH_LAST_KNOWN
+- DELAY_AND_HARASS
+Each doctrine is implemented as conventional game logic. The intelligence layer decides which doctrine best fits the current evidence, force composition, mission objective, and player behavior.
+Experienced X-COM players often treat smoke grenades at the Skyranger ramp as standard operating procedure. Vanilla aliens usually fail to treat this as a recognizable pattern with strategic implications.
+A Superhuman alien force that observes smoke around the transport, knows it has multiple grenade-capable units, and has reason to expect approximately ten X-COM troops could choose GRENADE_AMBUSH. Deterministic alien behavior then breaks line of sight, hides, holds fire for one or two turns, moves grenade carriers into viable positions, allows more X-COM soldiers to disembark, and saturates the smoke when the expected concentration is high enough.
+The model is not throwing grenades. It is recognizing that the present situation is an unusually good time to execute a human-designed ambush doctrine.
+The alien command layer must never receive information simply because the game engine knows it. This is the same invariant as the systemic hunter concept.
+- If no alien saw the smoke, alien command does not know the smoke exists.
+- If one alien saw six X-COM soldiers and successfully communicated it, the force may know that six were observed.
+- If that alien dies before transmitting, the observation can die with it.
+- If an alien loses sight of a soldier, subsequent location is a belief or prediction, not ground truth.
+- If aliens have no evidence of a new X-COM base, Superhuman is not allowed to read its coordinates from the save state.
+- Strategic and tactical knowledge should store both the evidence and the confidence of derived beliefs.
+Difficulty controls what the aliens know, how quickly they receive observations, how effectively observations propagate, how often command reconsiders strategy, how deeply evidence is cross-referenced, and how sophisticated the selected responses can be.
+Information is patchy. Reports propagate slowly or incompletely. Strategic memory is weak. The tactical model may choose only a broad strategy and reconsider it infrequently — for example every eight game turns unless a catastrophic trigger fires. The engine handles most behavior using familiar deterministic scripts between updates.
+More observations are retained, communication is more reliable, strategy updates occur more often, cross-mission patterns begin to matter, and alien command can choose from a richer subset of the doctrine library.
+Information quality is high but never perfect. Command updates rapidly, important events can trigger immediate reconsideration, observations are shared efficiently, historical evidence is cross-referenced, and the model can recognize player habits, deception opportunities, and strategic patterns after relatively little data.
+Superhuman therefore feels dangerous because it is attentive, coordinated, and adaptive — not because it receives arbitrary stat inflation or omniscience.
+At first contact, the aliens may know little or nothing about the Skyranger’s troop capacity. From their perspective it could plausibly contain one threat or a very large number. Every deployment narrows the decision space.
+On Beginner, several missions may be required before alien command forms a useful estimate. On Superhuman, one mission in which eight or ten soldiers disembark may be enough to infer that the craft probably carries roughly that order of magnitude. After multiple missions, the aliens can develop a high-confidence prior for typical X-COM deployment strength.
+That prior remains fallible and therefore exploitable. If X-COM normally deploys ten to twelve troops but deliberately brings four, strong alien intelligence may initially overestimate the unseen reserve because its historical model is accurate. Better intelligence does not mean perfect knowledge.
+Every model determination that matters should become persistent alien state rather than ephemeral inference. The save file should contain what alien command currently believes, why it believes it, and how confident it is.
+- Estimated X-COM force size and growth
+- Typical Skyranger complement
+- Observed weapons and technology
+- Known or suspected bases and confidence
+- Interception regions and response-time patterns
+- Known player tactical habits such as smoke deployment
+- Known player strategic habits such as raiding supply missions
+- Recent tactical doctrines and their outcomes
+- Unresolved hypotheses and evidence that supports or contradicts them
+Loading a save should restore the alien worldview exactly as it was. The aliens should not silently recompute beliefs from hidden ground truth.
+The intelligence system should be event-driven plus periodic. Evidence accumulates continuously, but command does not need to run inference on every alien action.
+- Tactical observation loop: records sightings, weapon use, smoke, casualties, movement, breaches, and communication events.
+- Tactical command loop: periodically selects or revises doctrine based on current shared knowledge.
+- Strategic intelligence loop: aggregates mission outcomes, interception history, observed technologies, suspected bases, and recurring player patterns.
+- Strategic command loop: periodically chooses campaigns, mission priorities, resource allocation, reconnaissance, retaliation, infiltration, terror, resupply, or deception operations.
+- Critical-event triggers: commander death, transport breach, heavy-weapon observation, catastrophic casualties, confirmed X-COM base evidence, or other events can force early reconsideration.
+Difficulty can directly control these cadences. Beginner may update only every several turns or after major triggers. Superhuman may reconsider each turn when useful and immediately on high-value evidence.
+Aliens should stop behaving as independent pieces that merely occupy the same map. Sightings and hypotheses can propagate through a communication model appropriate to species, rank, equipment, and difficulty.
+One alien spots two soldiers entering a farmhouse. Another alien never sees them, but receives the report and moves to cover a likely exit. The information can become stale if the soldiers double back. The result is coordinated behavior without omniscience.
+Species differentiation can therefore include organizational cognition. Sectoids may share information efficiently through psionic or command structures. Mutons may behave as disciplined squads. Floaters may be more aggressive and loosely coordinated. Ethereals may produce extremely efficient local information sharing. Killing a leader can reduce coordination rather than merely subtracting hit points from the enemy force.
+On Superhuman, the player may see an alien sprint across the battlefield in an apparently irrational way. It is not following a patrol node. Alien command has selected FEIGNED_WITHDRAWAL or BAIT_PURSUIT because the current force geometry makes an ambush plausible.
+Deterministic code selects a suitable alien, exposes it along a legal route, and positions other units for the intended trap. The player sees purposeful behavior but is not told the doctrine. Sometimes an alien sprint really is a retreat. The goal is not to teach “alien sprint equals ambush.” The goal is to teach that alien actions may have intent.
+The same architecture should govern the Geoscape. Alien missions should become strategic decisions rather than mostly fixed schedules and probability tables. The commander chooses from legal mission types supplied by the game: reconnaissance, harvesting, infiltration, terror, base construction, supply, retaliation, conservation, escort, deception, or other implemented operations.
+The model receives only strategic information the aliens have actually acquired. It can maintain hypotheses about X-COM base locations, interception coverage, force strength, technology, regional priorities, and player behavior.
+Alien command observes repeated interceptions in Algeria, Morocco, and Tunisia with response times that are difficult to reconcile with the known European X-COM installation. A strong commander forms a hypothesis that X-COM has established an additional interception facility in North Africa.
+It increases reconnaissance. X-COM shoots down the scouts. That action protects the region tactically while also strengthening the hypothesis that the region matters. Eventually the aliens may obtain sufficient confidence to launch a retaliation operation. The resulting attack feels earned because the aliens found the base rather than reading it from hidden state.
+X-COM has raided three of the last four supply missions servicing a Floater base and is clearly extracting valuable Elerium and technology. Alien command notices the pattern.
+Possible responses include rerouting supply, postponing the mission, increasing escort, changing the transport profile, abandoning or relocating the base, or deliberately baiting the expected raid.
+A Superhuman commander may choose BAIT_RAID. The next supply operation resembles the familiar profitable target closely enough to attract X-COM. The player shoots it down and lands expecting Floaters and easy Elerium. Instead the force includes Ethereals, Chryssalids, and Sectopods chosen to punish the habitual raid pattern.
+The crucial difference from a random harder encounter is causality: the aliens chose the force because the player taught them that this route was being farmed. The player can counter-adapt by declining the suspicious mission, scouting cautiously, changing raid habits, or deliberately feeding the aliens misleading patterns.
+Terror should not need to happen merely because a chart says the calendar has reached the end of the first month. The alien commander should be able to launch terror when it serves a strategic purpose.
+A terror operation may be used to score, pressure a vulnerable country, punish a region, force X-COM to commit its primary squad, manipulate transport positioning, distract interceptors from another operation, test X-COM response capability, or exploit recent X-COM weakness. Sometimes the best alien decision is not to run terror at all.
+Small Scouts and other reconnaissance missions become information-gathering actions rather than background traffic. Shooting them down can deny information while simultaneously revealing interception range and regional sensitivity. Ignoring them can conceal reaction capability while allowing observations to accumulate.
+This creates real counterintelligence. The player can sometimes influence what the aliens believe by selectively revealing or withholding capabilities.
+- Frequent interception in one region can imply radar or base coverage.
+- Repeated use of one veteran squad can make that unit strategically important to alien command.
+- Heavy reliance on tanks can increase the value of anti-armour responses.
+- Repeated UFO breaches through the same entrance can justify dedicated ambushes.
+- Routine smoke deployment can trigger patient landing-zone containment.
+- Repeated supply raids can trigger rerouting, escort, or bait.
+- Ignored regions can attract additional operations.
+- Repeated rapid responses to terror can make terror useful as a diversion.
+Adaptation should eventually permit counter-adaptation. The player learns that the aliens are learning and can intentionally change behavior to make the alien model stale or misleading.
+Because the intelligence layer is bounded and persistent, every important decision can be logged. For each tactical or strategic command update, record ground truth for debugging, information actually available to the aliens, current alien beliefs, model output, selected doctrine, deterministic implementation, and outcome.
+A developer replay should make it possible to ask: why did the aliens choose this? The answer should be reconstructable from their evidence rather than from hidden player state. This is essential both for fairness and for tuning difficulty.
+Phase 1 should modify only strategic alien command. Leave Battlescape AI largely untouched and replace a narrow portion of campaign mission selection with a bounded commander that has persistent incomplete knowledge. This tests whether adaptive Geoscape strategy is interesting at low inference frequency and low engineering cost.
+Phase 2 adds tactical command packets and a small doctrine library while retaining conventional low-level AI. Start with a few high-signal patterns: smoke at the Skyranger, concentration of troops, isolated units, breached UFOs, retreat, and crossfire.
+Phase 3 adds persistent cross-mission learning, richer species communication, counterintelligence, deception, and campaign-level responses such as bait operations.
+Difficulty should mean what the label says. Beginner aliens are slow to learn, poorly informed, and weakly coordinated. Superhuman aliens are not numerically blessed cheaters; they are frighteningly competent opponents who notice patterns, share information, revise hypotheses, select appropriate tactics, and deliberately try to win.
+The player should eventually look at an alien action and wonder not “Which script fired?” but “What do they think I’m doing?” That is the game-changing shift.
+
+  

@@ -571,7 +571,10 @@ void createControlsOXCE()
 
 void createOptionsOTHER()
 {
-	// your fork's hidden options here
+	_info.push_back(OptionInfo(OPTION_OTHER, "alienCommandAudit", &alienCommandAudit, false));
+	_info.push_back(OptionInfo(OPTION_OTHER, "alienCommandModelPort", &alienCommandModelPort, 0));
+	_info.push_back(OptionInfo(OPTION_OTHER, "alienCommandModelExecute", &alienCommandModelExecute, false));
+ _info.push_back(OptionInfo(OPTION_OTHER, "alienCommandPortfolio", &alienCommandPortfolio, false));
 }
 
 void createAdvancedOptionsOTHER()

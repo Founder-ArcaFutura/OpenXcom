@@ -198,6 +198,8 @@ set ( geoscape_src
   Geoscape/CraftPatrolState.cpp
   Geoscape/DogfightErrorState.cpp
   Geoscape/DogfightExperienceState.cpp
+  Geoscape/AlienCommandAudit.cpp
+	Geoscape/AlienCommandModel.cpp
   Geoscape/DogfightState.cpp
   Geoscape/ExtendedGeoscapeLinksState.cpp
   Geoscape/FundingState.cpp
@@ -355,6 +357,7 @@ set ( mod_src
 set ( savegame_src
   Savegame/AlienBase.cpp
   Savegame/AlienMission.cpp
+  Savegame/AlienCommand.cpp
   Savegame/AlienStrategy.cpp
   Savegame/Base.cpp
   Savegame/BaseFacility.cpp
@@ -684,3 +687,7 @@ if ( MSVC OR "${CMAKE_GENERATOR}" STREQUAL "Xcode" )
     source_group ( "SDL" FILES ${sdl_src} )
   endif ()
 endif ()
+
+if(WIN32)
+	target_link_libraries(OpenXcom winhttp)
+endif()

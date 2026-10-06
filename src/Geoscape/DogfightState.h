@@ -18,6 +18,7 @@
  * along with OpenXcom.  If not, see <http://www.gnu.org/licenses/>.
  */
 #include "../Engine/State.h"
+#include "../Savegame/AlienCommand.h"
 #include "../Mod/RuleCraft.h"
 #include <vector>
 #include <string>
@@ -57,6 +58,7 @@ private:
 	Text *_txtOceanIndicator;
 	Craft *_craft;
 	Ufo *_ufo;
+	AlienInterceptionContact _alienCommandContact;
 	bool _ufoIsAttacking, _missileCraft, _missileImpact;
 	bool _disableDisengage, _disableStandoff, _disableCautious, _disableStandard, _disableAggressive;
 	bool _craftIsDefenseless, _selfDestructPressed;

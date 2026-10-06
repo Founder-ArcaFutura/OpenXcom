@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <Project DefaultTargets="Build" ToolsVersion="14.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup Label="ProjectConfigurations">
     <ProjectConfiguration Include="Debug|Win32">
@@ -537,6 +537,8 @@
     <ClCompile Include="Geoscape\ConfirmLandingState.cpp" />
     <ClCompile Include="Geoscape\ConfirmNewBaseState.cpp" />
     <ClCompile Include="Geoscape\CraftPatrolState.cpp" />
+    <ClCompile Include="Geoscape\AlienCommandAudit.cpp" />
+    <ClCompile Include="Geoscape\AlienCommandModel.cpp" />
     <ClCompile Include="Geoscape\DogfightState.cpp" />
     <ClCompile Include="Geoscape\NewPossibleCraftState.cpp" />
     <ClCompile Include="Geoscape\NewPossibleFacilityState.cpp" />
@@ -681,6 +683,7 @@
     <ClCompile Include="Mod\SoldierNamePool.cpp" />
     <ClCompile Include="Mod\UfoTrajectory.cpp" />
     <ClCompile Include="Savegame\AlienBase.cpp" />
+    <ClCompile Include="Savegame\AlienCommand.cpp" />
     <ClCompile Include="Savegame\AlienStrategy.cpp" />
     <ClCompile Include="Savegame\AlienMission.cpp" />
     <ClCompile Include="Savegame\Base.cpp" />
@@ -1031,6 +1034,8 @@
     <ClInclude Include="Geoscape\ConfirmLandingState.h" />
     <ClInclude Include="Geoscape\ConfirmNewBaseState.h" />
     <ClInclude Include="Geoscape\CraftPatrolState.h" />
+    <ClInclude Include="Geoscape\AlienCommandAudit.h" />
+    <ClInclude Include="Geoscape\AlienCommandModel.h" />
     <ClInclude Include="Geoscape\DogfightState.h" />
     <ClInclude Include="Geoscape\FundingState.h" />
     <ClInclude Include="Geoscape\NewPossibleCraftState.h" />
@@ -1178,6 +1183,7 @@
     <ClInclude Include="Mod\SoldierNamePool.h" />
     <ClInclude Include="Mod\UfoTrajectory.h" />
     <ClInclude Include="Savegame\AlienBase.h" />
+    <ClInclude Include="Savegame\AlienCommand.h" />
     <ClInclude Include="Savegame\AlienStrategy.h" />
     <ClInclude Include="Savegame\AlienMission.h" />
     <ClInclude Include="Savegame\Base.h" />

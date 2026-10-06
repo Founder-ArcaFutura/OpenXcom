@@ -649,6 +649,7 @@ void SavedGame::load(const std::string &filename, Mod *mod, Language *lang)
 		}
 	}
 	_alienStrategy->load(reader["alienStrategy"], mod);
+	_alienCommand.load(reader["alienCommand"]);
 
 	for (const auto& weHardlyKnewYe : reader["deadSoldiers"].children())
 	{
@@ -849,6 +850,7 @@ void SavedGame::save(const std::string &filename, Mod *mod) const
 	writer.write("hiddenPurchaseItems", _hiddenPurchaseItemsMap);
 	writer.write("customRuleCraftDeployments", _customRuleCraftDeployments);
 	_alienStrategy->save(writer["alienStrategy"]);
+	if (!_alienCommand.empty() || _alienCommand.budgetActive()) _alienCommand.save(writer["alienCommand"]);
 
 	saveVector(writer, _deadSoldiers, "deadSoldiers", mod->getScriptGlobal());
 	for (int j = 0; j < Options::oxceMaxEquipmentLayoutTemplates; ++j)
@@ -909,6 +911,12 @@ void SavedGame::save(const std::string &filename, Mod *mod) const
 	if (!CrossPlatform::writeFile(filepath, finalString))
 	{
 		throw Exception("Failed to save " + filepath);
+	}
+	const std::string auditPath = filepath + ".alien-command.jsonl";
+	if (!_alienCommand.empty() || CrossPlatform::fileExists(auditPath))
+	{
+		if (!CrossPlatform::writeFile(auditPath, _alienCommand.exportJsonl()))
+			Log(LOG_WARNING) << "Saved alien knowledge, but could not export audit: " << auditPath;
 	}
 }
 

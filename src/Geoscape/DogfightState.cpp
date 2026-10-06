@@ -17,6 +17,7 @@
  * along with OpenXcom.  If not, see <http://www.gnu.org/licenses/>.
  */
 #include "DogfightState.h"
+#include "AlienCommandAudit.h"
 #include <cmath>
 #include <sstream>
 #include "GeoscapeState.h"
@@ -971,6 +972,10 @@ void DogfightState::update()
 
 	if (!_minimized)
 	{
+		if (Options::alienCommandAudit && !_ufoIsAttacking && !_alienCommandContact.observed
+			&& !_waitForAltitude && !_waitForPoly && !_ufo->isCrashed() && !_ufo->isDestroyed()
+			&& !_craft->isDestroyed())
+			_alienCommandContact = captureAlienInterceptionContact(*_game->getMod(), *_ufo, *_game->getSavedGame()->getTime());
 		animate();
 		if (!_ufo->isCrashed() && !_ufo->isDestroyed() && !_craft->isDestroyed() && !_ufo->getInterceptionProcessed())
 		{
@@ -2665,6 +2670,14 @@ void DogfightState::endDogfight()
 {
 	if (_endDogfight)
 		return;
+	if (Options::alienCommandAudit && _alienCommandContact.observed && _ufo)
+	{
+		const bool survived = !_ufo->isCrashed() && !_ufo->isDestroyed();
+		auto &command = _game->getSavedGame()->getAlienCommand();
+		command.reportInterception(_alienCommandContact, _game->getSavedGame()->getTime()->getFullString(),
+			survived, _ufo->isDestroyed() ? "UFO_DESTROYED" : _ufo->isCrashed() ? "UFO_CRASHED" : "UFO_SURVIVED");
+		Log(LOG_INFO) << "AlienCommandAudit " << command.getAudit().back();
+	}
 	if (_craft)
 	{
 		_craft->setInDogfight(false);
