@@ -13,6 +13,8 @@ class Game;
 class Globe;
 std::vector<AlienReconCandidate> buildAlienPortfolioMenu(const Mod &mod, const class SavedGame &save);
 void executeAlienPortfolio(Game &game, const Globe &globe);
+std::string buildAlienMonthlySitrep(const class SavedGame &save, const std::string &asOf = "");
+std::string buildAlienPortfolioInput(const Mod &mod, const class SavedGame &save);
 
 /// Rules-only catalog. It deliberately does not accept a SavedGame.
 std::vector<AlienReconCandidate> buildAlienReconMenu(const Mod &mod);

@@ -2,7 +2,9 @@
 param(
     [string]$Save = 'G:\OpenXcom\build\local\user\xcom1\Testing.sav',
     [ValidateSet('UFO','TFTD')][string]$Game = 'UFO',
-    [int]$ModelPort = 0
+    [int]$ModelPort = 0,
+    [switch]$Strategy,
+    [switch]$Transition
 )
 $ErrorActionPreference = 'Stop'
 $repoRoot = Split-Path -Parent $PSScriptRoot
@@ -18,16 +20,20 @@ Copy-Item -LiteralPath $source.FullName -Destination (Join-Path $masterRoot 'sou
 $previousVideo = $env:SDL_VIDEODRIVER
 $previousAudio = $env:SDL_AUDIODRIVER
 $previousReplay = $env:OPENXCOM_ALIEN_REPLAY
+$previousStrategy = $env:OPENXCOM_STRATEGY_REPLAY
+$previousTransition = $env:OPENXCOM_MONTH_TRANSITION
 try {
     $env:SDL_VIDEODRIVER = 'dummy'; $env:SDL_AUDIODRIVER = 'dummy'; $env:OPENXCOM_ALIEN_REPLAY = '1'
+    if ($Strategy) { $env:OPENXCOM_STRATEGY_REPLAY = '1' } else { $env:OPENXCOM_STRATEGY_REPLAY = $null }
+    if ($Transition) { $env:OPENXCOM_MONTH_TRANSITION = '1' } else { $env:OPENXCOM_MONTH_TRANSITION = $null }
     $log = Join-Path $runRoot 'replay.log'
     & (Join-Path $runtimeRoot 'AlienCommandTests.exe') -data $runtimeRoot -user $runRoot -config $runRoot -master $master -playIntro false -useOpenGL false -fullscreen false -alienCommandModelPort $ModelPort *> $log
     if ($LASTEXITCODE -ne 0) { Get-Content -LiteralPath $log -Tail 8; throw "Replay failed: $log" }
     Select-String -LiteralPath $log -Pattern '^REPLAY:' | ForEach-Object { $_.Line }
 }
-finally { $env:SDL_VIDEODRIVER = $previousVideo; $env:SDL_AUDIODRIVER = $previousAudio; $env:OPENXCOM_ALIEN_REPLAY = $previousReplay }
+finally { $env:SDL_VIDEODRIVER = $previousVideo; $env:SDL_AUDIODRIVER = $previousAudio; $env:OPENXCOM_ALIEN_REPLAY = $previousReplay; $env:OPENXCOM_STRATEGY_REPLAY = $previousStrategy; $env:OPENXCOM_MONTH_TRANSITION = $previousTransition }
 $after = (Get-FileHash -LiteralPath $source.FullName -Algorithm SHA256).Hash
 if ($before -ne $after) { throw 'Original save changed during replay.' }
-$receipt = @{ sourceSave=$source.FullName; sourceSha256=$before; originalUnchanged=$true; master=$master; modelPort=$ModelPort; audit=(Join-Path $masterRoot 'recon-replay.jsonl') }
+$receipt = @{ sourceSave=$source.FullName; sourceSha256=$before; originalUnchanged=$true; master=$master; modelPort=$ModelPort; strategyReplay=[bool]$Strategy; monthTransition=[bool]$Transition; transitionSave=(Join-Path $masterRoot 'transition-result.sav'); audit=(Join-Path $masterRoot 'recon-replay.jsonl'); strategyInput=(Join-Path $masterRoot 'strategy-input.json'); strategyResponse=(Join-Path $masterRoot 'strategy-response.json') }
 $receipt | ConvertTo-Json | Set-Content -LiteralPath (Join-Path $runRoot 'manifest.json') -Encoding utf8
 Write-Output "Original save unchanged (SHA-256). Replay manifest: $runRoot\manifest.json"

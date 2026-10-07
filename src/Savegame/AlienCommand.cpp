@@ -350,6 +350,20 @@ void AlienCommand::recordBudgetFact(const std::string &event, int missionId, con
    || event=="MISSION_DENIED_BUDGET_OR_PREREQUISITE" || event=="ASSAULT_DEFERRED_SEPARATE_COMMITMENT_REQUIRED")?"ENFORCED_ACCOUNTING":"SHADOW_ACCOUNTING") + "}");
 }
 
+void AlienCommand::recordOwnedOperation(const std::string &event, int missionId, const std::string &mission,
+ const std::string &assignedRegion, const std::string &time, int ufoId,
+ const std::string &craftType, int wave, const std::string &role)
+{
+ if (missionId<=0 || mission.empty() || assignedRegion.empty() || time.empty()
+  || (event!="MISSION_ASSIGNED" && event!="CRAFT_DEPLOYED" && event!="CRAFT_RETURNED" && event!="CRAFT_UNAVAILABLE")
+  || (event!="MISSION_ASSIGNED" && ufoId<=0)) return;
+ _audit.push_back("{\"schemaVersion\":1,\"kind\":\"own_operation\",\"id\":"+std::to_string(_nextId++)
+ +",\"gameTime\":"+quote(time)+",\"event\":"+quote(event)+",\"missionId\":"+std::to_string(missionId)
+ +",\"mission\":"+quote(mission)+",\"assignedRegion\":"+quote(assignedRegion)+",\"sourceUfoId\":"+std::to_string(ufoId)
+ +",\"craftType\":"+quote(craftType)+",\"wave\":"+std::to_string(wave)+",\"role\":"+quote(role)
+ +",\"provenance\":\"OWN_OPERATION_TELEMETRY\",\"enemyCause\":\"UNKNOWN\"}");
+}
+
 void AlienCommand::recordBaseDiscovery(const AlienInterceptionContact &observer, double longitude, double latitude, const std::string &time)
 {
  const int id = _nextId++;

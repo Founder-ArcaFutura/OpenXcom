@@ -33,7 +33,7 @@ details{margin-top:16px}summary{cursor:pointer;color:#a8cfec}.error{color:#ffbaa
 <div class="notice">Default shadow mode: the existing commander executes game missions. Explicit ModelExecute tests may execute model operations. Offline replays execute no missions. Scores express an uncalibrated heuristic, not a probability of an X-COM base.</div>
 <div class="controls">
 <label>Open audit file <input id="file" type="file" accept=".jsonl,.log,.txt"></label>
-<select id="kind" aria-label="Event type"><option value="">All events</option><option value="decision">Decisions</option><option value="interception">Interception reports</option><option value="base_discovery">Base discoveries</option><option value="budget_fact">Budget facts</option><option value="portfolio">Monthly portfolios</option></select>
+<select id="kind" aria-label="Event type"><option value="">All events</option><option value="decision">Decisions</option><option value="interception">Interception reports</option><option value="base_discovery">Base discoveries</option><option value="budget_fact">Budget facts</option><option value="portfolio">Monthly portfolios</option><option value="own_operation">Own operations</option></select>
 <input id="search" type="search" aria-label="Search events" placeholder="Search region, script, UFO ID, or reason">
 </div>
 <p id="status" role="status">Choose a saved game's .alien-command.jsonl sidecar, or an openxcom.log file. Files stay in this browser; no server or network access is used.</p>
@@ -71,7 +71,7 @@ function parseAudit(text) {
     const payload = marker >= 0 ? line.slice(marker + "AlienCommandAudit ".length) : line;
     try {
       const event = JSON.parse(payload);
-      if (!event || event.schemaVersion !== 1 || !["decision", "interception", "base_discovery", "budget_fact", "portfolio"].includes(event.kind)
+      if (!event || event.schemaVersion !== 1 || !["decision", "interception", "base_discovery", "budget_fact", "portfolio", "own_operation"].includes(event.kind)
           || !Number.isInteger(event.id) || event.id < 1) throw new Error("Unsupported event schema");
       result.push(event);
     } catch (error) { errors.push("Line " + (index + 1) + ": " + error.message); }
@@ -118,9 +118,31 @@ function showEvent(index) {
     const b = e.input?.budget || {}, after = e.budgetAfter || {};
     table(root, ["Month", "Starting resources", "Remaining", "Next month bonus"], [[b.epochMonth, b.remaining, after.remaining, after.pendingBonus]]);
     let response = {}; try { response = JSON.parse(e.response || "{}"); } catch {}
+    el("p", "Strategy: " + label(response.strategy), root);
+    const sitrep = e.input?.sitrep;
+    if (sitrep) {
+      el("h3", "Previous month: " + sitrep.period, root);
+      el("p", "Previous strategy: " + label(sitrep.previousStrategy) + ". Coverage: " + label(sitrep.coverage) + ". Enemy recovery: unknown.", root);
+      table(root, ["Deployed", "Returned", "Unavailable", "Pending operations"], [[sitrep.assets?.deployed, sitrep.assets?.returned, sitrep.assets?.unavailable, sitrep.pendingTotal]]);
+      table(root, ["Loss assignment region", "Craft", "Receipts"], list(sitrep.lossAssignments).map(x => [label(x.region), x.count, list(x.evidenceIds).join(", ")]));
+      table(root, ["Verified activity", "Count", "Receipts"], list(sitrep.verifiedActivities).map(x => [label(x.mission), x.count, list(x.evidenceIds).join(", ")]));
+      const review = sitrep.operationalReview;
+      if (review) {
+        table(root, ["Lost craft role", "Count"], Object.entries(review.loss_roles || {}).map(([role,count]) => [label(role),count]));
+        el("p", "Terror objective waves pending: " + review.terror_objective_waves_pending + ". Pending is not successful.", root);
+        table(root, ["Lost craft", "Role", "Provenance", "Receipt"], list(review.roleSupport).map(x => [label(x.craftType),label(x.role),label(x.source),x.lossReceiptId]));
+        table(root, ["Mission", "Next wave", "Total waves", "Objective wave pending"], list(review.pendingProgress).map(x => [x.missionId,x.nextWave,x.totalWaves,x.objectiveWavePending]));
+      }
+      el("p", "Assigned regions do not establish encounter locations. Productive activities do not establish whole-mission success.", root);
+    }
     table(root, ["Proposed operation", "Region"], list(response.operations).map(o => [label(o.mission), label(o.region)]));
     el("p", "Portfolio replaces routine monthly mission scripts. The engine validates costs and prerequisites. Missing interception reports mean unknown risk. Searches do not auto-assault.", root);
     el("h3", "Exact model response", root); el("pre", e.response || "No response", root);
+  } else if (e.kind === "own_operation") {
+    el("h2", label(e.event), root);
+    table(root, ["Mission", "Assigned region", "Craft", "Enemy cause"], [[label(e.mission), label(e.assignedRegion), e.sourceUfoId || "None", label(e.enemyCause)]]);
+    el("p", "Craft: " + label(e.craftType) + "; wave: " + (e.wave ?? "unknown") + "; role: " + label(e.role) + ".", root);
+    el("p", "Own operational telemetry; assignment is not an enemy encounter location.", root);
   } else if (e.kind === "budget_fact") {
     el("h2", label(e.event), root);
     el("p", (e.mode === "ENFORCED_ACCOUNTING" ? "Enforced budget fact. Mission " : "Shadow budget fact. Mission ") + e.missionId + ": " + label(e.mission) + ". Reporting UFO: " + (e.sourceUfoId || "—") + (e.mode === "ENFORCED_ACCOUNTING" ? ". Native budget accounting is active." : ". No allocation was enforced."), root);

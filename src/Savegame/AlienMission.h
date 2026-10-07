@@ -80,6 +80,8 @@ public:
 	void setRace(const std::string &race) { _race = race; }
 	/// Gets the minutes until next wave spawns.
 	size_t getWaveCountdown() const { return _spawnCountdown; }
+	size_t getNextWave() const { return _nextWave; }
+	size_t getNextUfoCounter() const { return _nextUfoCounter; }
 	/// Sets the minutes until next wave spawns.
 	void setWaveCountdown(size_t minutes);
 	/// Sets the unique ID for this mission.

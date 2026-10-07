@@ -88,6 +88,9 @@ class AlienCommand
 	std::vector<std::string> _audit;
 	void updateBelief(const std::string &region);
 public:
+ void recordOwnedOperation(const std::string &event, int missionId, const std::string &mission,
+  const std::string &assignedRegion, const std::string &time, int ufoId = 0,
+  const std::string &craftType = "UNKNOWN", int wave = -1, const std::string &role = "UNKNOWN");
  static int monthlyAllowance(int month, int difficulty);
  static int operationCost(const std::string &mission);
  void beginBudgetMonth(int month, int difficulty);

@@ -194,6 +194,13 @@ void AlienMission::think(Game &engine, const Globe &globe)
 		//Some missions may not spawn a UFO!
 		ufo->setMissionWaveNumber(_nextWave);
 		game.getUfos()->push_back(ufo);
+  if (Options::alienCommandAudit || Options::alienCommandPortfolio)
+  {
+   auto &ledger=game.getAlienCommand();
+   ledger.recordOwnedOperation("CRAFT_DEPLOYED",getId(),_rule.getType(),getRegion(),game.getTime()->getFullString(),ufo->getUniqueId(),ufo->getRules()->getType(),(int)_nextWave,
+    _rule.getObjective()==OBJECTIVE_RETALIATION?(ufo->getRules()->getType()==_rule.getSpawnUfo()?"OBJECTIVE_CARRIER":"SEARCH"):wave.objective?"OBJECTIVE_CARRIER":_rule.getObjective()==OBJECTIVE_SITE?"PREPARATION":"UNKNOWN");
+   Log(LOG_INFO)<<"AlienCommandAudit "<<ledger.getAudit().back();
+  }
 	}
 	else if ((mod.getDeployment(wave.ufoType) && !mod.getUfo(wave.ufoType) && !mod.getDeployment(wave.ufoType)->getMarkerName().empty()) // a mission site that we want to spawn directly
 			|| (_rule.getObjective() == OBJECTIVE_SITE && wave.objective)) // or we want to spawn one at random according to our terrain
@@ -870,6 +877,8 @@ void AlienMission::start(Game &engine, const Globe &globe, size_t initialCount)
   auto &ledger = save.getAlienCommand();
   ledger.recordBudgetFact("MISSION_COMMITTED", getId(), _rule.getType(), save.getTime()->getFullString());
   Log(LOG_INFO) << "AlienCommandAudit " << ledger.getAudit().back();
+  ledger.recordOwnedOperation("MISSION_ASSIGNED",getId(),_rule.getType(),getRegion(),save.getTime()->getFullString());
+  Log(LOG_INFO)<<"AlienCommandAudit "<<ledger.getAudit().back();
  }
 
 }
@@ -906,6 +915,12 @@ void AlienMission::ufoReachedWaypoint(Ufo &ufo, Game &engine, const Globe &globe
 	const MissionWave &wave = _rule.getWave(waveNumber);
 	if (nextWaypoint >= trajectory.getWaypointCount())
 	{
+  if (Options::alienCommandAudit || Options::alienCommandPortfolio)
+  {
+   auto &ledger=game.getAlienCommand();
+   ledger.recordOwnedOperation("CRAFT_RETURNED",getId(),_rule.getType(),getRegion(),game.getTime()->getFullString(),ufo.getUniqueId());
+   Log(LOG_INFO)<<"AlienCommandAudit "<<ledger.getAudit().back();
+  }
   if ((Options::alienCommandAudit || Options::alienCommandPortfolio) && getId() > 0 && (_rule.getType() == "STR_ALIEN_RESEARCH" || _rule.getType() == "STR_ALIEN_PROBE_MISSION"))
   {
    auto &ledger = game.getAlienCommand();

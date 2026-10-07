@@ -2677,6 +2677,13 @@ void DogfightState::endDogfight()
 		command.reportInterception(_alienCommandContact, _game->getSavedGame()->getTime()->getFullString(),
 			survived, _ufo->isDestroyed() ? "UFO_DESTROYED" : _ufo->isCrashed() ? "UFO_CRASHED" : "UFO_SURVIVED");
 		Log(LOG_INFO) << "AlienCommandAudit " << command.getAudit().back();
+		if (!survived && _ufo->getMission())
+		{
+		 const auto *mission=_ufo->getMission();
+		 command.recordOwnedOperation("CRAFT_UNAVAILABLE",mission->getId(),mission->getRules().getType(),mission->getRegion(),
+		  _game->getSavedGame()->getTime()->getFullString(),_ufo->getUniqueId());
+		 Log(LOG_INFO)<<"AlienCommandAudit "<<command.getAudit().back();
+		}
 	}
 	if (_craft)
 	{
