@@ -42,3 +42,12 @@ Historical conquest prompt revision: `conquest-tradeoffs-v2` explicitly states c
 Current revision: `alien-strategy-laya-v2` / `sitrep-strategy-v3` adds a deterministic native monthly sitrep and a learned strategy stage before mixed operation/target choices. See [strategy and sitrep contract](ALIEN_COMMAND_STRATEGY_SITREP.md). Own deployment, return and unavailable-craft receipts persist; unavailable craft are reported by their own assigned region, with unknown enemy cause/recovery. Older saves have partial reporting coverage. Exact native sitrep and all model prompts/choices are retained in each portfolio receipt.
 
 Live context/deferral revision: `roles-defer-v4` adds own craft roles, native mission progress and a two-month review. The SAVE choice explicitly describes carry and forfeiture. Close the earlier game/model session and relaunch Portfolio to use the new service and executable; reload February 28 for the March comparison.
+# Current planner: concrete-plans-v6
+
+`-Portfolio` now selects concrete objective/mission plans and then targets using
+the simple tested campaign planner. The broad strategy label is derived for
+reporting, not separately chosen. See `ALIEN_COMMAND_CAMPAIGN_PLANS.md` for current
+behavior and native replay evidence. Earlier strategy/advisor sections below are
+historical. Restart the launcher to load the updated service; load a pre-boundary
+save to change that month's allocation.
+

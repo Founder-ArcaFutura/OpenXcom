@@ -2,6 +2,7 @@
 """Local Laya reconnaissance probe. Only admitted game DTOs enter the model."""
 from __future__ import annotations
 import argparse
+import importlib.util
 import hashlib
 import json
 import math
@@ -14,7 +15,7 @@ from http.server import BaseHTTPRequestHandler, ThreadingHTTPServer
 
 PROTOCOL = "alien-recon-laya-v2"
 PORTFOLIO_PROTOCOL = "alien-strategy-laya-v2"
-PORTFOLIO_PROMPT_VERSION = "search-evidence-v5"
+PORTFOLIO_PROMPT_VERSION = "concrete-plans-v6"
 ENCODER_REVISION = "45bb4654a4d5aaff24dd11d4781fa46d39bf8c13"
 V4_SHA256 = "bcbb891d21cf081a9d7a941b97f8b0f10cf3dac7473b4b9450fab0d07b885175"
 ROOT = Path(__file__).resolve().parents[1]
@@ -445,9 +446,29 @@ def plan_portfolio(data,choose):
 
 def predict_portfolio(agent,identity,data):
     started=time.perf_counter()
-    result=plan_portfolio(data,lambda state,criteria,ins:checked_choice(agent,state,criteria,ins))
+    result=plan_concrete_portfolio(data,lambda state,criteria,ins:checked_choice(agent,state,criteria,ins))
     return {**result,**identity,"schemaVersion":1,"protocol":PORTFOLIO_PROTOCOL,"portfolioPromptVersion":PORTFOLIO_PROMPT_VERSION,"inputSha256":digest(data),
             "latencyMs":round((time.perf_counter()-started)*1000,2),"scoreMeaning":"Unvalidated choice probabilities; engine validates entire portfolio."}
+
+def plan_concrete_portfolio(data,choose):
+    # Share the exact tested planner; no separate broad strategy inference.
+    from types import SimpleNamespace
+    spec=importlib.util.spec_from_file_location("campaign_plans",ROOT/"scripts/campaign_plans.py")
+    planner=importlib.util.module_from_spec(spec);spec.loader.exec_module(planner)
+    planner.m=SimpleNamespace(**globals())
+    result=planner.plan(data,choose,tradeoffs=False)
+    # Native v2 protocol requires a strategy field. Derive a reporting label
+    # from funded cost by objective; it never drives another choice.
+    labels={"BUILD_CAPACITY":"RESOURCE_ACQUISITION","BUILD_INFRASTRUCTURE":"RESOURCE_ACQUISITION",
+            "LOCATE_XCOM":"COUNTER_XCOM","DEVELOP_INTELLIGENCE":"INTELLIGENCE",
+            "APPLY_PRESSURE":"POLITICAL_PRESSURE","SEEK_CONTROL":"POLITICAL_PRESSURE"}
+    costs={label:0 for label in STRATEGIES}
+    for plan in result["plans"]:costs[labels[plan["goal"]]]+=plan["cost"]
+    affordable=any(PORTFOLIO_COSTS[c["mission"]]<=data["budget"]["remaining"] for c in data["knowledge"]["candidates"])
+    previous=data["sitrep"]["previousStrategy"]
+    result["strategy"]=max(costs,key=costs.get) if result["plans"] else (previous if previous in STRATEGIES else "INTELLIGENCE") if affordable else "NO_FEASIBLE_OPERATION"
+    result["strategySource"]="DERIVED_SPEND_LABEL_NOT_MODEL_STRATEGY" if result["plans"] else "COMPATIBILITY_LABEL_NO_NEW_OPERATIONS"
+    return result
 
 def serve(agent, identity, port):
     lock = threading.Lock()

@@ -96,3 +96,10 @@ search-only/no-auto-assault restriction remains enforced by the native engine.
 Restart the portfolio launcher to load v5 and replay a pre-boundary save; a recorded
 March portfolio does not rerun when a post-boundary save is loaded.
 
+# Current live policy: concrete-plans-v6
+
+The native sitrep and evidence contract described here remains in force. The live
+planner now uses simple concrete objective/mission choices and targets rather than
+a separate strategy call. See `ALIEN_COMMAND_CAMPAIGN_PLANS.md`. Earlier prompt
+versions and experiments below are retained as history.
+
