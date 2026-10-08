@@ -36,7 +36,7 @@ def plan(data,choose,tradeoffs=True,lessons=False):
   search=[];basis='EVIDENCE_TARGETS_UNAVAILABLE_NO_UNSUPPORTED_EXPANSION'
  menu=[c for c in menu if c['mission']!='STR_ALIEN_RETALIATION' or c['region'] in search]
  selected=[];decisions=[];plans=[];remaining=budget['remaining']
- for slot in range(3):
+ for slot in range(budget['maxOperations']):
   available=[c for c in menu if c not in selected and m.PORTFOLIO_COSTS[c['mission']]<=remaining]
   missions=sorted({c['mission'] for c in available})
   if not missions:break

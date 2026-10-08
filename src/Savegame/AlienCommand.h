@@ -1,6 +1,7 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
 
 #pragma once
+#include <algorithm>
 #include <cstddef>
 #include <cstdint>
 #include <map>
@@ -92,6 +93,7 @@ public:
   const std::string &assignedRegion, const std::string &time, int ufoId = 0,
   const std::string &craftType = "UNKNOWN", int wave = -1, const std::string &role = "UNKNOWN");
  static int monthlyAllowance(int month, int difficulty);
+ static int operationCapacity(int month) { return 3 + std::min(3, std::max(0, month) / 3); }
  static int operationCost(const std::string &mission);
  void beginBudgetMonth(int month, int difficulty);
  bool budgetActive() const { return _budgetMonth >= 0; }

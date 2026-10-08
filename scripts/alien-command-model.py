@@ -15,7 +15,7 @@ from http.server import BaseHTTPRequestHandler, ThreadingHTTPServer
 
 PROTOCOL = "alien-recon-laya-v2"
 PORTFOLIO_PROTOCOL = "alien-strategy-laya-v2"
-PORTFOLIO_PROMPT_VERSION = "campaign-lessons-v7"
+PORTFOLIO_PROMPT_VERSION = "progressive-portfolio-v8"
 ENCODER_REVISION = "45bb4654a4d5aaff24dd11d4781fa46d39bf8c13"
 V4_SHA256 = "bcbb891d21cf081a9d7a941b97f8b0f10cf3dac7473b4b9450fab0d07b885175"
 ROOT = Path(__file__).resolve().parents[1]
@@ -230,10 +230,12 @@ def portfolio_input(data):
         raise ValueError("Invalid portfolio envelope")
     b=data["budget"]
     fields={"policyVersion","epochMonth","difficulty","remaining","pendingBonus","intelligence","logistics","adaptation","maxOperations","assaultAvailable","terrorRewardVerified","allowance","carryCap","nextAllowance","nextBonusCap"}
-    if not isinstance(b,dict) or set(b)!=fields or b["policyVersion"]!="monthly-portfolio-v1" or b["maxOperations"]!=3 or b["assaultAvailable"] is not False or b["terrorRewardVerified"] is not False:
+    if not isinstance(b,dict) or set(b)!=fields or b["policyVersion"]!="monthly-portfolio-v1" or b["assaultAvailable"] is not False or b["terrorRewardVerified"] is not False:
         raise ValueError("Unsupported portfolio policy")
     for k in ("epochMonth","remaining","pendingBonus","intelligence","logistics","adaptation","allowance","carryCap","nextAllowance","nextBonusCap"): integer(b[k])
     integer(b["difficulty"],0,4)
+    integer(b['maxOperations'],3,6)
+    if b['maxOperations']!=3+min(3,b['epochMonth']//3):raise ValueError('Capacity disagrees with campaign age')
     knowledge=data["knowledge"]
     if not isinstance(knowledge,dict) or set(knowledge)!={"menuSource","candidates","beliefs","evidence"}: raise ValueError("Invalid knowledge")
     menu=knowledge["candidates"]
@@ -280,7 +282,7 @@ def validate_sitrep(s):
             seen.add(name);ids=row["evidenceIds"]
             if not isinstance(ids,list) or not 1<=len(ids)<=8 or len(ids)!=len(set(ids)):raise ValueError("Invalid sitrep support")
             for identity in ids:integer(identity,1)
-    for key,limit,fields in (("previousPortfolio",3,{"mission","region"}),("pendingOperations",16,{"missionId","mission","region"})):
+    for key,limit,fields in (("previousPortfolio",6,{"mission","region"}),("pendingOperations",16,{"missionId","mission","region"})):
         if not isinstance(s[key],list) or len(s[key])>limit:raise ValueError("Sitrep operation budget")
         for op in s[key]:
             if not isinstance(op,dict) or set(op)!=fields:raise ValueError("Invalid owned operation")
@@ -393,7 +395,7 @@ def plan_portfolio(data,choose):
     strategy,receipt=choose(strategy_state,strategies,"Choose this month's conquest strategy using observed results and resources. Strategies guide mixed portfolios, not mandatory retaliation.")
     if strategy not in strategies:raise ValueError("Invalid strategy choice")
     decisions.append({**receipt,"stage":"STRATEGY"})
-    for slot in range(3):
+    for slot in range(budget['maxOperations']):
         available=[c for c in menu if c not in selected and PORTFOLIO_COSTS[c["mission"]]<=remaining]
         missions=sorted({c["mission"] for c in available})
         if not missions:break

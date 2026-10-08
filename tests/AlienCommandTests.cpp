@@ -69,6 +69,8 @@ std::string latestBudgetFact(const AlienCommand &command)
 
 void coreTests()
 {
+ for(int month=0;month<24;++month)
+  check(AlienCommand::operationCapacity(month)==3+std::min(3,month/3),"Progressive operation capacity wrong");
 	AlienCommand command;
 	std::vector<AlienReconCandidate> menu = {{"RECON", "B"}, {"RECON", "A"}};
 	check(AlienCommand::chooseRecon(command.snapshot(menu)).abstains(), "No evidence must abstain");

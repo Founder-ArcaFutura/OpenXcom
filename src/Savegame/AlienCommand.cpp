@@ -143,7 +143,7 @@ std::string AlienCommand::budgetJson() const
  + ",\"carryCap\":" + std::to_string(monthlyAllowance(_budgetMonth,_budgetDifficulty)/2)
  + ",\"nextAllowance\":" + std::to_string(monthlyAllowance(_budgetMonth+1,_budgetDifficulty))
  + ",\"nextBonusCap\":" + std::to_string(monthlyAllowance(_budgetMonth+1,_budgetDifficulty)/2)
- + ",\"maxOperations\":3,\"assaultAvailable\":false,\"terrorRewardVerified\":false}";
+ + ",\"maxOperations\":" + std::to_string(operationCapacity(_budgetMonth)) + ",\"assaultAvailable\":false,\"terrorRewardVerified\":false}";
 }
 void AlienCommand::recordPortfolio(const std::string &time, const std::string &input, const std::string &response, const std::string &status)
 {

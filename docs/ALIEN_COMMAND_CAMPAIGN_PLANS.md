@@ -1,5 +1,34 @@
 # Concrete campaign plans experiment
 
+## Current live revision: progressive-portfolio-v8
+
+Operation capacity is a deterministic native campaign-age rule: months 0-2 allow
+3 operations, months 3-5 allow 4, months 6-8 allow 5, and month 9 onward allows 6.
+For a January 1999 start these are Jan-Mar, Apr-Jun, Jul-Sep, Oct onward. This
+adds one slot each quarter and preserves a bounded maximum; funding and legality
+still constrain actual deployments. There is no mandatory expenditure or added allowance.
+
+The engine publishes `budget.maxOperations` and enforces it atomically. The model
+validates that it matches `epochMonth` and uses it as the loop limit. Prior portfolios
+of up to six operations remain valid sitrep inputs. Capacity needs no new save field;
+it is derived from the restored budget/campaign month. Already committed decisions
+remain committed; only crossing a fresh monthly boundary selects a new portfolio.
+
+The compact campaign lessons, evidence-based search exclusions, progression,
+mission costs and rewards are retained. Restart the launcher to load the v8 engine
+and service; old services are rejected. To isolate April use `Pre-april 2.sav`.
+March and earlier still have three slots. Expansion is campaign-age based; success
+provides funding and progression rather than additional capacity in this revision.
+
+Validation: 67 Python checks; rebuilt native engine with zero errors; real checkpoint
+native suites passed 141 UFO and 139 TFTD checks. Copied `Pre-april 2.sav` transition
+published capacity 4 and committed harvest South East Asia, searches Europe and
+North Africa, and research Arctic, spending 9 of 24 resources and retaining 15.
+Original save SHA unchanged; native save/load and no duplicate monthly commitment
+checks passed. Receipt `build/local/progressive-v8-april-receipt.json`; build and
+test logs `build/local/progressive-v8-build.log` and
+`build/local/progressive-v8-native-tests.log`.
+
 ## Current live revision: campaign-lessons-v7
 
 The simple concrete planner now receives a compact assessment in each plan choice:

@@ -311,7 +311,7 @@ void executeAlienPortfolio(Game &game, const Globe &globe)
   if(strategy=="NO_FEASIBLE_OPERATION" && std::any_of(menu.begin(),menu.end(),[&](const auto &m){return ledger.canFund(m.mission);})) throw std::runtime_error("Feasible strategy incorrectly omitted");
   const auto modelStatus=r["status"].readVal<std::string>();
   if (modelStatus!="PREDICTED" && modelStatus!="SAVE_RESOURCES") throw std::runtime_error("Portfolio inference unavailable");
-  auto ops=r["operations"].children(); if (ops.size()>3) throw std::runtime_error("Portfolio exceeds operation limit");
+  auto ops=r["operations"].children(); if (ops.size()>static_cast<size_t>(AlienCommand::operationCapacity(std::max(0,save.getMonthsPassed())))) throw std::runtime_error("Portfolio exceeds operation limit");
   std::set<std::pair<std::string,std::string>> seen;
   int totalCost=0;
   for (const auto &op:ops)

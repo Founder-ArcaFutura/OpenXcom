@@ -45,8 +45,8 @@ try {
             }
             if (-not $health) { throw 'Model startup timed out.' }
         }
-        if ($Portfolio -and ($health.portfolioProtocol -ne 'alien-strategy-laya-v2' -or $health.portfolioPromptVersion -ne 'campaign-lessons-v7')) { throw 'Portfolio mode needs the campaign-lessons service. Close the earlier game/service session and launch again.' }
-        if ($Portfolio) { Write-Output 'Monthly commander enabled: up to three concrete objective/mission plans and targets, or saved resources. Routine monthly scripts are replaced; searches do not auto-assault.' }
+        if ($Portfolio -and ($health.portfolioProtocol -ne 'alien-strategy-laya-v2' -or $health.portfolioPromptVersion -ne 'progressive-portfolio-v8')) { throw 'Portfolio mode needs the progressive-portfolio engine and service. Close the earlier game/service session and launch again.' }
+        if ($Portfolio) { Write-Output 'Monthly commander enabled: concrete plans with progressive capacity (3, 4, 5, then 6 operations by campaign quarter), or saved resources. Searches do not auto-assault.' }
         elseif ($ModelExecute) { Write-Output "Model execution enabled for monthly recon: contact gathering or retaliation base search. Discovery can lead to a base assault." }
         else { Write-Output "Model ready on $($health.device); learned proposals remain shadow-only." }
     }

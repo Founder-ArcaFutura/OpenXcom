@@ -8,6 +8,15 @@ spec=importlib.util.spec_from_file_location('plans',Path(__file__).resolve().par
 p=importlib.util.module_from_spec(spec);spec.loader.exec_module(p)
 
 class CampaignPlanTests(unittest.TestCase):
+ def test_progressive_capacity_and_native_age_contract(self):
+  for month,cap in ((0,3),(2,3),(3,4),(5,4),(6,5),(8,5),(9,6),(18,6)):
+   data=packet(30);data['budget'].update(epochMonth=month,maxOperations=cap)
+   data['knowledge']['candidates']=[{'mission':'STR_ALIEN_RESEARCH','region':'STR_REGION_'+str(i)} for i in range(8)]
+   result=p.m.plan_concrete_portfolio(data,lambda s,c,i:(next(iter(c)),{}))
+   self.assertEqual(len(result['operations']),cap)
+   self.assertEqual(result['remainingProposed'],30-2*cap)
+  data['budget']['maxOperations']=3
+  with self.assertRaises(ValueError):p.m.portfolio_input(data)
  def test_occupied_evidence_regions_do_not_open_polar_searches(self):
   from test_alien_command_advisors import supported_packet
   data=supported_packet();data['knowledge']['candidates']=[{'mission':'STR_ALIEN_RETALIATION','region':'STR_ARCTIC'},{'mission':'STR_ALIEN_HARVEST','region':'STR_AUSTRALASIA'}]
