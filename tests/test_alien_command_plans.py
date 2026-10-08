@@ -8,6 +8,18 @@ spec=importlib.util.spec_from_file_location('plans',Path(__file__).resolve().par
 p=importlib.util.module_from_spec(spec);spec.loader.exec_module(p)
 
 class CampaignPlanTests(unittest.TestCase):
+ def test_occupied_evidence_regions_do_not_open_polar_searches(self):
+  from test_alien_command_advisors import supported_packet
+  data=supported_packet();data['knowledge']['candidates']=[{'mission':'STR_ALIEN_RETALIATION','region':'STR_ARCTIC'},{'mission':'STR_ALIEN_HARVEST','region':'STR_AUSTRALASIA'}]
+  result=p.plan(data,lambda s,c,i:(next(iter(c)),{}),False,True)
+  self.assertTrue(all(o['mission']!='STR_ALIEN_RETALIATION' for o in result['operations']))
+  self.assertEqual(result['searchEligibility'],'EVIDENCE_TARGETS_UNAVAILABLE_NO_UNSUPPORTED_EXPANSION')
+ def test_success_attribution_stays_unknown_with_multiple_assignments(self):
+  data=packet();s=data['sitrep'];s['verifiedActivities']=[{'mission':'STR_ALIEN_HARVEST','count':1,'evidenceIds':[9]}]
+  s['operationalReview']['rolling_results']=[['1999-01',0,1]]
+  s['previousPortfolio']=[{'mission':'STR_ALIEN_HARVEST','region':r} for r in ('STR_EUROPE','STR_NORTH_AFRICA')]
+  assessment=p.planner.campaign_lessons(data['budget'],[],s)
+  self.assertEqual(assessment['productive'],[['HARVEST','UNKNOWN_REGION',1]])
  def test_selected_objective_keeps_actual_operation(self):
   def choose(state,criteria,ins):
    if any('Harvest' in v for v in criteria.values()):return next(k for k,v in criteria.items() if 'Harvest' in v),{}
@@ -37,7 +49,7 @@ class CampaignPlanTests(unittest.TestCase):
     log.append((state,criteria,ins))
     return next(iter(criteria)),{}
    return call
-  expected=p.plan(packet(),choose(left),False)
+  expected=p.plan(packet(),choose(left),False,lessons=True)
   actual=p.m.plan_concrete_portfolio(packet(),choose(right))
   self.assertEqual(left,right);self.assertEqual(actual['operations'],expected['operations'])
   self.assertEqual(actual['strategySource'],'DERIVED_SPEND_LABEL_NOT_MODEL_STRATEGY')

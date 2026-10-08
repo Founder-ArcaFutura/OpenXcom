@@ -1,6 +1,57 @@
 # Concrete campaign plans experiment
 
+## Current live revision: campaign-lessons-v7
+
+The simple concrete planner now receives a compact assessment in each plan choice:
+previous-month verified productive activity, region if exactly one previous/pending
+assignment matches that mission type, cumulative admitted reporters plus recent
+assignment losses, progression, and pending missions. Target choices receive the
+productive history. Region attribution is a single recorded assignment hypothesis,
+not a claimed safe region or confirmed full mission success. Multiple assignments
+yield UNKNOWN_REGION. Assessment source remains native DTOs, not generated narrative.
+
+Hotspots and pending summaries retain four rows with explicit omitted counts.
+Productive types retain four rows. The full original input and assessment remain in
+the portfolio receipt; assessments are rebuilt from the saved native ledger each
+month. Outcome details are previous-month coverage, not an unlimited long-term
+campaign memory. Cumulative interception beliefs and earned progression persist.
+
+If any admitted reports or assignment-loss evidence exist but no matching search
+target is available, new searches are removed instead of falling back to exploration.
+Existing searches continue normally. Exploration is allowed only with no such evidence.
+The audit records `searchEligibility`, `campaignAssessment`, and `assessmentLimits`.
+No assault, budget, mission reward or numerical difficulty changes are introduced.
+
+66 Python checks pass, including occupied evidence regions excluding unsupported
+searches, ambiguous productive regional attribution, and exact tested/live packets.
+Native copied February 28 to March 1 replay executed abductions in Australasia,
+Central Asia and South East Asia, spending 9 of 18 resources and retaining 9.
+Existing Europe/North Africa searches continued; no new polar searches. Assessment
+contained the rewarded Australasia harvest and four assignment losses per hotspot.
+Inference took 12.92 seconds; maximum packet 303 tokens. Source save unchanged,
+native save/load and same-month no-repeat assertions passed. Receipt:
+`build/local/lessons-v7-march-receipt.json`.
+Launcher health requires `campaign-lessons-v7`; restart the game/launcher service
+to activate. Historical sections below describe earlier versions.
+
 ## Live integration: concrete-plans-v6
+
+Independent-search race fix, 2026-10-07: funded portfolio retaliation searches
+now draw from the active research mission's monthly race weights (UFO), falling
+back to the probe mission's weights (TFTD). Absence of either progression rejects
+the portfolio rather than using unrestricted retaliation weights. Native reactive
+retaliation race inheritance is unchanged; mission rules and other mission race
+selection remain unchanged. Already saved mission races are preserved.
+
+Correction to the initial diagnosis: stock UFO research permits Snakemen even in
+January/February. February weights are Sectoid 60, Snakeman 10, Floater 30.
+The unrestricted retaliation fallback instead weights all five races equally from
+month zero. This fix removes that fallback for independent searches; it does not
+ban early Snakemen. TFTD month-one probe weights are Aquatoid 60, Gillman 30,
+Lobsterman 10; that legitimate early Lobsterman possibility is likewise preserved.
+The engine rebuild passed with zero errors. Scripted native portfolio integration
+passed 121 UFO and 116 TFTD checks, including early independent-search race pools.
+Logs: `build/local/search-race-build.log`, `build/local/search-race-tests.log`.
 
 The portfolio service now calls the shared `scripts/campaign_plans.py` planner
 with `tradeoffs=False`, preserving the exact tested simple packets. The historical

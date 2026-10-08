@@ -332,7 +332,17 @@ void executeAlienPortfolio(Game &game, const Globe &globe)
   {
    const auto *rule=mod.getAlienMission(c.mission);
    auto mission=std::make_unique<AlienMission>(*rule);
-   mission->setRegion(c.region,mod); mission->setRace(rule->generateRace(std::max(0,save.getMonthsPassed())));
+   // Independent funded searches have no provoking UFO whose race can be
+   // inherited. Use normal reconnaissance progression rather than retaliation's
+   // unrestricted fallback. Native reactive retaliation keeps its own path.
+   const auto *raceRule=rule;
+   if (c.mission=="STR_ALIEN_RETALIATION")
+   {
+    raceRule=mod.getAlienMission("STR_ALIEN_RESEARCH");
+    if (!raceRule) raceRule=mod.getAlienMission("STR_ALIEN_PROBE_MISSION");
+    if (!raceRule) throw std::runtime_error("Independent search has no reconnaissance race progression");
+   }
+   mission->setRegion(c.region,mod); mission->setRace(raceRule->generateRace(std::max(0,save.getMonthsPassed())));
    if (!mod.getAlienRace(mission->getRace())) throw std::runtime_error("Portfolio has unavailable race");
    mission->setId(save.getId("ALIEN_MISSIONS"));
    if (rule->getObjective()==OBJECTIVE_SITE)

@@ -371,6 +371,17 @@ void portfolioTests(Game &game)
   check(status=="SAVED_RESOURCES" || status=="PORTFOLIO_EXECUTED","Real checkpoint portfolio unavailable/rejected");
  }
  auto count=save->getAlienMissions().size(); geo.determineAlienMissions();
+ if(valid || real)
+ {
+  for(const auto *mission:save->getAlienMissions())
+  {
+   if(mission->getRules().getType()!="STR_ALIEN_RETALIATION")continue;
+   if(Options::getActiveMaster()=="xcom1")
+    check(mission->getRace()=="STR_SECTOID" || mission->getRace()=="STR_FLOATER" || mission->getRace()=="STR_SNAKEMAN","Independent early search used unrestricted retaliation race");
+   else
+    check(mission->getRace()=="STR_AQUATOID" || mission->getRace()=="STR_GILLMAN" || mission->getRace()=="STR_LOBSTERMAN","Independent early underwater search used unrestricted retaliation race");
+  }
+ }
  check(CrossPlatform::writeFile(Options::getMasterUserFolder()+"portfolio-audit.jsonl",save->getAlienCommand().exportJsonl()),"Cannot export portfolio test receipt");
  check(save->getAlienMissions().size()==count && save->getAlienCommand().remainingBudget()==balance,"Same month scheduled/allocated twice");
  auto raw=serialize(save->getAlienCommand()); YAML::YamlRootNodeReader r(YAML::YamlString(raw),"portfolio persistence"); AlienCommand restored; restored.load(r["alienCommand"]);

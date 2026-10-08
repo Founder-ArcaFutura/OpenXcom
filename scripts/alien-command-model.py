@@ -15,7 +15,7 @@ from http.server import BaseHTTPRequestHandler, ThreadingHTTPServer
 
 PROTOCOL = "alien-recon-laya-v2"
 PORTFOLIO_PROTOCOL = "alien-strategy-laya-v2"
-PORTFOLIO_PROMPT_VERSION = "concrete-plans-v6"
+PORTFOLIO_PROMPT_VERSION = "campaign-lessons-v7"
 ENCODER_REVISION = "45bb4654a4d5aaff24dd11d4781fa46d39bf8c13"
 V4_SHA256 = "bcbb891d21cf081a9d7a941b97f8b0f10cf3dac7473b4b9450fab0d07b885175"
 ROOT = Path(__file__).resolve().parents[1]
@@ -456,7 +456,7 @@ def plan_concrete_portfolio(data,choose):
     spec=importlib.util.spec_from_file_location("campaign_plans",ROOT/"scripts/campaign_plans.py")
     planner=importlib.util.module_from_spec(spec);spec.loader.exec_module(planner)
     planner.m=SimpleNamespace(**globals())
-    result=planner.plan(data,choose,tradeoffs=False)
+    result=planner.plan(data,choose,tradeoffs=False,lessons=True)
     # Native v2 protocol requires a strategy field. Derive a reporting label
     # from funded cost by objective; it never drives another choice.
     labels={"BUILD_CAPACITY":"RESOURCE_ACQUISITION","BUILD_INFRASTRUCTURE":"RESOURCE_ACQUISITION",
