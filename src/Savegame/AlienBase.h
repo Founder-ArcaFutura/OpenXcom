@@ -19,6 +19,7 @@
  */
 #include "Target.h"
 #include <string>
+#include <set>
 #include "../Mod/AlienDeployment.h"
 #include "../Engine/Yaml.h"
 
@@ -38,7 +39,14 @@ private:
 	int _startMonth;
 	int _minutesSinceLastHuntMissionGeneration;
 	int _genMissionCount;
+ int _economyMonth = -1, _suppliedMonths = 0, _influence = 0;
+ bool _supplied = false;
+ std::set<int> _supplyRewards;
 public:
+ bool deliverSupply(int missionId);
+ int advanceEconomy(int month);
+ int getInfluence() const { return _influence; }
+ int getMonthlyIncome() const { return _suppliedMonths >= 2 ? 2 : 1; }
 	/// Creates an alien base.
 	AlienBase(AlienDeployment *deployment, int startMonth);
 	/// Cleans up the alien base.

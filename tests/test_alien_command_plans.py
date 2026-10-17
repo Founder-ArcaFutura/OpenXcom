@@ -8,6 +8,20 @@ spec=importlib.util.spec_from_file_location('plans',Path(__file__).resolve().par
 p=importlib.util.module_from_spec(spec);spec.loader.exec_module(p)
 
 class CampaignPlanTests(unittest.TestCase):
+ def test_objectives_expose_missing_and_unlocked_paths(self):
+  data=packet();b=data['budget'];menu=data['knowledge']['candidates']
+  initial=p.planner.campaign_objectives(b,menu)
+  self.assertEqual(initial['national_control']['missing'],{'epochMonth':1,'adaptation':2,'intelligence':1})
+  b.update(epochMonth=4,adaptation=2,intelligence=1,logistics=1)
+  menu.append({'mission':'STR_ALIEN_INFILTRATION','region':'STR_EUROPE'})
+  ready=p.planner.campaign_objectives(b,menu)
+  self.assertEqual(ready['national_control']['missing'],{})
+  self.assertTrue(ready['national_control']['targets_available'])
+  self.assertEqual(ready['infrastructure']['missing'],{'logistics':1})
+ def test_objectives_do_not_force_infiltration(self):
+  result=p.plan(packet(),lambda s,c,i:('SAVE',{}),False,True,True)
+  self.assertEqual(result['operations'],[])
+  self.assertIn('campaignObjectives',result)
  def test_progressive_capacity_and_native_age_contract(self):
   for month,cap in ((0,3),(2,3),(3,4),(5,4),(6,5),(8,5),(9,6),(18,6)):
    data=packet(30);data['budget'].update(epochMonth=month,maxOperations=cap)

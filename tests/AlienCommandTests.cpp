@@ -1,6 +1,10 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
 
 #include "../src/Savegame/AlienCommand.h"
+#include "../src/Savegame/AlienBase.h"
+#include "../src/Savegame/Country.h"
+#include "../src/Savegame/Region.h"
+#include "../src/Mod/AlienDeployment.h"
 #include "../src/Geoscape/AlienCommandAudit.h"
 #include "../src/Geoscape/AlienCommandModel.h"
 #include "../src/Savegame/GameTime.h"
@@ -21,6 +25,7 @@
 #include "../src/Mod/RuleAlienMission.h"
 #include "../src/Mod/UfoTrajectory.h"
 #include "../src/Mod/RuleRegion.h"
+#include "../src/Mod/RuleCountry.h"
 #include "../src/Savegame/AlienMission.h"
 #include "../src/Savegame/AlienStrategy.h"
 #include "../src/Savegame/Base.h"
@@ -65,6 +70,48 @@ std::string latestBudgetFact(const AlienCommand &command)
  for(auto it=command.getAudit().rbegin();it!=command.getAudit().rend();++it)
  {YAML::YamlRootNodeReader r(YAML::YamlString(*it),"budget fact lookup");if(r["kind"].readVal<std::string>()=="budget_fact")return *it;}
  throw std::runtime_error("Missing budget fact");
+}
+
+void operationLedgerTests()
+{
+ AlienCommand command;command.beginBudgetMonth(5,4);
+ const std::string at="1999-06-01 00:00:00";
+ check(command.fundMission(101,"STR_ALIEN_HARVEST"),"Ledger harvest funding failed");
+ command.recordOwnedOperation("MISSION_ASSIGNED",101,"STR_ALIEN_HARVEST","STR_AUSTRALASIA",at);
+ command.recordOwnedOperation("CRAFT_DEPLOYED",101,"STR_ALIEN_HARVEST","STR_AUSTRALASIA",at,201,"SCOUT",0,"PREPARATION");
+ command.recordOwnedOperation("CRAFT_UNAVAILABLE",101,"STR_ALIEN_HARVEST","STR_AUSTRALASIA",at,201);
+ command.recordBudgetFact("PRODUCTIVE_ACTIVITY_COMPLETED",101,"STR_ALIEN_HARVEST",at);
+ command.recordBudgetFact("PRODUCTIVE_ACTIVITY_COMPLETED",101,"STR_ALIEN_HARVEST",at);
+ command.recordPortfolio(at,"{}","{}","PORTFOLIO_EXECUTED",{101});
+ command.recordBudgetFact("MISSION_ENDED",101,"STR_ALIEN_HARVEST",at);
+ auto text=command.operationLedgerJson(at);
+ YAML::YamlRootNodeReader ledger(YAML::YamlString(text),"operation ledger test");
+ auto op=ledger["operations"].children().front();
+ check(op["outcome"].readVal<std::string>()=="GAIN_VERIFIED" && op["unavailable"].readVal<int>()==1,"Scout loss erased productive gain");
+ check(op["cashEarned"].readVal<int>()==2 && op["progressEarned"].readVal<int>()==1,"Ledger duplicated productive reward");
+ check(op["decisionReceiptId"].readVal<int>()>0 && op["lifecycle"].readVal<std::string>()=="ENDED","Ledger lost decision or closure link");
+ command.reconcileOperations(at);const auto stored=serialize(command);command.reconcileOperations("1999-06-30 23:00:00");
+ check(serialize(command)==stored,"Reconciliation duplicated within month");
+ YAML::YamlRootNodeReader save(YAML::YamlString(stored),"operation save");AlienCommand restored;restored.load(save["alienCommand"]);
+ check(restored.operationLedgerJson(at)==text,"Operation outcomes did not survive save/load");
+ restored.reconcileOperations(at);check(serialize(restored)==stored,"Reload duplicated reconciliation");
+ check(command.fundMission(102,"STR_ALIEN_TERROR"),"Ledger terror funding failed");
+ command.recordOwnedOperation("MISSION_ASSIGNED",102,"STR_ALIEN_TERROR","STR_NORTH_AFRICA",at);
+ command.recordOwnedOperation("CRAFT_DEPLOYED",102,"STR_ALIEN_TERROR","STR_NORTH_AFRICA",at,202,"TERROR_SHIP",3,"OBJECTIVE_CARRIER");
+ command.recordOwnedOperation("CRAFT_UNAVAILABLE",102,"STR_ALIEN_TERROR","STR_NORTH_AFRICA",at,202);
+ text=command.operationLedgerJson(at);
+ check(text.find("OBJECTIVE_PREVENTED")==std::string::npos,"Carrier loss alone falsely ended mission");
+ command.recordBudgetFact("MISSION_ENDED",102,"STR_ALIEN_TERROR",at);
+ check(command.operationLedgerJson(at).find("OBJECTIVE_PREVENTED")!=std::string::npos,"Fully closed lost-carrier operation lacks prevention outcome");
+ command.recordBudgetFact("OBJECTIVE_SITE_DELIVERED",102,"STR_ALIEN_TERROR",at,202);
+ text=command.operationLedgerJson(at);
+ check(text.find("OBJECTIVE_PREVENTED")==std::string::npos && text.find("OBJECTIVE_DELIVERED")!=std::string::npos,"Delivery receipt erased by carrier loss");
+ check(command.fundMission(103,"STR_ALIEN_RESEARCH"),"Ledger unknown funding failed");
+ command.recordOwnedOperation("MISSION_ASSIGNED",103,"STR_ALIEN_RESEARCH","STR_EUROPE",at);
+ command.recordBudgetFact("MISSION_ENDED",103,"STR_ALIEN_RESEARCH",at);
+ text=command.operationLedgerJson(at);
+ check(text.find("\"outcome\":\"UNKNOWN\"")!=std::string::npos,"Disappearance inferred objective failure");
+ check(command.operationLedgerJson("1999-09-01 00:00:00").find("\"regionalLosses\":[]")!=std::string::npos,"Regional losses never expire");
 }
 
 void coreTests()
@@ -151,6 +198,39 @@ void coreTests()
 	YAML::YamlRootNodeReader escaped(YAML::YamlString(escapes.getAudit().back()), "escaping");
 	check(escaped["evidence"]["region"].readVal<std::string>() == quoted.region, "JSON string escaping broken");
 }
+void baseEconomyTests()
+{
+ AlienDeployment deployment("TEST_BASE");
+ AlienBase base(&deployment,0);
+ check(base.advanceEconomy(0)==0,"Base paid in construction month");
+ check(base.advanceEconomy(1)==1 && base.getInfluence()==1,"First base month incorrect");
+ check(base.advanceEconomy(1)==0,"Duplicate monthly income");
+ check(base.deliverSupply(42) && !base.deliverSupply(42),"Supply reward duplicated");
+ check(base.advanceEconomy(2)==1 && base.getInfluence()==3,"First supplied month incorrect");
+ check(base.deliverSupply(43),"Second supply rejected");
+ check(base.advanceEconomy(3)==2 && base.getInfluence()==5,"Mature income incorrect");
+ check(base.advanceEconomy(4)==2 && base.getInfluence()==6,"Influence cap incorrect");
+ YAML::YamlRootNodeWriter writer; writer.setAsMap(); base.save(writer["base"]);
+ std::string raw=writer.emit().yaml;
+ YAML::YamlRootNodeReader reader(YAML::YamlString(raw),"base economy");
+ AlienBase restored(&deployment,0); restored.load(reader["base"]);
+ check(restored.advanceEconomy(4)==0 && !restored.deliverSupply(42) && restored.getInfluence()==6,"Base economy persistence lost");
+ YAML::YamlRootNodeReader legacy(YAML::YamlString("base: {startMonth: 0, lon: 0, lat: 0}"),"legacy base");
+ AlienBase oldBase(&deployment,0); oldBase.load(legacy["base"]);
+ check(oldBase.advanceEconomy(10)==1 && oldBase.getInfluence()==1,"Legacy base invented historical gains");
+ check(oldBase.advanceEconomy(10)==0,"Migrated base paid twice");
+ AlienCommand ledger; ledger.beginBudgetMonth(4,4);
+ int before=ledger.remainingBudget();
+ for(int i=0;i<4;++i) ledger.creditBaseMonth(i+1,1,1,"TEST","TIME");
+ check(ledger.remainingBudget()==before+4,"Base income incorrectly capped as mission bonus");
+ check(ledger.budgetJson().find("\"logistics\":1")!=std::string::npos,"Fractional base progression failed");
+ ledger.creditBaseMonth(5,1,1,"TEST","TIME");
+ auto saved=serialize(ledger); YAML::YamlRootNodeReader r(YAML::YamlString(saved),"base ledger");
+ AlienCommand loaded; loaded.load(r["alienCommand"]);
+ check(serialize(loaded)==saved,"Base ledger roundtrip failed");
+ for(int i=0;i<3;++i) loaded.creditBaseMonth(i+6,1,1,"TEST","TIME");
+ check(loaded.budgetJson().find("\"logistics\":2")!=std::string::npos,"Fractional progression lost on load");
+}
 void budgetStateTests()
 {
  AlienCommand b; b.beginBudgetMonth(1,4);
@@ -183,6 +263,51 @@ SavedGame *newCampaign(Game &game, uint64_t seed)
 	base->setName("Audit test base"); base->setLongitude(1.0); base->setLatitude(0.5);
 	save->addMonth(); save->addMonth();
 	return save;
+}
+void baseCampaignTests(Game &game)
+{
+ auto *save = newCampaign(game,54321);
+ AlienDeployment deployment("TEST_BASE");
+ auto *base = new AlienBase(&deployment,0); base->setId(1);
+ auto *host = save->getCountries()->front();
+ base->setLongitude(host->getRules()->getLabelLongitude()); base->setLatitude(host->getRules()->getLabelLatitude());
+ save->getAlienBases()->push_back(base);
+ const int port=Options::alienCommandModelPort; Options::alienCommandModelPort=0;
+ const bool portfolio=Options::alienCommandPortfolio; Options::alienCommandPortfolio=true;
+ { GeoscapeState geo; geo.determineAlienMissions(); }
+ check(base->getInfluence()==1,"Real portfolio boundary did not mature base");
+ auto input=buildAlienPortfolioInput(*game.getMod(),*save);
+ YAML::YamlRootNodeReader packet(YAML::YamlString(input),"own base packet");
+ check(packet["bases"].children().size()==1,"Own base absent from planner packet");
+ const auto balance=save->getAlienCommand().remainingBudget();
+ { GeoscapeState geo; geo.determineAlienMissions(); }
+ check(save->getAlienCommand().remainingBudget()==balance && base->getInfluence()==1,"Scheduler repeated base credit");
+ const auto *supplyRule=game.getMod()->getAlienMission("STR_ALIEN_SUPPLY",true);
+ AlienMission supply(*supplyRule); supply.setId(9000); supply.setAlienBase(base);
+ supply.setRegion(save->locateRegion(*base)->getRules()->getType(),*game.getMod());
+ size_t objective=0;
+ while(objective<supplyRule->getWaveCount() && !supplyRule->getWave(objective).objective) ++objective;
+ check(objective<supplyRule->getWaveCount(),"Supply fixture lacks objective wave");
+ Ufo supplier(game.getMod()->getUfo(game.getMod()->getUfosList().front(),true),9900);
+ supplier.setMissionInfo(&supply,game.getMod()->getUfoTrajectory("P0",true));
+ supplier.setMissionWaveNumber((int)objective); supplier.setStatus(Ufo::LANDED);
+ supplier.setLongitude(base->getLongitude()+0.01); supplier.setLatitude(base->getLatitude());
+ const auto beforeSupply=save->getAlienCommand().budgetJson();
+ supply.ufoLifting(supplier,*save);
+ check(save->getAlienCommand().budgetJson()==beforeSupply,"Supply away from linked base received reward");
+ supplier.setStatus(Ufo::LANDED); supplier.setLongitude(base->getLongitude());
+ supply.ufoLifting(supplier,*save);
+ const auto afterSupply=save->getAlienCommand().budgetJson();
+ check(afterSupply!=beforeSupply,"Delivered supply did not reward linked base");
+ supplier.setStatus(Ufo::LANDED); supply.ufoLifting(supplier,*save);
+ check(save->getAlienCommand().budgetJson()==afterSupply,"Repeated supply rewarded twice");
+ delete base; save->getAlienBases()->clear();
+ save->addMonth();
+ { GeoscapeState geo; geo.determineAlienMissions(); }
+ check(save->getAlienCommand().exportJsonl().find("BASE_MONTH_CREDITED")!=std::string::npos,"Base credit not audited");
+ YAML::YamlRootNodeReader after(YAML::YamlString(buildAlienPortfolioInput(*game.getMod(),*save)),"destroyed base packet");
+ check(after["bases"].children().empty(),"Destroyed base still in commander footholds");
+ Options::alienCommandModelPort=port; Options::alienCommandPortfolio=portfolio;
 }
 std::string missionSummary(SavedGame &save)
 {
@@ -446,6 +571,21 @@ void sitrepTests(Game &game)
  ledger.beginBudgetMonth(3,4);
  for(int id : {9923,9924}) {check(ledger.fundMission(id,"STR_ALIEN_ABDUCTION"),"Cannot fund adaptation fixture");ledger.recordBudgetFact("PRODUCTIVE_ACTIVITY_COMPLETED",id,"STR_ALIEN_ABDUCTION","1999-04-01 00:00:00");}
  const auto advancedMenu=buildAlienPortfolioMenu(*game.getMod(),*save);
+ for(const auto &candidate:advancedMenu)
+ {
+  if(candidate.mission!="STR_ALIEN_INFILTRATION")continue;
+  const auto *region=game.getMod()->getRegion(candidate.region,true);
+  if(!region->getMissionRegion().empty())region=game.getMod()->getRegion(region->getMissionRegion(),true);
+  bool hasCountry=false;
+  for(const auto &name:game.getMod()->getCountriesList())
+  {
+   const auto *country=game.getMod()->getCountry(name,true);
+   if(region->insideRegion(country->getLabelLongitude(),country->getLabelLatitude()))hasCountry=true;
+  }
+  check(hasCountry,"Infiltration menu includes a region with no possible country target");
+ }
+ if(Options::getActiveMaster()=="xcom1")
+  check(std::none_of(advancedMenu.begin(),advancedMenu.end(),[](const auto &c){return c.mission=="STR_ALIEN_INFILTRATION" && c.region=="STR_ANTARCTICA";}),"Antarctica admitted for infiltration after progression unlock");
  for(const auto &type : {"STR_ALIEN_BASE","STR_ALIEN_INFILTRATION"})
   if(game.getMod()->getAlienMission(type)) check(std::any_of(advancedMenu.begin(),advancedMenu.end(),[&](const auto &c){return c.mission==type;}),"Earned progression did not unlock advanced menu");
 }
@@ -459,6 +599,8 @@ void budgetFactTests(Game &game)
  AlienMission research(*game.getMod()->getAlienMission(menu.front().mission, true));
  research.setId(8001); research.setRace(game.getMod()->getAlienRacesList().front());
  research.setRegion(menu.front().region, *game.getMod());
+ save->getAlienCommand().beginBudgetMonth(1,4);
+ check(save->getAlienCommand().fundMission(8001,research.getRules().getType()),"Cannot fund native research ledger test");
  research.start(game, *geo.getGlobe(), 120);
  YAML::YamlRootNodeReader commitment(YAML::YamlString(latestBudgetFact(save->getAlienCommand())), "budget commitment");
  check(commitment["event"].readVal<std::string>() == "MISSION_COMMITTED", "Common mission start not recorded for budget");
@@ -470,12 +612,15 @@ void budgetFactTests(Game &game)
  YAML::YamlRootNodeReader completion(YAML::YamlString(latestBudgetFact(save->getAlienCommand())), "research completion");
  check(completion["event"].readVal<std::string>() == "RESEARCH_FLIGHT_COMPLETED", "Completed research flight not recorded");
  check(completion["sourceUfoId"].readVal<int>() == 8801, "Research gain lost UFO provenance");
+ const auto achieved=save->getAlienCommand().operationLedgerJson(save->getTime()->getFullString());
+ check(achieved.find("GAIN_VERIFIED")!=std::string::npos,"Actual research waypoint did not enter operation ledger");
  for (const auto &name : {"STR_ALIEN_HARVEST", "STR_ALIEN_ABDUCTION"})
  {
   const auto *rules = game.getMod()->getAlienMission(name);
   if (!rules) continue;
   AlienMission productive(*rules); productive.setId(name == std::string("STR_ALIEN_HARVEST") ? 8002 : 8003);
   productive.setRace(game.getMod()->getAlienRacesList().front()); productive.setRegion(menu.front().region, *game.getMod());
+  check(save->getAlienCommand().fundMission(productive.getId(),name),"Cannot fund native productive ledger test");
   productive.start(game, *geo.getGlobe(), 120);
   Ufo landed(game.getMod()->getUfo(game.getMod()->getUfosList().front(), true), 8802);
   landed.setMissionInfo(&productive, trajectory); landed.setStatus(Ufo::LANDED);
@@ -483,6 +628,12 @@ void budgetFactTests(Game &game)
   YAML::YamlRootNodeReader gain(YAML::YamlString(latestBudgetFact(save->getAlienCommand())), "productive completion");
   check(gain["event"].readVal<std::string>() == "PRODUCTIVE_ACTIVITY_COMPLETED", "Productive engine activity not recorded");
   check(gain["mission"].readVal<std::string>() == name, "Productive gain mission type wrong");
+  const auto ledgerJson=save->getAlienCommand().operationLedgerJson(save->getTime()->getFullString());
+  YAML::YamlRootNodeReader earned(YAML::YamlString(ledgerJson),"native earned ledger");
+  bool matched=false;
+  for(const auto &op:earned["operations"].children())if(op["missionId"].readVal<int>()==productive.getId())
+   matched=op["outcome"].readVal<std::string>()=="GAIN_VERIFIED" && op["cashEarned"].readVal<int>()==2;
+  check(matched,"Actual productive landing did not enter operation ledger");
  }
  auto *retaliation = new AlienMission(*game.getMod()->getAlienMission("STR_ALIEN_RETALIATION", true));
  retaliation->setId(8004); retaliation->setRace(game.getMod()->getAlienRacesList().front());
@@ -572,11 +723,37 @@ void replayCampaign(Game &game)
 		int ticks=0;while(save->getTime()->getMonth()==month && ++ticks<50000)geo.timeAdvance();
 		check(save->getTime()->getMonth()!=month,"Copied campaign could not advance to monthly boundary");
 		const auto balance=save->getAlienCommand().remainingBudget();const auto audit=save->getAlienCommand().exportJsonl();
+		std::string portfolioRow;int reconciliations=0;
+		const auto period=save->getTime()->getFullString().substr(0,7);
+		for(const auto &raw:save->getAlienCommand().getAudit())
+		{
+		 YAML::YamlRootNodeReader event(YAML::YamlString(raw),"transition receipt");
+		 const auto kind=event["kind"].readVal<std::string>();
+		 if(kind=="portfolio")portfolioRow=raw;
+		 if(kind=="monthly_reconciliation" && event["period"].readVal<std::string>()==period)++reconciliations;
+		}
+		check(reconciliations==1,"Monthly transition lacks unique reconciliation");
+		YAML::YamlRootNodeReader decision(YAML::YamlString(portfolioRow),"transition portfolio");
+		const auto status=decision["status"].readVal<std::string>();
+		check(status=="PORTFOLIO_EXECUTED" || status=="SAVED_RESOURCES","Transition model failed or portfolio was rejected");
+		check((bool)decision["input"]["operationLedger"],"Real monthly input lacks operation ledger");
 		geo.determineAlienMissions();check(save->getAlienCommand().exportJsonl()==audit && save->getAlienCommand().remainingBudget()==balance,"Transition repeated portfolio");
 		save->save("transition-result.sav",game.getMod());
 		SavedGame restored;restored.load("transition-result.sav",game.getMod(),game.getLanguage());
 		check(serialize(restored.getAlienCommand())==serialize(save->getAlienCommand()),"Transition save lost role/portfolio receipts");
 		check(!restored.getAlienCommand().portfolioDue(),"Transition reload would repeat March decision");
+		const auto ledgerBefore=restored.getAlienCommand().operationLedgerJson(restored.getTime()->getFullString());
+		YAML::YamlRootNodeReader linked(YAML::YamlString(ledgerBefore),"linked transition ledger");
+		for(const auto &id:decision["missionIds"].children())
+		{
+		 bool matched=false;
+		 for(const auto &op:linked["operations"].children())if(op["missionId"].readVal<int>()==id.readVal<int>())
+		  matched=op["decisionReceiptId"].readVal<int>()==decision["id"].readVal<int>() && op["coverage"].readVal<std::string>()=="COMPLETE_FROM_ASSIGNMENT";
+		 check(matched,"Committed native mission lost its decision receipt or assignment coverage");
+		}
+		restored.getAlienCommand().reconcileOperations(restored.getTime()->getFullString());
+		check(serialize(restored.getAlienCommand())==serialize(save->getAlienCommand()),"Transition reload duplicated monthly reconciliation");
+		check(CrossPlatform::writeFile(Options::getMasterUserFolder()+"transition-ledger.json",ledgerBefore),"Cannot export transition ledger");
 		check(CrossPlatform::writeFile(Options::getMasterUserFolder()+"transition-audit.jsonl",audit),"Cannot export transition audit");
 		std::cout<<"REPLAY: copied campaign crossed month boundary; native portfolio executed; remaining "<<balance<<std::endl;
 		return;
@@ -629,7 +806,7 @@ int main(int argc, char *argv[])
 		const bool replay = replayFlag && std::string(replayFlag) == "1";
 		CrossPlatform::processArgs(argc, argv); YAML::setGlobalErrorHandler();
 		if (!Options::init()) throw std::runtime_error("Options initialization failed");
-		if (!replay) { coreTests(); budgetStateTests(); }
+		if (!replay) { coreTests(); budgetStateTests(); baseEconomyTests(); operationLedgerTests(); }
 		Game game("Alien command engine tests"); State::setGamePtr(&game);
 		Options::newDisplayWidth = Options::displayWidth; Options::newDisplayHeight = Options::displayHeight;
 		Screen::updateScale(Options::geoscapeScale, Options::baseXGeoscape, Options::baseYGeoscape, false);
@@ -640,7 +817,7 @@ int main(int argc, char *argv[])
 		if (replay) { replayCampaign(game); return 0; }
 		const int modelPort = Options::alienCommandModelPort;
 		if (std::getenv("OPENXCOM_OPERATION_FIXTURE") || std::getenv("OPENXCOM_PORTFOLIO_FIXTURE")) Options::alienCommandModelPort = 0;
-		std::cout << "STAGE campaign" << std::endl; campaignTests(game); std::cout << "STAGE dogfight" << std::endl; dogfightTests(game);
+		std::cout << "STAGE campaign" << std::endl; campaignTests(game); baseCampaignTests(game); std::cout << "STAGE dogfight" << std::endl; dogfightTests(game);
 		Options::alienCommandModelPort = modelPort; std::cout << "STAGE operations" << std::endl; operationalTests(game); std::cout << "STAGE budget facts" << std::endl; budgetFactTests(game); budgetPersistenceWithoutAuditTests(game); sitrepTests(game); std::cout << "STAGE portfolio" << std::endl; portfolioTests(game);
 		std::cout << "PASS: " << checks << " checks; real engine " << Options::getActiveMaster() << std::endl;
 		return 0;

@@ -17,6 +17,7 @@
  * along with OpenXcom.  If not, see <http://www.gnu.org/licenses/>.
  */
 #include "AlienBase.h"
+#include <algorithm>
 #include "../Engine/Language.h"
 
 namespace OpenXcom
@@ -27,6 +28,7 @@ namespace OpenXcom
  */
 AlienBase::AlienBase(AlienDeployment *deployment, int startMonth) : Target(), _inBattlescape(false), _discovered(false), _deployment(deployment), _startMonth(startMonth), _genMissionCount(0)
 {
+	_economyMonth = startMonth;
 	// allow spawning hunt missions immediately after the base is created, i.e. no initial delay
 	_minutesSinceLastHuntMissionGeneration = _deployment->getHuntMissionMaxFrequency();
 }
@@ -52,6 +54,15 @@ void AlienBase::load(const YAML::YamlNodeReader& reader)
 	reader.tryRead("startMonth", _startMonth);
 	reader.tryRead("minutesSinceLastHuntMissionGeneration", _minutesSinceLastHuntMissionGeneration);
 	reader.tryRead("genMissionCount", _genMissionCount);
+ _economyMonth = _startMonth;
+ reader.tryRead("economyMonth", _economyMonth);
+ reader.tryRead("suppliedMonths", _suppliedMonths);
+ reader.tryRead("influence", _influence);
+ reader.tryRead("supplied", _supplied);
+ std::vector<int> rewards; reader.tryRead("supplyRewards", rewards);
+ _supplyRewards = std::set<int>(rewards.begin(), rewards.end());
+ if (_economyMonth < -1 || _suppliedMonths < 0 || _suppliedMonths > 2 || _influence < 0 || _influence > 6)
+  throw YAML::Exception("Invalid alien base economy");
 }
 
 /**
@@ -73,6 +84,9 @@ void AlienBase::save(YAML::YamlNodeWriter writer) const
 	writer.write("startMonth", _startMonth);
 	writer.write("minutesSinceLastHuntMissionGeneration", _minutesSinceLastHuntMissionGeneration);
 	writer.write("genMissionCount", _genMissionCount);
+ writer.write("economyMonth", _economyMonth); writer.write("suppliedMonths", _suppliedMonths);
+ writer.write("influence", _influence); writer.write("supplied", _supplied);
+ writer.write("supplyRewards", std::vector<int>(_supplyRewards.begin(), _supplyRewards.end()));
 }
 
 /**
@@ -217,4 +231,24 @@ void AlienBase::setGenMissionCount(int newValue)
 	_genMissionCount = newValue;
 }
 
+}
+
+namespace OpenXcom
+{
+bool AlienBase::deliverSupply(int missionId)
+{
+ if (missionId <= 0 || !_supplyRewards.insert(missionId).second) return false;
+ _supplied = true; return true;
+}
+int AlienBase::advanceEconomy(int month)
+{
+ // First observation starts accounting, without inventing past income.
+ if (_economyMonth < 0) { _economyMonth = month; return 0; }
+ if (month <= _economyMonth) return 0;
+ _economyMonth = month;
+ if (_supplied) _suppliedMonths = std::min(2, _suppliedMonths + 1);
+ _influence = std::min(6, _influence + (_supplied ? 2 : 1));
+ _supplied = false;
+ return _suppliedMonths >= 2 ? 2 : 1;
+}
 }

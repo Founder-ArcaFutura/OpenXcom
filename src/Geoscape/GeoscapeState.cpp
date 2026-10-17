@@ -1907,6 +1907,12 @@ void GeoscapeState::time30Minutes()
 		size_t abCount = _game->getSavedGame()->getAlienBases()->size();
 
 		am->think(*_game, *_globe);
+		if (am->getId()>0 && am->isOver() && (Options::alienCommandAudit || Options::alienCommandPortfolio))
+		{
+		 auto &save=*_game->getSavedGame();
+		 save.getAlienCommand().recordBudgetFact("MISSION_ENDED",am->getId(),am->getRules().getType(),save.getTime()->getFullString());
+		 Log(LOG_INFO)<<"AlienCommandAudit "<<save.getAlienCommand().getAudit().back();
+		}
 
 		if (abCount < _game->getSavedGame()->getAlienBases()->size())
 		{

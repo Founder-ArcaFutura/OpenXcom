@@ -15,7 +15,7 @@ from http.server import BaseHTTPRequestHandler, ThreadingHTTPServer
 
 PROTOCOL = "alien-recon-laya-v2"
 PORTFOLIO_PROTOCOL = "alien-strategy-laya-v2"
-PORTFOLIO_PROMPT_VERSION = "progressive-portfolio-v8"
+PORTFOLIO_PROMPT_VERSION = "progressive-portfolio-v10"
 ENCODER_REVISION = "45bb4654a4d5aaff24dd11d4781fa46d39bf8c13"
 V4_SHA256 = "bcbb891d21cf081a9d7a941b97f8b0f10cf3dac7473b4b9450fab0d07b885175"
 ROOT = Path(__file__).resolve().parents[1]
@@ -226,8 +226,16 @@ PORTFOLIO_DESCRIPTIONS = {
  "STR_ALIEN_INFILTRATION":"Seek national control; recurring control income unimplemented."}
 
 def portfolio_input(data):
-    if not isinstance(data,dict) or set(data)!={"schemaVersion","budget","knowledge","sitrep"} or data["schemaVersion"]!=1:
+    if not isinstance(data,dict) or set(data)-{"bases","operationLedger"}!={"schemaVersion","budget","knowledge","sitrep"} or data["schemaVersion"]!=1:
         raise ValueError("Invalid portfolio envelope")
+    if 'operationLedger' in data: validate_operation_ledger(data['operationLedger'])
+    bases=data.get("bases",[])
+    if not isinstance(bases,list) or len(bases)>128: raise ValueError("Invalid bases")
+    for base in bases:
+        if not isinstance(base,dict) or set(base)!={"region","country","influence","income"}: raise ValueError("Invalid base fields")
+        bounded_name(base["region"])
+        if base["country"]: bounded_name(base["country"])
+        integer(base["influence"],0,6); integer(base["income"],1,2)
     b=data["budget"]
     fields={"policyVersion","epochMonth","difficulty","remaining","pendingBonus","intelligence","logistics","adaptation","maxOperations","assaultAvailable","terrorRewardVerified","allowance","carryCap","nextAllowance","nextBonusCap"}
     if not isinstance(b,dict) or set(b)!=fields or b["policyVersion"]!="monthly-portfolio-v1" or b["assaultAvailable"] is not False or b["terrorRewardVerified"] is not False:
@@ -259,6 +267,49 @@ STRATEGIES = {
  "POLITICAL_PRESSURE":("Weaken resistance with terror and eligible infiltration.",{"STR_ALIEN_TERROR","STR_ALIEN_SURFACE_ATTACK","STR_ALIEN_INFILTRATION"}),
  "INTELLIGENCE":("Improve awareness through research and base searches.",{"STR_ALIEN_RESEARCH","STR_ALIEN_PROBE_MISSION","STR_ALIEN_RETALIATION"}),
  "COUNTER_XCOM":("Find and disrupt XCOM; evidence-directed searches; assaults unavailable.",{"STR_ALIEN_RETALIATION"})}
+
+def validate_operation_ledger(ledger):
+    fields={'schemaVersion','asOf','total','truncated','lossWindowMonths','regionalLosses','regionalLossesTruncated','operations'}
+    if not isinstance(ledger,dict) or set(ledger)!=fields or ledger['schemaVersion']!=1:raise ValueError('Invalid operation ledger')
+    if not isinstance(ledger['asOf'],str) or not 7<=len(ledger['asOf'])<=32:raise ValueError('Invalid ledger date')
+    integer(ledger['total']); rows=ledger['operations']
+    if not isinstance(rows,list) or len(rows)>64 or ledger['total']<len(rows):raise ValueError('Invalid ledger coverage')
+    if type(ledger['truncated']) is not bool or ledger['truncated']!=(ledger['total']>len(rows)):raise ValueError('Invalid ledger truncation')
+    if ledger['lossWindowMonths']!=3 or type(ledger['regionalLossesTruncated']) is not bool:raise ValueError('Invalid loss coverage')
+    losses=ledger['regionalLosses']
+    if not isinstance(losses,list) or len(losses)>16:raise ValueError('Invalid regional losses')
+    regions=set()
+    for loss in losses:
+        if not isinstance(loss,dict) or set(loss)!={'region','count','evidenceIds'}:raise ValueError('Invalid loss group')
+        bounded_name(loss['region']);integer(loss['count'],1)
+        if not isinstance(loss['evidenceIds'],list) or not 1<=len(loss['evidenceIds'])<=min(8,loss['count']):raise ValueError('Loss group lacks support')
+        for receipt in loss['evidenceIds']:integer(receipt,1)
+        if loss['region'] in regions:raise ValueError('Duplicate loss region')
+        regions.add(loss['region'])
+    keys={'missionId','decisionReceiptId','mission','region','cost','assignedAt','lastEventAt','gainAt','coverage','lifecycle','outcome','deliveryFact','cashEarned','progressEarned','deployed','returned','unavailable','objectiveCarriers','objectiveCarriersUnavailable','evidenceTotal','evidenceIds'}
+    seen=set()
+    for row in rows:
+        if not isinstance(row,dict) or set(row)!=keys:raise ValueError('Invalid operation row')
+        integer(row['missionId'],1);integer(row['decisionReceiptId'])
+        if row['missionId'] in seen:raise ValueError('Duplicate operation identity')
+        seen.add(row['missionId']);bounded_name(row['mission']);bounded_name(row['region'])
+        if row['cost']!={**PORTFOLIO_COSTS,'STR_ALIEN_SUPPLY':2}.get(row['mission']):raise ValueError('Invalid operation cost')
+        for key in ('cashEarned','progressEarned','deployed','returned','unavailable','objectiveCarriers','objectiveCarriersUnavailable','evidenceTotal'):integer(row[key])
+        for key in ('assignedAt','lastEventAt','gainAt'):
+            if not isinstance(row[key],str) or len(row[key])>32:raise ValueError('Invalid operation date')
+        if row['coverage'] not in {'COMPLETE_FROM_ASSIGNMENT','PARTIAL_LEGACY'} or row['lifecycle'] not in {'PENDING','ENDED','UNKNOWN'}:raise ValueError('Invalid operation lifecycle')
+        if row['outcome'] not in {'UNKNOWN','GAIN_VERIFIED','OBJECTIVE_DELIVERED','OBJECTIVE_PREVENTED'}:raise ValueError('Invalid operation outcome')
+        if row['deliveryFact'] not in {'UNKNOWN','OBJECTIVE_SITE_DELIVERED','BASE_ESTABLISHED','PACT_ESTABLISHED','BASE_FOUND'}:raise ValueError('Invalid delivery fact')
+        support=row['evidenceIds']
+        if not isinstance(support,list) or len(support)>8 or row['evidenceTotal']<len(support):raise ValueError('Invalid operation support')
+        for receipt in support:integer(receipt,1)
+        if row['objectiveCarriersUnavailable']>min(row['objectiveCarriers'],row['unavailable']):raise ValueError('Invalid carrier counts')
+        if row['outcome']=='GAIN_VERIFIED':
+            expected={'STR_ALIEN_RESEARCH':1,'STR_ALIEN_PROBE_MISSION':1,'STR_ALIEN_HARVEST':2,'STR_ALIEN_ABDUCTION':2}.get(row['mission'])
+            if not expected or row['cashEarned']!=expected or row['progressEarned']!=1 or not row['gainAt'] or not support:raise ValueError('Unverified gain')
+        elif row['cashEarned'] or row['progressEarned']:raise ValueError('Gain lacks verified outcome')
+        if row['outcome']=='OBJECTIVE_DELIVERED' and (row['deliveryFact']=='UNKNOWN' or not support):raise ValueError('Delivery lacks evidence')
+        if row['outcome']=='OBJECTIVE_PREVENTED' and (row['lifecycle']!='ENDED' or row['coverage']!='COMPLETE_FROM_ASSIGNMENT' or not row['objectiveCarriers'] or row['objectiveCarriersUnavailable']!=row['objectiveCarriers'] or row['deliveryFact']!='UNKNOWN' or not support):raise ValueError('Prevention lacks complete evidence')
 
 def validate_sitrep(s):
     fields={"schemaVersion","period","coverage","previousStrategy","previousPortfolio","previousReceiptId","assets","lossAssignments","contacts","verifiedActivities","pendingOperations","pendingTotal","pendingTruncated","enemyRecovery","missionSuccess","operationalReview"}

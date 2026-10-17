@@ -243,6 +243,18 @@ void AlienMission::think(Game &engine, const Globe &globe)
 		{
 			RNG::shuffle(countriesCopy);
 		}
+        if (Options::alienCommandPortfolio)
+        {
+         // Influence is local to surviving bases in the actual country, not a whole region.
+         auto influence = [&game](const Country *country) {
+          int value = 0;
+          for (auto *base : *game.getAlienBases())
+           if (country->getRules()->insideCountry(base->getLongitude(),base->getLatitude()))
+            value = std::max(value,base->getInfluence());
+          return value;
+         };
+         std::stable_sort(countriesCopy.begin(),countriesCopy.end(),[&](const Country *a,const Country *b) { return influence(a) > influence(b); });
+        }
 		for (auto* c : countriesCopy)
 		{
 			RuleRegion *region = mod.getRegion(_region, true);
@@ -1109,6 +1121,18 @@ void AlienMission::ufoLifting(Ufo &ufo, SavedGame &game)
 	case Ufo::LANDED:
 	case Ufo::IGNORE_ME:
 		{
+            if (Options::alienCommandPortfolio && game.getAlienCommand().budgetActive() && _rule.getObjective() == OBJECTIVE_SUPPLY && _base
+             && ufo.getMissionWaveNumber() >= 0 && (size_t)ufo.getMissionWaveNumber() < _rule.getWaveCount()
+             && _rule.getWave(ufo.getMissionWaveNumber()).objective
+             && AreSame(ufo.getLongitude(),_base->getLongitude()) && AreSame(ufo.getLatitude(),_base->getLatitude()))
+            {
+             auto *base = const_cast<AlienBase*>(_base);
+             if (base->deliverSupply(getId()))
+             {
+              game.getAlienCommand().creditBaseSupply(base->getId(),getId(),game.getTime()->getFullString());
+              Log(LOG_INFO) << "AlienCommandAudit " << game.getAlienCommand().getAudit().back();
+             }
+            }
 			// base missions only get points when they are completed.
 			if (_rule.getPoints() > 0 && _rule.getObjective() != OBJECTIVE_BASE)
 			{
@@ -1239,6 +1263,11 @@ AlienBase *AlienMission::spawnAlienBase(Country *pactCountry, Game &engine, std:
 	ab->setLongitude(pos.first);
 	ab->setLatitude(pos.second);
 	game.getAlienBases()->push_back(ab);
+	if (getId()>0 && (Options::alienCommandAudit || Options::alienCommandPortfolio))
+	{
+	 game.getAlienCommand().recordBudgetFact(pactCountry?"PACT_ESTABLISHED":"BASE_ESTABLISHED",getId(),_rule.getType(),game.getTime()->getFullString());
+	 Log(LOG_INFO)<<"AlienCommandAudit "<<game.getAlienCommand().getAudit().back();
+	}
 	addScore(ab->getLongitude(), ab->getLatitude(), game);
 
 	if (Options::oxceGeoscapeDebugLogMaxEntries > 0)
@@ -1534,6 +1563,11 @@ MissionSite *AlienMission::spawnMissionSite(SavedGame &game, const Mod &mod, con
 		missionSite->setTexture(area.texture);
 		missionSite->setCity(area.name);
 		game.getMissionSites()->push_back(missionSite);
+		if (getId()>0 && (Options::alienCommandAudit || Options::alienCommandPortfolio))
+		{
+		 game.getAlienCommand().recordBudgetFact("OBJECTIVE_SITE_DELIVERED",getId(),_rule.getType(),game.getTime()->getFullString(),ufo?ufo->getUniqueId():0);
+		 Log(LOG_INFO)<<"AlienCommandAudit "<<game.getAlienCommand().getAudit().back();
+		}
 
 		if (Options::oxceGeoscapeDebugLogMaxEntries > 0)
 		{

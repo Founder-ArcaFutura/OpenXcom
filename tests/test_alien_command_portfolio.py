@@ -5,6 +5,14 @@ m=importlib.util.module_from_spec(spec);spec.loader.exec_module(m)
 def packet(budget=8):
  return {'schemaVersion':1,'budget':{'policyVersion':'monthly-portfolio-v1','epochMonth':1,'difficulty':4,'remaining':budget,'pendingBonus':0,'intelligence':0,'logistics':0,'adaptation':0,'maxOperations':3,'assaultAvailable':False,'terrorRewardVerified':False,'allowance':11,'carryCap':5,'nextAllowance':12,'nextBonusCap':6},'sitrep':{'schemaVersion':1,'period':'1999-01','coverage':'PARTIAL_FLEET_OUTCOMES','previousStrategy':'UNSPECIFIED','previousPortfolio':[],'previousReceiptId':0,'assets':{'deployed':0,'returned':0,'unavailable':0},'lossAssignments':[],'contacts':[],'verifiedActivities':[],'pendingOperations':[],'pendingTotal':0,'pendingTruncated':False,'enemyRecovery':'UNKNOWN','missionSuccess':'NOT_INFERRED_FROM_ACTIVITY_OR_DISAPPEARANCE','operationalReview':{'loss_roles':{'PREPARATION':0,'SEARCH':0,'OBJECTIVE_CARRIER':0,'UNKNOWN':0},'terror_objective_waves_pending':0,'rolling_results':[['1999-01',0,0]],'limits':'Partial own telemetry. Pending objective is not success; scout loss is not mission failure.','roleSupport':[],'pendingProgress':[]}},'knowledge':{'menuSource':'STATIC_RULESET_ONLY','candidates':[{'mission':m,'region':r} for m in ['STR_ALIEN_RESEARCH','STR_ALIEN_HARVEST','STR_ALIEN_TERROR'] for r in ['STR_EUROPE','STR_NORTH_AFRICA']],'beliefs':[],'evidence':[]}}
 class PortfolioTests(unittest.TestCase):
+ def test_own_base_packet_accepts_local_influence_but_rejects_hidden_fields(self):
+  p=packet();p['bases']=[{'region':'STR_EUROPE','country':'STR_FRANCE','influence':3,'income':1}]
+  m.portfolio_input(p)
+  p['bases'][0]['xcomBase']=True
+  with self.assertRaises(ValueError):m.portfolio_input(p)
+ def test_base_influence_is_bounded(self):
+  p=packet();p['bases']=[{'region':'STR_EUROPE','country':'','influence':7,'income':1}]
+  with self.assertRaises(ValueError):m.portfolio_input(p)
  def test_search_prefers_reported_regions_to_loss_assignments(self):
   regions=['STR_ARCTIC','STR_EUROPE','STR_NORTH_AFRICA']
   pool,basis=m.search_region_pool(regions,{'STR_EUROPE':{'reporters':1}},{'lossAssignments':[{'region':'STR_NORTH_AFRICA'}]})

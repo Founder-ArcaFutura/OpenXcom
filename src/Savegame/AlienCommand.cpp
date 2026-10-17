@@ -116,6 +116,25 @@ void AlienCommand::beginBudgetMonth(int month, int difficulty)
  _remaining = allowance + carry + std::min(_pendingBonus, allowance/2);
  _pendingBonus = 0; _budgetMonth = month; _budgetDifficulty = difficulty;
 }
+void AlienCommand::creditBaseMonth(int baseId, int income, int influence, const std::string &country, const std::string &time)
+{
+ if (!budgetActive() || income < 1 || income > 2) return;
+ _remaining += income;
+ if (++_baseProgressQuarters == 4)
+ { _baseProgressQuarters = 0; ++_intelligence; ++_logistics; ++_adaptation; }
+ _audit.push_back("{\"schemaVersion\":1,\"kind\":\"baseEconomy\",\"id\":" + std::to_string(_nextId++)
+ + ",\"event\":\"BASE_MONTH_CREDITED\",\"baseId\":" + std::to_string(baseId)
+ + ",\"income\":" + std::to_string(income) + ",\"influence\":" + std::to_string(influence)
+ + ",\"country\":" + quote(country) + ",\"gameTime\":" + quote(time) + "}");
+}
+void AlienCommand::creditBaseSupply(int baseId, int missionId, const std::string &time)
+{
+ if (!budgetActive()) return;
+ ++_pendingBonus;
+ _audit.push_back("{\"schemaVersion\":1,\"kind\":\"baseEconomy\",\"id\":" + std::to_string(_nextId++)
+ + ",\"event\":\"BASE_SUPPLY_DELIVERED\",\"baseId\":" + std::to_string(baseId)
+ + ",\"missionId\":" + std::to_string(missionId) + ",\"pendingIncome\":1,\"gameTime\":" + quote(time) + "}");
+}
 bool AlienCommand::canFund(const std::string &mission) const
 {
  const int cost = operationCost(mission);
@@ -145,12 +164,138 @@ std::string AlienCommand::budgetJson() const
  + ",\"nextBonusCap\":" + std::to_string(monthlyAllowance(_budgetMonth+1,_budgetDifficulty)/2)
  + ",\"maxOperations\":" + std::to_string(operationCapacity(_budgetMonth)) + ",\"assaultAvailable\":false,\"terrorRewardVerified\":false}";
 }
-void AlienCommand::recordPortfolio(const std::string &time, const std::string &input, const std::string &response, const std::string &status)
+void AlienCommand::recordPortfolio(const std::string &time, const std::string &input, const std::string &response, const std::string &status, const std::vector<int> &missionIds)
 {
  _portfolioMonth = _budgetMonth;
  _audit.push_back("{\"schemaVersion\":1,\"kind\":\"portfolio\",\"id\":" + std::to_string(_nextId++)
  + ",\"gameTime\":" + quote(time) + ",\"mode\":\"PORTFOLIO_EXECUTION\",\"status\":" + quote(status)
- + ",\"input\":" + input + ",\"response\":" + quote(response) + ",\"budgetAfter\":" + budgetJson() + "}");
+ + ",\"input\":" + input + ",\"response\":" + quote(response) + ",\"missionIds\":" + ids(missionIds) + ",\"budgetAfter\":" + budgetJson() + "}");
+}
+
+std::string AlienCommand::operationLedgerJson(const std::string &time) const
+{
+ auto monthIndex=[](const std::string &at) {
+  if(at.size()<7 || at[4]!='-' || at.find_first_not_of("0123456789",0)<4 || at[5]<'0' || at[5]>'1' || at[6]<'0' || at[6]>'9')return -1;
+  const int month=std::stoi(at.substr(5,2));return month<1 || month>12?-1:12*std::stoi(at.substr(0,4))+month;
+ };
+ const int currentMonth=monthIndex(time);
+ std::map<std::string,std::set<int>> regionalLosses;
+ std::map<std::string,std::vector<int>> regionalSupport;
+ struct Operation
+ {
+  int id=0, decision=0, cash=0, progress=0;
+  std::string mission, region="UNKNOWN", assignedAt, lastAt, gainAt, delivered="UNKNOWN";
+  bool complete=false, ended=false;
+  std::set<int> deployed, returned, lost, carriers;
+  std::vector<int> receipts;
+ };
+ std::map<int,Operation> operations;
+ for(const auto &paid:_paidMissions) { auto &o=operations[paid.first];o.id=paid.first;o.mission=paid.second; }
+ // An operation may span multiple monthly boundaries. Unique craft identities and
+ // one admitted gain receipt prevent double counting returns, losses or payouts.
+ for(const auto &raw:_audit)
+ {
+  YAML::YamlRootNodeReader r(YAML::YamlString(raw),"operation ledger receipt");
+  const auto kind=r["kind"].readVal<std::string>();
+  const int receipt=r["id"].readVal<int>();
+  std::string at;r.tryRead("gameTime",at);if(!at.empty() && at>time)continue;
+  if(kind=="own_operation" && r["event"].readVal<std::string>()=="CRAFT_UNAVAILABLE")
+  {
+   const int month=monthIndex(at);
+   if(currentMonth>=0 && month>=0 && month<=currentMonth && currentMonth-month<3)
+   {
+    const auto region=r["assignedRegion"].readVal<std::string>();
+    if(regionalLosses[region].insert(r["sourceUfoId"].readVal<int>()).second && regionalSupport[region].size()<8)regionalSupport[region].push_back(receipt);
+   }
+  }
+  if(kind=="portfolio")
+  {
+   for(const auto &item:r["missionIds"].children())
+   { const int id=item.readVal<int>();if(operations.count(id))operations[id].decision=receipt; }
+   continue;
+  }
+  if(kind!="own_operation" && kind!="budget_fact" && kind!="base_discovery")continue;
+  const int id=(kind=="base_discovery"?r["sourceMissionId"]:r["missionId"]).readVal<int>();
+  auto found=operations.find(id);if(found==operations.end())continue;
+  auto &o=found->second;
+  if(kind!="base_discovery" && r["mission"].readVal<std::string>()!=o.mission)continue;
+  o.lastAt=at;
+  const auto event=kind=="base_discovery"?"BASE_FOUND":r["event"].readVal<std::string>();
+  if(kind=="own_operation")
+  {
+   const int craft=r["sourceUfoId"].readVal<int>();
+   o.region=r["assignedRegion"].readVal<std::string>();
+   if(event=="MISSION_ASSIGNED")
+   { o.assignedAt=at; int version=0;r.tryRead("ledgerVersion",version);o.complete=version==1; }
+   if(event=="CRAFT_DEPLOYED")
+   {
+    o.deployed.insert(craft);std::string role;r.tryRead("role",role);
+    if(role=="OBJECTIVE_CARRIER"){o.carriers.insert(craft);o.receipts.push_back(receipt);}
+   }
+   if(event=="CRAFT_RETURNED")o.returned.insert(craft);
+   if(event=="CRAFT_UNAVAILABLE"){o.lost.insert(craft);o.receipts.push_back(receipt);}
+  }
+  if(event=="MISSION_ENDED"){o.ended=true;o.receipts.push_back(receipt);}
+  if(event=="OBJECTIVE_SITE_DELIVERED" || event=="BASE_ESTABLISHED" || event=="PACT_ESTABLISHED" || event=="BASE_FOUND")
+  {o.delivered=event;o.receipts.push_back(receipt);}
+  // Legacy reward membership is persisted independently of the audit. Admit the
+  // first matching completion only when accounting confirms it earned the reward.
+  if(o.cash==0 && _rewardedMissions.count(id))
+  {
+   if(event=="RESEARCH_FLIGHT_COMPLETED" && (o.mission=="STR_ALIEN_RESEARCH" || o.mission=="STR_ALIEN_PROBE_MISSION"))o.cash=1;
+   if(event=="PRODUCTIVE_ACTIVITY_COMPLETED" && (o.mission=="STR_ALIEN_HARVEST" || o.mission=="STR_ALIEN_ABDUCTION"))o.cash=2;
+   if(o.cash){o.progress=1;o.gainAt=at;o.receipts.push_back(receipt);}
+  }
+ }
+ std::vector<Operation> ordered;
+ for(const auto &p:operations)ordered.push_back(p.second);
+ std::stable_sort(ordered.begin(),ordered.end(),[](const Operation &a,const Operation &b) {
+  const bool pendingA=a.complete && !a.ended,pendingB=b.complete && !b.ended;
+  if(pendingA!=pendingB)return pendingA;return std::tie(a.lastAt,a.id)>std::tie(b.lastAt,b.id);
+ });
+ const size_t total=ordered.size();if(ordered.size()>24)ordered.resize(24);
+ std::string rows="[";int count=0;
+ for(const auto &o:ordered)
+ {
+  int lostCarriers=0;for(int id:o.carriers)if(o.lost.count(id))++lostCarriers;
+  const bool allCarriersLost=!o.carriers.empty() && lostCarriers==(int)o.carriers.size();
+  const auto outcome=o.cash?"GAIN_VERIFIED":o.delivered!="UNKNOWN"?"OBJECTIVE_DELIVERED":
+   o.complete && o.ended && allCarriersLost?"OBJECTIVE_PREVENTED":"UNKNOWN";
+  const auto lifecycle=o.ended?"ENDED":o.complete?"PENDING":"UNKNOWN";
+  if(count++)rows+=",";
+  const size_t evidenceTotal=o.receipts.size();auto support=o.receipts;
+  if(support.size()>8)support.erase(support.begin(),support.end()-8);
+  rows+="{\"missionId\":"+std::to_string(o.id)+",\"decisionReceiptId\":"+std::to_string(o.decision)
+   +",\"mission\":"+quote(o.mission)+",\"region\":"+quote(o.region)+",\"cost\":"+std::to_string(operationCost(o.mission))
+   +",\"assignedAt\":"+quote(o.assignedAt)+",\"lastEventAt\":"+quote(o.lastAt)+",\"gainAt\":"+quote(o.gainAt)
+   +",\"coverage\":"+quote(o.complete?"COMPLETE_FROM_ASSIGNMENT":"PARTIAL_LEGACY")+",\"lifecycle\":"+quote(lifecycle)
+   +",\"outcome\":"+quote(outcome)+",\"deliveryFact\":"+quote(o.delivered)
+   +",\"cashEarned\":"+std::to_string(o.cash)+",\"progressEarned\":"+std::to_string(o.progress)
+   +",\"deployed\":"+std::to_string(o.deployed.size())+",\"returned\":"+std::to_string(o.returned.size())
+   +",\"unavailable\":"+std::to_string(o.lost.size())+",\"objectiveCarriers\":"+std::to_string(o.carriers.size())
+   +",\"objectiveCarriersUnavailable\":"+std::to_string(lostCarriers)+",\"evidenceTotal\":"+std::to_string(evidenceTotal)+",\"evidenceIds\":"+ids(support)+"}";
+ }
+ std::vector<std::pair<std::string,int>> hotspots;
+ for(const auto &p:regionalLosses)hotspots.emplace_back(p.first,(int)p.second.size());
+ std::sort(hotspots.begin(),hotspots.end(),[](const auto &a,const auto &b){return a.second!=b.second?a.second>b.second:a.first<b.first;});
+ std::string losses="[";int n=0;
+ for(const auto &p:hotspots) {if(n==16)break;if(n++)losses+=",";losses+="{\"region\":"+quote(p.first)+",\"count\":"+std::to_string(p.second)+",\"evidenceIds\":"+ids(regionalSupport[p.first])+"}";}
+ return "{\"schemaVersion\":1,\"asOf\":"+quote(time)+",\"total\":"+std::to_string(total)
+  +",\"truncated\":"+(total>ordered.size()?"true":"false")+",\"lossWindowMonths\":3,\"regionalLosses\":"+losses+"]"
+  +",\"regionalLossesTruncated\":"+(hotspots.size()>16?"true":"false")+",\"operations\":"+rows+"]}";
+}
+
+void AlienCommand::reconcileOperations(const std::string &time)
+{
+ const std::string period=time.substr(0,7);
+ for(auto it=_audit.rbegin();it!=_audit.rend();++it)
+ {
+  YAML::YamlRootNodeReader r(YAML::YamlString(*it),"reconciliation lookup");
+  if(r["kind"].readVal<std::string>()=="monthly_reconciliation" && r["period"].readVal<std::string>()==period)return;
+ }
+ const auto ledger=operationLedgerJson(time);
+ _audit.push_back("{\"schemaVersion\":1,\"kind\":\"monthly_reconciliation\",\"id\":"+std::to_string(_nextId++)
+  +",\"gameTime\":"+quote(time)+",\"period\":"+quote(period)+",\"ledger\":"+ledger+",\"budget\":"+budgetJson()+"}");
 }
 
 void AlienCommand::updateBelief(const std::string &region)
@@ -361,7 +506,7 @@ void AlienCommand::recordOwnedOperation(const std::string &event, int missionId,
  +",\"gameTime\":"+quote(time)+",\"event\":"+quote(event)+",\"missionId\":"+std::to_string(missionId)
  +",\"mission\":"+quote(mission)+",\"assignedRegion\":"+quote(assignedRegion)+",\"sourceUfoId\":"+std::to_string(ufoId)
  +",\"craftType\":"+quote(craftType)+",\"wave\":"+std::to_string(wave)+",\"role\":"+quote(role)
- +",\"provenance\":\"OWN_OPERATION_TELEMETRY\",\"enemyCause\":\"UNKNOWN\"}");
+ +",\"ledgerVersion\":1,\"provenance\":\"OWN_OPERATION_TELEMETRY\",\"enemyCause\":\"UNKNOWN\"}");
 }
 
 void AlienCommand::recordBaseDiscovery(const AlienInterceptionContact &observer, double longitude, double latitude, const std::string &time)
@@ -409,6 +554,7 @@ void AlienCommand::save(YAML::YamlNodeWriter writer) const
   auto b = writer["budget"]; b.setAsMap(); b.write("version",1);
   b.write("month",_budgetMonth); b.write("difficulty",_budgetDifficulty); b.write("remaining",_remaining); b.write("bonus",_pendingBonus);
   b.write("portfolioMonth",_portfolioMonth);
+  b.write("baseProgressQuarters",_baseProgressQuarters);
   b.write("intelligence",_intelligence); b.write("logistics",_logistics); b.write("adaptation",_adaptation);
   auto paid = b["paid"]; paid.setAsSeq();
   for (const auto &p : _paidMissions) { auto w=paid.write(); w.setAsMap(); w.write("id",p.first); w.write("mission",p.second); }
@@ -460,6 +606,8 @@ void AlienCommand::load(const YAML::YamlNodeReader &reader)
   auto b=reader["budget"];
   if (b["version"].readVal<int>() != 1) throw YAML::Exception("Unsupported alien budget");
   restored._budgetMonth=b["month"].readVal<int>(); restored._budgetDifficulty=b["difficulty"].readVal<int>();
+  b.tryRead("baseProgressQuarters",restored._baseProgressQuarters);
+  if (restored._baseProgressQuarters < 0 || restored._baseProgressQuarters > 3) throw YAML::Exception("Invalid base progression");
   restored._portfolioMonth=b["portfolioMonth"].readVal<int>();
   if (restored._portfolioMonth < -1 || restored._portfolioMonth > restored._budgetMonth) throw YAML::Exception("Invalid portfolio calendar");
   restored._remaining=b["remaining"].readVal<int>(); restored._pendingBonus=b["bonus"].readVal<int>();

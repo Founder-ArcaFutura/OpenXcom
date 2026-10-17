@@ -80,6 +80,7 @@ class AlienCommand
 {
  int _budgetMonth = -1, _budgetDifficulty = 0, _remaining = 0, _pendingBonus = 0;
  int _intelligence = 0, _logistics = 0, _adaptation = 0;
+ int _baseProgressQuarters = 0;
  std::map<int, std::string> _paidMissions;
  std::set<int> _rewardedMissions, _searchOnly;
  int _portfolioMonth = -1;
@@ -96,6 +97,8 @@ public:
  static int operationCapacity(int month) { return 3 + std::min(3, std::max(0, month) / 3); }
  static int operationCost(const std::string &mission);
  void beginBudgetMonth(int month, int difficulty);
+ void creditBaseMonth(int baseId, int income, int influence, const std::string &country, const std::string &time);
+ void creditBaseSupply(int baseId, int missionId, const std::string &time);
  bool budgetActive() const { return _budgetMonth >= 0; }
  int remainingBudget() const { return _remaining; }
  int budgetMonth() const { return _budgetMonth; }
@@ -104,7 +107,11 @@ public:
  bool fundMission(int missionId, const std::string &mission);
  bool searchOnly(int missionId) const { return _searchOnly.count(missionId) != 0; }
  std::string budgetJson() const;
- void recordPortfolio(const std::string &time, const std::string &input, const std::string &response, const std::string &status);
+ void recordPortfolio(const std::string &time, const std::string &input, const std::string &response, const std::string &status,
+  const std::vector<int> &missionIds = {});
+ // Derived from persistent, admitted receipts; never from hidden player state.
+ std::string operationLedgerJson(const std::string &time) const;
+ void reconcileOperations(const std::string &time);
 	void recordBudgetFact(const std::string &event, int missionId, const std::string &mission, const std::string &time, int ufoId = 0);
 	void recordBaseDiscovery(const AlienInterceptionContact &observer, double longitude, double latitude, const std::string &time);
 	static constexpr size_t MAX_CANDIDATES = 64;

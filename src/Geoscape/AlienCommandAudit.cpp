@@ -9,7 +9,11 @@
 #include "../Mod/RuleAlienMission.h"
 #include "../Mod/RuleMissionScript.h"
 #include "../Mod/RuleRegion.h"
+#include "../Mod/RuleCountry.h"
 #include "../Savegame/AlienMission.h"
+#include "../Savegame/AlienBase.h"
+#include "../Savegame/Country.h"
+#include "../Savegame/Region.h"
 #include "../Savegame/GameTime.h"
 #include "../Savegame/Ufo.h"
 #include <exception>
@@ -25,6 +29,17 @@ namespace OpenXcom
 {
 namespace
 {
+bool hasInfiltrationCountry(const Mod &mod,const RuleRegion &region)
+{
+ // Native infiltration searches country labels, not country-area overlap.
+ // Static geography only: this gate exposes no player locations or capabilities.
+ for(const auto &name:mod.getCountriesList())
+ {
+  const auto *country=mod.getCountry(name);
+  if(country && region.insideRegion(country->getLabelLongitude(),country->getLabelLatitude()))return true;
+ }
+ return false;
+}
 std::vector<int> portfolioSiteAreas(const RuleAlienMission &rule,const RuleRegion &region)
 {
  std::vector<int> result;
@@ -264,6 +279,7 @@ std::vector<AlienReconCandidate> buildAlienPortfolioMenu(const Mod &mod, const S
    const auto *r=mod.getRegion(name);
    const auto *geo=r->getMissionRegion().empty()?r:mod.getRegion(r->getMissionRegion());
    if (!geo || r->getWeight()<=0) continue;
+   if(rule->getObjective()==OBJECTIVE_INFILTRATION && !hasInfiltrationCountry(mod,*geo))continue;
    const auto &weights=r->getAvailableMissions().getChoicesRaw();
    auto w=weights.find(mission);
    if (rule->getObjective()==OBJECTIVE_SCORE && (w==weights.end() || w->second<=0)) continue;
@@ -283,24 +299,55 @@ std::vector<AlienReconCandidate> buildAlienPortfolioMenu(const Mod &mod, const S
  }
  return result;
 }
-std::string buildAlienPortfolioInput(const Mod &mod, const SavedGame &save)
+std::string buildAlienPortfolioInput(const Mod &mod, SavedGame &save)
 {
  std::vector<AlienReconCandidate> regions;
  for (const auto &region:mod.getRegionsList()) regions.push_back({"REGION",region});
  auto input=save.getAlienCommand().snapshot(regions);
  input.candidates=buildAlienPortfolioMenu(mod,save);
- return "{\"schemaVersion\":1,\"budget\":"+save.getAlienCommand().budgetJson()+",\"knowledge\":"+AlienCommand::inputJson(input)+",\"sitrep\":"+buildAlienMonthlySitrep(save)+"}";
+ std::string bases = "[";
+ for (auto *base : *save.getAlienBases())
+ {
+  if (bases != "[") bases += ",";
+  std::string countryName;
+  for (auto *country : *save.getCountries())
+   if (country->getRules()->insideCountry(base->getLongitude(),base->getLatitude()))
+   { countryName = country->getRules()->getType(); break; }
+  bases += "{\"region\":" + sitrepQuote(save.locateRegion(*base)->getRules()->getType())
+   + ",\"country\":" + sitrepQuote(countryName) + ",\"influence\":" + std::to_string(base->getInfluence())
+   + ",\"income\":" + std::to_string(base->getMonthlyIncome()) + "}";
+ }
+ return "{\"schemaVersion\":1,\"budget\":"+save.getAlienCommand().budgetJson()+",\"knowledge\":"+AlienCommand::inputJson(input)+",\"sitrep\":"+buildAlienMonthlySitrep(save)+",\"bases\":"+bases+"]"
+  +",\"operationLedger\":"+save.getAlienCommand().operationLedgerJson(save.getTime()->getFullString())+"}";
 }
 void executeAlienPortfolio(Game &game, const Globe &globe)
 {
  auto &save=*game.getSavedGame(); auto &ledger=save.getAlienCommand(); auto &mod=*game.getMod();
  ledger.beginBudgetMonth(std::max(0,save.getMonthsPassed()),(int)save.getDifficulty());
+ // Base-owned cursors prevent repeated calls/reloads from issuing duplicate income.
+ for (auto *base : *save.getAlienBases())
+ {
+  const int income = base->advanceEconomy(save.getMonthsPassed());
+  if (!income) continue;
+  std::string host;
+  for (auto *country : *save.getCountries())
+   if (country->getRules()->insideCountry(base->getLongitude(),base->getLatitude()))
+   {
+    host = country->getRules()->getType();
+    country->addActivityAlien(10 * base->getInfluence());
+    break;
+   }
+  ledger.creditBaseMonth(base->getId(),income,base->getInfluence(),host,save.getTime()->getFullString());
+  Log(LOG_INFO) << "AlienCommandAudit " << ledger.getAudit().back();
+ }
  if (!ledger.portfolioDue()) return;
+ ledger.reconcileOperations(save.getTime()->getFullString());
  auto menu=buildAlienPortfolioMenu(mod,save);
  const auto body=buildAlienPortfolioInput(mod,save);
  auto response=queryAlienPortfolioModel(body,Options::alienCommandModelPort);
  std::string status="MODEL_UNAVAILABLE_SAVE_RESOURCES";
  std::vector<AlienReconCandidate> selected;
+ std::vector<int> committedIds;
  try
  {
   YAML::YamlRootNodeReader r(YAML::YamlString(response),"alien portfolio response");
@@ -356,11 +403,11 @@ void executeAlienPortfolio(Game &game, const Globe &globe)
   for (const auto &mission:ready)
    if (!reserved.fundMission(mission->getId(),mission->getRules().getType())) throw std::runtime_error("Portfolio reservation failed");
   ledger=std::move(reserved);
-  for (auto &mission:ready) { mission->start(game,globe); save.getAlienMissions().push_back(mission.release()); }
+  for (auto &mission:ready) { mission->start(game,globe); committedIds.push_back(mission->getId()); save.getAlienMissions().push_back(mission.release()); }
   status=selected.empty()?"SAVED_RESOURCES":"PORTFOLIO_EXECUTED";
  }
  catch (const std::exception &) { if (!response.empty()) status="REJECTED_PORTFOLIO_SAVE_RESOURCES"; }
- ledger.recordPortfolio(save.getTime()->getFullString(),body,response,status);
+ ledger.recordPortfolio(save.getTime()->getFullString(),body,response,status,committedIds);
  Log(LOG_INFO)<<"AlienCommandAudit "<<ledger.getAudit().back();
 }
 std::vector<AlienReconCandidate> buildAlienReconMenu(const Mod &mod)
