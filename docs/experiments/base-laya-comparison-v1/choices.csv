@@ -1,0 +1,33 @@
+suite,case,family,baseChoice,careerChoice,baseMargin,careerMargin
+compact,heldout_target_STR_EUROPE,A,EUROPE,EUROPE,0.5427142857142857,0.6400142857142856
+compact,heldout_target_STR_EUROPE,B,EUROPE,EUROPE,0.5922000000000001,0.6998
+compact,heldout_target_STR_NORTH_AFRICA,A,NORTH_AFRICA,NORTH_AFRICA,0.6224285714285713,0.6794857142857144
+compact,heldout_target_STR_NORTH_AFRICA,B,NORTH_AFRICA,NORTH_AFRICA,0.5842999999999999,0.6571285714285715
+compact,heldout_adaptation_1,A,"BASE cost6: surviving +1-2 cash/month, progress, influence","BASE cost6: surviving +1-2 cash/month, progress, influence",0.10321428571428573,0.14602857142857145
+compact,heldout_adaptation_1,B,"BASE cost6: surviving +1-2 cash/month, progress, influence","BASE cost6: surviving +1-2 cash/month, progress, influence",0.09358571428571427,0.0902
+compact,heldout_adaptation_2,A,"BASE cost6: surviving +1-2 cash/month, progress, influence","BASE cost6: surviving +1-2 cash/month, progress, influence",0.2435125000000001,0.3149375
+compact,heldout_adaptation_2,B,"BASE cost6: surviving +1-2 cash/month, progress, influence","BASE cost6: surviving +1-2 cash/month, progress, influence",0.13438750000000005,0.18523750000000005
+compact,heldout_outcome_UNKNOWN,A,TERROR cost4: delivered political pressure; no cash,TERROR cost4: delivered political pressure; no cash,0.1608624999999999,0.25114999999999993
+compact,heldout_outcome_UNKNOWN,B,TERROR cost4: delivered political pressure; no cash,RETALIATION cost2: possible base discovery; assault unavailable,0.015562500000000035,0.0044999999999999485
+compact,heldout_outcome_SCOUT_LOST,A,TERROR cost4: delivered political pressure; no cash,TERROR cost4: delivered political pressure; no cash,0.33816250000000003,0.4363750000000001
+compact,heldout_outcome_SCOUT_LOST,B,TERROR cost4: delivered political pressure; no cash,TERROR cost4: delivered political pressure; no cash,0.204125,0.2563
+compact,heldout_outcome_DISRUPTED,A,TERROR cost4: delivered political pressure; no cash,TERROR cost4: delivered political pressure; no cash,0.24152499999999996,0.3847250000000001
+compact,heldout_outcome_DISRUPTED,B,TERROR cost4: delivered political pressure; no cash,TERROR cost4: delivered political pressure; no cash,0.13944999999999996,0.20988749999999998
+compact,heldout_outcome_COMPLETED,A,TERROR cost4: delivered political pressure; no cash,TERROR cost4: delivered political pressure; no cash,0.3928000000000001,0.5284875000000001
+compact,heldout_outcome_COMPLETED,B,TERROR cost4: delivered political pressure; no cash,TERROR cost4: delivered political pressure; no cash,0.29598750000000007,0.3826625
+adaptation,risk_AUSTRALASIA,A,AUSTRALASIA,AUSTRALASIA,0.00912857142857143,0.022214285714285742
+adaptation,risk_AUSTRALASIA,B,AUSTRALASIA,AUSTRALASIA,0.0021857142857143186,0.00830000000000003
+adaptation,risk_NORTH_AMERICA,A,AUSTRALASIA,AUSTRALASIA,0.06737142857142858,0.08425714285714284
+adaptation,risk_NORTH_AMERICA,B,AUSTRALASIA,AUSTRALASIA,0.047300000000000036,0.06131428571428568
+adaptation,gate_compact_1,A,"HARVEST: productive +2 cash, +1 logistics; bases need logistics 2; cost 3","HARVEST: productive +2 cash, +1 logistics; bases need logistics 2; cost 3",0.012857142857142817,0.017014285714285704
+adaptation,gate_compact_1,B,"HARVEST: productive +2 cash, +1 logistics; bases need logistics 2; cost 3","HARVEST: productive +2 cash, +1 logistics; bases need logistics 2; cost 3",0.01775714285714286,0.013442857142857118
+adaptation,gate_compact_2,A,"BASE: surviving +1-2 cash/month, progress, local influence; cost 6","BASE: surviving +1-2 cash/month, progress, local influence; cost 6",0.03445000000000001,0.04267499999999996
+adaptation,gate_compact_2,B,INFILTRATION: possible pact and base (+1-2 cash/month); cost 6,INFILTRATION: possible pact and base (+1-2 cash/month); cost 6,0.012700000000000017,0.008025000000000004
+adaptation,gate_named_capability_1,A,"ABDUCTION: productive +2 cash, +1 adaptation; cost 3","ABDUCTION: productive +2 cash, +1 adaptation; cost 3",0.051057142857142856,0.0778142857142857
+adaptation,gate_named_capability_1,B,"ABDUCTION: productive +2 cash, +1 adaptation; cost 3","ABDUCTION: productive +2 cash, +1 adaptation; cost 3",0.09215714285714291,0.12262857142857148
+adaptation,gate_named_capability_2,A,"ABDUCTION: productive +2 cash, +1 adaptation; cost 3","ABDUCTION: productive +2 cash, +1 adaptation; cost 3",0.0011000000000000176,0.01714999999999997
+adaptation,gate_named_capability_2,B,"ABDUCTION: productive +2 cash, +1 adaptation; cost 3","ABDUCTION: productive +2 cash, +1 adaptation; cost 3",0.08377499999999999,0.11023749999999996
+adaptation,role_PREPARATION,A,"HARVEST: productive +2 cash, +1 logistics; bases need logistics 2; cost 3","HARVEST: productive +2 cash, +1 logistics; bases need logistics 2; cost 3",0.030500000000000027,0.03331428571428571
+adaptation,role_PREPARATION,B,"HARVEST: productive +2 cash, +1 logistics; bases need logistics 2; cost 3","HARVEST: productive +2 cash, +1 logistics; bases need logistics 2; cost 3",0.04832857142857139,0.055671428571428594
+adaptation,role_OBJECTIVE_CARRIER,A,"HARVEST: productive +2 cash, +1 logistics; bases need logistics 2; cost 3","HARVEST: productive +2 cash, +1 logistics; bases need logistics 2; cost 3",0.027042857142857146,0.031700000000000006
+adaptation,role_OBJECTIVE_CARRIER,B,"HARVEST: productive +2 cash, +1 logistics; bases need logistics 2; cost 3","HARVEST: productive +2 cash, +1 logistics; bases need logistics 2; cost 3",0.050671428571428534,0.059428571428571414

@@ -1,0 +1,1247 @@
+{
+  "rows": [
+    {
+      "decision": "1999-02-01 00:00:00",
+      "arm": "single_canonical",
+      "operations": [
+        {
+          "mission": "STR_ALIEN_TERROR",
+          "region": "STR_AUSTRALASIA"
+        },
+        {
+          "mission": "STR_ALIEN_HARVEST",
+          "region": "STR_SOUTH_EAST_ASIA"
+        },
+        {
+          "mission": "STR_ALIEN_HARVEST",
+          "region": "STR_AUSTRALASIA"
+        }
+      ],
+      "remainingProposed": 1,
+      "status": "PREDICTED",
+      "error": null,
+      "latencyMs": 1.58,
+      "newModelInferences": 0,
+      "automaticDecisions": 0,
+      "cacheReuses": 6,
+      "mix": {
+        "TERROR": 1,
+        "HARVEST": 2
+      },
+      "spend": 10,
+      "deferAll": false,
+      "firstPlan": "TERROR",
+      "minimumAggregateMargin": null
+    },
+    {
+      "decision": "1999-02-01 00:00:00",
+      "arm": "single_reversed",
+      "operations": [
+        {
+          "mission": "STR_ALIEN_HARVEST",
+          "region": "STR_SOUTH_EAST_ASIA"
+        },
+        {
+          "mission": "STR_ALIEN_HARVEST",
+          "region": "STR_AUSTRALASIA"
+        },
+        {
+          "mission": "STR_ALIEN_HARVEST",
+          "region": "STR_EUROPE"
+        }
+      ],
+      "remainingProposed": 2,
+      "status": "PREDICTED",
+      "error": null,
+      "latencyMs": 1.76,
+      "newModelInferences": 0,
+      "automaticDecisions": 0,
+      "cacheReuses": 6,
+      "mix": {
+        "HARVEST": 3
+      },
+      "spend": 9,
+      "deferAll": false,
+      "firstPlan": "HARVEST",
+      "minimumAggregateMargin": null
+    },
+    {
+      "decision": "1999-02-01 00:00:00",
+      "arm": "single_seeded",
+      "operations": [
+        {
+          "mission": "STR_ALIEN_RETALIATION",
+          "region": "STR_EUROPE"
+        },
+        {
+          "mission": "STR_ALIEN_RETALIATION",
+          "region": "STR_NORTH_AFRICA"
+        },
+        {
+          "mission": "STR_ALIEN_TERROR",
+          "region": "STR_AUSTRALASIA"
+        }
+      ],
+      "remainingProposed": 3,
+      "status": "PREDICTED",
+      "error": null,
+      "latencyMs": 1.68,
+      "newModelInferences": 0,
+      "automaticDecisions": 1,
+      "cacheReuses": 5,
+      "mix": {
+        "RETALIATION": 2,
+        "TERROR": 1
+      },
+      "spend": 8,
+      "deferAll": false,
+      "firstPlan": "RETALIATION",
+      "minimumAggregateMargin": null
+    },
+    {
+      "decision": "1999-02-01 00:00:00",
+      "arm": "aggregate_A",
+      "operations": [
+        {
+          "mission": "STR_ALIEN_HARVEST",
+          "region": "STR_SOUTH_EAST_ASIA"
+        },
+        {
+          "mission": "STR_ALIEN_TERROR",
+          "region": "STR_AUSTRALASIA"
+        },
+        {
+          "mission": "STR_ALIEN_HARVEST",
+          "region": "STR_AUSTRALASIA"
+        }
+      ],
+      "remainingProposed": 1,
+      "status": "PREDICTED",
+      "error": null,
+      "latencyMs": 32580.04,
+      "newModelInferences": 17,
+      "automaticDecisions": 0,
+      "cacheReuses": 4,
+      "mix": {
+        "HARVEST": 2,
+        "TERROR": 1
+      },
+      "spend": 10,
+      "deferAll": false,
+      "firstPlan": "HARVEST",
+      "minimumAggregateMargin": 0.0019499999999999795
+    },
+    {
+      "decision": "1999-02-01 00:00:00",
+      "arm": "aggregate_B",
+      "operations": [
+        {
+          "mission": "STR_ALIEN_HARVEST",
+          "region": "STR_SOUTH_EAST_ASIA"
+        },
+        {
+          "mission": "STR_ALIEN_TERROR",
+          "region": "STR_AUSTRALASIA"
+        },
+        {
+          "mission": "STR_ALIEN_TERROR",
+          "region": "STR_SOUTH_EAST_ASIA"
+        }
+      ],
+      "remainingProposed": 0,
+      "status": "PREDICTED",
+      "error": null,
+      "latencyMs": 34130.92,
+      "newModelInferences": 18,
+      "automaticDecisions": 0,
+      "cacheReuses": 3,
+      "mix": {
+        "HARVEST": 1,
+        "TERROR": 2
+      },
+      "spend": 11,
+      "deferAll": false,
+      "firstPlan": "HARVEST",
+      "minimumAggregateMargin": 0.0005666666666666598
+    },
+    {
+      "decision": "1999-03-01 00:00:00",
+      "arm": "single_canonical",
+      "operations": [
+        {
+          "mission": "STR_ALIEN_HARVEST",
+          "region": "STR_SOUTH_EAST_ASIA"
+        },
+        {
+          "mission": "STR_ALIEN_HARVEST",
+          "region": "STR_CENTRAL_ASIA"
+        },
+        {
+          "mission": "STR_ALIEN_HARVEST",
+          "region": "STR_NORTH_AMERICA"
+        }
+      ],
+      "remainingProposed": 9,
+      "status": "PREDICTED",
+      "error": null,
+      "latencyMs": 2.32,
+      "newModelInferences": 0,
+      "automaticDecisions": 0,
+      "cacheReuses": 6,
+      "mix": {
+        "HARVEST": 3
+      },
+      "spend": 9,
+      "deferAll": false,
+      "firstPlan": "HARVEST",
+      "minimumAggregateMargin": null
+    },
+    {
+      "decision": "1999-03-01 00:00:00",
+      "arm": "single_reversed",
+      "operations": [],
+      "remainingProposed": 18,
+      "status": "SAVE_RESOURCES",
+      "error": null,
+      "latencyMs": 0.97,
+      "newModelInferences": 0,
+      "automaticDecisions": 0,
+      "cacheReuses": 1,
+      "mix": {},
+      "spend": 0,
+      "deferAll": true,
+      "firstPlan": "SAVE",
+      "minimumAggregateMargin": null
+    },
+    {
+      "decision": "1999-03-01 00:00:00",
+      "arm": "single_seeded",
+      "operations": [
+        {
+          "mission": "STR_ALIEN_HARVEST",
+          "region": "STR_SOUTH_EAST_ASIA"
+        },
+        {
+          "mission": "STR_ALIEN_HARVEST",
+          "region": "STR_CENTRAL_ASIA"
+        },
+        {
+          "mission": "STR_ALIEN_HARVEST",
+          "region": "STR_NORTH_AMERICA"
+        }
+      ],
+      "remainingProposed": 9,
+      "status": "PREDICTED",
+      "error": null,
+      "latencyMs": 2.0,
+      "newModelInferences": 0,
+      "automaticDecisions": 0,
+      "cacheReuses": 6,
+      "mix": {
+        "HARVEST": 3
+      },
+      "spend": 9,
+      "deferAll": false,
+      "firstPlan": "HARVEST",
+      "minimumAggregateMargin": null
+    },
+    {
+      "decision": "1999-03-01 00:00:00",
+      "arm": "aggregate_A",
+      "operations": [
+        {
+          "mission": "STR_ALIEN_HARVEST",
+          "region": "STR_SOUTH_EAST_ASIA"
+        },
+        {
+          "mission": "STR_ALIEN_HARVEST",
+          "region": "STR_CENTRAL_ASIA"
+        },
+        {
+          "mission": "STR_ALIEN_HARVEST",
+          "region": "STR_NORTH_AMERICA"
+        }
+      ],
+      "remainingProposed": 9,
+      "status": "PREDICTED",
+      "error": null,
+      "latencyMs": 24994.76,
+      "newModelInferences": 12,
+      "automaticDecisions": 0,
+      "cacheReuses": 6,
+      "mix": {
+        "HARVEST": 3
+      },
+      "spend": 9,
+      "deferAll": false,
+      "firstPlan": "HARVEST",
+      "minimumAggregateMargin": 0.031580000000000025
+    },
+    {
+      "decision": "1999-03-01 00:00:00",
+      "arm": "aggregate_B",
+      "operations": [
+        {
+          "mission": "STR_ALIEN_HARVEST",
+          "region": "STR_SOUTH_EAST_ASIA"
+        },
+        {
+          "mission": "STR_ALIEN_HARVEST",
+          "region": "STR_CENTRAL_ASIA"
+        },
+        {
+          "mission": "STR_ALIEN_HARVEST",
+          "region": "STR_NORTH_AMERICA"
+        }
+      ],
+      "remainingProposed": 9,
+      "status": "PREDICTED",
+      "error": null,
+      "latencyMs": 30181.59,
+      "newModelInferences": 15,
+      "automaticDecisions": 0,
+      "cacheReuses": 3,
+      "mix": {
+        "HARVEST": 3
+      },
+      "spend": 9,
+      "deferAll": false,
+      "firstPlan": "HARVEST",
+      "minimumAggregateMargin": 0.030980000000000008
+    },
+    {
+      "decision": "1999-04-01 00:00:00",
+      "arm": "single_canonical",
+      "operations": [
+        {
+          "mission": "STR_ALIEN_HARVEST",
+          "region": "STR_SOUTH_EAST_ASIA"
+        },
+        {
+          "mission": "STR_ALIEN_ABDUCTION",
+          "region": "STR_NORTH_AFRICA"
+        },
+        {
+          "mission": "STR_ALIEN_HARVEST",
+          "region": "STR_AUSTRALASIA"
+        },
+        {
+          "mission": "STR_ALIEN_ABDUCTION",
+          "region": "STR_EUROPE"
+        }
+      ],
+      "remainingProposed": 12,
+      "status": "PREDICTED",
+      "error": null,
+      "latencyMs": 2.38,
+      "newModelInferences": 0,
+      "automaticDecisions": 0,
+      "cacheReuses": 8,
+      "mix": {
+        "HARVEST": 2,
+        "ABDUCTION": 2
+      },
+      "spend": 12,
+      "deferAll": false,
+      "firstPlan": "HARVEST",
+      "minimumAggregateMargin": null
+    },
+    {
+      "decision": "1999-04-01 00:00:00",
+      "arm": "single_reversed",
+      "operations": [],
+      "remainingProposed": 24,
+      "status": "SAVE_RESOURCES",
+      "error": null,
+      "latencyMs": 1.13,
+      "newModelInferences": 0,
+      "automaticDecisions": 0,
+      "cacheReuses": 1,
+      "mix": {},
+      "spend": 0,
+      "deferAll": true,
+      "firstPlan": "SAVE",
+      "minimumAggregateMargin": null
+    },
+    {
+      "decision": "1999-04-01 00:00:00",
+      "arm": "single_seeded",
+      "operations": [
+        {
+          "mission": "STR_ALIEN_RETALIATION",
+          "region": "STR_EUROPE"
+        },
+        {
+          "mission": "STR_ALIEN_ABDUCTION",
+          "region": "STR_NORTH_AFRICA"
+        },
+        {
+          "mission": "STR_ALIEN_RETALIATION",
+          "region": "STR_NORTH_AFRICA"
+        },
+        {
+          "mission": "STR_ALIEN_ABDUCTION",
+          "region": "STR_EUROPE"
+        }
+      ],
+      "remainingProposed": 14,
+      "status": "PREDICTED",
+      "error": null,
+      "latencyMs": 2.6,
+      "newModelInferences": 0,
+      "automaticDecisions": 1,
+      "cacheReuses": 7,
+      "mix": {
+        "RETALIATION": 2,
+        "ABDUCTION": 2
+      },
+      "spend": 10,
+      "deferAll": false,
+      "firstPlan": "RETALIATION",
+      "minimumAggregateMargin": null
+    },
+    {
+      "decision": "1999-04-01 00:00:00",
+      "arm": "aggregate_A",
+      "operations": [
+        {
+          "mission": "STR_ALIEN_HARVEST",
+          "region": "STR_SOUTH_EAST_ASIA"
+        },
+        {
+          "mission": "STR_ALIEN_ABDUCTION",
+          "region": "STR_NORTH_AFRICA"
+        },
+        {
+          "mission": "STR_ALIEN_HARVEST",
+          "region": "STR_AUSTRALASIA"
+        },
+        {
+          "mission": "STR_ALIEN_ABDUCTION",
+          "region": "STR_EUROPE"
+        }
+      ],
+      "remainingProposed": 12,
+      "status": "PREDICTED",
+      "error": null,
+      "latencyMs": 44871.8,
+      "newModelInferences": 20,
+      "automaticDecisions": 0,
+      "cacheReuses": 8,
+      "mix": {
+        "HARVEST": 2,
+        "ABDUCTION": 2
+      },
+      "spend": 12,
+      "deferAll": false,
+      "firstPlan": "HARVEST",
+      "minimumAggregateMargin": 0.004249999999999976
+    },
+    {
+      "decision": "1999-04-01 00:00:00",
+      "arm": "aggregate_B",
+      "operations": [
+        {
+          "mission": "STR_ALIEN_ABDUCTION",
+          "region": "STR_NORTH_AFRICA"
+        },
+        {
+          "mission": "STR_ALIEN_ABDUCTION",
+          "region": "STR_EUROPE"
+        },
+        {
+          "mission": "STR_ALIEN_HARVEST",
+          "region": "STR_SOUTH_EAST_ASIA"
+        },
+        {
+          "mission": "STR_ALIEN_ABDUCTION",
+          "region": "STR_NORTH_AMERICA"
+        }
+      ],
+      "remainingProposed": 12,
+      "status": "PREDICTED",
+      "error": null,
+      "latencyMs": 54778.3,
+      "newModelInferences": 25,
+      "automaticDecisions": 0,
+      "cacheReuses": 3,
+      "mix": {
+        "ABDUCTION": 3,
+        "HARVEST": 1
+      },
+      "spend": 12,
+      "deferAll": false,
+      "firstPlan": "ABDUCTION",
+      "minimumAggregateMargin": 0.0011500000000000121
+    },
+    {
+      "decision": "1999-05-01 00:00:00",
+      "arm": "single_canonical",
+      "operations": [
+        {
+          "mission": "STR_ALIEN_HARVEST",
+          "region": "STR_AUSTRALASIA"
+        },
+        {
+          "mission": "STR_ALIEN_HARVEST",
+          "region": "STR_NORTH_AMERICA"
+        },
+        {
+          "mission": "STR_ALIEN_HARVEST",
+          "region": "STR_EUROPE"
+        },
+        {
+          "mission": "STR_ALIEN_HARVEST",
+          "region": "STR_NORTH_AFRICA"
+        }
+      ],
+      "remainingProposed": 13,
+      "status": "PREDICTED",
+      "error": null,
+      "latencyMs": 2.18,
+      "newModelInferences": 0,
+      "automaticDecisions": 0,
+      "cacheReuses": 8,
+      "mix": {
+        "HARVEST": 4
+      },
+      "spend": 12,
+      "deferAll": false,
+      "firstPlan": "HARVEST",
+      "minimumAggregateMargin": null
+    },
+    {
+      "decision": "1999-05-01 00:00:00",
+      "arm": "single_reversed",
+      "operations": [],
+      "remainingProposed": 25,
+      "status": "SAVE_RESOURCES",
+      "error": null,
+      "latencyMs": 1.37,
+      "newModelInferences": 0,
+      "automaticDecisions": 0,
+      "cacheReuses": 1,
+      "mix": {},
+      "spend": 0,
+      "deferAll": true,
+      "firstPlan": "SAVE",
+      "minimumAggregateMargin": null
+    },
+    {
+      "decision": "1999-05-01 00:00:00",
+      "arm": "single_seeded",
+      "operations": [],
+      "remainingProposed": 25,
+      "status": "SAVE_RESOURCES",
+      "error": null,
+      "latencyMs": 1.43,
+      "newModelInferences": 0,
+      "automaticDecisions": 0,
+      "cacheReuses": 1,
+      "mix": {},
+      "spend": 0,
+      "deferAll": true,
+      "firstPlan": "SAVE",
+      "minimumAggregateMargin": null
+    },
+    {
+      "decision": "1999-05-01 00:00:00",
+      "arm": "aggregate_A",
+      "operations": [
+        {
+          "mission": "STR_ALIEN_HARVEST",
+          "region": "STR_AUSTRALASIA"
+        },
+        {
+          "mission": "STR_ALIEN_HARVEST",
+          "region": "STR_NORTH_AMERICA"
+        },
+        {
+          "mission": "STR_ALIEN_HARVEST",
+          "region": "STR_EUROPE"
+        },
+        {
+          "mission": "STR_ALIEN_HARVEST",
+          "region": "STR_NORTH_AFRICA"
+        }
+      ],
+      "remainingProposed": 13,
+      "status": "PREDICTED",
+      "error": null,
+      "latencyMs": 60943.23,
+      "newModelInferences": 24,
+      "automaticDecisions": 0,
+      "cacheReuses": 8,
+      "mix": {
+        "HARVEST": 4
+      },
+      "spend": 12,
+      "deferAll": false,
+      "firstPlan": "HARVEST",
+      "minimumAggregateMargin": 0.04278571428571429
+    },
+    {
+      "decision": "1999-05-01 00:00:00",
+      "arm": "aggregate_B",
+      "operations": [
+        {
+          "mission": "STR_ALIEN_HARVEST",
+          "region": "STR_AUSTRALASIA"
+        },
+        {
+          "mission": "STR_ALIEN_ABDUCTION",
+          "region": "STR_AUSTRALASIA"
+        },
+        {
+          "mission": "STR_ALIEN_HARVEST",
+          "region": "STR_NORTH_AMERICA"
+        },
+        {
+          "mission": "STR_ALIEN_HARVEST",
+          "region": "STR_EUROPE"
+        }
+      ],
+      "remainingProposed": 13,
+      "status": "PREDICTED",
+      "error": null,
+      "latencyMs": 72067.15,
+      "newModelInferences": 28,
+      "automaticDecisions": 0,
+      "cacheReuses": 4,
+      "mix": {
+        "HARVEST": 3,
+        "ABDUCTION": 1
+      },
+      "spend": 12,
+      "deferAll": false,
+      "firstPlan": "HARVEST",
+      "minimumAggregateMargin": 0.0024142857142857577
+    },
+    {
+      "decision": "1999-06-01 00:00:00",
+      "arm": "single_canonical",
+      "operations": [
+        {
+          "mission": "STR_ALIEN_HARVEST",
+          "region": "STR_AUSTRALASIA"
+        },
+        {
+          "mission": "STR_ALIEN_HARVEST",
+          "region": "STR_SOUTHERN_AFRICA"
+        },
+        {
+          "mission": "STR_ALIEN_HARVEST",
+          "region": "STR_CENTRAL_ASIA"
+        },
+        {
+          "mission": "STR_ALIEN_HARVEST",
+          "region": "STR_SOUTH_AMERICA"
+        }
+      ],
+      "remainingProposed": 18,
+      "status": "PREDICTED",
+      "error": null,
+      "latencyMs": 2.8,
+      "newModelInferences": 0,
+      "automaticDecisions": 0,
+      "cacheReuses": 8,
+      "mix": {
+        "HARVEST": 4
+      },
+      "spend": 12,
+      "deferAll": false,
+      "firstPlan": "HARVEST",
+      "minimumAggregateMargin": null
+    },
+    {
+      "decision": "1999-06-01 00:00:00",
+      "arm": "single_reversed",
+      "operations": [
+        {
+          "mission": "STR_ALIEN_INFILTRATION",
+          "region": "STR_SOUTH_EAST_ASIA"
+        },
+        {
+          "mission": "STR_ALIEN_INFILTRATION",
+          "region": "STR_AUSTRALASIA"
+        }
+      ],
+      "remainingProposed": 18,
+      "status": "PREDICTED",
+      "error": null,
+      "latencyMs": 2.05,
+      "newModelInferences": 0,
+      "automaticDecisions": 0,
+      "cacheReuses": 5,
+      "mix": {
+        "INFILTRATION": 2
+      },
+      "spend": 12,
+      "deferAll": false,
+      "firstPlan": "INFILTRATION",
+      "minimumAggregateMargin": null
+    },
+    {
+      "decision": "1999-06-01 00:00:00",
+      "arm": "single_seeded",
+      "operations": [
+        {
+          "mission": "STR_ALIEN_RETALIATION",
+          "region": "STR_SOUTH_EAST_ASIA"
+        },
+        {
+          "mission": "STR_ALIEN_INFILTRATION",
+          "region": "STR_SOUTH_EAST_ASIA"
+        },
+        {
+          "mission": "STR_ALIEN_ABDUCTION",
+          "region": "STR_SOUTH_EAST_ASIA"
+        },
+        {
+          "mission": "STR_ALIEN_RETALIATION",
+          "region": "STR_NORTH_AFRICA"
+        }
+      ],
+      "remainingProposed": 17,
+      "status": "PREDICTED",
+      "error": null,
+      "latencyMs": 2.72,
+      "newModelInferences": 0,
+      "automaticDecisions": 0,
+      "cacheReuses": 8,
+      "mix": {
+        "RETALIATION": 2,
+        "INFILTRATION": 1,
+        "ABDUCTION": 1
+      },
+      "spend": 13,
+      "deferAll": false,
+      "firstPlan": "RETALIATION",
+      "minimumAggregateMargin": null
+    },
+    {
+      "decision": "1999-06-01 00:00:00",
+      "arm": "aggregate_A",
+      "operations": [
+        {
+          "mission": "STR_ALIEN_HARVEST",
+          "region": "STR_AUSTRALASIA"
+        },
+        {
+          "mission": "STR_ALIEN_HARVEST",
+          "region": "STR_SOUTHERN_AFRICA"
+        },
+        {
+          "mission": "STR_ALIEN_HARVEST",
+          "region": "STR_CENTRAL_ASIA"
+        },
+        {
+          "mission": "STR_ALIEN_HARVEST",
+          "region": "STR_SOUTH_AMERICA"
+        }
+      ],
+      "remainingProposed": 18,
+      "status": "PREDICTED",
+      "error": null,
+      "latencyMs": 59133.75,
+      "newModelInferences": 24,
+      "automaticDecisions": 0,
+      "cacheReuses": 8,
+      "mix": {
+        "HARVEST": 4
+      },
+      "spend": 12,
+      "deferAll": false,
+      "firstPlan": "HARVEST",
+      "minimumAggregateMargin": 0.026814285714285763
+    },
+    {
+      "decision": "1999-06-01 00:00:00",
+      "arm": "aggregate_B",
+      "operations": [
+        {
+          "mission": "STR_ALIEN_HARVEST",
+          "region": "STR_AUSTRALASIA"
+        },
+        {
+          "mission": "STR_ALIEN_ABDUCTION",
+          "region": "STR_SOUTH_EAST_ASIA"
+        },
+        {
+          "mission": "STR_ALIEN_HARVEST",
+          "region": "STR_SOUTHERN_AFRICA"
+        },
+        {
+          "mission": "STR_ALIEN_HARVEST",
+          "region": "STR_CENTRAL_ASIA"
+        }
+      ],
+      "remainingProposed": 18,
+      "status": "PREDICTED",
+      "error": null,
+      "latencyMs": 63056.11,
+      "newModelInferences": 28,
+      "automaticDecisions": 0,
+      "cacheReuses": 4,
+      "mix": {
+        "HARVEST": 3,
+        "ABDUCTION": 1
+      },
+      "spend": 12,
+      "deferAll": false,
+      "firstPlan": "HARVEST",
+      "minimumAggregateMargin": 0.005957142857142883
+    }
+  ],
+  "armStats": {
+    "single_canonical": {
+      "deferAll": 0,
+      "spend": 55,
+      "operationCount": 18,
+      "mix": {
+        "TERROR": 1,
+        "HARVEST": 15,
+        "ABDUCTION": 2
+      }
+    },
+    "single_reversed": {
+      "deferAll": 3,
+      "spend": 21,
+      "operationCount": 5,
+      "mix": {
+        "HARVEST": 3,
+        "INFILTRATION": 2
+      }
+    },
+    "single_seeded": {
+      "deferAll": 1,
+      "spend": 40,
+      "operationCount": 14,
+      "mix": {
+        "RETALIATION": 6,
+        "TERROR": 1,
+        "HARVEST": 3,
+        "ABDUCTION": 3,
+        "INFILTRATION": 1
+      }
+    },
+    "aggregate_A": {
+      "deferAll": 0,
+      "spend": 55,
+      "operationCount": 18,
+      "mix": {
+        "HARVEST": 15,
+        "TERROR": 1,
+        "ABDUCTION": 2
+      }
+    },
+    "aggregate_B": {
+      "deferAll": 0,
+      "spend": 56,
+      "operationCount": 18,
+      "mix": {
+        "HARVEST": 11,
+        "TERROR": 2,
+        "ABDUCTION": 5
+      }
+    }
+  },
+  "familyComparisons": [
+    {
+      "month": "1999-02",
+      "exactAgreement": false,
+      "operationSetAgreement": false,
+      "missionMixAgreement": false,
+      "firstPlanAgreement": true,
+      "A": {
+        "decision": "1999-02-01 00:00:00",
+        "arm": "aggregate_A",
+        "operations": [
+          {
+            "mission": "STR_ALIEN_HARVEST",
+            "region": "STR_SOUTH_EAST_ASIA"
+          },
+          {
+            "mission": "STR_ALIEN_TERROR",
+            "region": "STR_AUSTRALASIA"
+          },
+          {
+            "mission": "STR_ALIEN_HARVEST",
+            "region": "STR_AUSTRALASIA"
+          }
+        ],
+        "remainingProposed": 1,
+        "status": "PREDICTED",
+        "error": null,
+        "latencyMs": 32580.04,
+        "newModelInferences": 17,
+        "automaticDecisions": 0,
+        "cacheReuses": 4,
+        "mix": {
+          "HARVEST": 2,
+          "TERROR": 1
+        },
+        "spend": 10,
+        "deferAll": false,
+        "firstPlan": "HARVEST",
+        "minimumAggregateMargin": 0.0019499999999999795
+      },
+      "B": {
+        "decision": "1999-02-01 00:00:00",
+        "arm": "aggregate_B",
+        "operations": [
+          {
+            "mission": "STR_ALIEN_HARVEST",
+            "region": "STR_SOUTH_EAST_ASIA"
+          },
+          {
+            "mission": "STR_ALIEN_TERROR",
+            "region": "STR_AUSTRALASIA"
+          },
+          {
+            "mission": "STR_ALIEN_TERROR",
+            "region": "STR_SOUTH_EAST_ASIA"
+          }
+        ],
+        "remainingProposed": 0,
+        "status": "PREDICTED",
+        "error": null,
+        "latencyMs": 34130.92,
+        "newModelInferences": 18,
+        "automaticDecisions": 0,
+        "cacheReuses": 3,
+        "mix": {
+          "HARVEST": 1,
+          "TERROR": 2
+        },
+        "spend": 11,
+        "deferAll": false,
+        "firstPlan": "HARVEST",
+        "minimumAggregateMargin": 0.0005666666666666598
+      }
+    },
+    {
+      "month": "1999-03",
+      "exactAgreement": true,
+      "operationSetAgreement": true,
+      "missionMixAgreement": true,
+      "firstPlanAgreement": true,
+      "A": {
+        "decision": "1999-03-01 00:00:00",
+        "arm": "aggregate_A",
+        "operations": [
+          {
+            "mission": "STR_ALIEN_HARVEST",
+            "region": "STR_SOUTH_EAST_ASIA"
+          },
+          {
+            "mission": "STR_ALIEN_HARVEST",
+            "region": "STR_CENTRAL_ASIA"
+          },
+          {
+            "mission": "STR_ALIEN_HARVEST",
+            "region": "STR_NORTH_AMERICA"
+          }
+        ],
+        "remainingProposed": 9,
+        "status": "PREDICTED",
+        "error": null,
+        "latencyMs": 24994.76,
+        "newModelInferences": 12,
+        "automaticDecisions": 0,
+        "cacheReuses": 6,
+        "mix": {
+          "HARVEST": 3
+        },
+        "spend": 9,
+        "deferAll": false,
+        "firstPlan": "HARVEST",
+        "minimumAggregateMargin": 0.031580000000000025
+      },
+      "B": {
+        "decision": "1999-03-01 00:00:00",
+        "arm": "aggregate_B",
+        "operations": [
+          {
+            "mission": "STR_ALIEN_HARVEST",
+            "region": "STR_SOUTH_EAST_ASIA"
+          },
+          {
+            "mission": "STR_ALIEN_HARVEST",
+            "region": "STR_CENTRAL_ASIA"
+          },
+          {
+            "mission": "STR_ALIEN_HARVEST",
+            "region": "STR_NORTH_AMERICA"
+          }
+        ],
+        "remainingProposed": 9,
+        "status": "PREDICTED",
+        "error": null,
+        "latencyMs": 30181.59,
+        "newModelInferences": 15,
+        "automaticDecisions": 0,
+        "cacheReuses": 3,
+        "mix": {
+          "HARVEST": 3
+        },
+        "spend": 9,
+        "deferAll": false,
+        "firstPlan": "HARVEST",
+        "minimumAggregateMargin": 0.030980000000000008
+      }
+    },
+    {
+      "month": "1999-04",
+      "exactAgreement": false,
+      "operationSetAgreement": false,
+      "missionMixAgreement": false,
+      "firstPlanAgreement": false,
+      "A": {
+        "decision": "1999-04-01 00:00:00",
+        "arm": "aggregate_A",
+        "operations": [
+          {
+            "mission": "STR_ALIEN_HARVEST",
+            "region": "STR_SOUTH_EAST_ASIA"
+          },
+          {
+            "mission": "STR_ALIEN_ABDUCTION",
+            "region": "STR_NORTH_AFRICA"
+          },
+          {
+            "mission": "STR_ALIEN_HARVEST",
+            "region": "STR_AUSTRALASIA"
+          },
+          {
+            "mission": "STR_ALIEN_ABDUCTION",
+            "region": "STR_EUROPE"
+          }
+        ],
+        "remainingProposed": 12,
+        "status": "PREDICTED",
+        "error": null,
+        "latencyMs": 44871.8,
+        "newModelInferences": 20,
+        "automaticDecisions": 0,
+        "cacheReuses": 8,
+        "mix": {
+          "HARVEST": 2,
+          "ABDUCTION": 2
+        },
+        "spend": 12,
+        "deferAll": false,
+        "firstPlan": "HARVEST",
+        "minimumAggregateMargin": 0.004249999999999976
+      },
+      "B": {
+        "decision": "1999-04-01 00:00:00",
+        "arm": "aggregate_B",
+        "operations": [
+          {
+            "mission": "STR_ALIEN_ABDUCTION",
+            "region": "STR_NORTH_AFRICA"
+          },
+          {
+            "mission": "STR_ALIEN_ABDUCTION",
+            "region": "STR_EUROPE"
+          },
+          {
+            "mission": "STR_ALIEN_HARVEST",
+            "region": "STR_SOUTH_EAST_ASIA"
+          },
+          {
+            "mission": "STR_ALIEN_ABDUCTION",
+            "region": "STR_NORTH_AMERICA"
+          }
+        ],
+        "remainingProposed": 12,
+        "status": "PREDICTED",
+        "error": null,
+        "latencyMs": 54778.3,
+        "newModelInferences": 25,
+        "automaticDecisions": 0,
+        "cacheReuses": 3,
+        "mix": {
+          "ABDUCTION": 3,
+          "HARVEST": 1
+        },
+        "spend": 12,
+        "deferAll": false,
+        "firstPlan": "ABDUCTION",
+        "minimumAggregateMargin": 0.0011500000000000121
+      }
+    },
+    {
+      "month": "1999-05",
+      "exactAgreement": false,
+      "operationSetAgreement": false,
+      "missionMixAgreement": false,
+      "firstPlanAgreement": true,
+      "A": {
+        "decision": "1999-05-01 00:00:00",
+        "arm": "aggregate_A",
+        "operations": [
+          {
+            "mission": "STR_ALIEN_HARVEST",
+            "region": "STR_AUSTRALASIA"
+          },
+          {
+            "mission": "STR_ALIEN_HARVEST",
+            "region": "STR_NORTH_AMERICA"
+          },
+          {
+            "mission": "STR_ALIEN_HARVEST",
+            "region": "STR_EUROPE"
+          },
+          {
+            "mission": "STR_ALIEN_HARVEST",
+            "region": "STR_NORTH_AFRICA"
+          }
+        ],
+        "remainingProposed": 13,
+        "status": "PREDICTED",
+        "error": null,
+        "latencyMs": 60943.23,
+        "newModelInferences": 24,
+        "automaticDecisions": 0,
+        "cacheReuses": 8,
+        "mix": {
+          "HARVEST": 4
+        },
+        "spend": 12,
+        "deferAll": false,
+        "firstPlan": "HARVEST",
+        "minimumAggregateMargin": 0.04278571428571429
+      },
+      "B": {
+        "decision": "1999-05-01 00:00:00",
+        "arm": "aggregate_B",
+        "operations": [
+          {
+            "mission": "STR_ALIEN_HARVEST",
+            "region": "STR_AUSTRALASIA"
+          },
+          {
+            "mission": "STR_ALIEN_ABDUCTION",
+            "region": "STR_AUSTRALASIA"
+          },
+          {
+            "mission": "STR_ALIEN_HARVEST",
+            "region": "STR_NORTH_AMERICA"
+          },
+          {
+            "mission": "STR_ALIEN_HARVEST",
+            "region": "STR_EUROPE"
+          }
+        ],
+        "remainingProposed": 13,
+        "status": "PREDICTED",
+        "error": null,
+        "latencyMs": 72067.15,
+        "newModelInferences": 28,
+        "automaticDecisions": 0,
+        "cacheReuses": 4,
+        "mix": {
+          "HARVEST": 3,
+          "ABDUCTION": 1
+        },
+        "spend": 12,
+        "deferAll": false,
+        "firstPlan": "HARVEST",
+        "minimumAggregateMargin": 0.0024142857142857577
+      }
+    },
+    {
+      "month": "1999-06",
+      "exactAgreement": false,
+      "operationSetAgreement": false,
+      "missionMixAgreement": false,
+      "firstPlanAgreement": true,
+      "A": {
+        "decision": "1999-06-01 00:00:00",
+        "arm": "aggregate_A",
+        "operations": [
+          {
+            "mission": "STR_ALIEN_HARVEST",
+            "region": "STR_AUSTRALASIA"
+          },
+          {
+            "mission": "STR_ALIEN_HARVEST",
+            "region": "STR_SOUTHERN_AFRICA"
+          },
+          {
+            "mission": "STR_ALIEN_HARVEST",
+            "region": "STR_CENTRAL_ASIA"
+          },
+          {
+            "mission": "STR_ALIEN_HARVEST",
+            "region": "STR_SOUTH_AMERICA"
+          }
+        ],
+        "remainingProposed": 18,
+        "status": "PREDICTED",
+        "error": null,
+        "latencyMs": 59133.75,
+        "newModelInferences": 24,
+        "automaticDecisions": 0,
+        "cacheReuses": 8,
+        "mix": {
+          "HARVEST": 4
+        },
+        "spend": 12,
+        "deferAll": false,
+        "firstPlan": "HARVEST",
+        "minimumAggregateMargin": 0.026814285714285763
+      },
+      "B": {
+        "decision": "1999-06-01 00:00:00",
+        "arm": "aggregate_B",
+        "operations": [
+          {
+            "mission": "STR_ALIEN_HARVEST",
+            "region": "STR_AUSTRALASIA"
+          },
+          {
+            "mission": "STR_ALIEN_ABDUCTION",
+            "region": "STR_SOUTH_EAST_ASIA"
+          },
+          {
+            "mission": "STR_ALIEN_HARVEST",
+            "region": "STR_SOUTHERN_AFRICA"
+          },
+          {
+            "mission": "STR_ALIEN_HARVEST",
+            "region": "STR_CENTRAL_ASIA"
+          }
+        ],
+        "remainingProposed": 18,
+        "status": "PREDICTED",
+        "error": null,
+        "latencyMs": 63056.11,
+        "newModelInferences": 28,
+        "automaticDecisions": 0,
+        "cacheReuses": 4,
+        "mix": {
+          "HARVEST": 3,
+          "ABDUCTION": 1
+        },
+        "spend": 12,
+        "deferAll": false,
+        "firstPlan": "HARVEST",
+        "minimumAggregateMargin": 0.005957142857142883
+      }
+    }
+  ],
+  "validation": {
+    "legalPortfolios": 25,
+    "sourceAndScriptsUnchanged": true,
+    "maxTokens": 469,
+    "newModelInferences": 211,
+    "automaticDecisions": 2,
+    "cacheReuses": 128,
+    "aggregatePlanDecisions": 36,
+    "unanimousComponentWinners": 4
+  },
+  "interpretation": "Fixed-state score aggregation; not game outcome, calibrated confidence or universal order invariance."
+}

@@ -1,0 +1,17 @@
+# Frozen compact command probe
+
+Register before checkpoint inference. Eight new synthetic cases, A/B balanced cyclic ordering families, unchanged supplied checkpoint, CPU only. No reward buffs, no full portfolios, no live behavior change. All raw inputs and packets frozen before model loading. Hash source save and scripts before and after inference.
+
+Stable named state fields: goal, cash/carry, intelligence/logistics/adaptation, progression gates/month, existing commitments, uncertain assigned-loss locations, explicit outcome category, and common uncertainty/payout limits. Fixed investment labels include costs, conditional gains and timing. Native candidate menus are the basis; filter infiltration below its known adaptation prerequisite. The synthetic gate filter is Python contract scaffolding, not a fresh native export. Native enforcement remains unchanged.
+
+Outcome categories are UNKNOWN, SCOUT_LOST, DISRUPTED (verified objective prevented), COMPLETED (verified objective delivered). Non-unknown categories require a receipt in the experiment source record. Reviewed operation is stated in the packet. No original save supplies verified whole-objective outcomes, so these are synthetic explicit receipts only. Default adapter always returns UNKNOWN; no automatic inference from disappearance, activity or craft loss. This is a proposed model contract, not an implemented native telemetry pathway.
+
+Held-out means newly authored regions/scenarios not used for the previous local fixture comparisons. The researcher knows earlier model results; these are not a blinded benchmark, independent campaign sample or evidence of generalization outside this task. No wording revisions after seeing inference results. Preserve all errors.
+
+- Location pair: five uncertain losses in Europe versus North Africa, HARVEST targeting only. Same target options and other facts. Examine downweighting of each changed region and choice changes; do not require one gold target.
+- Capability pair: adaptation one versus two at intelligence one/logistics two; infiltration absent/present accordingly. Examine legal choice and score response. No mandatory infiltration gold answer; extra option and softmax normalization are confounds.
+- Outcome quartet: same synthetic previous terror operation, no unresolved commitments, identical cash/progress/loss totals; change only explicit reviewed outcome. This is an information intervention, not a physically simulated causal aftermath. Completed terror adds no custom cash. Unknown/scout-lost must not be equated with verified defeat. Examine score response, not force a particular mission.
+
+Frozen rule reference gets exactly the same rendered state and legal choices. It favors filling capability gaps, avoids duplicating commitments, then favors base/infiltration/pressure; disruption favors rebuilding. Target selection minimizes assigned losses with alphabetical ties. These are transparent design assumptions, not expert labels or proof of superiority. Report separate responsiveness and presentation consistency, not agreement-as-accuracy or a scalar intelligence score. A fixed rule may be insensitive on a pair; retain that result.
+
+Stopping rule: if facts survive representation and fit the token budget but choices remain strongly presentation-dependent or weakly conditional, do not add more advisors. Treat domain training or an alternate decision model as the next experimental branch. Campaign quality still requires executed trials.

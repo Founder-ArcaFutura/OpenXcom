@@ -1,0 +1,9 @@
+# Publisher-base versus career checkpoint: frozen paired replay
+
+Download only the publisher's English `convaiinnovations/laya` root weights/config, pin the repository revision and verify the weights against the publisher's LFS SHA256. Keep the career checkpoint, its staging folder and live runtime unchanged. Same installed Laya 0.1.6 runtime, CPU, four threads, pinned ModernBERT tokenizer/architecture metadata, exact budget checks and strict weights loading. Do not upgrade the runtime or route to other models. Confirm matching architecture, token limits and temperature configuration before running.
+
+Replay every ordered component packet from both completed experiments: compact-command-v1 (122) and adaptive-responses-v2 (116). Sixteen diagnostic cases, two balanced ordering families each: 32 aggregates, 238 new component evaluations. Career scores are existing receipts, not new model calls. Freeze source receipt hashes before inference; do not regenerate wording/cases or select permutations. Require exact packet SHA and token-count equality for every paired inference. Preflight all packets before prediction. Preserve all failures.
+
+Report choices, full scores, family disagreement and matched intervention responses. Specifically inspect whether the base harvest target follows or avoids the assigned-loss region, how capability gates change investment and whether outcome distinctions produce coherent changes. Do not score agreement with the rule reference as accuracy. Scores are not calibrated XCOM success probabilities. Synthetic verified outcomes do not constitute implemented native telemetry or executed campaign trials.
+
+This can test whether the observed patterns also occur in a publisher base checkpoint. It cannot isolate the effect of career training without establishing the exact ancestral checkpoint and training history. No training, reward modifications, live rollout, paid inference, new API credentials or original-save edits.

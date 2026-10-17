@@ -1,0 +1,474 @@
+{
+  "version": "whole-portfolio-comparison-v2",
+  "rows": [
+    {
+      "decision": "1999-02-01 00:00:00",
+      "completedMonth": "1999-01",
+      "before": [
+        {
+          "mission": "STR_ALIEN_HARVEST",
+          "region": "STR_SOUTH_EAST_ASIA"
+        },
+        {
+          "mission": "STR_ALIEN_HARVEST",
+          "region": "STR_AUSTRALASIA"
+        },
+        {
+          "mission": "STR_ALIEN_HARVEST",
+          "region": "STR_EUROPE"
+        }
+      ],
+      "beforeRetained": 2,
+      "after": [
+        {
+          "source": "pressure",
+          "operations": [
+            {
+              "mission": "STR_ALIEN_TERROR",
+              "region": "STR_AUSTRALASIA"
+            },
+            {
+              "mission": "STR_ALIEN_HARVEST",
+              "region": "STR_AUSTRALASIA"
+            },
+            {
+              "mission": "STR_ALIEN_RESEARCH",
+              "region": "STR_ANTARCTICA"
+            }
+          ],
+          "remaining": 2,
+          "selectedId": "C1",
+          "displayOrder": [
+            "C0",
+            "C1",
+            "C2",
+            "C3",
+            "C4"
+          ],
+          "latencyMs": 1641.42
+        },
+        {
+          "source": "current_sequential_output",
+          "operations": [
+            {
+              "mission": "STR_ALIEN_HARVEST",
+              "region": "STR_SOUTH_EAST_ASIA"
+            },
+            {
+              "mission": "STR_ALIEN_HARVEST",
+              "region": "STR_AUSTRALASIA"
+            },
+            {
+              "mission": "STR_ALIEN_HARVEST",
+              "region": "STR_EUROPE"
+            }
+          ],
+          "remaining": 2,
+          "selectedId": "C3",
+          "displayOrder": [
+            "C4",
+            "C3",
+            "C2",
+            "C1",
+            "C0"
+          ],
+          "latencyMs": 1492.73
+        },
+        {
+          "source": "pressure",
+          "operations": [
+            {
+              "mission": "STR_ALIEN_TERROR",
+              "region": "STR_AUSTRALASIA"
+            },
+            {
+              "mission": "STR_ALIEN_HARVEST",
+              "region": "STR_AUSTRALASIA"
+            },
+            {
+              "mission": "STR_ALIEN_RESEARCH",
+              "region": "STR_ANTARCTICA"
+            }
+          ],
+          "remaining": 2,
+          "selectedId": "C1",
+          "displayOrder": [
+            "C1",
+            "C2",
+            "C3",
+            "C4",
+            "C0"
+          ],
+          "latencyMs": 1374.79
+        }
+      ],
+      "stableAcrossOrders": false,
+      "maxAfterTokens": 267,
+      "sourceUnchanged": true,
+      "baselineMs": 8444.41
+    },
+    {
+      "decision": "1999-03-01 00:00:00",
+      "completedMonth": "1999-02",
+      "before": [
+        {
+          "mission": "STR_ALIEN_ABDUCTION",
+          "region": "STR_AUSTRALASIA"
+        },
+        {
+          "mission": "STR_ALIEN_ABDUCTION",
+          "region": "STR_CENTRAL_ASIA"
+        },
+        {
+          "mission": "STR_ALIEN_ABDUCTION",
+          "region": "STR_SOUTH_EAST_ASIA"
+        }
+      ],
+      "beforeRetained": 9,
+      "after": [
+        {
+          "source": "current_sequential_output",
+          "operations": [
+            {
+              "mission": "STR_ALIEN_ABDUCTION",
+              "region": "STR_AUSTRALASIA"
+            },
+            {
+              "mission": "STR_ALIEN_ABDUCTION",
+              "region": "STR_CENTRAL_ASIA"
+            },
+            {
+              "mission": "STR_ALIEN_ABDUCTION",
+              "region": "STR_SOUTH_EAST_ASIA"
+            }
+          ],
+          "remaining": 9,
+          "selectedId": "C3",
+          "displayOrder": [
+            "C0",
+            "C1",
+            "C2",
+            "C3",
+            "C4"
+          ],
+          "latencyMs": 1555.27
+        },
+        {
+          "source": "current_sequential_output",
+          "operations": [
+            {
+              "mission": "STR_ALIEN_ABDUCTION",
+              "region": "STR_AUSTRALASIA"
+            },
+            {
+              "mission": "STR_ALIEN_ABDUCTION",
+              "region": "STR_CENTRAL_ASIA"
+            },
+            {
+              "mission": "STR_ALIEN_ABDUCTION",
+              "region": "STR_SOUTH_EAST_ASIA"
+            }
+          ],
+          "remaining": 9,
+          "selectedId": "C3",
+          "displayOrder": [
+            "C4",
+            "C3",
+            "C2",
+            "C1",
+            "C0"
+          ],
+          "latencyMs": 1538.85
+        },
+        {
+          "source": "current_sequential_output",
+          "operations": [
+            {
+              "mission": "STR_ALIEN_ABDUCTION",
+              "region": "STR_AUSTRALASIA"
+            },
+            {
+              "mission": "STR_ALIEN_ABDUCTION",
+              "region": "STR_CENTRAL_ASIA"
+            },
+            {
+              "mission": "STR_ALIEN_ABDUCTION",
+              "region": "STR_SOUTH_EAST_ASIA"
+            }
+          ],
+          "remaining": 9,
+          "selectedId": "C3",
+          "displayOrder": [
+            "C1",
+            "C2",
+            "C3",
+            "C4",
+            "C0"
+          ],
+          "latencyMs": 1604.9
+        }
+      ],
+      "stableAcrossOrders": true,
+      "maxAfterTokens": 308,
+      "sourceUnchanged": true,
+      "baselineMs": 8227.8
+    },
+    {
+      "decision": "1999-04-01 00:00:00",
+      "completedMonth": "1999-03",
+      "before": [
+        {
+          "mission": "STR_ALIEN_HARVEST",
+          "region": "STR_SOUTH_EAST_ASIA"
+        },
+        {
+          "mission": "STR_ALIEN_RETALIATION",
+          "region": "STR_EUROPE"
+        },
+        {
+          "mission": "STR_ALIEN_RETALIATION",
+          "region": "STR_NORTH_AFRICA"
+        },
+        {
+          "mission": "STR_ALIEN_RESEARCH",
+          "region": "STR_ARCTIC"
+        }
+      ],
+      "beforeRetained": 15,
+      "after": [
+        {
+          "source": "capacity",
+          "operations": [
+            {
+              "mission": "STR_ALIEN_HARVEST",
+              "region": "STR_AUSTRALASIA"
+            },
+            {
+              "mission": "STR_ALIEN_ABDUCTION",
+              "region": "STR_NORTH_AMERICA"
+            },
+            {
+              "mission": "STR_ALIEN_RESEARCH",
+              "region": "STR_ANTARCTICA"
+            },
+            {
+              "mission": "STR_ALIEN_HARVEST",
+              "region": "STR_NORTH_AMERICA"
+            }
+          ],
+          "remaining": 13,
+          "selectedId": "C0",
+          "displayOrder": [
+            "C0",
+            "C1",
+            "C2",
+            "C3",
+            "C4"
+          ],
+          "latencyMs": 1884.78
+        },
+        {
+          "source": "pressure",
+          "operations": [
+            {
+              "mission": "STR_ALIEN_TERROR",
+              "region": "STR_AUSTRALASIA"
+            },
+            {
+              "mission": "STR_ALIEN_HARVEST",
+              "region": "STR_AUSTRALASIA"
+            },
+            {
+              "mission": "STR_ALIEN_RESEARCH",
+              "region": "STR_ANTARCTICA"
+            },
+            {
+              "mission": "STR_ALIEN_ABDUCTION",
+              "region": "STR_NORTH_AMERICA"
+            }
+          ],
+          "remaining": 12,
+          "selectedId": "C1",
+          "displayOrder": [
+            "C4",
+            "C3",
+            "C2",
+            "C1",
+            "C0"
+          ],
+          "latencyMs": 1884.48
+        },
+        {
+          "source": "capacity",
+          "operations": [
+            {
+              "mission": "STR_ALIEN_HARVEST",
+              "region": "STR_AUSTRALASIA"
+            },
+            {
+              "mission": "STR_ALIEN_ABDUCTION",
+              "region": "STR_NORTH_AMERICA"
+            },
+            {
+              "mission": "STR_ALIEN_RESEARCH",
+              "region": "STR_ANTARCTICA"
+            },
+            {
+              "mission": "STR_ALIEN_HARVEST",
+              "region": "STR_NORTH_AMERICA"
+            }
+          ],
+          "remaining": 13,
+          "selectedId": "C0",
+          "displayOrder": [
+            "C1",
+            "C2",
+            "C3",
+            "C4",
+            "C0"
+          ],
+          "latencyMs": 1883.48
+        }
+      ],
+      "stableAcrossOrders": false,
+      "maxAfterTokens": 338,
+      "sourceUnchanged": true,
+      "baselineMs": 11952.4
+    },
+    {
+      "decision": "1999-05-01 00:00:00",
+      "completedMonth": "1999-04",
+      "before": [
+        {
+          "mission": "STR_ALIEN_ABDUCTION",
+          "region": "STR_AUSTRALASIA"
+        },
+        {
+          "mission": "STR_ALIEN_RESEARCH",
+          "region": "STR_SOUTH_EAST_ASIA"
+        },
+        {
+          "mission": "STR_ALIEN_RESEARCH",
+          "region": "STR_ARCTIC"
+        },
+        {
+          "mission": "STR_ALIEN_RESEARCH",
+          "region": "STR_ANTARCTICA"
+        }
+      ],
+      "beforeRetained": 16,
+      "after": [
+        {
+          "source": "control",
+          "operations": [
+            {
+              "mission": "STR_ALIEN_INFILTRATION",
+              "region": "STR_ANTARCTICA"
+            },
+            {
+              "mission": "STR_ALIEN_HARVEST",
+              "region": "STR_AUSTRALASIA"
+            },
+            {
+              "mission": "STR_ALIEN_ABDUCTION",
+              "region": "STR_AUSTRALASIA"
+            },
+            {
+              "mission": "STR_ALIEN_RESEARCH",
+              "region": "STR_ARCTIC"
+            }
+          ],
+          "remaining": 11,
+          "selectedId": "C1",
+          "displayOrder": [
+            "C0",
+            "C1",
+            "C2",
+            "C3",
+            "C4",
+            "C5"
+          ],
+          "latencyMs": 2464.4
+        },
+        {
+          "source": "current_sequential_output",
+          "operations": [
+            {
+              "mission": "STR_ALIEN_ABDUCTION",
+              "region": "STR_AUSTRALASIA"
+            },
+            {
+              "mission": "STR_ALIEN_RESEARCH",
+              "region": "STR_SOUTH_EAST_ASIA"
+            },
+            {
+              "mission": "STR_ALIEN_RESEARCH",
+              "region": "STR_ARCTIC"
+            },
+            {
+              "mission": "STR_ALIEN_RESEARCH",
+              "region": "STR_ANTARCTICA"
+            }
+          ],
+          "remaining": 16,
+          "selectedId": "C4",
+          "displayOrder": [
+            "C5",
+            "C4",
+            "C3",
+            "C2",
+            "C1",
+            "C0"
+          ],
+          "latencyMs": 2283.52
+        },
+        {
+          "source": "current_sequential_output",
+          "operations": [
+            {
+              "mission": "STR_ALIEN_ABDUCTION",
+              "region": "STR_AUSTRALASIA"
+            },
+            {
+              "mission": "STR_ALIEN_RESEARCH",
+              "region": "STR_SOUTH_EAST_ASIA"
+            },
+            {
+              "mission": "STR_ALIEN_RESEARCH",
+              "region": "STR_ARCTIC"
+            },
+            {
+              "mission": "STR_ALIEN_RESEARCH",
+              "region": "STR_ANTARCTICA"
+            }
+          ],
+          "remaining": 16,
+          "selectedId": "C4",
+          "displayOrder": [
+            "C1",
+            "C2",
+            "C3",
+            "C4",
+            "C5",
+            "C0"
+          ],
+          "latencyMs": 2306.06
+        }
+      ],
+      "stableAcrossOrders": false,
+      "maxAfterTokens": 371,
+      "sourceUnchanged": true,
+      "baselineMs": 15800.57
+    }
+  ],
+  "stableMonths": 1,
+  "menuValidWholeSelections": 12,
+  "sourceFiles": {
+    "scripts/test-whole-portfolios.py": "3ae33e9da9d7287d08f7b4675714ab7f9b2142cf7e3a6cdae765fe6c297da7e0",
+    "scripts/campaign_plans.py": "a832b30178ce732672043cda468e1012a52a937f2cf82efcbe403ed7b391875b",
+    "scripts/alien-command-model.py": "659513e7ca9545e9d9c51f66d7e3ed8746e1bcc636df4afdc0f9d80805dd21bf"
+  },
+  "livePolicyChanged": false,
+  "missionsExecuted": false,
+  "newAPICalls": 0
+}

@@ -1,0 +1,485 @@
+{
+  "rows": [
+    {
+      "decision": "1999-02",
+      "runs": {
+        "baseline": {
+          "operations": [
+            {
+              "mission": "STR_ALIEN_HARVEST",
+              "region": "STR_SOUTH_EAST_ASIA"
+            },
+            {
+              "mission": "STR_ALIEN_HARVEST",
+              "region": "STR_AUSTRALASIA"
+            },
+            {
+              "mission": "STR_ALIEN_HARVEST",
+              "region": "STR_EUROPE"
+            }
+          ],
+          "remaining": 2,
+          "latencyMs": 8242.15,
+          "maxTokens": 278
+        },
+        "named": {
+          "operations": [
+            {
+              "mission": "STR_ALIEN_RESEARCH",
+              "region": "STR_SOUTH_EAST_ASIA"
+            },
+            {
+              "mission": "STR_ALIEN_RESEARCH",
+              "region": "STR_ARCTIC"
+            },
+            {
+              "mission": "STR_ALIEN_RESEARCH",
+              "region": "STR_ANTARCTICA"
+            }
+          ],
+          "remaining": 5,
+          "latencyMs": 8212.5,
+          "maxTokens": 335
+        },
+        "named_paths": {
+          "operations": [
+            {
+              "mission": "STR_ALIEN_ABDUCTION",
+              "region": "STR_AUSTRALASIA"
+            },
+            {
+              "mission": "STR_ALIEN_RESEARCH",
+              "region": "STR_SOUTH_EAST_ASIA"
+            },
+            {
+              "mission": "STR_ALIEN_RESEARCH",
+              "region": "STR_ARCTIC"
+            }
+          ],
+          "remaining": 4,
+          "latencyMs": 8881.06,
+          "maxTokens": 365
+        },
+        "baseline-reversed": {
+          "operations": [
+            {
+              "mission": "STR_ALIEN_HARVEST",
+              "region": "STR_SOUTH_EAST_ASIA"
+            },
+            {
+              "mission": "STR_ALIEN_RESEARCH",
+              "region": "STR_SOUTH_EAST_ASIA"
+            },
+            {
+              "mission": "STR_ALIEN_RESEARCH",
+              "region": "STR_ARCTIC"
+            }
+          ],
+          "remaining": 4,
+          "latencyMs": 7495.55,
+          "maxTokens": 335
+        },
+        "named-reversed": {
+          "operations": [
+            {
+              "mission": "STR_ALIEN_RESEARCH",
+              "region": "STR_SOUTH_EAST_ASIA"
+            },
+            {
+              "mission": "STR_ALIEN_RESEARCH",
+              "region": "STR_ARCTIC"
+            },
+            {
+              "mission": "STR_ALIEN_RESEARCH",
+              "region": "STR_ANTARCTICA"
+            }
+          ],
+          "remaining": 5,
+          "latencyMs": 7891.89,
+          "maxTokens": 335
+        },
+        "named_paths-reversed": {
+          "operations": [
+            {
+              "mission": "STR_ALIEN_RETALIATION",
+              "region": "STR_EUROPE"
+            },
+            {
+              "mission": "STR_ALIEN_RETALIATION",
+              "region": "STR_NORTH_AFRICA"
+            },
+            {
+              "mission": "STR_ALIEN_RESEARCH",
+              "region": "STR_SOUTH_EAST_ASIA"
+            }
+          ],
+          "remaining": 5,
+          "latencyMs": 9861.33,
+          "maxTokens": 345
+        }
+      },
+      "orderStable": {
+        "baseline": false,
+        "named": true,
+        "named_paths": false
+      },
+      "sourceUnchanged": true
+    },
+    {
+      "decision": "1999-03",
+      "runs": {
+        "baseline": {
+          "operations": [
+            {
+              "mission": "STR_ALIEN_ABDUCTION",
+              "region": "STR_AUSTRALASIA"
+            },
+            {
+              "mission": "STR_ALIEN_ABDUCTION",
+              "region": "STR_CENTRAL_ASIA"
+            },
+            {
+              "mission": "STR_ALIEN_ABDUCTION",
+              "region": "STR_SOUTH_EAST_ASIA"
+            }
+          ],
+          "remaining": 9,
+          "latencyMs": 8504.61,
+          "maxTokens": 303
+        },
+        "named": {
+          "operations": [
+            {
+              "mission": "STR_ALIEN_ABDUCTION",
+              "region": "STR_AUSTRALASIA"
+            },
+            {
+              "mission": "STR_ALIEN_ABDUCTION",
+              "region": "STR_CENTRAL_ASIA"
+            },
+            {
+              "mission": "STR_ALIEN_ABDUCTION",
+              "region": "STR_SOUTH_EAST_ASIA"
+            }
+          ],
+          "remaining": 9,
+          "latencyMs": 8177.23,
+          "maxTokens": 311
+        },
+        "named_paths": {
+          "operations": [
+            {
+              "mission": "STR_ALIEN_ABDUCTION",
+              "region": "STR_AUSTRALASIA"
+            },
+            {
+              "mission": "STR_ALIEN_ABDUCTION",
+              "region": "STR_CENTRAL_ASIA"
+            },
+            {
+              "mission": "STR_ALIEN_HARVEST",
+              "region": "STR_SOUTH_EAST_ASIA"
+            }
+          ],
+          "remaining": 9,
+          "latencyMs": 8681.38,
+          "maxTokens": 381
+        },
+        "baseline-reversed": {
+          "operations": [],
+          "remaining": 18,
+          "latencyMs": 1229.09,
+          "maxTokens": 275
+        },
+        "named-reversed": {
+          "operations": [],
+          "remaining": 18,
+          "latencyMs": 1340.99,
+          "maxTokens": 283
+        },
+        "named_paths-reversed": {
+          "operations": [
+            {
+              "mission": "STR_ALIEN_HARVEST",
+              "region": "STR_SOUTH_EAST_ASIA"
+            },
+            {
+              "mission": "STR_ALIEN_ABDUCTION",
+              "region": "STR_AUSTRALASIA"
+            },
+            {
+              "mission": "STR_ALIEN_HARVEST",
+              "region": "STR_CENTRAL_ASIA"
+            }
+          ],
+          "remaining": 9,
+          "latencyMs": 8922.09,
+          "maxTokens": 383
+        }
+      },
+      "orderStable": {
+        "baseline": false,
+        "named": false,
+        "named_paths": false
+      },
+      "sourceUnchanged": true
+    },
+    {
+      "decision": "1999-04",
+      "runs": {
+        "baseline": {
+          "operations": [
+            {
+              "mission": "STR_ALIEN_HARVEST",
+              "region": "STR_SOUTH_EAST_ASIA"
+            },
+            {
+              "mission": "STR_ALIEN_RETALIATION",
+              "region": "STR_EUROPE"
+            },
+            {
+              "mission": "STR_ALIEN_RETALIATION",
+              "region": "STR_NORTH_AFRICA"
+            },
+            {
+              "mission": "STR_ALIEN_RESEARCH",
+              "region": "STR_ARCTIC"
+            }
+          ],
+          "remaining": 15,
+          "latencyMs": 9655.5,
+          "maxTokens": 347
+        },
+        "named": {
+          "operations": [
+            {
+              "mission": "STR_ALIEN_ABDUCTION",
+              "region": "STR_NORTH_AFRICA"
+            },
+            {
+              "mission": "STR_ALIEN_RESEARCH",
+              "region": "STR_ARCTIC"
+            },
+            {
+              "mission": "STR_ALIEN_RESEARCH",
+              "region": "STR_SOUTH_EAST_ASIA"
+            },
+            {
+              "mission": "STR_ALIEN_RESEARCH",
+              "region": "STR_ANTARCTICA"
+            }
+          ],
+          "remaining": 15,
+          "latencyMs": 11673.21,
+          "maxTokens": 359
+        },
+        "named_paths": {
+          "operations": [
+            {
+              "mission": "STR_ALIEN_ABDUCTION",
+              "region": "STR_NORTH_AFRICA"
+            },
+            {
+              "mission": "STR_ALIEN_RESEARCH",
+              "region": "STR_ARCTIC"
+            },
+            {
+              "mission": "STR_ALIEN_RESEARCH",
+              "region": "STR_SOUTH_EAST_ASIA"
+            },
+            {
+              "mission": "STR_ALIEN_RESEARCH",
+              "region": "STR_ANTARCTICA"
+            }
+          ],
+          "remaining": 15,
+          "latencyMs": 13077.85,
+          "maxTokens": 420
+        },
+        "baseline-reversed": {
+          "operations": [],
+          "remaining": 24,
+          "latencyMs": 1360.22,
+          "maxTokens": 303
+        },
+        "named-reversed": {
+          "operations": [],
+          "remaining": 24,
+          "latencyMs": 1370.2,
+          "maxTokens": 311
+        },
+        "named_paths-reversed": {
+          "operations": [
+            {
+              "mission": "STR_ALIEN_RETALIATION",
+              "region": "STR_EUROPE"
+            },
+            {
+              "mission": "STR_ALIEN_RETALIATION",
+              "region": "STR_NORTH_AFRICA"
+            },
+            {
+              "mission": "STR_ALIEN_RESEARCH",
+              "region": "STR_ARCTIC"
+            },
+            {
+              "mission": "STR_ALIEN_RESEARCH",
+              "region": "STR_SOUTH_EAST_ASIA"
+            }
+          ],
+          "remaining": 16,
+          "latencyMs": 12488.19,
+          "maxTokens": 399
+        }
+      },
+      "orderStable": {
+        "baseline": false,
+        "named": false,
+        "named_paths": false
+      },
+      "sourceUnchanged": true
+    },
+    {
+      "decision": "1999-05",
+      "runs": {
+        "baseline": {
+          "operations": [
+            {
+              "mission": "STR_ALIEN_ABDUCTION",
+              "region": "STR_AUSTRALASIA"
+            },
+            {
+              "mission": "STR_ALIEN_RESEARCH",
+              "region": "STR_SOUTH_EAST_ASIA"
+            },
+            {
+              "mission": "STR_ALIEN_RESEARCH",
+              "region": "STR_ARCTIC"
+            },
+            {
+              "mission": "STR_ALIEN_RESEARCH",
+              "region": "STR_ANTARCTICA"
+            }
+          ],
+          "remaining": 16,
+          "latencyMs": 12661.84,
+          "maxTokens": 378
+        },
+        "named": {
+          "operations": [
+            {
+              "mission": "STR_ALIEN_RESEARCH",
+              "region": "STR_SOUTH_EAST_ASIA"
+            },
+            {
+              "mission": "STR_ALIEN_RESEARCH",
+              "region": "STR_ARCTIC"
+            },
+            {
+              "mission": "STR_ALIEN_RESEARCH",
+              "region": "STR_ANTARCTICA"
+            },
+            {
+              "mission": "STR_ALIEN_RESEARCH",
+              "region": "STR_PACIFIC"
+            }
+          ],
+          "remaining": 17,
+          "latencyMs": 12630.86,
+          "maxTokens": 388
+        },
+        "named_paths": {
+          "operations": [
+            {
+              "mission": "STR_ALIEN_RESEARCH",
+              "region": "STR_SOUTH_EAST_ASIA"
+            },
+            {
+              "mission": "STR_ALIEN_ABDUCTION",
+              "region": "STR_AUSTRALASIA"
+            },
+            {
+              "mission": "STR_ALIEN_RESEARCH",
+              "region": "STR_ARCTIC"
+            },
+            {
+              "mission": "STR_ALIEN_RESEARCH",
+              "region": "STR_ANTARCTICA"
+            }
+          ],
+          "remaining": 16,
+          "latencyMs": 13624.35,
+          "maxTokens": 441
+        },
+        "baseline-reversed": {
+          "operations": [
+            {
+              "mission": "STR_ALIEN_ABDUCTION",
+              "region": "STR_AUSTRALASIA"
+            }
+          ],
+          "remaining": 22,
+          "latencyMs": 5391.34,
+          "maxTokens": 344
+        },
+        "named-reversed": {
+          "operations": [
+            {
+              "mission": "STR_ALIEN_RESEARCH",
+              "region": "STR_SOUTH_EAST_ASIA"
+            },
+            {
+              "mission": "STR_ALIEN_RESEARCH",
+              "region": "STR_ARCTIC"
+            },
+            {
+              "mission": "STR_ALIEN_RESEARCH",
+              "region": "STR_ANTARCTICA"
+            },
+            {
+              "mission": "STR_ALIEN_RESEARCH",
+              "region": "STR_PACIFIC"
+            }
+          ],
+          "remaining": 17,
+          "latencyMs": 15171.49,
+          "maxTokens": 388
+        },
+        "named_paths-reversed": {
+          "operations": [
+            {
+              "mission": "STR_ALIEN_RETALIATION",
+              "region": "STR_SOUTH_EAST_ASIA"
+            },
+            {
+              "mission": "STR_ALIEN_RESEARCH",
+              "region": "STR_SOUTH_EAST_ASIA"
+            },
+            {
+              "mission": "STR_ALIEN_RESEARCH",
+              "region": "STR_ARCTIC"
+            },
+            {
+              "mission": "STR_ALIEN_RESEARCH",
+              "region": "STR_ANTARCTICA"
+            }
+          ],
+          "remaining": 17,
+          "latencyMs": 14668.28,
+          "maxTokens": 433
+        }
+      },
+      "orderStable": {
+        "baseline": false,
+        "named": true,
+        "named_paths": false
+      },
+      "sourceUnchanged": true
+    }
+  ],
+  "verifiedPortfolios": 24,
+  "firstPacketTreatmentDifferencesVerified": true,
+  "livePolicyChanged": false,
+  "newAPICalls": 0,
+  "missionsExecuted": false
+}

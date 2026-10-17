@@ -1,0 +1,9 @@
+# Preregistered first-decision convergence probe
+
+Two previously identified ambiguous first PLAN decisions: February and April. Existing native reward descriptions, fixed state, costs, legal options, evidence, model and instructions. Six pairwise-disjoint cyclic order families A-F, every action once per position per family. A/B reproduce prior orders. C-F are deterministic seeded cyclic orbits selected without observing their scores. No family selection based on behavior. Exact ordered-packet caches retain provenance and require checkpoint/live-code matching.
+
+Report each family and disjoint two-family pools AB, CD, EF. Compare growing pools AB, ABCD, ABCDEF and the separate four-family pool CDEF. Scores and margins are uncalibrated; pooled order samples are deterministic, correlated views of the same decision, not independent trials. Do not use a p-value or choose a family because it gives the desired action. Within-orbit rotation invariance is mathematical, not an empirical result.
+
+This deliberately tests only the first ambiguous ranking, avoiding downstream branch differences. It does not generate new full portfolios, change rewards, train the checkpoint or simulate campaign outcomes. Both source states have six eligible actions including SAVE, giving 72 component evaluations across the two states (some reused), followed by pool calculations requiring no additional inference. Preserve any input-limit or validity failures. Original saves and live v9 remain unchanged.
+
+Strategy quality is assessed separately with a multidimensional adaptation rubric. Order agreement and more spending are not intelligence measures by themselves. Candidate behavior should be tested against matched evidence changes and actual delivered objectives before being called adaptive or strategically better.

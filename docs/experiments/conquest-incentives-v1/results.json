@@ -1,0 +1,663 @@
+{
+  "rows": [
+    {
+      "decision": "1999-02-01 00:00:00",
+      "arm": "baseline",
+      "planOptionOrder": "canonical",
+      "operations": [
+        {
+          "mission": "STR_ALIEN_HARVEST",
+          "region": "STR_SOUTH_EAST_ASIA"
+        },
+        {
+          "mission": "STR_ALIEN_HARVEST",
+          "region": "STR_AUSTRALASIA"
+        },
+        {
+          "mission": "STR_ALIEN_HARVEST",
+          "region": "STR_EUROPE"
+        }
+      ],
+      "remainingProposed": 2,
+      "status": "PREDICTED",
+      "error": null,
+      "latencyMs": 8515.22
+    },
+    {
+      "decision": "1999-02-01 00:00:00",
+      "arm": "explicit_current",
+      "planOptionOrder": "canonical",
+      "operations": [
+        {
+          "mission": "STR_ALIEN_TERROR",
+          "region": "STR_AUSTRALASIA"
+        },
+        {
+          "mission": "STR_ALIEN_HARVEST",
+          "region": "STR_SOUTH_EAST_ASIA"
+        },
+        {
+          "mission": "STR_ALIEN_HARVEST",
+          "region": "STR_AUSTRALASIA"
+        }
+      ],
+      "remainingProposed": 1,
+      "status": "PREDICTED",
+      "error": null,
+      "latencyMs": 10307.96
+    },
+    {
+      "decision": "1999-02-01 00:00:00",
+      "arm": "hypothetical",
+      "planOptionOrder": "canonical",
+      "operations": [
+        {
+          "mission": "STR_ALIEN_TERROR",
+          "region": "STR_AUSTRALASIA"
+        },
+        {
+          "mission": "STR_ALIEN_TERROR",
+          "region": "STR_SOUTH_EAST_ASIA"
+        },
+        {
+          "mission": "STR_ALIEN_HARVEST",
+          "region": "STR_SOUTH_EAST_ASIA"
+        }
+      ],
+      "remainingProposed": 0,
+      "status": "PREDICTED",
+      "error": null,
+      "latencyMs": 10231.21
+    },
+    {
+      "decision": "1999-02-01 00:00:00",
+      "arm": "baseline",
+      "planOptionOrder": "reversed",
+      "operations": [
+        {
+          "mission": "STR_ALIEN_HARVEST",
+          "region": "STR_SOUTH_EAST_ASIA"
+        },
+        {
+          "mission": "STR_ALIEN_RESEARCH",
+          "region": "STR_SOUTH_EAST_ASIA"
+        },
+        {
+          "mission": "STR_ALIEN_RESEARCH",
+          "region": "STR_ARCTIC"
+        }
+      ],
+      "remainingProposed": 4,
+      "status": "PREDICTED",
+      "error": null,
+      "latencyMs": 9529.95
+    },
+    {
+      "decision": "1999-02-01 00:00:00",
+      "arm": "explicit_current",
+      "planOptionOrder": "reversed",
+      "operations": [
+        {
+          "mission": "STR_ALIEN_HARVEST",
+          "region": "STR_SOUTH_EAST_ASIA"
+        },
+        {
+          "mission": "STR_ALIEN_HARVEST",
+          "region": "STR_AUSTRALASIA"
+        },
+        {
+          "mission": "STR_ALIEN_HARVEST",
+          "region": "STR_EUROPE"
+        }
+      ],
+      "remainingProposed": 2,
+      "status": "PREDICTED",
+      "error": null,
+      "latencyMs": 9993.48
+    },
+    {
+      "decision": "1999-02-01 00:00:00",
+      "arm": "hypothetical",
+      "planOptionOrder": "reversed",
+      "operations": [
+        {
+          "mission": "STR_ALIEN_TERROR",
+          "region": "STR_AUSTRALASIA"
+        },
+        {
+          "mission": "STR_ALIEN_TERROR",
+          "region": "STR_SOUTH_EAST_ASIA"
+        },
+        {
+          "mission": "STR_ALIEN_HARVEST",
+          "region": "STR_SOUTH_EAST_ASIA"
+        }
+      ],
+      "remainingProposed": 0,
+      "status": "PREDICTED",
+      "error": null,
+      "latencyMs": 10184.68
+    },
+    {
+      "decision": "1999-03-01 00:00:00",
+      "arm": "baseline",
+      "planOptionOrder": "canonical",
+      "operations": [
+        {
+          "mission": "STR_ALIEN_ABDUCTION",
+          "region": "STR_AUSTRALASIA"
+        },
+        {
+          "mission": "STR_ALIEN_ABDUCTION",
+          "region": "STR_CENTRAL_ASIA"
+        },
+        {
+          "mission": "STR_ALIEN_ABDUCTION",
+          "region": "STR_SOUTH_EAST_ASIA"
+        }
+      ],
+      "remainingProposed": 9,
+      "status": "PREDICTED",
+      "error": null,
+      "latencyMs": 9302.09
+    },
+    {
+      "decision": "1999-03-01 00:00:00",
+      "arm": "explicit_current",
+      "planOptionOrder": "canonical",
+      "operations": [
+        {
+          "mission": "STR_ALIEN_HARVEST",
+          "region": "STR_SOUTH_EAST_ASIA"
+        },
+        {
+          "mission": "STR_ALIEN_HARVEST",
+          "region": "STR_CENTRAL_ASIA"
+        },
+        {
+          "mission": "STR_ALIEN_HARVEST",
+          "region": "STR_NORTH_AMERICA"
+        }
+      ],
+      "remainingProposed": 9,
+      "status": "PREDICTED",
+      "error": null,
+      "latencyMs": 10089.64
+    },
+    {
+      "decision": "1999-03-01 00:00:00",
+      "arm": "hypothetical",
+      "planOptionOrder": "canonical",
+      "operations": [
+        {
+          "mission": "STR_ALIEN_HARVEST",
+          "region": "STR_SOUTH_EAST_ASIA"
+        },
+        {
+          "mission": "STR_ALIEN_TERROR",
+          "region": "STR_AUSTRALASIA"
+        },
+        {
+          "mission": "STR_ALIEN_TERROR",
+          "region": "STR_SOUTH_EAST_ASIA"
+        }
+      ],
+      "remainingProposed": 7,
+      "status": "PREDICTED",
+      "error": null,
+      "latencyMs": 10942.1
+    },
+    {
+      "decision": "1999-03-01 00:00:00",
+      "arm": "baseline",
+      "planOptionOrder": "reversed",
+      "operations": [],
+      "remainingProposed": 18,
+      "status": "SAVE_RESOURCES",
+      "error": null,
+      "latencyMs": 1585.08
+    },
+    {
+      "decision": "1999-03-01 00:00:00",
+      "arm": "explicit_current",
+      "planOptionOrder": "reversed",
+      "operations": [],
+      "remainingProposed": 18,
+      "status": "SAVE_RESOURCES",
+      "error": null,
+      "latencyMs": 1940.61
+    },
+    {
+      "decision": "1999-03-01 00:00:00",
+      "arm": "hypothetical",
+      "planOptionOrder": "reversed",
+      "operations": [],
+      "remainingProposed": 18,
+      "status": "SAVE_RESOURCES",
+      "error": null,
+      "latencyMs": 1942.75
+    },
+    {
+      "decision": "1999-04-01 00:00:00",
+      "arm": "baseline",
+      "planOptionOrder": "canonical",
+      "operations": [
+        {
+          "mission": "STR_ALIEN_HARVEST",
+          "region": "STR_SOUTH_EAST_ASIA"
+        },
+        {
+          "mission": "STR_ALIEN_RETALIATION",
+          "region": "STR_EUROPE"
+        },
+        {
+          "mission": "STR_ALIEN_RETALIATION",
+          "region": "STR_NORTH_AFRICA"
+        },
+        {
+          "mission": "STR_ALIEN_RESEARCH",
+          "region": "STR_ARCTIC"
+        }
+      ],
+      "remainingProposed": 15,
+      "status": "PREDICTED",
+      "error": null,
+      "latencyMs": 11211.45
+    },
+    {
+      "decision": "1999-04-01 00:00:00",
+      "arm": "explicit_current",
+      "planOptionOrder": "canonical",
+      "operations": [
+        {
+          "mission": "STR_ALIEN_HARVEST",
+          "region": "STR_SOUTH_EAST_ASIA"
+        },
+        {
+          "mission": "STR_ALIEN_ABDUCTION",
+          "region": "STR_NORTH_AFRICA"
+        },
+        {
+          "mission": "STR_ALIEN_HARVEST",
+          "region": "STR_AUSTRALASIA"
+        },
+        {
+          "mission": "STR_ALIEN_ABDUCTION",
+          "region": "STR_EUROPE"
+        }
+      ],
+      "remainingProposed": 12,
+      "status": "PREDICTED",
+      "error": null,
+      "latencyMs": 14885.78
+    },
+    {
+      "decision": "1999-04-01 00:00:00",
+      "arm": "hypothetical",
+      "planOptionOrder": "canonical",
+      "operations": [
+        {
+          "mission": "STR_ALIEN_HARVEST",
+          "region": "STR_SOUTH_EAST_ASIA"
+        },
+        {
+          "mission": "STR_ALIEN_TERROR",
+          "region": "STR_SOUTH_EAST_ASIA"
+        },
+        {
+          "mission": "STR_ALIEN_HARVEST",
+          "region": "STR_AUSTRALASIA"
+        },
+        {
+          "mission": "STR_ALIEN_TERROR",
+          "region": "STR_AUSTRALASIA"
+        }
+      ],
+      "remainingProposed": 10,
+      "status": "PREDICTED",
+      "error": null,
+      "latencyMs": 15607.49
+    },
+    {
+      "decision": "1999-04-01 00:00:00",
+      "arm": "baseline",
+      "planOptionOrder": "reversed",
+      "operations": [],
+      "remainingProposed": 24,
+      "status": "SAVE_RESOURCES",
+      "error": null,
+      "latencyMs": 1686.7
+    },
+    {
+      "decision": "1999-04-01 00:00:00",
+      "arm": "explicit_current",
+      "planOptionOrder": "reversed",
+      "operations": [],
+      "remainingProposed": 24,
+      "status": "SAVE_RESOURCES",
+      "error": null,
+      "latencyMs": 2209.75
+    },
+    {
+      "decision": "1999-04-01 00:00:00",
+      "arm": "hypothetical",
+      "planOptionOrder": "reversed",
+      "operations": [],
+      "remainingProposed": 24,
+      "status": "SAVE_RESOURCES",
+      "error": null,
+      "latencyMs": 2283.47
+    },
+    {
+      "decision": "1999-05-01 00:00:00",
+      "arm": "baseline",
+      "planOptionOrder": "canonical",
+      "operations": [
+        {
+          "mission": "STR_ALIEN_ABDUCTION",
+          "region": "STR_AUSTRALASIA"
+        },
+        {
+          "mission": "STR_ALIEN_RESEARCH",
+          "region": "STR_SOUTH_EAST_ASIA"
+        },
+        {
+          "mission": "STR_ALIEN_RESEARCH",
+          "region": "STR_ARCTIC"
+        },
+        {
+          "mission": "STR_ALIEN_RESEARCH",
+          "region": "STR_ANTARCTICA"
+        }
+      ],
+      "remainingProposed": 16,
+      "status": "PREDICTED",
+      "error": null,
+      "latencyMs": 15124.23
+    },
+    {
+      "decision": "1999-05-01 00:00:00",
+      "arm": "explicit_current",
+      "planOptionOrder": "canonical",
+      "operations": [
+        {
+          "mission": "STR_ALIEN_HARVEST",
+          "region": "STR_AUSTRALASIA"
+        },
+        {
+          "mission": "STR_ALIEN_HARVEST",
+          "region": "STR_NORTH_AMERICA"
+        },
+        {
+          "mission": "STR_ALIEN_HARVEST",
+          "region": "STR_EUROPE"
+        },
+        {
+          "mission": "STR_ALIEN_HARVEST",
+          "region": "STR_NORTH_AFRICA"
+        }
+      ],
+      "remainingProposed": 13,
+      "status": "PREDICTED",
+      "error": null,
+      "latencyMs": 14937.46
+    },
+    {
+      "decision": "1999-05-01 00:00:00",
+      "arm": "hypothetical",
+      "planOptionOrder": "canonical",
+      "operations": [
+        {
+          "mission": "STR_ALIEN_HARVEST",
+          "region": "STR_AUSTRALASIA"
+        },
+        {
+          "mission": "STR_ALIEN_HARVEST",
+          "region": "STR_NORTH_AMERICA"
+        },
+        {
+          "mission": "STR_ALIEN_HARVEST",
+          "region": "STR_EUROPE"
+        },
+        {
+          "mission": "STR_ALIEN_HARVEST",
+          "region": "STR_NORTH_AFRICA"
+        }
+      ],
+      "remainingProposed": 13,
+      "status": "PREDICTED",
+      "error": null,
+      "latencyMs": 15219.24
+    },
+    {
+      "decision": "1999-05-01 00:00:00",
+      "arm": "baseline",
+      "planOptionOrder": "reversed",
+      "operations": [
+        {
+          "mission": "STR_ALIEN_ABDUCTION",
+          "region": "STR_AUSTRALASIA"
+        }
+      ],
+      "remainingProposed": 22,
+      "status": "PREDICTED",
+      "error": null,
+      "latencyMs": 5289.8
+    },
+    {
+      "decision": "1999-05-01 00:00:00",
+      "arm": "explicit_current",
+      "planOptionOrder": "reversed",
+      "operations": [],
+      "remainingProposed": 25,
+      "status": "SAVE_RESOURCES",
+      "error": null,
+      "latencyMs": 2331.42
+    },
+    {
+      "decision": "1999-05-01 00:00:00",
+      "arm": "hypothetical",
+      "planOptionOrder": "reversed",
+      "operations": [],
+      "remainingProposed": 25,
+      "status": "SAVE_RESOURCES",
+      "error": null,
+      "latencyMs": 2375.51
+    },
+    {
+      "decision": "1999-06-01 00:00:00",
+      "arm": "baseline",
+      "planOptionOrder": "canonical",
+      "operations": [
+        {
+          "mission": "STR_ALIEN_RESEARCH",
+          "region": "STR_ANTARCTICA"
+        },
+        {
+          "mission": "STR_ALIEN_RESEARCH",
+          "region": "STR_ARCTIC"
+        },
+        {
+          "mission": "STR_ALIEN_RESEARCH",
+          "region": "STR_AUSTRALASIA"
+        },
+        {
+          "mission": "STR_ALIEN_RESEARCH",
+          "region": "STR_CENTRAL_ASIA"
+        }
+      ],
+      "remainingProposed": 22,
+      "status": "PREDICTED",
+      "error": null,
+      "latencyMs": 14287.69
+    },
+    {
+      "decision": "1999-06-01 00:00:00",
+      "arm": "explicit_current",
+      "planOptionOrder": "canonical",
+      "operations": [
+        {
+          "mission": "STR_ALIEN_HARVEST",
+          "region": "STR_AUSTRALASIA"
+        },
+        {
+          "mission": "STR_ALIEN_HARVEST",
+          "region": "STR_SOUTHERN_AFRICA"
+        },
+        {
+          "mission": "STR_ALIEN_HARVEST",
+          "region": "STR_CENTRAL_ASIA"
+        },
+        {
+          "mission": "STR_ALIEN_HARVEST",
+          "region": "STR_SOUTH_AMERICA"
+        }
+      ],
+      "remainingProposed": 18,
+      "status": "PREDICTED",
+      "error": null,
+      "latencyMs": 15085.89
+    },
+    {
+      "decision": "1999-06-01 00:00:00",
+      "arm": "hypothetical",
+      "planOptionOrder": "canonical",
+      "operations": [
+        {
+          "mission": "STR_ALIEN_HARVEST",
+          "region": "STR_AUSTRALASIA"
+        },
+        {
+          "mission": "STR_ALIEN_HARVEST",
+          "region": "STR_SOUTHERN_AFRICA"
+        },
+        {
+          "mission": "STR_ALIEN_HARVEST",
+          "region": "STR_CENTRAL_ASIA"
+        },
+        {
+          "mission": "STR_ALIEN_HARVEST",
+          "region": "STR_SOUTH_AMERICA"
+        }
+      ],
+      "remainingProposed": 18,
+      "status": "PREDICTED",
+      "error": null,
+      "latencyMs": 15220.45
+    },
+    {
+      "decision": "1999-06-01 00:00:00",
+      "arm": "baseline",
+      "planOptionOrder": "reversed",
+      "operations": [
+        {
+          "mission": "STR_ALIEN_RESEARCH",
+          "region": "STR_ANTARCTICA"
+        },
+        {
+          "mission": "STR_ALIEN_ABDUCTION",
+          "region": "STR_SOUTH_EAST_ASIA"
+        },
+        {
+          "mission": "STR_ALIEN_ABDUCTION",
+          "region": "STR_CENTRAL_ASIA"
+        },
+        {
+          "mission": "STR_ALIEN_ABDUCTION",
+          "region": "STR_NORTH_AMERICA"
+        }
+      ],
+      "remainingProposed": 19,
+      "status": "PREDICTED",
+      "error": null,
+      "latencyMs": 14369.86
+    },
+    {
+      "decision": "1999-06-01 00:00:00",
+      "arm": "explicit_current",
+      "planOptionOrder": "reversed",
+      "operations": [
+        {
+          "mission": "STR_ALIEN_INFILTRATION",
+          "region": "STR_SOUTH_EAST_ASIA"
+        },
+        {
+          "mission": "STR_ALIEN_INFILTRATION",
+          "region": "STR_AUSTRALASIA"
+        }
+      ],
+      "remainingProposed": 18,
+      "status": "PREDICTED",
+      "error": null,
+      "latencyMs": 10859.22
+    },
+    {
+      "decision": "1999-06-01 00:00:00",
+      "arm": "hypothetical",
+      "planOptionOrder": "reversed",
+      "operations": [
+        {
+          "mission": "STR_ALIEN_RETALIATION",
+          "region": "STR_SOUTH_EAST_ASIA"
+        },
+        {
+          "mission": "STR_ALIEN_INFILTRATION",
+          "region": "STR_SOUTH_EAST_ASIA"
+        },
+        {
+          "mission": "STR_ALIEN_INFILTRATION",
+          "region": "STR_AUSTRALASIA"
+        },
+        {
+          "mission": "STR_ALIEN_INFILTRATION",
+          "region": "STR_CENTRAL_ASIA"
+        }
+      ],
+      "remainingProposed": 10,
+      "status": "PREDICTED",
+      "error": null,
+      "latencyMs": 16274.58
+    }
+  ],
+  "stats": {
+    "baseline": {
+      "missionCounts": {
+        "HARVEST": 5,
+        "RESEARCH": 11,
+        "ABDUCTION": 8,
+        "RETALIATION": 2
+      },
+      "exactOrderAgreement": 0,
+      "deferAllCount": 2,
+      "spend": 65
+    },
+    "explicit_current": {
+      "missionCounts": {
+        "TERROR": 1,
+        "HARVEST": 18,
+        "ABDUCTION": 2,
+        "INFILTRATION": 2
+      },
+      "exactOrderAgreement": 0,
+      "deferAllCount": 3,
+      "spend": 76
+    },
+    "hypothetical": {
+      "missionCounts": {
+        "TERROR": 8,
+        "HARVEST": 13,
+        "RETALIATION": 1,
+        "INFILTRATION": 3
+      },
+      "exactOrderAgreement": 1,
+      "deferAllCount": 3,
+      "spend": 91
+    }
+  },
+  "maxTokens": 475,
+  "sourceHashesVerifiedUnchanged": true,
+  "scriptsVerifiedUnchangedDuringProbe": true,
+  "legalPortfolios": 30,
+  "APICalls": 0,
+  "livePolicyChanged": false
+}

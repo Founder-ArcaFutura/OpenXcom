@@ -1,0 +1,359 @@
+{
+  "rows": [
+    {
+      "decision": "1999-02",
+      "runs": {
+        "baseline": {
+          "operations": [
+            {
+              "mission": "STR_ALIEN_HARVEST",
+              "region": "STR_SOUTH_EAST_ASIA"
+            },
+            {
+              "mission": "STR_ALIEN_HARVEST",
+              "region": "STR_AUSTRALASIA"
+            },
+            {
+              "mission": "STR_ALIEN_HARVEST",
+              "region": "STR_EUROPE"
+            }
+          ],
+          "remaining": 2,
+          "latencyMs": 9027.09,
+          "maxTokens": 278
+        },
+        "contract": {
+          "operations": [
+            {
+              "mission": "STR_ALIEN_HARVEST",
+              "region": "STR_SOUTH_EAST_ASIA"
+            },
+            {
+              "mission": "STR_ALIEN_HARVEST",
+              "region": "STR_AUSTRALASIA"
+            },
+            {
+              "mission": "STR_ALIEN_HARVEST",
+              "region": "STR_EUROPE"
+            }
+          ],
+          "remaining": 2,
+          "latencyMs": 11366.04,
+          "maxTokens": 383
+        },
+        "baseline-reversed": {
+          "operations": [
+            {
+              "mission": "STR_ALIEN_HARVEST",
+              "region": "STR_SOUTH_EAST_ASIA"
+            },
+            {
+              "mission": "STR_ALIEN_RESEARCH",
+              "region": "STR_SOUTH_EAST_ASIA"
+            },
+            {
+              "mission": "STR_ALIEN_RESEARCH",
+              "region": "STR_ARCTIC"
+            }
+          ],
+          "remaining": 4,
+          "latencyMs": 9896.83,
+          "maxTokens": 335
+        },
+        "contract-reversed": {
+          "operations": [
+            {
+              "mission": "STR_ALIEN_ABDUCTION",
+              "region": "STR_AUSTRALASIA"
+            },
+            {
+              "mission": "STR_ALIEN_ABDUCTION",
+              "region": "STR_SOUTH_EAST_ASIA"
+            },
+            {
+              "mission": "STR_ALIEN_ABDUCTION",
+              "region": "STR_NORTH_AMERICA"
+            }
+          ],
+          "remaining": 2,
+          "latencyMs": 11223.35,
+          "maxTokens": 383
+        }
+      },
+      "baselineOrderStable": false,
+      "contractOrderStable": false,
+      "excluded": [],
+      "sourceUnchanged": true
+    },
+    {
+      "decision": "1999-03",
+      "runs": {
+        "baseline": {
+          "operations": [
+            {
+              "mission": "STR_ALIEN_ABDUCTION",
+              "region": "STR_AUSTRALASIA"
+            },
+            {
+              "mission": "STR_ALIEN_ABDUCTION",
+              "region": "STR_CENTRAL_ASIA"
+            },
+            {
+              "mission": "STR_ALIEN_ABDUCTION",
+              "region": "STR_SOUTH_EAST_ASIA"
+            }
+          ],
+          "remaining": 9,
+          "latencyMs": 10390.2,
+          "maxTokens": 303
+        },
+        "contract": {
+          "operations": [
+            {
+              "mission": "STR_ALIEN_HARVEST",
+              "region": "STR_SOUTH_EAST_ASIA"
+            },
+            {
+              "mission": "STR_ALIEN_ABDUCTION",
+              "region": "STR_AUSTRALASIA"
+            },
+            {
+              "mission": "STR_ALIEN_HARVEST",
+              "region": "STR_CENTRAL_ASIA"
+            }
+          ],
+          "remaining": 9,
+          "latencyMs": 12020.58,
+          "maxTokens": 396
+        },
+        "baseline-reversed": {
+          "operations": [],
+          "remaining": 18,
+          "latencyMs": 1691.41,
+          "maxTokens": 275
+        },
+        "contract-reversed": {
+          "operations": [
+            {
+              "mission": "STR_ALIEN_ABDUCTION",
+              "region": "STR_AUSTRALASIA"
+            },
+            {
+              "mission": "STR_ALIEN_ABDUCTION",
+              "region": "STR_CENTRAL_ASIA"
+            },
+            {
+              "mission": "STR_ALIEN_ABDUCTION",
+              "region": "STR_SOUTH_EAST_ASIA"
+            }
+          ],
+          "remaining": 9,
+          "latencyMs": 11569.78,
+          "maxTokens": 394
+        }
+      },
+      "baselineOrderStable": false,
+      "contractOrderStable": false,
+      "excluded": [],
+      "sourceUnchanged": true
+    },
+    {
+      "decision": "1999-04",
+      "runs": {
+        "baseline": {
+          "operations": [
+            {
+              "mission": "STR_ALIEN_HARVEST",
+              "region": "STR_SOUTH_EAST_ASIA"
+            },
+            {
+              "mission": "STR_ALIEN_RETALIATION",
+              "region": "STR_EUROPE"
+            },
+            {
+              "mission": "STR_ALIEN_RETALIATION",
+              "region": "STR_NORTH_AFRICA"
+            },
+            {
+              "mission": "STR_ALIEN_RESEARCH",
+              "region": "STR_ARCTIC"
+            }
+          ],
+          "remaining": 15,
+          "latencyMs": 12157.36,
+          "maxTokens": 347
+        },
+        "contract": {
+          "operations": [
+            {
+              "mission": "STR_ALIEN_ABDUCTION",
+              "region": "STR_NORTH_AFRICA"
+            },
+            {
+              "mission": "STR_ALIEN_ABDUCTION",
+              "region": "STR_EUROPE"
+            },
+            {
+              "mission": "STR_ALIEN_ABDUCTION",
+              "region": "STR_NORTH_AMERICA"
+            },
+            {
+              "mission": "STR_ALIEN_ABDUCTION",
+              "region": "STR_SIBERIA"
+            }
+          ],
+          "remaining": 12,
+          "latencyMs": 15108.65,
+          "maxTokens": 447
+        },
+        "baseline-reversed": {
+          "operations": [],
+          "remaining": 24,
+          "latencyMs": 1859.96,
+          "maxTokens": 303
+        },
+        "contract-reversed": {
+          "operations": [
+            {
+              "mission": "STR_ALIEN_ABDUCTION",
+              "region": "STR_NORTH_AFRICA"
+            },
+            {
+              "mission": "STR_ALIEN_ABDUCTION",
+              "region": "STR_EUROPE"
+            },
+            {
+              "mission": "STR_ALIEN_ABDUCTION",
+              "region": "STR_NORTH_AMERICA"
+            },
+            {
+              "mission": "STR_ALIEN_ABDUCTION",
+              "region": "STR_SIBERIA"
+            }
+          ],
+          "remaining": 12,
+          "latencyMs": 15704.82,
+          "maxTokens": 447
+        }
+      },
+      "baselineOrderStable": false,
+      "contractOrderStable": true,
+      "excluded": [],
+      "sourceUnchanged": true
+    },
+    {
+      "decision": "1999-05",
+      "runs": {
+        "baseline": {
+          "operations": [
+            {
+              "mission": "STR_ALIEN_ABDUCTION",
+              "region": "STR_AUSTRALASIA"
+            },
+            {
+              "mission": "STR_ALIEN_RESEARCH",
+              "region": "STR_SOUTH_EAST_ASIA"
+            },
+            {
+              "mission": "STR_ALIEN_RESEARCH",
+              "region": "STR_ARCTIC"
+            },
+            {
+              "mission": "STR_ALIEN_RESEARCH",
+              "region": "STR_ANTARCTICA"
+            }
+          ],
+          "remaining": 16,
+          "latencyMs": 15752.24,
+          "maxTokens": 378
+        },
+        "contract": {
+          "operations": [
+            {
+              "mission": "STR_ALIEN_ABDUCTION",
+              "region": "STR_AUSTRALASIA"
+            },
+            {
+              "mission": "STR_ALIEN_ABDUCTION",
+              "region": "STR_SOUTH_EAST_ASIA"
+            },
+            {
+              "mission": "STR_ALIEN_ABDUCTION",
+              "region": "STR_NORTH_AMERICA"
+            },
+            {
+              "mission": "STR_ALIEN_RESEARCH",
+              "region": "STR_SOUTH_EAST_ASIA"
+            }
+          ],
+          "remaining": 14,
+          "latencyMs": 18047.99,
+          "maxTokens": 491
+        },
+        "baseline-reversed": {
+          "operations": [
+            {
+              "mission": "STR_ALIEN_ABDUCTION",
+              "region": "STR_AUSTRALASIA"
+            }
+          ],
+          "remaining": 22,
+          "latencyMs": 5592.7,
+          "maxTokens": 344
+        },
+        "contract-reversed": {
+          "operations": [
+            {
+              "mission": "STR_ALIEN_ABDUCTION",
+              "region": "STR_AUSTRALASIA"
+            },
+            {
+              "mission": "STR_ALIEN_ABDUCTION",
+              "region": "STR_SOUTH_EAST_ASIA"
+            },
+            {
+              "mission": "STR_ALIEN_ABDUCTION",
+              "region": "STR_NORTH_AMERICA"
+            },
+            {
+              "mission": "STR_ALIEN_ABDUCTION",
+              "region": "STR_EUROPE"
+            }
+          ],
+          "remaining": 13,
+          "latencyMs": 16772.23,
+          "maxTokens": 491
+        }
+      },
+      "baselineOrderStable": false,
+      "contractOrderStable": false,
+      "excluded": [
+        {
+          "mission": "STR_ALIEN_INFILTRATION",
+          "region": "STR_ARCTIC"
+        },
+        {
+          "mission": "STR_ALIEN_INFILTRATION",
+          "region": "STR_ANTARCTICA"
+        },
+        {
+          "mission": "STR_ALIEN_INFILTRATION",
+          "region": "STR_PACIFIC"
+        }
+      ],
+      "sourceUnchanged": true
+    }
+  ],
+  "verifiedPortfolios": 16,
+  "firstDecisionDifferenceOnlyOutcomeFields": true,
+  "sourceFilesSha256": {
+    "scripts/campaign_plans.py": "9e6637b392dac91224507b617218fe69efbdf7fa078c0996523874d92427f70d",
+    "scripts/test-outcome-contract.py": "c44a9d69c84610aa06d06643ec5494f6b17c3df278f1ec11f6c487d5c9341b6c",
+    "scripts/alien-command-model.py": "659513e7ca9545e9d9c51f66d7e3ed8746e1bcc636df4afdc0f9d80805dd21bf",
+    "bin/standard/xcom1/countries.rul": "5aaf3a489d70b3fd4f8201578e801a773fc49cf891354b0d73e3e611b17f4712",
+    "bin/standard/xcom1/regions.rul": "1005cfecb3ce5a0071cedd50f8bdc8019b31f28a0bcad412cca969b20ee01429"
+  },
+  "livePolicyChanged": false,
+  "missionsExecuted": false,
+  "newAPICalls": 0
+}

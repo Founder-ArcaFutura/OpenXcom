@@ -1,0 +1,22 @@
+{
+  "repo": "convaiinnovations/laya",
+  "revision": "7b928d828b7b0e022f929d9bd2e44165aa270148",
+  "files": {
+    "model.safetensors": {
+      "sha256": "891102d372688fc2a094dac56a384bc537b87c63f21f9f3dac0be2b7cbc8d86c",
+      "bytes": 842609210,
+      "publisherLfsSha256": "891102d372688fc2a094dac56a384bc537b87c63f21f9f3dac0be2b7cbc8d86c"
+    },
+    "rl_agent_config.json": {
+      "sha256": "ae287b56bbcf5f8c4f4541ae9dfd00c914c4c48b940b8398c3058af37ba92bbd",
+      "bytes": 745,
+      "publisherLfsSha256": null
+    },
+    "README.md": {
+      "sha256": "00355613796b3f5860b0d5b20392381d26580ec242e04a1fd150c7f116858602",
+      "bytes": 23187,
+      "publisherLfsSha256": null
+    }
+  },
+  "paidInferenceCalls": 0
+}

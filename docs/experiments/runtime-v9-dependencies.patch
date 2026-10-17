@@ -1,0 +1,408 @@
+diff --git a/scripts/alien-command-model.py b/scripts/alien-command-model.py
+index b51a31543..bff070d10 100644
+--- a/scripts/alien-command-model.py
++++ b/scripts/alien-command-model.py
+@@ -18 +18 @@ PORTFOLIO_PROTOCOL = "alien-strategy-laya-v2"
+-PORTFOLIO_PROMPT_VERSION = "progressive-portfolio-v8"
++PORTFOLIO_PROMPT_VERSION = "progressive-portfolio-v9"
+@@ -229 +229 @@ def portfolio_input(data):
+-    if not isinstance(data,dict) or set(data)!={"schemaVersion","budget","knowledge","sitrep"} or data["schemaVersion"]!=1:
++    if not isinstance(data,dict) or set(data)-{"bases"}!={"schemaVersion","budget","knowledge","sitrep"} or data["schemaVersion"]!=1:
+@@ -230,0 +231,7 @@ def portfolio_input(data):
++    bases=data.get("bases",[])
++    if not isinstance(bases,list) or len(bases)>128: raise ValueError("Invalid bases")
++    for base in bases:
++        if not isinstance(base,dict) or set(base)!={"region","country","influence","income"}: raise ValueError("Invalid base fields")
++        bounded_name(base["region"])
++        if base["country"]: bounded_name(base["country"])
++        integer(base["influence"],0,6); integer(base["income"],1,2)
+diff --git a/scripts/campaign_plans.py b/scripts/campaign_plans.py
+index cd7fe4efc..553f0866d 100644
+--- a/scripts/campaign_plans.py
++++ b/scripts/campaign_plans.py
+@@ -13 +13 @@ PLANS={
+- 'STR_ALIEN_BASE':('BUILD_INFRASTRUCTURE','Establish alien infrastructure','Establishes a base under native rules.','Costs 6; recurring base income is not implemented.'),
++ 'STR_ALIEN_BASE':('BUILD_INFRASTRUCTURE','Build base: +1-2 income/month, progress in all tracks, local influence','Surviving base earns 1-2 resources/month, quarter-point in each progression track, and local influence.','Costs 6; benefits cease on destruction; supplies mature income.'),
+@@ -30 +30,23 @@ def campaign_lessons(budget,beliefs,sitrep):
+-def plan(data,choose,tradeoffs=True,lessons=False):
++def campaign_objectives(budget,menu):
++ def path(mission,requirements):
++  missing={k:max(0,v-budget[k]) for k,v in requirements.items() if budget[k]<v}
++  return {'missing':missing,'targets_available':any(c['mission']==mission for c in menu)}
++ return {'national_control':path('STR_ALIEN_INFILTRATION',{'epochMonth':2,'adaptation':2,'intelligence':1}),
++  'infrastructure':path('STR_ALIEN_BASE',{'epochMonth':1,'logistics':2}),
++  'research':'Develop intelligence; cannot find bases. Extra intelligence is not a missing infiltration requirement once intelligence>=1.',
++  'limits':'Prerequisites met is not mission success. Pacts have no recurring income; bases provide income, progression and local influence. Assault unavailable.'}
++
++def conditional_outcomes(missions):
++ delivered={
++  'RESEARCH':'flight: +1 cash,+1 intelligence',
++  'PROBE_MISSION':'flight: +1 cash,+1 intelligence',
++  'HARVEST':'activity: +2 cash,+1 logistics',
++  'ABDUCTION':'activity: +2 cash,+1 adaptation',
++  'RETALIATION':'possible base discovery; no assault or cash',
++  'TERROR':'native political pressure; no cash bonus',
++  'SURFACE_ATTACK':'native political pressure; no cash bonus',
++  'INFILTRATION':'possible country pact and base',
++  'BASE':'possible base: 1-2 cash/month, gradual progress and local influence'}
++ return {mission.removeprefix('STR_ALIEN_'):delivered[mission.removeprefix('STR_ALIEN_')] for mission in missions}
++
++def plan(data,choose,tradeoffs=True,lessons=False,objectives=False,outcomes=False):
+@@ -46,0 +69 @@ def plan(data,choose,tradeoffs=True,lessons=False):
++  if data.get('bases'):state['bases_count_income_influence']=[len(data['bases']),sum(b['income'] for b in data['bases']),max(b['influence'] for b in data['bases'])]
+@@ -47,0 +71,4 @@ def plan(data,choose,tradeoffs=True,lessons=False):
++  if objectives:state['objectives']=campaign_objectives(budget,available)
++  if outcomes:
++   state['conditional_results']=conditional_outcomes(missions)
++   state['outcome_limits']='Verified rewards once/parent; cash next-month/capped. Odds/timing unknown. No recurring pact income; surviving bases earn income/progression/influence.'
+@@ -61,0 +89,2 @@ def plan(data,choose,tradeoffs=True,lessons=False):
++  if mission in ('STR_ALIEN_BASE','STR_ALIEN_INFILTRATION') and data.get('bases'):
++   state['footholds']=[[b['region'],b['country'],b['influence']] for b in data['bases'][:6]]
+@@ -74,0 +104 @@ def plan(data,choose,tradeoffs=True,lessons=False):
++  **({'campaignObjectives':campaign_objectives(budget,menu)} if objectives else {}),
+diff --git a/scripts/run-local.ps1 b/scripts/run-local.ps1
+index a46bfbb6c..96095880c 100644
+--- a/scripts/run-local.ps1
++++ b/scripts/run-local.ps1
+@@ -48,2 +48,2 @@ try {
+-        if ($Portfolio -and ($health.portfolioProtocol -ne 'alien-strategy-laya-v2' -or $health.portfolioPromptVersion -ne 'progressive-portfolio-v8')) { throw 'Portfolio mode needs the progressive-portfolio engine and service. Close the earlier game/service session and launch again.' }
+-        if ($Portfolio) { Write-Output 'Monthly commander enabled: concrete plans with progressive capacity (3, 4, 5, then 6 operations by campaign quarter), or saved resources. Searches do not auto-assault.' }
++        if ($Portfolio -and ($health.portfolioProtocol -ne 'alien-strategy-laya-v2' -or $health.portfolioPromptVersion -ne 'progressive-portfolio-v9')) { throw 'Portfolio mode needs the progressive-portfolio engine and service. Close the earlier game/service session and launch again.' }
++        if ($Portfolio) { Write-Output 'Monthly commander enabled: concrete plans with progressive capacity (3, 4, 5, then 6 operations by campaign quarter), or saved resources. Persistent bases earn income, progression and local influence. Searches do not auto-assault.' }
+diff --git a/src/Geoscape/AlienCommandAudit.cpp b/src/Geoscape/AlienCommandAudit.cpp
+index e0927d54e..78fba26ea 100644
+--- a/src/Geoscape/AlienCommandAudit.cpp
++++ b/src/Geoscape/AlienCommandAudit.cpp
+@@ -11,0 +12 @@
++#include "../Mod/RuleCountry.h"
+@@ -12,0 +14,3 @@
++#include "../Savegame/AlienBase.h"
++#include "../Savegame/Country.h"
++#include "../Savegame/Region.h"
+@@ -27,0 +32,11 @@ namespace
++bool hasInfiltrationCountry(const Mod &mod,const RuleRegion &region)
++{
++ // Native infiltration searches country labels, not country-area overlap.
++ // Static geography only: this gate exposes no player locations or capabilities.
++ for(const auto &name:mod.getCountriesList())
++ {
++  const auto *country=mod.getCountry(name);
++  if(country && region.insideRegion(country->getLabelLongitude(),country->getLabelLatitude()))return true;
++ }
++ return false;
++}
+@@ -266,0 +282 @@ std::vector<AlienReconCandidate> buildAlienPortfolioMenu(const Mod &mod, const S
++   if(rule->getObjective()==OBJECTIVE_INFILTRATION && !hasInfiltrationCountry(mod,*geo))continue;
+@@ -286 +302 @@ std::vector<AlienReconCandidate> buildAlienPortfolioMenu(const Mod &mod, const S
+-std::string buildAlienPortfolioInput(const Mod &mod, const SavedGame &save)
++std::string buildAlienPortfolioInput(const Mod &mod, SavedGame &save)
+@@ -292 +308,13 @@ std::string buildAlienPortfolioInput(const Mod &mod, const SavedGame &save)
+- return "{\"schemaVersion\":1,\"budget\":"+save.getAlienCommand().budgetJson()+",\"knowledge\":"+AlienCommand::inputJson(input)+",\"sitrep\":"+buildAlienMonthlySitrep(save)+"}";
++ std::string bases = "[";
++ for (auto *base : *save.getAlienBases())
++ {
++  if (bases != "[") bases += ",";
++  std::string countryName;
++  for (auto *country : *save.getCountries())
++   if (country->getRules()->insideCountry(base->getLongitude(),base->getLatitude()))
++   { countryName = country->getRules()->getType(); break; }
++  bases += "{\"region\":" + sitrepQuote(save.locateRegion(*base)->getRules()->getType())
++   + ",\"country\":" + sitrepQuote(countryName) + ",\"influence\":" + std::to_string(base->getInfluence())
++   + ",\"income\":" + std::to_string(base->getMonthlyIncome()) + "}";
++ }
++ return "{\"schemaVersion\":1,\"budget\":"+save.getAlienCommand().budgetJson()+",\"knowledge\":"+AlienCommand::inputJson(input)+",\"sitrep\":"+buildAlienMonthlySitrep(save)+",\"bases\":"+bases+"]}";
+@@ -297,0 +326,16 @@ void executeAlienPortfolio(Game &game, const Globe &globe)
++ // Base-owned cursors prevent repeated calls/reloads from issuing duplicate income.
++ for (auto *base : *save.getAlienBases())
++ {
++  const int income = base->advanceEconomy(save.getMonthsPassed());
++  if (!income) continue;
++  std::string host;
++  for (auto *country : *save.getCountries())
++   if (country->getRules()->insideCountry(base->getLongitude(),base->getLatitude()))
++   {
++    host = country->getRules()->getType();
++    country->addActivityAlien(10 * base->getInfluence());
++    break;
++   }
++  ledger.creditBaseMonth(base->getId(),income,base->getInfluence(),host,save.getTime()->getFullString());
++  Log(LOG_INFO) << "AlienCommandAudit " << ledger.getAudit().back();
++ }
+diff --git a/src/Geoscape/AlienCommandAudit.h b/src/Geoscape/AlienCommandAudit.h
+index 258994739..3d79b1e03 100644
+--- a/src/Geoscape/AlienCommandAudit.h
++++ b/src/Geoscape/AlienCommandAudit.h
+@@ -17 +17 @@ std::string buildAlienMonthlySitrep(const class SavedGame &save, const std::stri
+-std::string buildAlienPortfolioInput(const Mod &mod, const class SavedGame &save);
++std::string buildAlienPortfolioInput(const Mod &mod, class SavedGame &save);
+diff --git a/src/Savegame/AlienBase.cpp b/src/Savegame/AlienBase.cpp
+index 09525a3f7..2b1b0adac 100644
+--- a/src/Savegame/AlienBase.cpp
++++ b/src/Savegame/AlienBase.cpp
+@@ -19,0 +20 @@
++#include <algorithm>
+@@ -29,0 +31 @@ AlienBase::AlienBase(AlienDeployment *deployment, int startMonth) : Target(), _i
++	_economyMonth = startMonth;
+@@ -54,0 +57,9 @@ void AlienBase::load(const YAML::YamlNodeReader& reader)
++ _economyMonth = _startMonth;
++ reader.tryRead("economyMonth", _economyMonth);
++ reader.tryRead("suppliedMonths", _suppliedMonths);
++ reader.tryRead("influence", _influence);
++ reader.tryRead("supplied", _supplied);
++ std::vector<int> rewards; reader.tryRead("supplyRewards", rewards);
++ _supplyRewards = std::set<int>(rewards.begin(), rewards.end());
++ if (_economyMonth < -1 || _suppliedMonths < 0 || _suppliedMonths > 2 || _influence < 0 || _influence > 6)
++  throw YAML::Exception("Invalid alien base economy");
+@@ -75,0 +87,3 @@ void AlienBase::save(YAML::YamlNodeWriter writer) const
++ writer.write("economyMonth", _economyMonth); writer.write("suppliedMonths", _suppliedMonths);
++ writer.write("influence", _influence); writer.write("supplied", _supplied);
++ writer.write("supplyRewards", std::vector<int>(_supplyRewards.begin(), _supplyRewards.end()));
+@@ -220,0 +235,20 @@ void AlienBase::setGenMissionCount(int newValue)
++
++namespace OpenXcom
++{
++bool AlienBase::deliverSupply(int missionId)
++{
++ if (missionId <= 0 || !_supplyRewards.insert(missionId).second) return false;
++ _supplied = true; return true;
++}
++int AlienBase::advanceEconomy(int month)
++{
++ // First observation starts accounting, without inventing past income.
++ if (_economyMonth < 0) { _economyMonth = month; return 0; }
++ if (month <= _economyMonth) return 0;
++ _economyMonth = month;
++ if (_supplied) _suppliedMonths = std::min(2, _suppliedMonths + 1);
++ _influence = std::min(6, _influence + (_supplied ? 2 : 1));
++ _supplied = false;
++ return _suppliedMonths >= 2 ? 2 : 1;
++}
++}
+diff --git a/src/Savegame/AlienBase.h b/src/Savegame/AlienBase.h
+index be923c1e4..26ae53f17 100644
+--- a/src/Savegame/AlienBase.h
++++ b/src/Savegame/AlienBase.h
+@@ -21,0 +22 @@
++#include <set>
+@@ -40,0 +42,3 @@ private:
++ int _economyMonth = -1, _suppliedMonths = 0, _influence = 0;
++ bool _supplied = false;
++ std::set<int> _supplyRewards;
+@@ -41,0 +46,4 @@ public:
++ bool deliverSupply(int missionId);
++ int advanceEconomy(int month);
++ int getInfluence() const { return _influence; }
++ int getMonthlyIncome() const { return _suppliedMonths >= 2 ? 2 : 1; }
+diff --git a/src/Savegame/AlienCommand.cpp b/src/Savegame/AlienCommand.cpp
+index 9caadfca4..3ab542740 100644
+--- a/src/Savegame/AlienCommand.cpp
++++ b/src/Savegame/AlienCommand.cpp
+@@ -118,0 +119,19 @@ void AlienCommand::beginBudgetMonth(int month, int difficulty)
++void AlienCommand::creditBaseMonth(int baseId, int income, int influence, const std::string &country, const std::string &time)
++{
++ if (!budgetActive() || income < 1 || income > 2) return;
++ _remaining += income;
++ if (++_baseProgressQuarters == 4)
++ { _baseProgressQuarters = 0; ++_intelligence; ++_logistics; ++_adaptation; }
++ _audit.push_back("{\"schemaVersion\":1,\"kind\":\"baseEconomy\",\"id\":" + std::to_string(_nextId++)
++ + ",\"event\":\"BASE_MONTH_CREDITED\",\"baseId\":" + std::to_string(baseId)
++ + ",\"income\":" + std::to_string(income) + ",\"influence\":" + std::to_string(influence)
++ + ",\"country\":" + quote(country) + ",\"gameTime\":" + quote(time) + "}");
++}
++void AlienCommand::creditBaseSupply(int baseId, int missionId, const std::string &time)
++{
++ if (!budgetActive()) return;
++ ++_pendingBonus;
++ _audit.push_back("{\"schemaVersion\":1,\"kind\":\"baseEconomy\",\"id\":" + std::to_string(_nextId++)
++ + ",\"event\":\"BASE_SUPPLY_DELIVERED\",\"baseId\":" + std::to_string(baseId)
++ + ",\"missionId\":" + std::to_string(missionId) + ",\"pendingIncome\":1,\"gameTime\":" + quote(time) + "}");
++}
+@@ -411,0 +431 @@ void AlienCommand::save(YAML::YamlNodeWriter writer) const
++  b.write("baseProgressQuarters",_baseProgressQuarters);
+@@ -462,0 +483,2 @@ void AlienCommand::load(const YAML::YamlNodeReader &reader)
++  b.tryRead("baseProgressQuarters",restored._baseProgressQuarters);
++  if (restored._baseProgressQuarters < 0 || restored._baseProgressQuarters > 3) throw YAML::Exception("Invalid base progression");
+diff --git a/src/Savegame/AlienCommand.h b/src/Savegame/AlienCommand.h
+index dd0d6f4a0..732746182 100644
+--- a/src/Savegame/AlienCommand.h
++++ b/src/Savegame/AlienCommand.h
+@@ -82,0 +83 @@ class AlienCommand
++ int _baseProgressQuarters = 0;
+@@ -98,0 +100,2 @@ public:
++ void creditBaseMonth(int baseId, int income, int influence, const std::string &country, const std::string &time);
++ void creditBaseSupply(int baseId, int missionId, const std::string &time);
+diff --git a/src/Savegame/AlienMission.cpp b/src/Savegame/AlienMission.cpp
+index dc0e51122..ab9cf2fc7 100644
+--- a/src/Savegame/AlienMission.cpp
++++ b/src/Savegame/AlienMission.cpp
+@@ -245,0 +246,12 @@ void AlienMission::think(Game &engine, const Globe &globe)
++        if (Options::alienCommandPortfolio)
++        {
++         // Influence is local to surviving bases in the actual country, not a whole region.
++         auto influence = [&game](const Country *country) {
++          int value = 0;
++          for (auto *base : *game.getAlienBases())
++           if (country->getRules()->insideCountry(base->getLongitude(),base->getLatitude()))
++            value = std::max(value,base->getInfluence());
++          return value;
++         };
++         std::stable_sort(countriesCopy.begin(),countriesCopy.end(),[&](const Country *a,const Country *b) { return influence(a) > influence(b); });
++        }
+@@ -1111,0 +1124,12 @@ void AlienMission::ufoLifting(Ufo &ufo, SavedGame &game)
++            if (Options::alienCommandPortfolio && game.getAlienCommand().budgetActive() && _rule.getObjective() == OBJECTIVE_SUPPLY && _base
++             && ufo.getMissionWaveNumber() >= 0 && (size_t)ufo.getMissionWaveNumber() < _rule.getWaveCount()
++             && _rule.getWave(ufo.getMissionWaveNumber()).objective
++             && AreSame(ufo.getLongitude(),_base->getLongitude()) && AreSame(ufo.getLatitude(),_base->getLatitude()))
++            {
++             auto *base = const_cast<AlienBase*>(_base);
++             if (base->deliverSupply(getId()))
++             {
++              game.getAlienCommand().creditBaseSupply(base->getId(),getId(),game.getTime()->getFullString());
++              Log(LOG_INFO) << "AlienCommandAudit " << game.getAlienCommand().getAudit().back();
++             }
++            }
+diff --git a/tests/AlienCommandTests.cpp b/tests/AlienCommandTests.cpp
+index 229725d5c..ec9f95bc8 100644
+--- a/tests/AlienCommandTests.cpp
++++ b/tests/AlienCommandTests.cpp
+@@ -3,0 +4,4 @@
++#include "../src/Savegame/AlienBase.h"
++#include "../src/Savegame/Country.h"
++#include "../src/Savegame/Region.h"
++#include "../src/Mod/AlienDeployment.h"
+@@ -23,0 +28 @@
++#include "../src/Mod/RuleCountry.h"
+@@ -153,0 +159,33 @@ void coreTests()
++void baseEconomyTests()
++{
++ AlienDeployment deployment("TEST_BASE");
++ AlienBase base(&deployment,0);
++ check(base.advanceEconomy(0)==0,"Base paid in construction month");
++ check(base.advanceEconomy(1)==1 && base.getInfluence()==1,"First base month incorrect");
++ check(base.advanceEconomy(1)==0,"Duplicate monthly income");
++ check(base.deliverSupply(42) && !base.deliverSupply(42),"Supply reward duplicated");
++ check(base.advanceEconomy(2)==1 && base.getInfluence()==3,"First supplied month incorrect");
++ check(base.deliverSupply(43),"Second supply rejected");
++ check(base.advanceEconomy(3)==2 && base.getInfluence()==5,"Mature income incorrect");
++ check(base.advanceEconomy(4)==2 && base.getInfluence()==6,"Influence cap incorrect");
++ YAML::YamlRootNodeWriter writer; writer.setAsMap(); base.save(writer["base"]);
++ std::string raw=writer.emit().yaml;
++ YAML::YamlRootNodeReader reader(YAML::YamlString(raw),"base economy");
++ AlienBase restored(&deployment,0); restored.load(reader["base"]);
++ check(restored.advanceEconomy(4)==0 && !restored.deliverSupply(42) && restored.getInfluence()==6,"Base economy persistence lost");
++ YAML::YamlRootNodeReader legacy(YAML::YamlString("base: {startMonth: 0, lon: 0, lat: 0}"),"legacy base");
++ AlienBase oldBase(&deployment,0); oldBase.load(legacy["base"]);
++ check(oldBase.advanceEconomy(10)==1 && oldBase.getInfluence()==1,"Legacy base invented historical gains");
++ check(oldBase.advanceEconomy(10)==0,"Migrated base paid twice");
++ AlienCommand ledger; ledger.beginBudgetMonth(4,4);
++ int before=ledger.remainingBudget();
++ for(int i=0;i<4;++i) ledger.creditBaseMonth(i+1,1,1,"TEST","TIME");
++ check(ledger.remainingBudget()==before+4,"Base income incorrectly capped as mission bonus");
++ check(ledger.budgetJson().find("\"logistics\":1")!=std::string::npos,"Fractional base progression failed");
++ ledger.creditBaseMonth(5,1,1,"TEST","TIME");
++ auto saved=serialize(ledger); YAML::YamlRootNodeReader r(YAML::YamlString(saved),"base ledger");
++ AlienCommand loaded; loaded.load(r["alienCommand"]);
++ check(serialize(loaded)==saved,"Base ledger roundtrip failed");
++ for(int i=0;i<3;++i) loaded.creditBaseMonth(i+6,1,1,"TEST","TIME");
++ check(loaded.budgetJson().find("\"logistics\":2")!=std::string::npos,"Fractional progression lost on load");
++}
+@@ -186,0 +225,45 @@ SavedGame *newCampaign(Game &game, uint64_t seed)
++void baseCampaignTests(Game &game)
++{
++ auto *save = newCampaign(game,54321);
++ AlienDeployment deployment("TEST_BASE");
++ auto *base = new AlienBase(&deployment,0); base->setId(1);
++ auto *host = save->getCountries()->front();
++ base->setLongitude(host->getRules()->getLabelLongitude()); base->setLatitude(host->getRules()->getLabelLatitude());
++ save->getAlienBases()->push_back(base);
++ const int port=Options::alienCommandModelPort; Options::alienCommandModelPort=0;
++ const bool portfolio=Options::alienCommandPortfolio; Options::alienCommandPortfolio=true;
++ { GeoscapeState geo; geo.determineAlienMissions(); }
++ check(base->getInfluence()==1,"Real portfolio boundary did not mature base");
++ auto input=buildAlienPortfolioInput(*game.getMod(),*save);
++ YAML::YamlRootNodeReader packet(YAML::YamlString(input),"own base packet");
++ check(packet["bases"].children().size()==1,"Own base absent from planner packet");
++ const auto balance=save->getAlienCommand().remainingBudget();
++ { GeoscapeState geo; geo.determineAlienMissions(); }
++ check(save->getAlienCommand().remainingBudget()==balance && base->getInfluence()==1,"Scheduler repeated base credit");
++ const auto *supplyRule=game.getMod()->getAlienMission("STR_ALIEN_SUPPLY",true);
++ AlienMission supply(*supplyRule); supply.setId(9000); supply.setAlienBase(base);
++ supply.setRegion(save->locateRegion(*base)->getRules()->getType(),*game.getMod());
++ size_t objective=0;
++ while(objective<supplyRule->getWaveCount() && !supplyRule->getWave(objective).objective) ++objective;
++ check(objective<supplyRule->getWaveCount(),"Supply fixture lacks objective wave");
++ Ufo supplier(game.getMod()->getUfo(game.getMod()->getUfosList().front(),true),9900);
++ supplier.setMissionInfo(&supply,game.getMod()->getUfoTrajectory("P0",true));
++ supplier.setMissionWaveNumber((int)objective); supplier.setStatus(Ufo::LANDED);
++ supplier.setLongitude(base->getLongitude()+0.01); supplier.setLatitude(base->getLatitude());
++ const auto beforeSupply=save->getAlienCommand().budgetJson();
++ supply.ufoLifting(supplier,*save);
++ check(save->getAlienCommand().budgetJson()==beforeSupply,"Supply away from linked base received reward");
++ supplier.setStatus(Ufo::LANDED); supplier.setLongitude(base->getLongitude());
++ supply.ufoLifting(supplier,*save);
++ const auto afterSupply=save->getAlienCommand().budgetJson();
++ check(afterSupply!=beforeSupply,"Delivered supply did not reward linked base");
++ supplier.setStatus(Ufo::LANDED); supply.ufoLifting(supplier,*save);
++ check(save->getAlienCommand().budgetJson()==afterSupply,"Repeated supply rewarded twice");
++ delete base; save->getAlienBases()->clear();
++ save->addMonth();
++ { GeoscapeState geo; geo.determineAlienMissions(); }
++ check(save->getAlienCommand().exportJsonl().find("BASE_MONTH_CREDITED")!=std::string::npos,"Base credit not audited");
++ YAML::YamlRootNodeReader after(YAML::YamlString(buildAlienPortfolioInput(*game.getMod(),*save)),"destroyed base packet");
++ check(after["bases"].children().empty(),"Destroyed base still in commander footholds");
++ Options::alienCommandModelPort=port; Options::alienCommandPortfolio=portfolio;
++}
+@@ -448,0 +532,15 @@ void sitrepTests(Game &game)
++ for(const auto &candidate:advancedMenu)
++ {
++  if(candidate.mission!="STR_ALIEN_INFILTRATION")continue;
++  const auto *region=game.getMod()->getRegion(candidate.region,true);
++  if(!region->getMissionRegion().empty())region=game.getMod()->getRegion(region->getMissionRegion(),true);
++  bool hasCountry=false;
++  for(const auto &name:game.getMod()->getCountriesList())
++  {
++   const auto *country=game.getMod()->getCountry(name,true);
++   if(region->insideRegion(country->getLabelLongitude(),country->getLabelLatitude()))hasCountry=true;
++  }
++  check(hasCountry,"Infiltration menu includes a region with no possible country target");
++ }
++ if(Options::getActiveMaster()=="xcom1")
++  check(std::none_of(advancedMenu.begin(),advancedMenu.end(),[](const auto &c){return c.mission=="STR_ALIEN_INFILTRATION" && c.region=="STR_ANTARCTICA";}),"Antarctica admitted for infiltration after progression unlock");
+@@ -632 +730 @@ int main(int argc, char *argv[])
+-		if (!replay) { coreTests(); budgetStateTests(); }
++		if (!replay) { coreTests(); budgetStateTests(); baseEconomyTests(); }
+@@ -643 +741 @@ int main(int argc, char *argv[])
+-		std::cout << "STAGE campaign" << std::endl; campaignTests(game); std::cout << "STAGE dogfight" << std::endl; dogfightTests(game);
++		std::cout << "STAGE campaign" << std::endl; campaignTests(game); baseCampaignTests(game); std::cout << "STAGE dogfight" << std::endl; dogfightTests(game);
+diff --git a/tests/test_alien_command_plans.py b/tests/test_alien_command_plans.py
+index 4891bf002..4ea2ba88a 100644
+--- a/tests/test_alien_command_plans.py
++++ b/tests/test_alien_command_plans.py
+@@ -10,0 +11,14 @@ class CampaignPlanTests(unittest.TestCase):
++ def test_objectives_expose_missing_and_unlocked_paths(self):
++  data=packet();b=data['budget'];menu=data['knowledge']['candidates']
++  initial=p.planner.campaign_objectives(b,menu)
++  self.assertEqual(initial['national_control']['missing'],{'epochMonth':1,'adaptation':2,'intelligence':1})
++  b.update(epochMonth=4,adaptation=2,intelligence=1,logistics=1)
++  menu.append({'mission':'STR_ALIEN_INFILTRATION','region':'STR_EUROPE'})
++  ready=p.planner.campaign_objectives(b,menu)
++  self.assertEqual(ready['national_control']['missing'],{})
++  self.assertTrue(ready['national_control']['targets_available'])
++  self.assertEqual(ready['infrastructure']['missing'],{'logistics':1})
++ def test_objectives_do_not_force_infiltration(self):
++  result=p.plan(packet(),lambda s,c,i:('SAVE',{}),False,True,True)
++  self.assertEqual(result['operations'],[])
++  self.assertIn('campaignObjectives',result)
+diff --git a/tests/test_alien_command_portfolio.py b/tests/test_alien_command_portfolio.py
+index 2ea2519c8..baa55c300 100644
+--- a/tests/test_alien_command_portfolio.py
++++ b/tests/test_alien_command_portfolio.py
+@@ -7,0 +8,8 @@ class PortfolioTests(unittest.TestCase):
++ def test_own_base_packet_accepts_local_influence_but_rejects_hidden_fields(self):
++  p=packet();p['bases']=[{'region':'STR_EUROPE','country':'STR_FRANCE','influence':3,'income':1}]
++  m.portfolio_input(p)
++  p['bases'][0]['xcomBase']=True
++  with self.assertRaises(ValueError):m.portfolio_input(p)
++ def test_base_influence_is_bounded(self):
++  p=packet();p['bases']=[{'region':'STR_EUROPE','country':'','influence':7,'income':1}]
++  with self.assertRaises(ValueError):m.portfolio_input(p)

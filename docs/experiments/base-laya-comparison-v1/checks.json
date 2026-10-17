@@ -1,0 +1,308 @@
+{
+  "components": 238,
+  "maxTokens": 460,
+  "suites": {
+    "compact": {
+      "aggregates": 16,
+      "baseCareerChoiceAgreement": 15,
+      "baseFamilyAgreement": 8,
+      "careerFamilyAgreement": 7
+    },
+    "adaptation": {
+      "aggregates": 16,
+      "baseCareerChoiceAgreement": 16,
+      "baseFamilyAgreement": 7,
+      "careerFamilyAgreement": 7
+    }
+  },
+  "choices": [
+    {
+      "suite": "compact",
+      "case": "heldout_target_STR_EUROPE",
+      "family": "A",
+      "description": "EUROPE",
+      "careerDescription": "EUROPE",
+      "margin": 0.5427142857142857,
+      "careerMargin": 0.6400142857142856
+    },
+    {
+      "suite": "compact",
+      "case": "heldout_target_STR_EUROPE",
+      "family": "B",
+      "description": "EUROPE",
+      "careerDescription": "EUROPE",
+      "margin": 0.5922000000000001,
+      "careerMargin": 0.6998
+    },
+    {
+      "suite": "compact",
+      "case": "heldout_target_STR_NORTH_AFRICA",
+      "family": "A",
+      "description": "NORTH_AFRICA",
+      "careerDescription": "NORTH_AFRICA",
+      "margin": 0.6224285714285713,
+      "careerMargin": 0.6794857142857144
+    },
+    {
+      "suite": "compact",
+      "case": "heldout_target_STR_NORTH_AFRICA",
+      "family": "B",
+      "description": "NORTH_AFRICA",
+      "careerDescription": "NORTH_AFRICA",
+      "margin": 0.5842999999999999,
+      "careerMargin": 0.6571285714285715
+    },
+    {
+      "suite": "compact",
+      "case": "heldout_adaptation_1",
+      "family": "A",
+      "description": "BASE cost6: surviving +1-2 cash/month, progress, influence",
+      "careerDescription": "BASE cost6: surviving +1-2 cash/month, progress, influence",
+      "margin": 0.10321428571428573,
+      "careerMargin": 0.14602857142857145
+    },
+    {
+      "suite": "compact",
+      "case": "heldout_adaptation_1",
+      "family": "B",
+      "description": "BASE cost6: surviving +1-2 cash/month, progress, influence",
+      "careerDescription": "BASE cost6: surviving +1-2 cash/month, progress, influence",
+      "margin": 0.09358571428571427,
+      "careerMargin": 0.0902
+    },
+    {
+      "suite": "compact",
+      "case": "heldout_adaptation_2",
+      "family": "A",
+      "description": "BASE cost6: surviving +1-2 cash/month, progress, influence",
+      "careerDescription": "BASE cost6: surviving +1-2 cash/month, progress, influence",
+      "margin": 0.2435125000000001,
+      "careerMargin": 0.3149375
+    },
+    {
+      "suite": "compact",
+      "case": "heldout_adaptation_2",
+      "family": "B",
+      "description": "BASE cost6: surviving +1-2 cash/month, progress, influence",
+      "careerDescription": "BASE cost6: surviving +1-2 cash/month, progress, influence",
+      "margin": 0.13438750000000005,
+      "careerMargin": 0.18523750000000005
+    },
+    {
+      "suite": "compact",
+      "case": "heldout_outcome_UNKNOWN",
+      "family": "A",
+      "description": "TERROR cost4: delivered political pressure; no cash",
+      "careerDescription": "TERROR cost4: delivered political pressure; no cash",
+      "margin": 0.1608624999999999,
+      "careerMargin": 0.25114999999999993
+    },
+    {
+      "suite": "compact",
+      "case": "heldout_outcome_UNKNOWN",
+      "family": "B",
+      "description": "TERROR cost4: delivered political pressure; no cash",
+      "careerDescription": "RETALIATION cost2: possible base discovery; assault unavailable",
+      "margin": 0.015562500000000035,
+      "careerMargin": 0.0044999999999999485
+    },
+    {
+      "suite": "compact",
+      "case": "heldout_outcome_SCOUT_LOST",
+      "family": "A",
+      "description": "TERROR cost4: delivered political pressure; no cash",
+      "careerDescription": "TERROR cost4: delivered political pressure; no cash",
+      "margin": 0.33816250000000003,
+      "careerMargin": 0.4363750000000001
+    },
+    {
+      "suite": "compact",
+      "case": "heldout_outcome_SCOUT_LOST",
+      "family": "B",
+      "description": "TERROR cost4: delivered political pressure; no cash",
+      "careerDescription": "TERROR cost4: delivered political pressure; no cash",
+      "margin": 0.204125,
+      "careerMargin": 0.2563
+    },
+    {
+      "suite": "compact",
+      "case": "heldout_outcome_DISRUPTED",
+      "family": "A",
+      "description": "TERROR cost4: delivered political pressure; no cash",
+      "careerDescription": "TERROR cost4: delivered political pressure; no cash",
+      "margin": 0.24152499999999996,
+      "careerMargin": 0.3847250000000001
+    },
+    {
+      "suite": "compact",
+      "case": "heldout_outcome_DISRUPTED",
+      "family": "B",
+      "description": "TERROR cost4: delivered political pressure; no cash",
+      "careerDescription": "TERROR cost4: delivered political pressure; no cash",
+      "margin": 0.13944999999999996,
+      "careerMargin": 0.20988749999999998
+    },
+    {
+      "suite": "compact",
+      "case": "heldout_outcome_COMPLETED",
+      "family": "A",
+      "description": "TERROR cost4: delivered political pressure; no cash",
+      "careerDescription": "TERROR cost4: delivered political pressure; no cash",
+      "margin": 0.3928000000000001,
+      "careerMargin": 0.5284875000000001
+    },
+    {
+      "suite": "compact",
+      "case": "heldout_outcome_COMPLETED",
+      "family": "B",
+      "description": "TERROR cost4: delivered political pressure; no cash",
+      "careerDescription": "TERROR cost4: delivered political pressure; no cash",
+      "margin": 0.29598750000000007,
+      "careerMargin": 0.3826625
+    },
+    {
+      "suite": "adaptation",
+      "case": "risk_AUSTRALASIA",
+      "family": "A",
+      "description": "AUSTRALASIA",
+      "careerDescription": "AUSTRALASIA",
+      "margin": 0.00912857142857143,
+      "careerMargin": 0.022214285714285742
+    },
+    {
+      "suite": "adaptation",
+      "case": "risk_AUSTRALASIA",
+      "family": "B",
+      "description": "AUSTRALASIA",
+      "careerDescription": "AUSTRALASIA",
+      "margin": 0.0021857142857143186,
+      "careerMargin": 0.00830000000000003
+    },
+    {
+      "suite": "adaptation",
+      "case": "risk_NORTH_AMERICA",
+      "family": "A",
+      "description": "AUSTRALASIA",
+      "careerDescription": "AUSTRALASIA",
+      "margin": 0.06737142857142858,
+      "careerMargin": 0.08425714285714284
+    },
+    {
+      "suite": "adaptation",
+      "case": "risk_NORTH_AMERICA",
+      "family": "B",
+      "description": "AUSTRALASIA",
+      "careerDescription": "AUSTRALASIA",
+      "margin": 0.047300000000000036,
+      "careerMargin": 0.06131428571428568
+    },
+    {
+      "suite": "adaptation",
+      "case": "gate_compact_1",
+      "family": "A",
+      "description": "HARVEST: productive +2 cash, +1 logistics; bases need logistics 2; cost 3",
+      "careerDescription": "HARVEST: productive +2 cash, +1 logistics; bases need logistics 2; cost 3",
+      "margin": 0.012857142857142817,
+      "careerMargin": 0.017014285714285704
+    },
+    {
+      "suite": "adaptation",
+      "case": "gate_compact_1",
+      "family": "B",
+      "description": "HARVEST: productive +2 cash, +1 logistics; bases need logistics 2; cost 3",
+      "careerDescription": "HARVEST: productive +2 cash, +1 logistics; bases need logistics 2; cost 3",
+      "margin": 0.01775714285714286,
+      "careerMargin": 0.013442857142857118
+    },
+    {
+      "suite": "adaptation",
+      "case": "gate_compact_2",
+      "family": "A",
+      "description": "BASE: surviving +1-2 cash/month, progress, local influence; cost 6",
+      "careerDescription": "BASE: surviving +1-2 cash/month, progress, local influence; cost 6",
+      "margin": 0.03445000000000001,
+      "careerMargin": 0.04267499999999996
+    },
+    {
+      "suite": "adaptation",
+      "case": "gate_compact_2",
+      "family": "B",
+      "description": "INFILTRATION: possible pact and base (+1-2 cash/month); cost 6",
+      "careerDescription": "INFILTRATION: possible pact and base (+1-2 cash/month); cost 6",
+      "margin": 0.012700000000000017,
+      "careerMargin": 0.008025000000000004
+    },
+    {
+      "suite": "adaptation",
+      "case": "gate_named_capability_1",
+      "family": "A",
+      "description": "ABDUCTION: productive +2 cash, +1 adaptation; cost 3",
+      "careerDescription": "ABDUCTION: productive +2 cash, +1 adaptation; cost 3",
+      "margin": 0.051057142857142856,
+      "careerMargin": 0.0778142857142857
+    },
+    {
+      "suite": "adaptation",
+      "case": "gate_named_capability_1",
+      "family": "B",
+      "description": "ABDUCTION: productive +2 cash, +1 adaptation; cost 3",
+      "careerDescription": "ABDUCTION: productive +2 cash, +1 adaptation; cost 3",
+      "margin": 0.09215714285714291,
+      "careerMargin": 0.12262857142857148
+    },
+    {
+      "suite": "adaptation",
+      "case": "gate_named_capability_2",
+      "family": "A",
+      "description": "ABDUCTION: productive +2 cash, +1 adaptation; cost 3",
+      "careerDescription": "ABDUCTION: productive +2 cash, +1 adaptation; cost 3",
+      "margin": 0.0011000000000000176,
+      "careerMargin": 0.01714999999999997
+    },
+    {
+      "suite": "adaptation",
+      "case": "gate_named_capability_2",
+      "family": "B",
+      "description": "ABDUCTION: productive +2 cash, +1 adaptation; cost 3",
+      "careerDescription": "ABDUCTION: productive +2 cash, +1 adaptation; cost 3",
+      "margin": 0.08377499999999999,
+      "careerMargin": 0.11023749999999996
+    },
+    {
+      "suite": "adaptation",
+      "case": "role_PREPARATION",
+      "family": "A",
+      "description": "HARVEST: productive +2 cash, +1 logistics; bases need logistics 2; cost 3",
+      "careerDescription": "HARVEST: productive +2 cash, +1 logistics; bases need logistics 2; cost 3",
+      "margin": 0.030500000000000027,
+      "careerMargin": 0.03331428571428571
+    },
+    {
+      "suite": "adaptation",
+      "case": "role_PREPARATION",
+      "family": "B",
+      "description": "HARVEST: productive +2 cash, +1 logistics; bases need logistics 2; cost 3",
+      "careerDescription": "HARVEST: productive +2 cash, +1 logistics; bases need logistics 2; cost 3",
+      "margin": 0.04832857142857139,
+      "careerMargin": 0.055671428571428594
+    },
+    {
+      "suite": "adaptation",
+      "case": "role_OBJECTIVE_CARRIER",
+      "family": "A",
+      "description": "HARVEST: productive +2 cash, +1 logistics; bases need logistics 2; cost 3",
+      "careerDescription": "HARVEST: productive +2 cash, +1 logistics; bases need logistics 2; cost 3",
+      "margin": 0.027042857142857146,
+      "careerMargin": 0.031700000000000006
+    },
+    {
+      "suite": "adaptation",
+      "case": "role_OBJECTIVE_CARRIER",
+      "family": "B",
+      "description": "HARVEST: productive +2 cash, +1 logistics; bases need logistics 2; cost 3",
+      "careerDescription": "HARVEST: productive +2 cash, +1 logistics; bases need logistics 2; cost 3",
+      "margin": 0.050671428571428534,
+      "careerMargin": 0.059428571428571414
+    }
+  ]
+}

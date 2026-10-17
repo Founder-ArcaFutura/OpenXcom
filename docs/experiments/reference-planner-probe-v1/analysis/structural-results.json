@@ -1,0 +1,539 @@
+{
+  "packetSha256": "8aa130c1f2a80899069035be34be471a38e036866611c4009374f1f27259df14",
+  "summary": {
+    "runs": 12,
+    "legal": 10,
+    "arithmeticCorrect": 12,
+    "byProvider": {
+      "chatgpt": {
+        "runs": 3,
+        "legal": 3
+      },
+      "claude": {
+        "runs": 3,
+        "legal": 3
+      },
+      "gemini": {
+        "runs": 3,
+        "legal": 1
+      },
+      "grok": {
+        "runs": 3,
+        "legal": 3
+      }
+    },
+    "missionRuns": {
+      "STR_ALIEN_ABDUCTION": 10,
+      "STR_ALIEN_RESEARCH": 7,
+      "STR_ALIEN_HARVEST": 11,
+      "STR_ALIEN_INFILTRATION": 9,
+      "STR_ALIEN_RETALIATION": 4
+    },
+    "spendingMedian": 14.0,
+    "referenceDecision": "1999-05-01 00:00:00",
+    "newAPIorInferenceCalls": 0,
+    "setup": {
+      "independentFreshChats": "USER_CONFIRMED",
+      "incognitoOrTemporary": "USER_REPORTED_WHERE_POSSIBLE",
+      "fullPromptIdentity": "NOT_VERIFIED_FROM_TRANSCRIPTS",
+      "modelsAndModes": "NOT_RECORDED"
+    },
+    "reviewLimits": "Single campaign state; manual model samples, not independent campaign outcomes. Narrative review is separate and unblinded."
+  },
+  "runs": [
+    {
+      "file": "chatgpt_1.md",
+      "sha256": "93e806c1de4113104dd592b6256e1705d71abf8648b090cd5353567818bbbb60",
+      "providerLabelFromFilename": "chatgpt",
+      "runLabelFromFilename": "1",
+      "modelVersion": "NOT_RECORDED",
+      "promptIdentity": "NOT_VERIFIED_FROM_TRANSCRIPTS",
+      "portfolio": {
+        "operations": [
+          {
+            "mission": "STR_ALIEN_RESEARCH",
+            "region": "STR_NORTH_AMERICA"
+          },
+          {
+            "mission": "STR_ALIEN_HARVEST",
+            "region": "STR_NORTH_AFRICA"
+          },
+          {
+            "mission": "STR_ALIEN_ABDUCTION",
+            "region": "STR_SOUTH_EAST_ASIA"
+          },
+          {
+            "mission": "STR_ALIEN_INFILTRATION",
+            "region": "STR_EUROPE"
+          }
+        ],
+        "total_cost": 14,
+        "remaining": 11
+      },
+      "validation": {
+        "legal": true,
+        "operations": 4,
+        "spent": 14,
+        "remaining": 11,
+        "carryIfNoFurtherSpend": 8,
+        "expiresIfNoFurtherSpend": 3,
+        "strategicMerit": "NOT_SCORED",
+        "nativeExecution": false
+      },
+      "ineligibleOperations": [],
+      "arithmeticCorrect": true
+    },
+    {
+      "file": "chatgpt_2.md",
+      "sha256": "ffb11fcf0b7425d42f228ddc7091cffe46ef32d08350148892755a22ac8286f6",
+      "providerLabelFromFilename": "chatgpt",
+      "runLabelFromFilename": "2",
+      "modelVersion": "NOT_RECORDED",
+      "promptIdentity": "NOT_VERIFIED_FROM_TRANSCRIPTS",
+      "portfolio": {
+        "operations": [
+          {
+            "mission": "STR_ALIEN_RESEARCH",
+            "region": "STR_NORTH_AFRICA"
+          },
+          {
+            "mission": "STR_ALIEN_HARVEST",
+            "region": "STR_NORTH_AFRICA"
+          },
+          {
+            "mission": "STR_ALIEN_ABDUCTION",
+            "region": "STR_SOUTH_EAST_ASIA"
+          },
+          {
+            "mission": "STR_ALIEN_INFILTRATION",
+            "region": "STR_NORTH_AFRICA"
+          }
+        ],
+        "total_cost": 14,
+        "remaining": 11
+      },
+      "validation": {
+        "legal": true,
+        "operations": 4,
+        "spent": 14,
+        "remaining": 11,
+        "carryIfNoFurtherSpend": 8,
+        "expiresIfNoFurtherSpend": 3,
+        "strategicMerit": "NOT_SCORED",
+        "nativeExecution": false
+      },
+      "ineligibleOperations": [],
+      "arithmeticCorrect": true
+    },
+    {
+      "file": "chatgpt_3.md",
+      "sha256": "9f14f1e509902069d736d257126e255b6891e77dafc02f379a1b57f1c050efa1",
+      "providerLabelFromFilename": "chatgpt",
+      "runLabelFromFilename": "3",
+      "modelVersion": "NOT_RECORDED",
+      "promptIdentity": "NOT_VERIFIED_FROM_TRANSCRIPTS",
+      "portfolio": {
+        "operations": [
+          {
+            "mission": "STR_ALIEN_RESEARCH",
+            "region": "STR_NORTH_AMERICA"
+          },
+          {
+            "mission": "STR_ALIEN_HARVEST",
+            "region": "STR_NORTH_AFRICA"
+          },
+          {
+            "mission": "STR_ALIEN_ABDUCTION",
+            "region": "STR_SOUTH_EAST_ASIA"
+          },
+          {
+            "mission": "STR_ALIEN_INFILTRATION",
+            "region": "STR_NORTH_AFRICA"
+          }
+        ],
+        "total_cost": 14,
+        "remaining": 11
+      },
+      "validation": {
+        "legal": true,
+        "operations": 4,
+        "spent": 14,
+        "remaining": 11,
+        "carryIfNoFurtherSpend": 8,
+        "expiresIfNoFurtherSpend": 3,
+        "strategicMerit": "NOT_SCORED",
+        "nativeExecution": false
+      },
+      "ineligibleOperations": [],
+      "arithmeticCorrect": true
+    },
+    {
+      "file": "claude_1.md",
+      "sha256": "5733bc3b0ab96e6266670a779c426155917bebf843e902e9aba2a2342ffff68a",
+      "providerLabelFromFilename": "claude",
+      "runLabelFromFilename": "1",
+      "modelVersion": "NOT_RECORDED",
+      "promptIdentity": "NOT_VERIFIED_FROM_TRANSCRIPTS",
+      "portfolio": {
+        "operations": [
+          {
+            "mission": "STR_ALIEN_INFILTRATION",
+            "region": "STR_SOUTH_AMERICA"
+          },
+          {
+            "mission": "STR_ALIEN_INFILTRATION",
+            "region": "STR_AUSTRALASIA"
+          },
+          {
+            "mission": "STR_ALIEN_HARVEST",
+            "region": "STR_SOUTHERN_AFRICA"
+          },
+          {
+            "mission": "STR_ALIEN_ABDUCTION",
+            "region": "STR_NORTH_AMERICA"
+          }
+        ],
+        "total_cost": 18,
+        "remaining": 7
+      },
+      "validation": {
+        "legal": true,
+        "operations": 4,
+        "spent": 18,
+        "remaining": 7,
+        "carryIfNoFurtherSpend": 7,
+        "expiresIfNoFurtherSpend": 0,
+        "strategicMerit": "NOT_SCORED",
+        "nativeExecution": false
+      },
+      "ineligibleOperations": [],
+      "arithmeticCorrect": true
+    },
+    {
+      "file": "claude_2.md",
+      "sha256": "38aca90fc8e64374815f2c96915da829727edc45cf9b45138a40866862b1e919",
+      "providerLabelFromFilename": "claude",
+      "runLabelFromFilename": "2",
+      "modelVersion": "NOT_RECORDED",
+      "promptIdentity": "NOT_VERIFIED_FROM_TRANSCRIPTS",
+      "portfolio": {
+        "operations": [
+          {
+            "mission": "STR_ALIEN_INFILTRATION",
+            "region": "STR_SOUTHERN_AFRICA"
+          },
+          {
+            "mission": "STR_ALIEN_HARVEST",
+            "region": "STR_SOUTH_AMERICA"
+          },
+          {
+            "mission": "STR_ALIEN_ABDUCTION",
+            "region": "STR_AUSTRALASIA"
+          },
+          {
+            "mission": "STR_ALIEN_ABDUCTION",
+            "region": "STR_NORTH_AMERICA"
+          }
+        ],
+        "total_cost": 15,
+        "remaining": 10
+      },
+      "validation": {
+        "legal": true,
+        "operations": 4,
+        "spent": 15,
+        "remaining": 10,
+        "carryIfNoFurtherSpend": 8,
+        "expiresIfNoFurtherSpend": 2,
+        "strategicMerit": "NOT_SCORED",
+        "nativeExecution": false
+      },
+      "ineligibleOperations": [],
+      "arithmeticCorrect": true
+    },
+    {
+      "file": "claude_3.md",
+      "sha256": "3c3ce39996c596838be741e96310ccf9d085501843f253e1739b131a2a24f211",
+      "providerLabelFromFilename": "claude",
+      "runLabelFromFilename": "3",
+      "modelVersion": "NOT_RECORDED",
+      "promptIdentity": "NOT_VERIFIED_FROM_TRANSCRIPTS",
+      "portfolio": {
+        "operations": [
+          {
+            "mission": "STR_ALIEN_INFILTRATION",
+            "region": "STR_SOUTH_AMERICA"
+          },
+          {
+            "mission": "STR_ALIEN_INFILTRATION",
+            "region": "STR_AUSTRALASIA"
+          },
+          {
+            "mission": "STR_ALIEN_HARVEST",
+            "region": "STR_SOUTH_AMERICA"
+          },
+          {
+            "mission": "STR_ALIEN_ABDUCTION",
+            "region": "STR_AUSTRALASIA"
+          }
+        ],
+        "total_cost": 18,
+        "remaining": 7
+      },
+      "validation": {
+        "legal": true,
+        "operations": 4,
+        "spent": 18,
+        "remaining": 7,
+        "carryIfNoFurtherSpend": 7,
+        "expiresIfNoFurtherSpend": 0,
+        "strategicMerit": "NOT_SCORED",
+        "nativeExecution": false
+      },
+      "ineligibleOperations": [],
+      "arithmeticCorrect": true
+    },
+    {
+      "file": "gemini_1.md",
+      "sha256": "b035ce2b5ff08e7f387fe0acb83d64c11f7b137ef76b0bb6c5f5602a24210ad9",
+      "providerLabelFromFilename": "gemini",
+      "runLabelFromFilename": "1",
+      "modelVersion": "NOT_RECORDED",
+      "promptIdentity": "NOT_VERIFIED_FROM_TRANSCRIPTS",
+      "portfolio": {
+        "operations": [
+          {
+            "mission": "STR_ALIEN_INFILTRATION",
+            "region": "STR_EUROPE"
+          },
+          {
+            "mission": "STR_ALIEN_ABDUCTION",
+            "region": "STR_NORTH_AFRICA"
+          },
+          {
+            "mission": "STR_ALIEN_HARVEST",
+            "region": "STR_SOUTH_EAST_ASIA"
+          }
+        ],
+        "total_cost": 12,
+        "remaining": 13
+      },
+      "validation": {
+        "legal": false,
+        "error": "Ineligible operation"
+      },
+      "ineligibleOperations": [
+        {
+          "mission": "STR_ALIEN_HARVEST",
+          "region": "STR_SOUTH_EAST_ASIA"
+        }
+      ],
+      "arithmeticCorrect": true
+    },
+    {
+      "file": "gemini_2.md",
+      "sha256": "632a01485bb5d1df7de7e41ba30454a51c16c2cf05bfe96425eee8cbf5b08b0a",
+      "providerLabelFromFilename": "gemini",
+      "runLabelFromFilename": "2",
+      "modelVersion": "NOT_RECORDED",
+      "promptIdentity": "NOT_VERIFIED_FROM_TRANSCRIPTS",
+      "portfolio": {
+        "operations": [
+          {
+            "mission": "STR_ALIEN_INFILTRATION",
+            "region": "STR_NORTH_AFRICA"
+          },
+          {
+            "mission": "STR_ALIEN_ABDUCTION",
+            "region": "STR_NORTH_AFRICA"
+          },
+          {
+            "mission": "STR_ALIEN_RESEARCH",
+            "region": "STR_EUROPE"
+          },
+          {
+            "mission": "STR_ALIEN_RETALIATION",
+            "region": "STR_SOUTH_EAST_ASIA"
+          }
+        ],
+        "total_cost": 13,
+        "remaining": 12
+      },
+      "validation": {
+        "legal": true,
+        "operations": 4,
+        "spent": 13,
+        "remaining": 12,
+        "carryIfNoFurtherSpend": 8,
+        "expiresIfNoFurtherSpend": 4,
+        "strategicMerit": "NOT_SCORED",
+        "nativeExecution": false
+      },
+      "ineligibleOperations": [],
+      "arithmeticCorrect": true
+    },
+    {
+      "file": "gemini_3.md",
+      "sha256": "dd75c0f9a1e441f12735e8ec406fc7f764f3169a26ae7f72a6afccd5b4edef6b",
+      "providerLabelFromFilename": "gemini",
+      "runLabelFromFilename": "3",
+      "modelVersion": "NOT_RECORDED",
+      "promptIdentity": "NOT_VERIFIED_FROM_TRANSCRIPTS",
+      "portfolio": {
+        "operations": [
+          {
+            "mission": "STR_ALIEN_ABDUCTION",
+            "region": "STR_NORTH_AFRICA"
+          },
+          {
+            "mission": "STR_ALIEN_HARVEST",
+            "region": "STR_SOUTH_EAST_ASIA"
+          },
+          {
+            "mission": "STR_ALIEN_RESEARCH",
+            "region": "STR_EUROPE"
+          }
+        ],
+        "total_cost": 8,
+        "remaining": 17
+      },
+      "validation": {
+        "legal": false,
+        "error": "Ineligible operation"
+      },
+      "ineligibleOperations": [
+        {
+          "mission": "STR_ALIEN_HARVEST",
+          "region": "STR_SOUTH_EAST_ASIA"
+        }
+      ],
+      "arithmeticCorrect": true
+    },
+    {
+      "file": "grok_1.md",
+      "sha256": "d69d0db2889d9a0e4b949f134b6cf707717f595f7e53d6d225de8acc09356d6c",
+      "providerLabelFromFilename": "grok",
+      "runLabelFromFilename": "1",
+      "modelVersion": "NOT_RECORDED",
+      "promptIdentity": "NOT_VERIFIED_FROM_TRANSCRIPTS",
+      "portfolio": {
+        "operations": [
+          {
+            "mission": "STR_ALIEN_RETALIATION",
+            "region": "STR_SOUTH_EAST_ASIA"
+          },
+          {
+            "mission": "STR_ALIEN_HARVEST",
+            "region": "STR_NORTH_AMERICA"
+          },
+          {
+            "mission": "STR_ALIEN_HARVEST",
+            "region": "STR_EUROPE"
+          },
+          {
+            "mission": "STR_ALIEN_INFILTRATION",
+            "region": "STR_SOUTH_AMERICA"
+          }
+        ],
+        "total_cost": 14,
+        "remaining": 11
+      },
+      "validation": {
+        "legal": true,
+        "operations": 4,
+        "spent": 14,
+        "remaining": 11,
+        "carryIfNoFurtherSpend": 8,
+        "expiresIfNoFurtherSpend": 3,
+        "strategicMerit": "NOT_SCORED",
+        "nativeExecution": false
+      },
+      "ineligibleOperations": [],
+      "arithmeticCorrect": true
+    },
+    {
+      "file": "grok_2.md",
+      "sha256": "13786e9826692a92efeef5af16fbe44ccae5b809992c1689d8c1ff78a69c4b9f",
+      "providerLabelFromFilename": "grok",
+      "runLabelFromFilename": "2",
+      "modelVersion": "NOT_RECORDED",
+      "promptIdentity": "NOT_VERIFIED_FROM_TRANSCRIPTS",
+      "portfolio": {
+        "operations": [
+          {
+            "mission": "STR_ALIEN_HARVEST",
+            "region": "STR_NORTH_AMERICA"
+          },
+          {
+            "mission": "STR_ALIEN_RESEARCH",
+            "region": "STR_EUROPE"
+          },
+          {
+            "mission": "STR_ALIEN_ABDUCTION",
+            "region": "STR_SOUTH_AMERICA"
+          },
+          {
+            "mission": "STR_ALIEN_RETALIATION",
+            "region": "STR_SOUTH_EAST_ASIA"
+          }
+        ],
+        "total_cost": 10,
+        "remaining": 15
+      },
+      "validation": {
+        "legal": true,
+        "operations": 4,
+        "spent": 10,
+        "remaining": 15,
+        "carryIfNoFurtherSpend": 8,
+        "expiresIfNoFurtherSpend": 7,
+        "strategicMerit": "NOT_SCORED",
+        "nativeExecution": false
+      },
+      "ineligibleOperations": [],
+      "arithmeticCorrect": true
+    },
+    {
+      "file": "grok_3.md",
+      "sha256": "23f74c04c6e36f34ed80d4028794950b88dc49bed2fb6b8210b2e48e4854279e",
+      "providerLabelFromFilename": "grok",
+      "runLabelFromFilename": "3",
+      "modelVersion": "NOT_RECORDED",
+      "promptIdentity": "NOT_VERIFIED_FROM_TRANSCRIPTS",
+      "portfolio": {
+        "operations": [
+          {
+            "mission": "STR_ALIEN_HARVEST",
+            "region": "STR_NORTH_AMERICA"
+          },
+          {
+            "mission": "STR_ALIEN_RESEARCH",
+            "region": "STR_EUROPE"
+          },
+          {
+            "mission": "STR_ALIEN_RESEARCH",
+            "region": "STR_NORTH_AFRICA"
+          },
+          {
+            "mission": "STR_ALIEN_RETALIATION",
+            "region": "STR_SOUTH_EAST_ASIA"
+          }
+        ],
+        "total_cost": 9,
+        "remaining": 16
+      },
+      "validation": {
+        "legal": true,
+        "operations": 4,
+        "spent": 9,
+        "remaining": 16,
+        "carryIfNoFurtherSpend": 8,
+        "expiresIfNoFurtherSpend": 8,
+        "strategicMerit": "NOT_SCORED",
+        "nativeExecution": false
+      },
+      "ineligibleOperations": [],
+      "arithmeticCorrect": true
+    }
+  ]
+}

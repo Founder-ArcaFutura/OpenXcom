@@ -1,0 +1,30 @@
+{
+  "copies": [
+    {
+      "localSource": "build/local/compact-command-v1/results.json",
+      "artifact": "compact-command-v1/receipts.json",
+      "sha256": "7fb248e22548529719acd67831092c31ffd697b9f6e31115ad29fb3e2396d5e8"
+    },
+    {
+      "localSource": "build/local/compact-command-v1/frozen.json",
+      "artifact": "compact-command-v1/frozen.json",
+      "sha256": "ff8ca2607a3e4fb85088bbdbf273dbd6195f96ebf1e18b682c1e5e13be41f64e"
+    },
+    {
+      "localSource": "build/local/adaptive-responses-v2/summary.json",
+      "artifact": "adaptive-responses-v1/receipts.json",
+      "sha256": "b0173497e0d1f80fa3c2933bc64117b228c8e659ed4a6d4cbcad07c3fcce089f"
+    },
+    {
+      "localSource": "build/local/base-laya-comparison-v1/results.json",
+      "artifact": "base-laya-comparison-v1/receipts.json",
+      "sha256": "5a417cd4348c56772ebc73815d946bb914d6e1507d1266233eef30e5b222a291"
+    },
+    {
+      "localSource": "build/local/base-laya-checkpoint/download-receipt.json",
+      "artifact": "base-laya-comparison-v1/download-receipt.json",
+      "sha256": "ce9c1dd7a0d690c8f75653a7d70b447589f0a32c6abe6b46ddb8b06a3eb35add"
+    }
+  ],
+  "dependencyPatchBase": "5342681d0b104691b65fd8f636be229b3643c195"
+}

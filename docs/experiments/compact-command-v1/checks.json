@@ -1,0 +1,120 @@
+{
+  "components": 122,
+  "maxTokens": 319,
+  "familyAgreement": 7,
+  "ruleAgreement": 4,
+  "choiceTable": [
+    {
+      "case": "heldout_target_STR_EUROPE",
+      "family": "A",
+      "choice": "EUROPE",
+      "ruleChoice": "AUSTRALASIA",
+      "margin": 0.6400142857142856
+    },
+    {
+      "case": "heldout_target_STR_EUROPE",
+      "family": "B",
+      "choice": "EUROPE",
+      "ruleChoice": "AUSTRALASIA",
+      "margin": 0.6998
+    },
+    {
+      "case": "heldout_target_STR_NORTH_AFRICA",
+      "family": "A",
+      "choice": "NORTH_AFRICA",
+      "ruleChoice": "AUSTRALASIA",
+      "margin": 0.6794857142857144
+    },
+    {
+      "case": "heldout_target_STR_NORTH_AFRICA",
+      "family": "B",
+      "choice": "NORTH_AFRICA",
+      "ruleChoice": "AUSTRALASIA",
+      "margin": 0.6571285714285715
+    },
+    {
+      "case": "heldout_adaptation_1",
+      "family": "A",
+      "choice": "BASE",
+      "ruleChoice": "BASE",
+      "margin": 0.14602857142857145
+    },
+    {
+      "case": "heldout_adaptation_1",
+      "family": "B",
+      "choice": "BASE",
+      "ruleChoice": "BASE",
+      "margin": 0.0902
+    },
+    {
+      "case": "heldout_adaptation_2",
+      "family": "A",
+      "choice": "BASE",
+      "ruleChoice": "BASE",
+      "margin": 0.3149375
+    },
+    {
+      "case": "heldout_adaptation_2",
+      "family": "B",
+      "choice": "BASE",
+      "ruleChoice": "BASE",
+      "margin": 0.18523750000000005
+    },
+    {
+      "case": "heldout_outcome_UNKNOWN",
+      "family": "A",
+      "choice": "TERROR",
+      "ruleChoice": "BASE",
+      "margin": 0.25114999999999993
+    },
+    {
+      "case": "heldout_outcome_UNKNOWN",
+      "family": "B",
+      "choice": "RETALIATION",
+      "ruleChoice": "BASE",
+      "margin": 0.0044999999999999485
+    },
+    {
+      "case": "heldout_outcome_SCOUT_LOST",
+      "family": "A",
+      "choice": "TERROR",
+      "ruleChoice": "BASE",
+      "margin": 0.4363750000000001
+    },
+    {
+      "case": "heldout_outcome_SCOUT_LOST",
+      "family": "B",
+      "choice": "TERROR",
+      "ruleChoice": "BASE",
+      "margin": 0.2563
+    },
+    {
+      "case": "heldout_outcome_DISRUPTED",
+      "family": "A",
+      "choice": "TERROR",
+      "ruleChoice": "HARVEST",
+      "margin": 0.3847250000000001
+    },
+    {
+      "case": "heldout_outcome_DISRUPTED",
+      "family": "B",
+      "choice": "TERROR",
+      "ruleChoice": "HARVEST",
+      "margin": 0.20988749999999998
+    },
+    {
+      "case": "heldout_outcome_COMPLETED",
+      "family": "A",
+      "choice": "TERROR",
+      "ruleChoice": "BASE",
+      "margin": 0.5284875000000001
+    },
+    {
+      "case": "heldout_outcome_COMPLETED",
+      "family": "B",
+      "choice": "TERROR",
+      "ruleChoice": "BASE",
+      "margin": 0.3826625
+    }
+  ]
+}

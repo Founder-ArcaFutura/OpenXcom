@@ -1,0 +1,479 @@
+{
+  "rows": [
+    {
+      "case": "heldout_target_STR_EUROPE",
+      "pair": "location",
+      "family": "A",
+      "choice": "EUROPE",
+      "ruleChoice": "AUSTRALASIA",
+      "ruleReason": "Least assigned interference; alphabetical tie break; unknown is not proven safe",
+      "meanScores": {
+        "AUSTRALASIA": 0.16010000000000002,
+        "CENTRAL_ASIA": 0.0215,
+        "EUROPE": 0.8001142857142857,
+        "NORTH_AFRICA": 0.0036,
+        "NORTH_AMERICA": 0.004685714285714285,
+        "SOUTHERN_AFRICA": 0.005142857142857143,
+        "SOUTH_AMERICA": 0.004871428571428571
+      },
+      "votes": {
+        "AUSTRALASIA": 1,
+        "CENTRAL_ASIA": 0,
+        "EUROPE": 6,
+        "NORTH_AFRICA": 0,
+        "NORTH_AMERICA": 0,
+        "SOUTHERN_AFRICA": 0,
+        "SOUTH_AMERICA": 0
+      },
+      "margin": 0.6400142857142856
+    },
+    {
+      "case": "heldout_target_STR_EUROPE",
+      "pair": "location",
+      "family": "B",
+      "choice": "EUROPE",
+      "ruleChoice": "AUSTRALASIA",
+      "ruleReason": "Least assigned interference; alphabetical tie break; unknown is not proven safe",
+      "meanScores": {
+        "AUSTRALASIA": 0.1290142857142857,
+        "CENTRAL_ASIA": 0.0278,
+        "EUROPE": 0.8288142857142857,
+        "NORTH_AFRICA": 0.002971428571428571,
+        "NORTH_AMERICA": 0.0032,
+        "SOUTHERN_AFRICA": 0.003857142857142857,
+        "SOUTH_AMERICA": 0.004371428571428571
+      },
+      "votes": {
+        "AUSTRALASIA": 0,
+        "CENTRAL_ASIA": 0,
+        "EUROPE": 7,
+        "NORTH_AFRICA": 0,
+        "NORTH_AMERICA": 0,
+        "SOUTHERN_AFRICA": 0,
+        "SOUTH_AMERICA": 0
+      },
+      "margin": 0.6998
+    },
+    {
+      "case": "heldout_target_STR_NORTH_AFRICA",
+      "pair": "location",
+      "family": "A",
+      "choice": "NORTH_AFRICA",
+      "ruleChoice": "AUSTRALASIA",
+      "ruleReason": "Least assigned interference; alphabetical tie break; unknown is not proven safe",
+      "meanScores": {
+        "AUSTRALASIA": 0.0283,
+        "CENTRAL_ASIA": 0.004014285714285714,
+        "EUROPE": 0.0007142857142857143,
+        "NORTH_AFRICA": 0.8209142857142858,
+        "NORTH_AMERICA": 0.14142857142857143,
+        "SOUTHERN_AFRICA": 0.002457142857142857,
+        "SOUTH_AMERICA": 0.0021428571428571425
+      },
+      "votes": {
+        "AUSTRALASIA": 0,
+        "CENTRAL_ASIA": 0,
+        "EUROPE": 0,
+        "NORTH_AFRICA": 6,
+        "NORTH_AMERICA": 1,
+        "SOUTHERN_AFRICA": 0,
+        "SOUTH_AMERICA": 0
+      },
+      "margin": 0.6794857142857144
+    },
+    {
+      "case": "heldout_target_STR_NORTH_AFRICA",
+      "pair": "location",
+      "family": "B",
+      "choice": "NORTH_AFRICA",
+      "ruleChoice": "AUSTRALASIA",
+      "ruleReason": "Least assigned interference; alphabetical tie break; unknown is not proven safe",
+      "meanScores": {
+        "AUSTRALASIA": 0.015685714285714285,
+        "CENTRAL_ASIA": 0.009942857142857142,
+        "EUROPE": 0.0006857142857142858,
+        "NORTH_AFRICA": 0.8139857142857144,
+        "NORTH_AMERICA": 0.15685714285714286,
+        "SOUTHERN_AFRICA": 0.0015714285714285715,
+        "SOUTH_AMERICA": 0.001242857142857143
+      },
+      "votes": {
+        "AUSTRALASIA": 0,
+        "CENTRAL_ASIA": 0,
+        "EUROPE": 0,
+        "NORTH_AFRICA": 7,
+        "NORTH_AMERICA": 0,
+        "SOUTHERN_AFRICA": 0,
+        "SOUTH_AMERICA": 0
+      },
+      "margin": 0.6571285714285715
+    },
+    {
+      "case": "heldout_adaptation_1",
+      "pair": "capability",
+      "family": "A",
+      "choice": "BASE",
+      "ruleChoice": "BASE",
+      "ruleReason": "Fill progression gaps, diversify commitments, then persistent conquest; disrupted objective favors rebuilding",
+      "meanScores": {
+        "ABDUCTION": 0.13897142857142858,
+        "BASE": 0.32515714285714287,
+        "HARVEST": 0.1696142857142857,
+        "RESEARCH": 0.09432857142857143,
+        "RETALIATION": 0.17912857142857141,
+        "SAVE": 0.04975714285714287,
+        "TERROR": 0.04304285714285715
+      },
+      "votes": {
+        "ABDUCTION": 0,
+        "BASE": 7,
+        "HARVEST": 0,
+        "RESEARCH": 0,
+        "RETALIATION": 0,
+        "SAVE": 0,
+        "TERROR": 0
+      },
+      "margin": 0.14602857142857145
+    },
+    {
+      "case": "heldout_adaptation_1",
+      "pair": "capability",
+      "family": "B",
+      "choice": "BASE",
+      "ruleChoice": "BASE",
+      "ruleReason": "Fill progression gaps, diversify commitments, then persistent conquest; disrupted objective favors rebuilding",
+      "meanScores": {
+        "ABDUCTION": 0.10748571428571428,
+        "BASE": 0.291,
+        "HARVEST": 0.20079999999999998,
+        "RESEARCH": 0.1261,
+        "RETALIATION": 0.17065714285714284,
+        "SAVE": 0.06054285714285715,
+        "TERROR": 0.0434
+      },
+      "votes": {
+        "ABDUCTION": 0,
+        "BASE": 7,
+        "HARVEST": 0,
+        "RESEARCH": 0,
+        "RETALIATION": 0,
+        "SAVE": 0,
+        "TERROR": 0
+      },
+      "margin": 0.0902
+    },
+    {
+      "case": "heldout_adaptation_2",
+      "pair": "capability",
+      "family": "A",
+      "choice": "BASE",
+      "ruleChoice": "BASE",
+      "ruleReason": "Fill progression gaps, diversify commitments, then persistent conquest; disrupted objective favors rebuilding",
+      "meanScores": {
+        "ABDUCTION": 0.11382500000000001,
+        "BASE": 0.44689999999999996,
+        "HARVEST": 0.1319625,
+        "INFILTRATION": 0.07694999999999999,
+        "RESEARCH": 0.048675,
+        "RETALIATION": 0.1203875,
+        "SAVE": 0.033424999999999996,
+        "TERROR": 0.02785
+      },
+      "votes": {
+        "ABDUCTION": 0,
+        "BASE": 8,
+        "HARVEST": 0,
+        "INFILTRATION": 0,
+        "RESEARCH": 0,
+        "RETALIATION": 0,
+        "SAVE": 0,
+        "TERROR": 0
+      },
+      "margin": 0.3149375
+    },
+    {
+      "case": "heldout_adaptation_2",
+      "pair": "capability",
+      "family": "B",
+      "choice": "BASE",
+      "ruleChoice": "BASE",
+      "ruleReason": "Fill progression gaps, diversify commitments, then persistent conquest; disrupted objective favors rebuilding",
+      "meanScores": {
+        "ABDUCTION": 0.07926249999999999,
+        "BASE": 0.36505000000000004,
+        "HARVEST": 0.1798125,
+        "INFILTRATION": 0.0982125,
+        "RESEARCH": 0.068025,
+        "RETALIATION": 0.14528749999999999,
+        "SAVE": 0.04048750000000001,
+        "TERROR": 0.0238625
+      },
+      "votes": {
+        "ABDUCTION": 0,
+        "BASE": 7,
+        "HARVEST": 1,
+        "INFILTRATION": 0,
+        "RESEARCH": 0,
+        "RETALIATION": 0,
+        "SAVE": 0,
+        "TERROR": 0
+      },
+      "margin": 0.18523750000000005
+    },
+    {
+      "case": "heldout_outcome_UNKNOWN",
+      "pair": "outcome",
+      "family": "A",
+      "choice": "TERROR",
+      "ruleChoice": "BASE",
+      "ruleReason": "Fill progression gaps, diversify commitments, then persistent conquest; disrupted objective favors rebuilding",
+      "meanScores": {
+        "ABDUCTION": 0.052762500000000004,
+        "BASE": 0.136825,
+        "HARVEST": 0.05545,
+        "INFILTRATION": 0.0753875,
+        "RESEARCH": 0.010162500000000001,
+        "RETALIATION": 0.1973875,
+        "SAVE": 0.023475000000000003,
+        "TERROR": 0.4485374999999999
+      },
+      "votes": {
+        "ABDUCTION": 0,
+        "BASE": 1,
+        "HARVEST": 0,
+        "INFILTRATION": 0,
+        "RESEARCH": 0,
+        "RETALIATION": 2,
+        "SAVE": 0,
+        "TERROR": 5
+      },
+      "margin": 0.25114999999999993
+    },
+    {
+      "case": "heldout_outcome_UNKNOWN",
+      "pair": "outcome",
+      "family": "B",
+      "choice": "RETALIATION",
+      "ruleChoice": "BASE",
+      "ruleReason": "Fill progression gaps, diversify commitments, then persistent conquest; disrupted objective favors rebuilding",
+      "meanScores": {
+        "ABDUCTION": 0.052125,
+        "BASE": 0.14671250000000002,
+        "HARVEST": 0.08122499999999999,
+        "INFILTRATION": 0.0798625,
+        "RESEARCH": 0.016800000000000002,
+        "RETALIATION": 0.29717499999999997,
+        "SAVE": 0.033437499999999995,
+        "TERROR": 0.292675
+      },
+      "votes": {
+        "ABDUCTION": 0,
+        "BASE": 0,
+        "HARVEST": 0,
+        "INFILTRATION": 1,
+        "RESEARCH": 0,
+        "RETALIATION": 5,
+        "SAVE": 0,
+        "TERROR": 2
+      },
+      "margin": 0.0044999999999999485
+    },
+    {
+      "case": "heldout_outcome_SCOUT_LOST",
+      "pair": "outcome",
+      "family": "A",
+      "choice": "TERROR",
+      "ruleChoice": "BASE",
+      "ruleReason": "Fill progression gaps, diversify commitments, then persistent conquest; disrupted objective favors rebuilding",
+      "meanScores": {
+        "ABDUCTION": 0.034350000000000006,
+        "BASE": 0.0711625,
+        "HARVEST": 0.0422625,
+        "INFILTRATION": 0.0596375,
+        "RESEARCH": 0.0073375,
+        "RETALIATION": 0.1645625,
+        "SAVE": 0.0197125,
+        "TERROR": 0.6009375000000001
+      },
+      "votes": {
+        "ABDUCTION": 0,
+        "BASE": 0,
+        "HARVEST": 0,
+        "INFILTRATION": 1,
+        "RESEARCH": 0,
+        "RETALIATION": 1,
+        "SAVE": 0,
+        "TERROR": 6
+      },
+      "margin": 0.4363750000000001
+    },
+    {
+      "case": "heldout_outcome_SCOUT_LOST",
+      "pair": "outcome",
+      "family": "B",
+      "choice": "TERROR",
+      "ruleChoice": "BASE",
+      "ruleReason": "Fill progression gaps, diversify commitments, then persistent conquest; disrupted objective favors rebuilding",
+      "meanScores": {
+        "ABDUCTION": 0.034075,
+        "BASE": 0.0749875,
+        "HARVEST": 0.055125,
+        "INFILTRATION": 0.0623625,
+        "RESEARCH": 0.0116875,
+        "RETALIATION": 0.23217500000000002,
+        "SAVE": 0.0410625,
+        "TERROR": 0.488475
+      },
+      "votes": {
+        "ABDUCTION": 0,
+        "BASE": 0,
+        "HARVEST": 0,
+        "INFILTRATION": 1,
+        "RESEARCH": 0,
+        "RETALIATION": 2,
+        "SAVE": 0,
+        "TERROR": 5
+      },
+      "margin": 0.2563
+    },
+    {
+      "case": "heldout_outcome_DISRUPTED",
+      "pair": "outcome",
+      "family": "A",
+      "choice": "TERROR",
+      "ruleChoice": "HARVEST",
+      "ruleReason": "Fill progression gaps, diversify commitments, then persistent conquest; disrupted objective favors rebuilding",
+      "meanScores": {
+        "ABDUCTION": 0.052399999999999995,
+        "BASE": 0.09705,
+        "HARVEST": 0.04595,
+        "INFILTRATION": 0.0460625,
+        "RESEARCH": 0.007325,
+        "RETALIATION": 0.1747,
+        "SAVE": 0.0170875,
+        "TERROR": 0.5594250000000001
+      },
+      "votes": {
+        "ABDUCTION": 0,
+        "BASE": 0,
+        "HARVEST": 0,
+        "INFILTRATION": 0,
+        "RESEARCH": 0,
+        "RETALIATION": 1,
+        "SAVE": 0,
+        "TERROR": 7
+      },
+      "margin": 0.3847250000000001
+    },
+    {
+      "case": "heldout_outcome_DISRUPTED",
+      "pair": "outcome",
+      "family": "B",
+      "choice": "TERROR",
+      "ruleChoice": "HARVEST",
+      "ruleReason": "Fill progression gaps, diversify commitments, then persistent conquest; disrupted objective favors rebuilding",
+      "meanScores": {
+        "ABDUCTION": 0.049874999999999996,
+        "BASE": 0.10270000000000001,
+        "HARVEST": 0.0676375,
+        "INFILTRATION": 0.051524999999999994,
+        "RESEARCH": 0.0125,
+        "RETALIATION": 0.2404625,
+        "SAVE": 0.0249375,
+        "TERROR": 0.45035
+      },
+      "votes": {
+        "ABDUCTION": 0,
+        "BASE": 0,
+        "HARVEST": 0,
+        "INFILTRATION": 0,
+        "RESEARCH": 0,
+        "RETALIATION": 3,
+        "SAVE": 0,
+        "TERROR": 5
+      },
+      "margin": 0.20988749999999998
+    },
+    {
+      "case": "heldout_outcome_COMPLETED",
+      "pair": "outcome",
+      "family": "A",
+      "choice": "TERROR",
+      "ruleChoice": "BASE",
+      "ruleReason": "Fill progression gaps, diversify commitments, then persistent conquest; disrupted objective favors rebuilding",
+      "meanScores": {
+        "ABDUCTION": 0.057225,
+        "BASE": 0.082325,
+        "HARVEST": 0.055725000000000004,
+        "INFILTRATION": 0.0363625,
+        "RESEARCH": 0.0055375,
+        "RETALIATION": 0.10905,
+        "SAVE": 0.016225,
+        "TERROR": 0.6375375000000001
+      },
+      "votes": {
+        "ABDUCTION": 0,
+        "BASE": 0,
+        "HARVEST": 0,
+        "INFILTRATION": 0,
+        "RESEARCH": 0,
+        "RETALIATION": 1,
+        "SAVE": 0,
+        "TERROR": 7
+      },
+      "margin": 0.5284875000000001
+    },
+    {
+      "case": "heldout_outcome_COMPLETED",
+      "pair": "outcome",
+      "family": "B",
+      "choice": "TERROR",
+      "ruleChoice": "BASE",
+      "ruleReason": "Fill progression gaps, diversify commitments, then persistent conquest; disrupted objective favors rebuilding",
+      "meanScores": {
+        "ABDUCTION": 0.05941249999999999,
+        "BASE": 0.09129999999999999,
+        "HARVEST": 0.06725,
+        "INFILTRATION": 0.038875,
+        "RESEARCH": 0.011125000000000001,
+        "RETALIATION": 0.160675,
+        "SAVE": 0.027975,
+        "TERROR": 0.5433375
+      },
+      "votes": {
+        "ABDUCTION": 0,
+        "BASE": 1,
+        "HARVEST": 0,
+        "INFILTRATION": 0,
+        "RESEARCH": 0,
+        "RETALIATION": 2,
+        "SAVE": 0,
+        "TERROR": 5
+      },
+      "margin": 0.3826625
+    }
+  ],
+  "manifest": {
+    "model": {
+      "checkpointSha256": "bcbb891d21cf081a9d7a941b97f8b0f10cf3dac7473b4b9450fab0d07b885175",
+      "modelName": "uppward-laya-evidence-lambda-probe-v4-production-packet",
+      "encoderRevision": "45bb4654a4d5aaff24dd11d4781fa46d39bf8c13",
+      "device": "cpu",
+      "torchVersion": "2.10.0+cpu",
+      "layaVersion": "0.1.6",
+      "domainValidation": "NOT_VALIDATED_FOR_XCOM",
+      "protocol": "alien-recon-laya-v2"
+    },
+    "hashes": {
+      "G:\\OpenXcom\\scripts\\test-compact-command.py": "16984f6d8fa4169570293f4223ee555f4f4b7d0c91f30c1cf165eaeac033ca6e",
+      "G:\\OpenXcom\\scripts\\compact_command_probe.py": "c5553555eb5b732baf326616adce233d26bd9d1b3a0de5cd1815c42d9d362215",
+      "G:\\OpenXcom\\build\\local\\user\\xcom1\\Pre-Junes.sav": "d095e3dd2850ee74751309d8a7570356aff20577b12916b434a3345f296d3ec7",
+      "G:\\OpenXcom\\scripts\\campaign_plans.py": "560044d31c91ddeb3d235258c0d9db934e3270b80f53983fedf5a2fd9ce524ef",
+      "G:\\OpenXcom\\scripts\\alien-command-model.py": "49b9ecc4bbdf75065147988fb30bb91a66be9964a5fd1dabd20931294b1745f3"
+    },
+    "APICalls": 0,
+    "liveChanged": false,
+    "components": 122,
+    "fullPortfolios": false
+  }
+}

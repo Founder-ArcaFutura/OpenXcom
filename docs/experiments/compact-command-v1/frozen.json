@@ -1,0 +1,3375 @@
+{
+  "cases": [
+    {
+      "name": "heldout_target_STR_EUROPE",
+      "pair": "location",
+      "stage": "TARGET",
+      "data": {
+        "schemaVersion": 1,
+        "budget": {
+          "policyVersion": "monthly-portfolio-v1",
+          "epochMonth": 5,
+          "difficulty": 4,
+          "remaining": 30,
+          "pendingBonus": 0,
+          "intelligence": 3,
+          "logistics": 2,
+          "adaptation": 2,
+          "allowance": 20,
+          "carryCap": 10,
+          "nextAllowance": 24,
+          "nextBonusCap": 12,
+          "maxOperations": 4,
+          "assaultAvailable": false,
+          "terrorRewardVerified": false
+        },
+        "knowledge": {
+          "menuSource": "STATIC_RULESET_ONLY",
+          "candidates": [
+            {
+              "mission": "STR_ALIEN_RESEARCH",
+              "region": "STR_NORTH_AMERICA"
+            },
+            {
+              "mission": "STR_ALIEN_RESEARCH",
+              "region": "STR_ARCTIC"
+            },
+            {
+              "mission": "STR_ALIEN_RESEARCH",
+              "region": "STR_ANTARCTICA"
+            },
+            {
+              "mission": "STR_ALIEN_RESEARCH",
+              "region": "STR_SOUTH_AMERICA"
+            },
+            {
+              "mission": "STR_ALIEN_RESEARCH",
+              "region": "STR_EUROPE"
+            },
+            {
+              "mission": "STR_ALIEN_RESEARCH",
+              "region": "STR_NORTH_AFRICA"
+            },
+            {
+              "mission": "STR_ALIEN_RESEARCH",
+              "region": "STR_SOUTHERN_AFRICA"
+            },
+            {
+              "mission": "STR_ALIEN_RESEARCH",
+              "region": "STR_CENTRAL_ASIA"
+            },
+            {
+              "mission": "STR_ALIEN_RESEARCH",
+              "region": "STR_SIBERIA"
+            },
+            {
+              "mission": "STR_ALIEN_RESEARCH",
+              "region": "STR_AUSTRALASIA"
+            },
+            {
+              "mission": "STR_ALIEN_RESEARCH",
+              "region": "STR_PACIFIC"
+            },
+            {
+              "mission": "STR_ALIEN_HARVEST",
+              "region": "STR_NORTH_AMERICA"
+            },
+            {
+              "mission": "STR_ALIEN_HARVEST",
+              "region": "STR_SOUTH_AMERICA"
+            },
+            {
+              "mission": "STR_ALIEN_HARVEST",
+              "region": "STR_EUROPE"
+            },
+            {
+              "mission": "STR_ALIEN_HARVEST",
+              "region": "STR_NORTH_AFRICA"
+            },
+            {
+              "mission": "STR_ALIEN_HARVEST",
+              "region": "STR_SOUTHERN_AFRICA"
+            },
+            {
+              "mission": "STR_ALIEN_HARVEST",
+              "region": "STR_CENTRAL_ASIA"
+            },
+            {
+              "mission": "STR_ALIEN_HARVEST",
+              "region": "STR_AUSTRALASIA"
+            },
+            {
+              "mission": "STR_ALIEN_ABDUCTION",
+              "region": "STR_NORTH_AMERICA"
+            },
+            {
+              "mission": "STR_ALIEN_ABDUCTION",
+              "region": "STR_SOUTH_AMERICA"
+            },
+            {
+              "mission": "STR_ALIEN_ABDUCTION",
+              "region": "STR_EUROPE"
+            },
+            {
+              "mission": "STR_ALIEN_ABDUCTION",
+              "region": "STR_NORTH_AFRICA"
+            },
+            {
+              "mission": "STR_ALIEN_ABDUCTION",
+              "region": "STR_SOUTHERN_AFRICA"
+            },
+            {
+              "mission": "STR_ALIEN_ABDUCTION",
+              "region": "STR_CENTRAL_ASIA"
+            },
+            {
+              "mission": "STR_ALIEN_ABDUCTION",
+              "region": "STR_SOUTH_EAST_ASIA"
+            },
+            {
+              "mission": "STR_ALIEN_ABDUCTION",
+              "region": "STR_SIBERIA"
+            },
+            {
+              "mission": "STR_ALIEN_TERROR",
+              "region": "STR_NORTH_AMERICA"
+            },
+            {
+              "mission": "STR_ALIEN_TERROR",
+              "region": "STR_SOUTH_AMERICA"
+            },
+            {
+              "mission": "STR_ALIEN_TERROR",
+              "region": "STR_EUROPE"
+            },
+            {
+              "mission": "STR_ALIEN_TERROR",
+              "region": "STR_NORTH_AFRICA"
+            },
+            {
+              "mission": "STR_ALIEN_TERROR",
+              "region": "STR_SOUTHERN_AFRICA"
+            },
+            {
+              "mission": "STR_ALIEN_TERROR",
+              "region": "STR_CENTRAL_ASIA"
+            },
+            {
+              "mission": "STR_ALIEN_TERROR",
+              "region": "STR_SOUTH_EAST_ASIA"
+            },
+            {
+              "mission": "STR_ALIEN_TERROR",
+              "region": "STR_SIBERIA"
+            },
+            {
+              "mission": "STR_ALIEN_TERROR",
+              "region": "STR_AUSTRALASIA"
+            },
+            {
+              "mission": "STR_ALIEN_RETALIATION",
+              "region": "STR_NORTH_AMERICA"
+            },
+            {
+              "mission": "STR_ALIEN_RETALIATION",
+              "region": "STR_ARCTIC"
+            },
+            {
+              "mission": "STR_ALIEN_RETALIATION",
+              "region": "STR_ANTARCTICA"
+            },
+            {
+              "mission": "STR_ALIEN_RETALIATION",
+              "region": "STR_SOUTH_AMERICA"
+            },
+            {
+              "mission": "STR_ALIEN_RETALIATION",
+              "region": "STR_EUROPE"
+            },
+            {
+              "mission": "STR_ALIEN_RETALIATION",
+              "region": "STR_NORTH_AFRICA"
+            },
+            {
+              "mission": "STR_ALIEN_RETALIATION",
+              "region": "STR_SOUTHERN_AFRICA"
+            },
+            {
+              "mission": "STR_ALIEN_RETALIATION",
+              "region": "STR_CENTRAL_ASIA"
+            },
+            {
+              "mission": "STR_ALIEN_RETALIATION",
+              "region": "STR_SOUTH_EAST_ASIA"
+            },
+            {
+              "mission": "STR_ALIEN_RETALIATION",
+              "region": "STR_SIBERIA"
+            },
+            {
+              "mission": "STR_ALIEN_RETALIATION",
+              "region": "STR_AUSTRALASIA"
+            },
+            {
+              "mission": "STR_ALIEN_RETALIATION",
+              "region": "STR_PACIFIC"
+            },
+            {
+              "mission": "STR_ALIEN_BASE",
+              "region": "STR_NORTH_AMERICA"
+            },
+            {
+              "mission": "STR_ALIEN_BASE",
+              "region": "STR_ARCTIC"
+            },
+            {
+              "mission": "STR_ALIEN_BASE",
+              "region": "STR_ANTARCTICA"
+            },
+            {
+              "mission": "STR_ALIEN_BASE",
+              "region": "STR_SOUTH_AMERICA"
+            },
+            {
+              "mission": "STR_ALIEN_BASE",
+              "region": "STR_EUROPE"
+            },
+            {
+              "mission": "STR_ALIEN_BASE",
+              "region": "STR_NORTH_AFRICA"
+            },
+            {
+              "mission": "STR_ALIEN_BASE",
+              "region": "STR_SOUTHERN_AFRICA"
+            },
+            {
+              "mission": "STR_ALIEN_BASE",
+              "region": "STR_CENTRAL_ASIA"
+            },
+            {
+              "mission": "STR_ALIEN_BASE",
+              "region": "STR_SOUTH_EAST_ASIA"
+            },
+            {
+              "mission": "STR_ALIEN_BASE",
+              "region": "STR_SIBERIA"
+            },
+            {
+              "mission": "STR_ALIEN_BASE",
+              "region": "STR_AUSTRALASIA"
+            },
+            {
+              "mission": "STR_ALIEN_BASE",
+              "region": "STR_PACIFIC"
+            },
+            {
+              "mission": "STR_ALIEN_INFILTRATION",
+              "region": "STR_NORTH_AMERICA"
+            },
+            {
+              "mission": "STR_ALIEN_INFILTRATION",
+              "region": "STR_SOUTH_AMERICA"
+            },
+            {
+              "mission": "STR_ALIEN_INFILTRATION",
+              "region": "STR_EUROPE"
+            },
+            {
+              "mission": "STR_ALIEN_INFILTRATION",
+              "region": "STR_NORTH_AFRICA"
+            },
+            {
+              "mission": "STR_ALIEN_INFILTRATION",
+              "region": "STR_SOUTHERN_AFRICA"
+            },
+            {
+              "mission": "STR_ALIEN_INFILTRATION",
+              "region": "STR_CENTRAL_ASIA"
+            },
+            {
+              "mission": "STR_ALIEN_INFILTRATION",
+              "region": "STR_SOUTH_EAST_ASIA"
+            },
+            {
+              "mission": "STR_ALIEN_INFILTRATION",
+              "region": "STR_SIBERIA"
+            },
+            {
+              "mission": "STR_ALIEN_INFILTRATION",
+              "region": "STR_AUSTRALASIA"
+            }
+          ],
+          "beliefs": [],
+          "evidence": []
+        },
+        "sitrep": {
+          "schemaVersion": 1,
+          "period": "1999-05",
+          "coverage": "PARTIAL_FLEET_OUTCOMES",
+          "previousStrategy": "INTELLIGENCE",
+          "previousPortfolio": [
+            {
+              "mission": "STR_ALIEN_ABDUCTION",
+              "region": "STR_AUSTRALASIA"
+            },
+            {
+              "mission": "STR_ALIEN_RESEARCH",
+              "region": "STR_SOUTH_EAST_ASIA"
+            },
+            {
+              "mission": "STR_ALIEN_RESEARCH",
+              "region": "STR_ARCTIC"
+            },
+            {
+              "mission": "STR_ALIEN_RESEARCH",
+              "region": "STR_ANTARCTICA"
+            }
+          ],
+          "previousReceiptId": 252,
+          "assets": {
+            "deployed": 21,
+            "returned": 13,
+            "unavailable": 5
+          },
+          "lossAssignments": [
+            {
+              "region": "STR_EUROPE",
+              "count": 5,
+              "evidenceIds": [
+                900001,
+                900002,
+                900003,
+                900004,
+                900005
+              ]
+            }
+          ],
+          "contacts": [],
+          "verifiedActivities": [
+            {
+              "mission": "STR_ALIEN_RESEARCH",
+              "count": 2,
+              "evidenceIds": [
+                259,
+                268
+              ]
+            }
+          ],
+          "pendingOperations": [
+            {
+              "missionId": 9,
+              "mission": "STR_ALIEN_HARVEST",
+              "region": "STR_SOUTH_EAST_ASIA"
+            },
+            {
+              "missionId": 13,
+              "mission": "STR_ALIEN_ABDUCTION",
+              "region": "STR_AUSTRALASIA"
+            },
+            {
+              "missionId": 14,
+              "mission": "STR_ALIEN_RESEARCH",
+              "region": "STR_SOUTH_EAST_ASIA"
+            }
+          ],
+          "pendingTotal": 3,
+          "pendingTruncated": false,
+          "operationalReview": {
+            "loss_roles": {
+              "OBJECTIVE_CARRIER": 0,
+              "PREPARATION": 0,
+              "SEARCH": 0,
+              "UNKNOWN": 5
+            },
+            "terror_objective_waves_pending": 0,
+            "rolling_results": [
+              [
+                "1999-04",
+                17,
+                1
+              ],
+              [
+                "1999-05",
+                5,
+                2
+              ]
+            ],
+            "limits": "Partial own telemetry. Pending objective is not success; scout loss is not mission failure.",
+            "roleSupport": [],
+            "pendingProgress": [
+              {
+                "missionId": 9,
+                "nextWave": 6,
+                "totalWaves": 8,
+                "objectiveWavePending": false
+              },
+              {
+                "missionId": 13,
+                "nextWave": 1,
+                "totalWaves": 5,
+                "objectiveWavePending": false
+              },
+              {
+                "missionId": 14,
+                "nextWave": 2,
+                "totalWaves": 3,
+                "objectiveWavePending": false
+              }
+            ]
+          },
+          "enemyRecovery": "UNKNOWN",
+          "missionSuccess": "NOT_INFERRED_FROM_ACTIVITY_OR_DISAPPEARANCE"
+        },
+        "bases": []
+      }
+    },
+    {
+      "name": "heldout_target_STR_NORTH_AFRICA",
+      "pair": "location",
+      "stage": "TARGET",
+      "data": {
+        "schemaVersion": 1,
+        "budget": {
+          "policyVersion": "monthly-portfolio-v1",
+          "epochMonth": 5,
+          "difficulty": 4,
+          "remaining": 30,
+          "pendingBonus": 0,
+          "intelligence": 3,
+          "logistics": 2,
+          "adaptation": 2,
+          "allowance": 20,
+          "carryCap": 10,
+          "nextAllowance": 24,
+          "nextBonusCap": 12,
+          "maxOperations": 4,
+          "assaultAvailable": false,
+          "terrorRewardVerified": false
+        },
+        "knowledge": {
+          "menuSource": "STATIC_RULESET_ONLY",
+          "candidates": [
+            {
+              "mission": "STR_ALIEN_RESEARCH",
+              "region": "STR_NORTH_AMERICA"
+            },
+            {
+              "mission": "STR_ALIEN_RESEARCH",
+              "region": "STR_ARCTIC"
+            },
+            {
+              "mission": "STR_ALIEN_RESEARCH",
+              "region": "STR_ANTARCTICA"
+            },
+            {
+              "mission": "STR_ALIEN_RESEARCH",
+              "region": "STR_SOUTH_AMERICA"
+            },
+            {
+              "mission": "STR_ALIEN_RESEARCH",
+              "region": "STR_EUROPE"
+            },
+            {
+              "mission": "STR_ALIEN_RESEARCH",
+              "region": "STR_NORTH_AFRICA"
+            },
+            {
+              "mission": "STR_ALIEN_RESEARCH",
+              "region": "STR_SOUTHERN_AFRICA"
+            },
+            {
+              "mission": "STR_ALIEN_RESEARCH",
+              "region": "STR_CENTRAL_ASIA"
+            },
+            {
+              "mission": "STR_ALIEN_RESEARCH",
+              "region": "STR_SIBERIA"
+            },
+            {
+              "mission": "STR_ALIEN_RESEARCH",
+              "region": "STR_AUSTRALASIA"
+            },
+            {
+              "mission": "STR_ALIEN_RESEARCH",
+              "region": "STR_PACIFIC"
+            },
+            {
+              "mission": "STR_ALIEN_HARVEST",
+              "region": "STR_NORTH_AMERICA"
+            },
+            {
+              "mission": "STR_ALIEN_HARVEST",
+              "region": "STR_SOUTH_AMERICA"
+            },
+            {
+              "mission": "STR_ALIEN_HARVEST",
+              "region": "STR_EUROPE"
+            },
+            {
+              "mission": "STR_ALIEN_HARVEST",
+              "region": "STR_NORTH_AFRICA"
+            },
+            {
+              "mission": "STR_ALIEN_HARVEST",
+              "region": "STR_SOUTHERN_AFRICA"
+            },
+            {
+              "mission": "STR_ALIEN_HARVEST",
+              "region": "STR_CENTRAL_ASIA"
+            },
+            {
+              "mission": "STR_ALIEN_HARVEST",
+              "region": "STR_AUSTRALASIA"
+            },
+            {
+              "mission": "STR_ALIEN_ABDUCTION",
+              "region": "STR_NORTH_AMERICA"
+            },
+            {
+              "mission": "STR_ALIEN_ABDUCTION",
+              "region": "STR_SOUTH_AMERICA"
+            },
+            {
+              "mission": "STR_ALIEN_ABDUCTION",
+              "region": "STR_EUROPE"
+            },
+            {
+              "mission": "STR_ALIEN_ABDUCTION",
+              "region": "STR_NORTH_AFRICA"
+            },
+            {
+              "mission": "STR_ALIEN_ABDUCTION",
+              "region": "STR_SOUTHERN_AFRICA"
+            },
+            {
+              "mission": "STR_ALIEN_ABDUCTION",
+              "region": "STR_CENTRAL_ASIA"
+            },
+            {
+              "mission": "STR_ALIEN_ABDUCTION",
+              "region": "STR_SOUTH_EAST_ASIA"
+            },
+            {
+              "mission": "STR_ALIEN_ABDUCTION",
+              "region": "STR_SIBERIA"
+            },
+            {
+              "mission": "STR_ALIEN_TERROR",
+              "region": "STR_NORTH_AMERICA"
+            },
+            {
+              "mission": "STR_ALIEN_TERROR",
+              "region": "STR_SOUTH_AMERICA"
+            },
+            {
+              "mission": "STR_ALIEN_TERROR",
+              "region": "STR_EUROPE"
+            },
+            {
+              "mission": "STR_ALIEN_TERROR",
+              "region": "STR_NORTH_AFRICA"
+            },
+            {
+              "mission": "STR_ALIEN_TERROR",
+              "region": "STR_SOUTHERN_AFRICA"
+            },
+            {
+              "mission": "STR_ALIEN_TERROR",
+              "region": "STR_CENTRAL_ASIA"
+            },
+            {
+              "mission": "STR_ALIEN_TERROR",
+              "region": "STR_SOUTH_EAST_ASIA"
+            },
+            {
+              "mission": "STR_ALIEN_TERROR",
+              "region": "STR_SIBERIA"
+            },
+            {
+              "mission": "STR_ALIEN_TERROR",
+              "region": "STR_AUSTRALASIA"
+            },
+            {
+              "mission": "STR_ALIEN_RETALIATION",
+              "region": "STR_NORTH_AMERICA"
+            },
+            {
+              "mission": "STR_ALIEN_RETALIATION",
+              "region": "STR_ARCTIC"
+            },
+            {
+              "mission": "STR_ALIEN_RETALIATION",
+              "region": "STR_ANTARCTICA"
+            },
+            {
+              "mission": "STR_ALIEN_RETALIATION",
+              "region": "STR_SOUTH_AMERICA"
+            },
+            {
+              "mission": "STR_ALIEN_RETALIATION",
+              "region": "STR_EUROPE"
+            },
+            {
+              "mission": "STR_ALIEN_RETALIATION",
+              "region": "STR_NORTH_AFRICA"
+            },
+            {
+              "mission": "STR_ALIEN_RETALIATION",
+              "region": "STR_SOUTHERN_AFRICA"
+            },
+            {
+              "mission": "STR_ALIEN_RETALIATION",
+              "region": "STR_CENTRAL_ASIA"
+            },
+            {
+              "mission": "STR_ALIEN_RETALIATION",
+              "region": "STR_SOUTH_EAST_ASIA"
+            },
+            {
+              "mission": "STR_ALIEN_RETALIATION",
+              "region": "STR_SIBERIA"
+            },
+            {
+              "mission": "STR_ALIEN_RETALIATION",
+              "region": "STR_AUSTRALASIA"
+            },
+            {
+              "mission": "STR_ALIEN_RETALIATION",
+              "region": "STR_PACIFIC"
+            },
+            {
+              "mission": "STR_ALIEN_BASE",
+              "region": "STR_NORTH_AMERICA"
+            },
+            {
+              "mission": "STR_ALIEN_BASE",
+              "region": "STR_ARCTIC"
+            },
+            {
+              "mission": "STR_ALIEN_BASE",
+              "region": "STR_ANTARCTICA"
+            },
+            {
+              "mission": "STR_ALIEN_BASE",
+              "region": "STR_SOUTH_AMERICA"
+            },
+            {
+              "mission": "STR_ALIEN_BASE",
+              "region": "STR_EUROPE"
+            },
+            {
+              "mission": "STR_ALIEN_BASE",
+              "region": "STR_NORTH_AFRICA"
+            },
+            {
+              "mission": "STR_ALIEN_BASE",
+              "region": "STR_SOUTHERN_AFRICA"
+            },
+            {
+              "mission": "STR_ALIEN_BASE",
+              "region": "STR_CENTRAL_ASIA"
+            },
+            {
+              "mission": "STR_ALIEN_BASE",
+              "region": "STR_SOUTH_EAST_ASIA"
+            },
+            {
+              "mission": "STR_ALIEN_BASE",
+              "region": "STR_SIBERIA"
+            },
+            {
+              "mission": "STR_ALIEN_BASE",
+              "region": "STR_AUSTRALASIA"
+            },
+            {
+              "mission": "STR_ALIEN_BASE",
+              "region": "STR_PACIFIC"
+            },
+            {
+              "mission": "STR_ALIEN_INFILTRATION",
+              "region": "STR_NORTH_AMERICA"
+            },
+            {
+              "mission": "STR_ALIEN_INFILTRATION",
+              "region": "STR_SOUTH_AMERICA"
+            },
+            {
+              "mission": "STR_ALIEN_INFILTRATION",
+              "region": "STR_EUROPE"
+            },
+            {
+              "mission": "STR_ALIEN_INFILTRATION",
+              "region": "STR_NORTH_AFRICA"
+            },
+            {
+              "mission": "STR_ALIEN_INFILTRATION",
+              "region": "STR_SOUTHERN_AFRICA"
+            },
+            {
+              "mission": "STR_ALIEN_INFILTRATION",
+              "region": "STR_CENTRAL_ASIA"
+            },
+            {
+              "mission": "STR_ALIEN_INFILTRATION",
+              "region": "STR_SOUTH_EAST_ASIA"
+            },
+            {
+              "mission": "STR_ALIEN_INFILTRATION",
+              "region": "STR_SIBERIA"
+            },
+            {
+              "mission": "STR_ALIEN_INFILTRATION",
+              "region": "STR_AUSTRALASIA"
+            }
+          ],
+          "beliefs": [],
+          "evidence": []
+        },
+        "sitrep": {
+          "schemaVersion": 1,
+          "period": "1999-05",
+          "coverage": "PARTIAL_FLEET_OUTCOMES",
+          "previousStrategy": "INTELLIGENCE",
+          "previousPortfolio": [
+            {
+              "mission": "STR_ALIEN_ABDUCTION",
+              "region": "STR_AUSTRALASIA"
+            },
+            {
+              "mission": "STR_ALIEN_RESEARCH",
+              "region": "STR_SOUTH_EAST_ASIA"
+            },
+            {
+              "mission": "STR_ALIEN_RESEARCH",
+              "region": "STR_ARCTIC"
+            },
+            {
+              "mission": "STR_ALIEN_RESEARCH",
+              "region": "STR_ANTARCTICA"
+            }
+          ],
+          "previousReceiptId": 252,
+          "assets": {
+            "deployed": 21,
+            "returned": 13,
+            "unavailable": 5
+          },
+          "lossAssignments": [
+            {
+              "region": "STR_NORTH_AFRICA",
+              "count": 5,
+              "evidenceIds": [
+                900001,
+                900002,
+                900003,
+                900004,
+                900005
+              ]
+            }
+          ],
+          "contacts": [],
+          "verifiedActivities": [
+            {
+              "mission": "STR_ALIEN_RESEARCH",
+              "count": 2,
+              "evidenceIds": [
+                259,
+                268
+              ]
+            }
+          ],
+          "pendingOperations": [
+            {
+              "missionId": 9,
+              "mission": "STR_ALIEN_HARVEST",
+              "region": "STR_SOUTH_EAST_ASIA"
+            },
+            {
+              "missionId": 13,
+              "mission": "STR_ALIEN_ABDUCTION",
+              "region": "STR_AUSTRALASIA"
+            },
+            {
+              "missionId": 14,
+              "mission": "STR_ALIEN_RESEARCH",
+              "region": "STR_SOUTH_EAST_ASIA"
+            }
+          ],
+          "pendingTotal": 3,
+          "pendingTruncated": false,
+          "operationalReview": {
+            "loss_roles": {
+              "OBJECTIVE_CARRIER": 0,
+              "PREPARATION": 0,
+              "SEARCH": 0,
+              "UNKNOWN": 5
+            },
+            "terror_objective_waves_pending": 0,
+            "rolling_results": [
+              [
+                "1999-04",
+                17,
+                1
+              ],
+              [
+                "1999-05",
+                5,
+                2
+              ]
+            ],
+            "limits": "Partial own telemetry. Pending objective is not success; scout loss is not mission failure.",
+            "roleSupport": [],
+            "pendingProgress": [
+              {
+                "missionId": 9,
+                "nextWave": 6,
+                "totalWaves": 8,
+                "objectiveWavePending": false
+              },
+              {
+                "missionId": 13,
+                "nextWave": 1,
+                "totalWaves": 5,
+                "objectiveWavePending": false
+              },
+              {
+                "missionId": 14,
+                "nextWave": 2,
+                "totalWaves": 3,
+                "objectiveWavePending": false
+              }
+            ]
+          },
+          "enemyRecovery": "UNKNOWN",
+          "missionSuccess": "NOT_INFERRED_FROM_ACTIVITY_OR_DISAPPEARANCE"
+        },
+        "bases": []
+      }
+    },
+    {
+      "name": "heldout_adaptation_1",
+      "pair": "capability",
+      "stage": "PLAN",
+      "data": {
+        "schemaVersion": 1,
+        "budget": {
+          "policyVersion": "monthly-portfolio-v1",
+          "epochMonth": 5,
+          "difficulty": 4,
+          "remaining": 30,
+          "pendingBonus": 0,
+          "intelligence": 1,
+          "logistics": 2,
+          "adaptation": 1,
+          "allowance": 20,
+          "carryCap": 10,
+          "nextAllowance": 24,
+          "nextBonusCap": 12,
+          "maxOperations": 4,
+          "assaultAvailable": false,
+          "terrorRewardVerified": false
+        },
+        "knowledge": {
+          "menuSource": "STATIC_RULESET_ONLY",
+          "candidates": [
+            {
+              "mission": "STR_ALIEN_RESEARCH",
+              "region": "STR_NORTH_AMERICA"
+            },
+            {
+              "mission": "STR_ALIEN_RESEARCH",
+              "region": "STR_ARCTIC"
+            },
+            {
+              "mission": "STR_ALIEN_RESEARCH",
+              "region": "STR_ANTARCTICA"
+            },
+            {
+              "mission": "STR_ALIEN_RESEARCH",
+              "region": "STR_SOUTH_AMERICA"
+            },
+            {
+              "mission": "STR_ALIEN_RESEARCH",
+              "region": "STR_EUROPE"
+            },
+            {
+              "mission": "STR_ALIEN_RESEARCH",
+              "region": "STR_NORTH_AFRICA"
+            },
+            {
+              "mission": "STR_ALIEN_RESEARCH",
+              "region": "STR_SOUTHERN_AFRICA"
+            },
+            {
+              "mission": "STR_ALIEN_RESEARCH",
+              "region": "STR_CENTRAL_ASIA"
+            },
+            {
+              "mission": "STR_ALIEN_RESEARCH",
+              "region": "STR_SIBERIA"
+            },
+            {
+              "mission": "STR_ALIEN_RESEARCH",
+              "region": "STR_AUSTRALASIA"
+            },
+            {
+              "mission": "STR_ALIEN_RESEARCH",
+              "region": "STR_PACIFIC"
+            },
+            {
+              "mission": "STR_ALIEN_HARVEST",
+              "region": "STR_NORTH_AMERICA"
+            },
+            {
+              "mission": "STR_ALIEN_HARVEST",
+              "region": "STR_SOUTH_AMERICA"
+            },
+            {
+              "mission": "STR_ALIEN_HARVEST",
+              "region": "STR_EUROPE"
+            },
+            {
+              "mission": "STR_ALIEN_HARVEST",
+              "region": "STR_NORTH_AFRICA"
+            },
+            {
+              "mission": "STR_ALIEN_HARVEST",
+              "region": "STR_SOUTHERN_AFRICA"
+            },
+            {
+              "mission": "STR_ALIEN_HARVEST",
+              "region": "STR_CENTRAL_ASIA"
+            },
+            {
+              "mission": "STR_ALIEN_HARVEST",
+              "region": "STR_AUSTRALASIA"
+            },
+            {
+              "mission": "STR_ALIEN_ABDUCTION",
+              "region": "STR_NORTH_AMERICA"
+            },
+            {
+              "mission": "STR_ALIEN_ABDUCTION",
+              "region": "STR_SOUTH_AMERICA"
+            },
+            {
+              "mission": "STR_ALIEN_ABDUCTION",
+              "region": "STR_EUROPE"
+            },
+            {
+              "mission": "STR_ALIEN_ABDUCTION",
+              "region": "STR_NORTH_AFRICA"
+            },
+            {
+              "mission": "STR_ALIEN_ABDUCTION",
+              "region": "STR_SOUTHERN_AFRICA"
+            },
+            {
+              "mission": "STR_ALIEN_ABDUCTION",
+              "region": "STR_CENTRAL_ASIA"
+            },
+            {
+              "mission": "STR_ALIEN_ABDUCTION",
+              "region": "STR_SOUTH_EAST_ASIA"
+            },
+            {
+              "mission": "STR_ALIEN_ABDUCTION",
+              "region": "STR_SIBERIA"
+            },
+            {
+              "mission": "STR_ALIEN_TERROR",
+              "region": "STR_NORTH_AMERICA"
+            },
+            {
+              "mission": "STR_ALIEN_TERROR",
+              "region": "STR_SOUTH_AMERICA"
+            },
+            {
+              "mission": "STR_ALIEN_TERROR",
+              "region": "STR_EUROPE"
+            },
+            {
+              "mission": "STR_ALIEN_TERROR",
+              "region": "STR_NORTH_AFRICA"
+            },
+            {
+              "mission": "STR_ALIEN_TERROR",
+              "region": "STR_SOUTHERN_AFRICA"
+            },
+            {
+              "mission": "STR_ALIEN_TERROR",
+              "region": "STR_CENTRAL_ASIA"
+            },
+            {
+              "mission": "STR_ALIEN_TERROR",
+              "region": "STR_SOUTH_EAST_ASIA"
+            },
+            {
+              "mission": "STR_ALIEN_TERROR",
+              "region": "STR_SIBERIA"
+            },
+            {
+              "mission": "STR_ALIEN_TERROR",
+              "region": "STR_AUSTRALASIA"
+            },
+            {
+              "mission": "STR_ALIEN_RETALIATION",
+              "region": "STR_NORTH_AMERICA"
+            },
+            {
+              "mission": "STR_ALIEN_RETALIATION",
+              "region": "STR_ARCTIC"
+            },
+            {
+              "mission": "STR_ALIEN_RETALIATION",
+              "region": "STR_ANTARCTICA"
+            },
+            {
+              "mission": "STR_ALIEN_RETALIATION",
+              "region": "STR_SOUTH_AMERICA"
+            },
+            {
+              "mission": "STR_ALIEN_RETALIATION",
+              "region": "STR_EUROPE"
+            },
+            {
+              "mission": "STR_ALIEN_RETALIATION",
+              "region": "STR_NORTH_AFRICA"
+            },
+            {
+              "mission": "STR_ALIEN_RETALIATION",
+              "region": "STR_SOUTHERN_AFRICA"
+            },
+            {
+              "mission": "STR_ALIEN_RETALIATION",
+              "region": "STR_CENTRAL_ASIA"
+            },
+            {
+              "mission": "STR_ALIEN_RETALIATION",
+              "region": "STR_SOUTH_EAST_ASIA"
+            },
+            {
+              "mission": "STR_ALIEN_RETALIATION",
+              "region": "STR_SIBERIA"
+            },
+            {
+              "mission": "STR_ALIEN_RETALIATION",
+              "region": "STR_AUSTRALASIA"
+            },
+            {
+              "mission": "STR_ALIEN_RETALIATION",
+              "region": "STR_PACIFIC"
+            },
+            {
+              "mission": "STR_ALIEN_BASE",
+              "region": "STR_NORTH_AMERICA"
+            },
+            {
+              "mission": "STR_ALIEN_BASE",
+              "region": "STR_ARCTIC"
+            },
+            {
+              "mission": "STR_ALIEN_BASE",
+              "region": "STR_ANTARCTICA"
+            },
+            {
+              "mission": "STR_ALIEN_BASE",
+              "region": "STR_SOUTH_AMERICA"
+            },
+            {
+              "mission": "STR_ALIEN_BASE",
+              "region": "STR_EUROPE"
+            },
+            {
+              "mission": "STR_ALIEN_BASE",
+              "region": "STR_NORTH_AFRICA"
+            },
+            {
+              "mission": "STR_ALIEN_BASE",
+              "region": "STR_SOUTHERN_AFRICA"
+            },
+            {
+              "mission": "STR_ALIEN_BASE",
+              "region": "STR_CENTRAL_ASIA"
+            },
+            {
+              "mission": "STR_ALIEN_BASE",
+              "region": "STR_SOUTH_EAST_ASIA"
+            },
+            {
+              "mission": "STR_ALIEN_BASE",
+              "region": "STR_SIBERIA"
+            },
+            {
+              "mission": "STR_ALIEN_BASE",
+              "region": "STR_AUSTRALASIA"
+            },
+            {
+              "mission": "STR_ALIEN_BASE",
+              "region": "STR_PACIFIC"
+            }
+          ],
+          "beliefs": [],
+          "evidence": []
+        },
+        "sitrep": {
+          "schemaVersion": 1,
+          "period": "1999-05",
+          "coverage": "PARTIAL_FLEET_OUTCOMES",
+          "previousStrategy": "INTELLIGENCE",
+          "previousPortfolio": [
+            {
+              "mission": "STR_ALIEN_ABDUCTION",
+              "region": "STR_AUSTRALASIA"
+            },
+            {
+              "mission": "STR_ALIEN_RESEARCH",
+              "region": "STR_SOUTH_EAST_ASIA"
+            },
+            {
+              "mission": "STR_ALIEN_RESEARCH",
+              "region": "STR_ARCTIC"
+            },
+            {
+              "mission": "STR_ALIEN_RESEARCH",
+              "region": "STR_ANTARCTICA"
+            }
+          ],
+          "previousReceiptId": 252,
+          "assets": {
+            "deployed": 21,
+            "returned": 13,
+            "unavailable": 3
+          },
+          "lossAssignments": [
+            {
+              "region": "STR_SOUTHERN_AFRICA",
+              "count": 3,
+              "evidenceIds": [
+                900001,
+                900002,
+                900003
+              ]
+            }
+          ],
+          "contacts": [],
+          "verifiedActivities": [
+            {
+              "mission": "STR_ALIEN_RESEARCH",
+              "count": 2,
+              "evidenceIds": [
+                259,
+                268
+              ]
+            }
+          ],
+          "pendingOperations": [
+            {
+              "missionId": 9,
+              "mission": "STR_ALIEN_HARVEST",
+              "region": "STR_SOUTH_EAST_ASIA"
+            },
+            {
+              "missionId": 13,
+              "mission": "STR_ALIEN_ABDUCTION",
+              "region": "STR_AUSTRALASIA"
+            },
+            {
+              "missionId": 14,
+              "mission": "STR_ALIEN_RESEARCH",
+              "region": "STR_SOUTH_EAST_ASIA"
+            }
+          ],
+          "pendingTotal": 3,
+          "pendingTruncated": false,
+          "operationalReview": {
+            "loss_roles": {
+              "OBJECTIVE_CARRIER": 0,
+              "PREPARATION": 0,
+              "SEARCH": 0,
+              "UNKNOWN": 3
+            },
+            "terror_objective_waves_pending": 0,
+            "rolling_results": [
+              [
+                "1999-04",
+                17,
+                1
+              ],
+              [
+                "1999-05",
+                3,
+                2
+              ]
+            ],
+            "limits": "Partial own telemetry. Pending objective is not success; scout loss is not mission failure.",
+            "roleSupport": [],
+            "pendingProgress": [
+              {
+                "missionId": 9,
+                "nextWave": 6,
+                "totalWaves": 8,
+                "objectiveWavePending": false
+              },
+              {
+                "missionId": 13,
+                "nextWave": 1,
+                "totalWaves": 5,
+                "objectiveWavePending": false
+              },
+              {
+                "missionId": 14,
+                "nextWave": 2,
+                "totalWaves": 3,
+                "objectiveWavePending": false
+              }
+            ]
+          },
+          "enemyRecovery": "UNKNOWN",
+          "missionSuccess": "NOT_INFERRED_FROM_ACTIVITY_OR_DISAPPEARANCE"
+        },
+        "bases": []
+      }
+    },
+    {
+      "name": "heldout_adaptation_2",
+      "pair": "capability",
+      "stage": "PLAN",
+      "data": {
+        "schemaVersion": 1,
+        "budget": {
+          "policyVersion": "monthly-portfolio-v1",
+          "epochMonth": 5,
+          "difficulty": 4,
+          "remaining": 30,
+          "pendingBonus": 0,
+          "intelligence": 1,
+          "logistics": 2,
+          "adaptation": 2,
+          "allowance": 20,
+          "carryCap": 10,
+          "nextAllowance": 24,
+          "nextBonusCap": 12,
+          "maxOperations": 4,
+          "assaultAvailable": false,
+          "terrorRewardVerified": false
+        },
+        "knowledge": {
+          "menuSource": "STATIC_RULESET_ONLY",
+          "candidates": [
+            {
+              "mission": "STR_ALIEN_RESEARCH",
+              "region": "STR_NORTH_AMERICA"
+            },
+            {
+              "mission": "STR_ALIEN_RESEARCH",
+              "region": "STR_ARCTIC"
+            },
+            {
+              "mission": "STR_ALIEN_RESEARCH",
+              "region": "STR_ANTARCTICA"
+            },
+            {
+              "mission": "STR_ALIEN_RESEARCH",
+              "region": "STR_SOUTH_AMERICA"
+            },
+            {
+              "mission": "STR_ALIEN_RESEARCH",
+              "region": "STR_EUROPE"
+            },
+            {
+              "mission": "STR_ALIEN_RESEARCH",
+              "region": "STR_NORTH_AFRICA"
+            },
+            {
+              "mission": "STR_ALIEN_RESEARCH",
+              "region": "STR_SOUTHERN_AFRICA"
+            },
+            {
+              "mission": "STR_ALIEN_RESEARCH",
+              "region": "STR_CENTRAL_ASIA"
+            },
+            {
+              "mission": "STR_ALIEN_RESEARCH",
+              "region": "STR_SIBERIA"
+            },
+            {
+              "mission": "STR_ALIEN_RESEARCH",
+              "region": "STR_AUSTRALASIA"
+            },
+            {
+              "mission": "STR_ALIEN_RESEARCH",
+              "region": "STR_PACIFIC"
+            },
+            {
+              "mission": "STR_ALIEN_HARVEST",
+              "region": "STR_NORTH_AMERICA"
+            },
+            {
+              "mission": "STR_ALIEN_HARVEST",
+              "region": "STR_SOUTH_AMERICA"
+            },
+            {
+              "mission": "STR_ALIEN_HARVEST",
+              "region": "STR_EUROPE"
+            },
+            {
+              "mission": "STR_ALIEN_HARVEST",
+              "region": "STR_NORTH_AFRICA"
+            },
+            {
+              "mission": "STR_ALIEN_HARVEST",
+              "region": "STR_SOUTHERN_AFRICA"
+            },
+            {
+              "mission": "STR_ALIEN_HARVEST",
+              "region": "STR_CENTRAL_ASIA"
+            },
+            {
+              "mission": "STR_ALIEN_HARVEST",
+              "region": "STR_AUSTRALASIA"
+            },
+            {
+              "mission": "STR_ALIEN_ABDUCTION",
+              "region": "STR_NORTH_AMERICA"
+            },
+            {
+              "mission": "STR_ALIEN_ABDUCTION",
+              "region": "STR_SOUTH_AMERICA"
+            },
+            {
+              "mission": "STR_ALIEN_ABDUCTION",
+              "region": "STR_EUROPE"
+            },
+            {
+              "mission": "STR_ALIEN_ABDUCTION",
+              "region": "STR_NORTH_AFRICA"
+            },
+            {
+              "mission": "STR_ALIEN_ABDUCTION",
+              "region": "STR_SOUTHERN_AFRICA"
+            },
+            {
+              "mission": "STR_ALIEN_ABDUCTION",
+              "region": "STR_CENTRAL_ASIA"
+            },
+            {
+              "mission": "STR_ALIEN_ABDUCTION",
+              "region": "STR_SOUTH_EAST_ASIA"
+            },
+            {
+              "mission": "STR_ALIEN_ABDUCTION",
+              "region": "STR_SIBERIA"
+            },
+            {
+              "mission": "STR_ALIEN_TERROR",
+              "region": "STR_NORTH_AMERICA"
+            },
+            {
+              "mission": "STR_ALIEN_TERROR",
+              "region": "STR_SOUTH_AMERICA"
+            },
+            {
+              "mission": "STR_ALIEN_TERROR",
+              "region": "STR_EUROPE"
+            },
+            {
+              "mission": "STR_ALIEN_TERROR",
+              "region": "STR_NORTH_AFRICA"
+            },
+            {
+              "mission": "STR_ALIEN_TERROR",
+              "region": "STR_SOUTHERN_AFRICA"
+            },
+            {
+              "mission": "STR_ALIEN_TERROR",
+              "region": "STR_CENTRAL_ASIA"
+            },
+            {
+              "mission": "STR_ALIEN_TERROR",
+              "region": "STR_SOUTH_EAST_ASIA"
+            },
+            {
+              "mission": "STR_ALIEN_TERROR",
+              "region": "STR_SIBERIA"
+            },
+            {
+              "mission": "STR_ALIEN_TERROR",
+              "region": "STR_AUSTRALASIA"
+            },
+            {
+              "mission": "STR_ALIEN_RETALIATION",
+              "region": "STR_NORTH_AMERICA"
+            },
+            {
+              "mission": "STR_ALIEN_RETALIATION",
+              "region": "STR_ARCTIC"
+            },
+            {
+              "mission": "STR_ALIEN_RETALIATION",
+              "region": "STR_ANTARCTICA"
+            },
+            {
+              "mission": "STR_ALIEN_RETALIATION",
+              "region": "STR_SOUTH_AMERICA"
+            },
+            {
+              "mission": "STR_ALIEN_RETALIATION",
+              "region": "STR_EUROPE"
+            },
+            {
+              "mission": "STR_ALIEN_RETALIATION",
+              "region": "STR_NORTH_AFRICA"
+            },
+            {
+              "mission": "STR_ALIEN_RETALIATION",
+              "region": "STR_SOUTHERN_AFRICA"
+            },
+            {
+              "mission": "STR_ALIEN_RETALIATION",
+              "region": "STR_CENTRAL_ASIA"
+            },
+            {
+              "mission": "STR_ALIEN_RETALIATION",
+              "region": "STR_SOUTH_EAST_ASIA"
+            },
+            {
+              "mission": "STR_ALIEN_RETALIATION",
+              "region": "STR_SIBERIA"
+            },
+            {
+              "mission": "STR_ALIEN_RETALIATION",
+              "region": "STR_AUSTRALASIA"
+            },
+            {
+              "mission": "STR_ALIEN_RETALIATION",
+              "region": "STR_PACIFIC"
+            },
+            {
+              "mission": "STR_ALIEN_BASE",
+              "region": "STR_NORTH_AMERICA"
+            },
+            {
+              "mission": "STR_ALIEN_BASE",
+              "region": "STR_ARCTIC"
+            },
+            {
+              "mission": "STR_ALIEN_BASE",
+              "region": "STR_ANTARCTICA"
+            },
+            {
+              "mission": "STR_ALIEN_BASE",
+              "region": "STR_SOUTH_AMERICA"
+            },
+            {
+              "mission": "STR_ALIEN_BASE",
+              "region": "STR_EUROPE"
+            },
+            {
+              "mission": "STR_ALIEN_BASE",
+              "region": "STR_NORTH_AFRICA"
+            },
+            {
+              "mission": "STR_ALIEN_BASE",
+              "region": "STR_SOUTHERN_AFRICA"
+            },
+            {
+              "mission": "STR_ALIEN_BASE",
+              "region": "STR_CENTRAL_ASIA"
+            },
+            {
+              "mission": "STR_ALIEN_BASE",
+              "region": "STR_SOUTH_EAST_ASIA"
+            },
+            {
+              "mission": "STR_ALIEN_BASE",
+              "region": "STR_SIBERIA"
+            },
+            {
+              "mission": "STR_ALIEN_BASE",
+              "region": "STR_AUSTRALASIA"
+            },
+            {
+              "mission": "STR_ALIEN_BASE",
+              "region": "STR_PACIFIC"
+            },
+            {
+              "mission": "STR_ALIEN_INFILTRATION",
+              "region": "STR_NORTH_AMERICA"
+            },
+            {
+              "mission": "STR_ALIEN_INFILTRATION",
+              "region": "STR_SOUTH_AMERICA"
+            },
+            {
+              "mission": "STR_ALIEN_INFILTRATION",
+              "region": "STR_EUROPE"
+            },
+            {
+              "mission": "STR_ALIEN_INFILTRATION",
+              "region": "STR_NORTH_AFRICA"
+            },
+            {
+              "mission": "STR_ALIEN_INFILTRATION",
+              "region": "STR_SOUTHERN_AFRICA"
+            },
+            {
+              "mission": "STR_ALIEN_INFILTRATION",
+              "region": "STR_CENTRAL_ASIA"
+            },
+            {
+              "mission": "STR_ALIEN_INFILTRATION",
+              "region": "STR_SOUTH_EAST_ASIA"
+            },
+            {
+              "mission": "STR_ALIEN_INFILTRATION",
+              "region": "STR_SIBERIA"
+            },
+            {
+              "mission": "STR_ALIEN_INFILTRATION",
+              "region": "STR_AUSTRALASIA"
+            }
+          ],
+          "beliefs": [],
+          "evidence": []
+        },
+        "sitrep": {
+          "schemaVersion": 1,
+          "period": "1999-05",
+          "coverage": "PARTIAL_FLEET_OUTCOMES",
+          "previousStrategy": "INTELLIGENCE",
+          "previousPortfolio": [
+            {
+              "mission": "STR_ALIEN_ABDUCTION",
+              "region": "STR_AUSTRALASIA"
+            },
+            {
+              "mission": "STR_ALIEN_RESEARCH",
+              "region": "STR_SOUTH_EAST_ASIA"
+            },
+            {
+              "mission": "STR_ALIEN_RESEARCH",
+              "region": "STR_ARCTIC"
+            },
+            {
+              "mission": "STR_ALIEN_RESEARCH",
+              "region": "STR_ANTARCTICA"
+            }
+          ],
+          "previousReceiptId": 252,
+          "assets": {
+            "deployed": 21,
+            "returned": 13,
+            "unavailable": 3
+          },
+          "lossAssignments": [
+            {
+              "region": "STR_SOUTHERN_AFRICA",
+              "count": 3,
+              "evidenceIds": [
+                900001,
+                900002,
+                900003
+              ]
+            }
+          ],
+          "contacts": [],
+          "verifiedActivities": [
+            {
+              "mission": "STR_ALIEN_RESEARCH",
+              "count": 2,
+              "evidenceIds": [
+                259,
+                268
+              ]
+            }
+          ],
+          "pendingOperations": [
+            {
+              "missionId": 9,
+              "mission": "STR_ALIEN_HARVEST",
+              "region": "STR_SOUTH_EAST_ASIA"
+            },
+            {
+              "missionId": 13,
+              "mission": "STR_ALIEN_ABDUCTION",
+              "region": "STR_AUSTRALASIA"
+            },
+            {
+              "missionId": 14,
+              "mission": "STR_ALIEN_RESEARCH",
+              "region": "STR_SOUTH_EAST_ASIA"
+            }
+          ],
+          "pendingTotal": 3,
+          "pendingTruncated": false,
+          "operationalReview": {
+            "loss_roles": {
+              "OBJECTIVE_CARRIER": 0,
+              "PREPARATION": 0,
+              "SEARCH": 0,
+              "UNKNOWN": 3
+            },
+            "terror_objective_waves_pending": 0,
+            "rolling_results": [
+              [
+                "1999-04",
+                17,
+                1
+              ],
+              [
+                "1999-05",
+                3,
+                2
+              ]
+            ],
+            "limits": "Partial own telemetry. Pending objective is not success; scout loss is not mission failure.",
+            "roleSupport": [],
+            "pendingProgress": [
+              {
+                "missionId": 9,
+                "nextWave": 6,
+                "totalWaves": 8,
+                "objectiveWavePending": false
+              },
+              {
+                "missionId": 13,
+                "nextWave": 1,
+                "totalWaves": 5,
+                "objectiveWavePending": false
+              },
+              {
+                "missionId": 14,
+                "nextWave": 2,
+                "totalWaves": 3,
+                "objectiveWavePending": false
+              }
+            ]
+          },
+          "enemyRecovery": "UNKNOWN",
+          "missionSuccess": "NOT_INFERRED_FROM_ACTIVITY_OR_DISAPPEARANCE"
+        },
+        "bases": []
+      }
+    },
+    {
+      "name": "heldout_outcome_UNKNOWN",
+      "pair": "outcome",
+      "stage": "PLAN",
+      "data": {
+        "schemaVersion": 1,
+        "budget": {
+          "policyVersion": "monthly-portfolio-v1",
+          "epochMonth": 5,
+          "difficulty": 4,
+          "remaining": 30,
+          "pendingBonus": 0,
+          "intelligence": 3,
+          "logistics": 2,
+          "adaptation": 2,
+          "allowance": 20,
+          "carryCap": 10,
+          "nextAllowance": 24,
+          "nextBonusCap": 12,
+          "maxOperations": 4,
+          "assaultAvailable": false,
+          "terrorRewardVerified": false
+        },
+        "knowledge": {
+          "menuSource": "STATIC_RULESET_ONLY",
+          "candidates": [
+            {
+              "mission": "STR_ALIEN_RESEARCH",
+              "region": "STR_NORTH_AMERICA"
+            },
+            {
+              "mission": "STR_ALIEN_RESEARCH",
+              "region": "STR_ARCTIC"
+            },
+            {
+              "mission": "STR_ALIEN_RESEARCH",
+              "region": "STR_ANTARCTICA"
+            },
+            {
+              "mission": "STR_ALIEN_RESEARCH",
+              "region": "STR_SOUTH_AMERICA"
+            },
+            {
+              "mission": "STR_ALIEN_RESEARCH",
+              "region": "STR_EUROPE"
+            },
+            {
+              "mission": "STR_ALIEN_RESEARCH",
+              "region": "STR_NORTH_AFRICA"
+            },
+            {
+              "mission": "STR_ALIEN_RESEARCH",
+              "region": "STR_SOUTHERN_AFRICA"
+            },
+            {
+              "mission": "STR_ALIEN_RESEARCH",
+              "region": "STR_CENTRAL_ASIA"
+            },
+            {
+              "mission": "STR_ALIEN_RESEARCH",
+              "region": "STR_SIBERIA"
+            },
+            {
+              "mission": "STR_ALIEN_RESEARCH",
+              "region": "STR_AUSTRALASIA"
+            },
+            {
+              "mission": "STR_ALIEN_RESEARCH",
+              "region": "STR_PACIFIC"
+            },
+            {
+              "mission": "STR_ALIEN_HARVEST",
+              "region": "STR_NORTH_AMERICA"
+            },
+            {
+              "mission": "STR_ALIEN_HARVEST",
+              "region": "STR_SOUTH_AMERICA"
+            },
+            {
+              "mission": "STR_ALIEN_HARVEST",
+              "region": "STR_EUROPE"
+            },
+            {
+              "mission": "STR_ALIEN_HARVEST",
+              "region": "STR_NORTH_AFRICA"
+            },
+            {
+              "mission": "STR_ALIEN_HARVEST",
+              "region": "STR_SOUTHERN_AFRICA"
+            },
+            {
+              "mission": "STR_ALIEN_HARVEST",
+              "region": "STR_CENTRAL_ASIA"
+            },
+            {
+              "mission": "STR_ALIEN_HARVEST",
+              "region": "STR_AUSTRALASIA"
+            },
+            {
+              "mission": "STR_ALIEN_ABDUCTION",
+              "region": "STR_NORTH_AMERICA"
+            },
+            {
+              "mission": "STR_ALIEN_ABDUCTION",
+              "region": "STR_SOUTH_AMERICA"
+            },
+            {
+              "mission": "STR_ALIEN_ABDUCTION",
+              "region": "STR_EUROPE"
+            },
+            {
+              "mission": "STR_ALIEN_ABDUCTION",
+              "region": "STR_NORTH_AFRICA"
+            },
+            {
+              "mission": "STR_ALIEN_ABDUCTION",
+              "region": "STR_SOUTHERN_AFRICA"
+            },
+            {
+              "mission": "STR_ALIEN_ABDUCTION",
+              "region": "STR_CENTRAL_ASIA"
+            },
+            {
+              "mission": "STR_ALIEN_ABDUCTION",
+              "region": "STR_SOUTH_EAST_ASIA"
+            },
+            {
+              "mission": "STR_ALIEN_ABDUCTION",
+              "region": "STR_SIBERIA"
+            },
+            {
+              "mission": "STR_ALIEN_TERROR",
+              "region": "STR_NORTH_AMERICA"
+            },
+            {
+              "mission": "STR_ALIEN_TERROR",
+              "region": "STR_SOUTH_AMERICA"
+            },
+            {
+              "mission": "STR_ALIEN_TERROR",
+              "region": "STR_EUROPE"
+            },
+            {
+              "mission": "STR_ALIEN_TERROR",
+              "region": "STR_NORTH_AFRICA"
+            },
+            {
+              "mission": "STR_ALIEN_TERROR",
+              "region": "STR_SOUTHERN_AFRICA"
+            },
+            {
+              "mission": "STR_ALIEN_TERROR",
+              "region": "STR_CENTRAL_ASIA"
+            },
+            {
+              "mission": "STR_ALIEN_TERROR",
+              "region": "STR_SOUTH_EAST_ASIA"
+            },
+            {
+              "mission": "STR_ALIEN_TERROR",
+              "region": "STR_SIBERIA"
+            },
+            {
+              "mission": "STR_ALIEN_TERROR",
+              "region": "STR_AUSTRALASIA"
+            },
+            {
+              "mission": "STR_ALIEN_RETALIATION",
+              "region": "STR_NORTH_AMERICA"
+            },
+            {
+              "mission": "STR_ALIEN_RETALIATION",
+              "region": "STR_ARCTIC"
+            },
+            {
+              "mission": "STR_ALIEN_RETALIATION",
+              "region": "STR_ANTARCTICA"
+            },
+            {
+              "mission": "STR_ALIEN_RETALIATION",
+              "region": "STR_SOUTH_AMERICA"
+            },
+            {
+              "mission": "STR_ALIEN_RETALIATION",
+              "region": "STR_EUROPE"
+            },
+            {
+              "mission": "STR_ALIEN_RETALIATION",
+              "region": "STR_NORTH_AFRICA"
+            },
+            {
+              "mission": "STR_ALIEN_RETALIATION",
+              "region": "STR_SOUTHERN_AFRICA"
+            },
+            {
+              "mission": "STR_ALIEN_RETALIATION",
+              "region": "STR_CENTRAL_ASIA"
+            },
+            {
+              "mission": "STR_ALIEN_RETALIATION",
+              "region": "STR_SOUTH_EAST_ASIA"
+            },
+            {
+              "mission": "STR_ALIEN_RETALIATION",
+              "region": "STR_SIBERIA"
+            },
+            {
+              "mission": "STR_ALIEN_RETALIATION",
+              "region": "STR_AUSTRALASIA"
+            },
+            {
+              "mission": "STR_ALIEN_RETALIATION",
+              "region": "STR_PACIFIC"
+            },
+            {
+              "mission": "STR_ALIEN_BASE",
+              "region": "STR_NORTH_AMERICA"
+            },
+            {
+              "mission": "STR_ALIEN_BASE",
+              "region": "STR_ARCTIC"
+            },
+            {
+              "mission": "STR_ALIEN_BASE",
+              "region": "STR_ANTARCTICA"
+            },
+            {
+              "mission": "STR_ALIEN_BASE",
+              "region": "STR_SOUTH_AMERICA"
+            },
+            {
+              "mission": "STR_ALIEN_BASE",
+              "region": "STR_EUROPE"
+            },
+            {
+              "mission": "STR_ALIEN_BASE",
+              "region": "STR_NORTH_AFRICA"
+            },
+            {
+              "mission": "STR_ALIEN_BASE",
+              "region": "STR_SOUTHERN_AFRICA"
+            },
+            {
+              "mission": "STR_ALIEN_BASE",
+              "region": "STR_CENTRAL_ASIA"
+            },
+            {
+              "mission": "STR_ALIEN_BASE",
+              "region": "STR_SOUTH_EAST_ASIA"
+            },
+            {
+              "mission": "STR_ALIEN_BASE",
+              "region": "STR_SIBERIA"
+            },
+            {
+              "mission": "STR_ALIEN_BASE",
+              "region": "STR_AUSTRALASIA"
+            },
+            {
+              "mission": "STR_ALIEN_BASE",
+              "region": "STR_PACIFIC"
+            },
+            {
+              "mission": "STR_ALIEN_INFILTRATION",
+              "region": "STR_NORTH_AMERICA"
+            },
+            {
+              "mission": "STR_ALIEN_INFILTRATION",
+              "region": "STR_SOUTH_AMERICA"
+            },
+            {
+              "mission": "STR_ALIEN_INFILTRATION",
+              "region": "STR_EUROPE"
+            },
+            {
+              "mission": "STR_ALIEN_INFILTRATION",
+              "region": "STR_NORTH_AFRICA"
+            },
+            {
+              "mission": "STR_ALIEN_INFILTRATION",
+              "region": "STR_SOUTHERN_AFRICA"
+            },
+            {
+              "mission": "STR_ALIEN_INFILTRATION",
+              "region": "STR_CENTRAL_ASIA"
+            },
+            {
+              "mission": "STR_ALIEN_INFILTRATION",
+              "region": "STR_SOUTH_EAST_ASIA"
+            },
+            {
+              "mission": "STR_ALIEN_INFILTRATION",
+              "region": "STR_SIBERIA"
+            },
+            {
+              "mission": "STR_ALIEN_INFILTRATION",
+              "region": "STR_AUSTRALASIA"
+            }
+          ],
+          "beliefs": [],
+          "evidence": []
+        },
+        "sitrep": {
+          "schemaVersion": 1,
+          "period": "1999-05",
+          "coverage": "PARTIAL_FLEET_OUTCOMES",
+          "previousStrategy": "INTELLIGENCE",
+          "previousPortfolio": [
+            {
+              "mission": "STR_ALIEN_ABDUCTION",
+              "region": "STR_AUSTRALASIA"
+            },
+            {
+              "mission": "STR_ALIEN_RESEARCH",
+              "region": "STR_SOUTH_EAST_ASIA"
+            },
+            {
+              "mission": "STR_ALIEN_RESEARCH",
+              "region": "STR_ARCTIC"
+            },
+            {
+              "mission": "STR_ALIEN_RESEARCH",
+              "region": "STR_ANTARCTICA"
+            }
+          ],
+          "previousReceiptId": 252,
+          "assets": {
+            "deployed": 21,
+            "returned": 13,
+            "unavailable": 3
+          },
+          "lossAssignments": [
+            {
+              "region": "STR_SOUTHERN_AFRICA",
+              "count": 3,
+              "evidenceIds": [
+                900001,
+                900002,
+                900003
+              ]
+            }
+          ],
+          "contacts": [],
+          "verifiedActivities": [
+            {
+              "mission": "STR_ALIEN_RESEARCH",
+              "count": 2,
+              "evidenceIds": [
+                259,
+                268
+              ]
+            }
+          ],
+          "pendingOperations": [],
+          "pendingTotal": 0,
+          "pendingTruncated": false,
+          "operationalReview": {
+            "loss_roles": {
+              "OBJECTIVE_CARRIER": 0,
+              "PREPARATION": 0,
+              "SEARCH": 0,
+              "UNKNOWN": 3
+            },
+            "terror_objective_waves_pending": 0,
+            "rolling_results": [
+              [
+                "1999-04",
+                17,
+                1
+              ],
+              [
+                "1999-05",
+                3,
+                2
+              ]
+            ],
+            "limits": "Partial own telemetry. Pending objective is not success; scout loss is not mission failure.",
+            "roleSupport": [],
+            "pendingProgress": []
+          },
+          "enemyRecovery": "UNKNOWN",
+          "missionSuccess": "NOT_INFERRED_FROM_ACTIVITY_OR_DISAPPEARANCE"
+        },
+        "bases": []
+      },
+      "result": {
+        "status": "UNKNOWN",
+        "evidence": null
+      },
+      "note": "Same synthetic previous terror assignment; no new cash or progress implied; completed means political objective, not conquest"
+    },
+    {
+      "name": "heldout_outcome_SCOUT_LOST",
+      "pair": "outcome",
+      "stage": "PLAN",
+      "data": {
+        "schemaVersion": 1,
+        "budget": {
+          "policyVersion": "monthly-portfolio-v1",
+          "epochMonth": 5,
+          "difficulty": 4,
+          "remaining": 30,
+          "pendingBonus": 0,
+          "intelligence": 3,
+          "logistics": 2,
+          "adaptation": 2,
+          "allowance": 20,
+          "carryCap": 10,
+          "nextAllowance": 24,
+          "nextBonusCap": 12,
+          "maxOperations": 4,
+          "assaultAvailable": false,
+          "terrorRewardVerified": false
+        },
+        "knowledge": {
+          "menuSource": "STATIC_RULESET_ONLY",
+          "candidates": [
+            {
+              "mission": "STR_ALIEN_RESEARCH",
+              "region": "STR_NORTH_AMERICA"
+            },
+            {
+              "mission": "STR_ALIEN_RESEARCH",
+              "region": "STR_ARCTIC"
+            },
+            {
+              "mission": "STR_ALIEN_RESEARCH",
+              "region": "STR_ANTARCTICA"
+            },
+            {
+              "mission": "STR_ALIEN_RESEARCH",
+              "region": "STR_SOUTH_AMERICA"
+            },
+            {
+              "mission": "STR_ALIEN_RESEARCH",
+              "region": "STR_EUROPE"
+            },
+            {
+              "mission": "STR_ALIEN_RESEARCH",
+              "region": "STR_NORTH_AFRICA"
+            },
+            {
+              "mission": "STR_ALIEN_RESEARCH",
+              "region": "STR_SOUTHERN_AFRICA"
+            },
+            {
+              "mission": "STR_ALIEN_RESEARCH",
+              "region": "STR_CENTRAL_ASIA"
+            },
+            {
+              "mission": "STR_ALIEN_RESEARCH",
+              "region": "STR_SIBERIA"
+            },
+            {
+              "mission": "STR_ALIEN_RESEARCH",
+              "region": "STR_AUSTRALASIA"
+            },
+            {
+              "mission": "STR_ALIEN_RESEARCH",
+              "region": "STR_PACIFIC"
+            },
+            {
+              "mission": "STR_ALIEN_HARVEST",
+              "region": "STR_NORTH_AMERICA"
+            },
+            {
+              "mission": "STR_ALIEN_HARVEST",
+              "region": "STR_SOUTH_AMERICA"
+            },
+            {
+              "mission": "STR_ALIEN_HARVEST",
+              "region": "STR_EUROPE"
+            },
+            {
+              "mission": "STR_ALIEN_HARVEST",
+              "region": "STR_NORTH_AFRICA"
+            },
+            {
+              "mission": "STR_ALIEN_HARVEST",
+              "region": "STR_SOUTHERN_AFRICA"
+            },
+            {
+              "mission": "STR_ALIEN_HARVEST",
+              "region": "STR_CENTRAL_ASIA"
+            },
+            {
+              "mission": "STR_ALIEN_HARVEST",
+              "region": "STR_AUSTRALASIA"
+            },
+            {
+              "mission": "STR_ALIEN_ABDUCTION",
+              "region": "STR_NORTH_AMERICA"
+            },
+            {
+              "mission": "STR_ALIEN_ABDUCTION",
+              "region": "STR_SOUTH_AMERICA"
+            },
+            {
+              "mission": "STR_ALIEN_ABDUCTION",
+              "region": "STR_EUROPE"
+            },
+            {
+              "mission": "STR_ALIEN_ABDUCTION",
+              "region": "STR_NORTH_AFRICA"
+            },
+            {
+              "mission": "STR_ALIEN_ABDUCTION",
+              "region": "STR_SOUTHERN_AFRICA"
+            },
+            {
+              "mission": "STR_ALIEN_ABDUCTION",
+              "region": "STR_CENTRAL_ASIA"
+            },
+            {
+              "mission": "STR_ALIEN_ABDUCTION",
+              "region": "STR_SOUTH_EAST_ASIA"
+            },
+            {
+              "mission": "STR_ALIEN_ABDUCTION",
+              "region": "STR_SIBERIA"
+            },
+            {
+              "mission": "STR_ALIEN_TERROR",
+              "region": "STR_NORTH_AMERICA"
+            },
+            {
+              "mission": "STR_ALIEN_TERROR",
+              "region": "STR_SOUTH_AMERICA"
+            },
+            {
+              "mission": "STR_ALIEN_TERROR",
+              "region": "STR_EUROPE"
+            },
+            {
+              "mission": "STR_ALIEN_TERROR",
+              "region": "STR_NORTH_AFRICA"
+            },
+            {
+              "mission": "STR_ALIEN_TERROR",
+              "region": "STR_SOUTHERN_AFRICA"
+            },
+            {
+              "mission": "STR_ALIEN_TERROR",
+              "region": "STR_CENTRAL_ASIA"
+            },
+            {
+              "mission": "STR_ALIEN_TERROR",
+              "region": "STR_SOUTH_EAST_ASIA"
+            },
+            {
+              "mission": "STR_ALIEN_TERROR",
+              "region": "STR_SIBERIA"
+            },
+            {
+              "mission": "STR_ALIEN_TERROR",
+              "region": "STR_AUSTRALASIA"
+            },
+            {
+              "mission": "STR_ALIEN_RETALIATION",
+              "region": "STR_NORTH_AMERICA"
+            },
+            {
+              "mission": "STR_ALIEN_RETALIATION",
+              "region": "STR_ARCTIC"
+            },
+            {
+              "mission": "STR_ALIEN_RETALIATION",
+              "region": "STR_ANTARCTICA"
+            },
+            {
+              "mission": "STR_ALIEN_RETALIATION",
+              "region": "STR_SOUTH_AMERICA"
+            },
+            {
+              "mission": "STR_ALIEN_RETALIATION",
+              "region": "STR_EUROPE"
+            },
+            {
+              "mission": "STR_ALIEN_RETALIATION",
+              "region": "STR_NORTH_AFRICA"
+            },
+            {
+              "mission": "STR_ALIEN_RETALIATION",
+              "region": "STR_SOUTHERN_AFRICA"
+            },
+            {
+              "mission": "STR_ALIEN_RETALIATION",
+              "region": "STR_CENTRAL_ASIA"
+            },
+            {
+              "mission": "STR_ALIEN_RETALIATION",
+              "region": "STR_SOUTH_EAST_ASIA"
+            },
+            {
+              "mission": "STR_ALIEN_RETALIATION",
+              "region": "STR_SIBERIA"
+            },
+            {
+              "mission": "STR_ALIEN_RETALIATION",
+              "region": "STR_AUSTRALASIA"
+            },
+            {
+              "mission": "STR_ALIEN_RETALIATION",
+              "region": "STR_PACIFIC"
+            },
+            {
+              "mission": "STR_ALIEN_BASE",
+              "region": "STR_NORTH_AMERICA"
+            },
+            {
+              "mission": "STR_ALIEN_BASE",
+              "region": "STR_ARCTIC"
+            },
+            {
+              "mission": "STR_ALIEN_BASE",
+              "region": "STR_ANTARCTICA"
+            },
+            {
+              "mission": "STR_ALIEN_BASE",
+              "region": "STR_SOUTH_AMERICA"
+            },
+            {
+              "mission": "STR_ALIEN_BASE",
+              "region": "STR_EUROPE"
+            },
+            {
+              "mission": "STR_ALIEN_BASE",
+              "region": "STR_NORTH_AFRICA"
+            },
+            {
+              "mission": "STR_ALIEN_BASE",
+              "region": "STR_SOUTHERN_AFRICA"
+            },
+            {
+              "mission": "STR_ALIEN_BASE",
+              "region": "STR_CENTRAL_ASIA"
+            },
+            {
+              "mission": "STR_ALIEN_BASE",
+              "region": "STR_SOUTH_EAST_ASIA"
+            },
+            {
+              "mission": "STR_ALIEN_BASE",
+              "region": "STR_SIBERIA"
+            },
+            {
+              "mission": "STR_ALIEN_BASE",
+              "region": "STR_AUSTRALASIA"
+            },
+            {
+              "mission": "STR_ALIEN_BASE",
+              "region": "STR_PACIFIC"
+            },
+            {
+              "mission": "STR_ALIEN_INFILTRATION",
+              "region": "STR_NORTH_AMERICA"
+            },
+            {
+              "mission": "STR_ALIEN_INFILTRATION",
+              "region": "STR_SOUTH_AMERICA"
+            },
+            {
+              "mission": "STR_ALIEN_INFILTRATION",
+              "region": "STR_EUROPE"
+            },
+            {
+              "mission": "STR_ALIEN_INFILTRATION",
+              "region": "STR_NORTH_AFRICA"
+            },
+            {
+              "mission": "STR_ALIEN_INFILTRATION",
+              "region": "STR_SOUTHERN_AFRICA"
+            },
+            {
+              "mission": "STR_ALIEN_INFILTRATION",
+              "region": "STR_CENTRAL_ASIA"
+            },
+            {
+              "mission": "STR_ALIEN_INFILTRATION",
+              "region": "STR_SOUTH_EAST_ASIA"
+            },
+            {
+              "mission": "STR_ALIEN_INFILTRATION",
+              "region": "STR_SIBERIA"
+            },
+            {
+              "mission": "STR_ALIEN_INFILTRATION",
+              "region": "STR_AUSTRALASIA"
+            }
+          ],
+          "beliefs": [],
+          "evidence": []
+        },
+        "sitrep": {
+          "schemaVersion": 1,
+          "period": "1999-05",
+          "coverage": "PARTIAL_FLEET_OUTCOMES",
+          "previousStrategy": "INTELLIGENCE",
+          "previousPortfolio": [
+            {
+              "mission": "STR_ALIEN_ABDUCTION",
+              "region": "STR_AUSTRALASIA"
+            },
+            {
+              "mission": "STR_ALIEN_RESEARCH",
+              "region": "STR_SOUTH_EAST_ASIA"
+            },
+            {
+              "mission": "STR_ALIEN_RESEARCH",
+              "region": "STR_ARCTIC"
+            },
+            {
+              "mission": "STR_ALIEN_RESEARCH",
+              "region": "STR_ANTARCTICA"
+            }
+          ],
+          "previousReceiptId": 252,
+          "assets": {
+            "deployed": 21,
+            "returned": 13,
+            "unavailable": 3
+          },
+          "lossAssignments": [
+            {
+              "region": "STR_SOUTHERN_AFRICA",
+              "count": 3,
+              "evidenceIds": [
+                900001,
+                900002,
+                900003
+              ]
+            }
+          ],
+          "contacts": [],
+          "verifiedActivities": [
+            {
+              "mission": "STR_ALIEN_RESEARCH",
+              "count": 2,
+              "evidenceIds": [
+                259,
+                268
+              ]
+            }
+          ],
+          "pendingOperations": [],
+          "pendingTotal": 0,
+          "pendingTruncated": false,
+          "operationalReview": {
+            "loss_roles": {
+              "OBJECTIVE_CARRIER": 0,
+              "PREPARATION": 0,
+              "SEARCH": 0,
+              "UNKNOWN": 3
+            },
+            "terror_objective_waves_pending": 0,
+            "rolling_results": [
+              [
+                "1999-04",
+                17,
+                1
+              ],
+              [
+                "1999-05",
+                3,
+                2
+              ]
+            ],
+            "limits": "Partial own telemetry. Pending objective is not success; scout loss is not mission failure.",
+            "roleSupport": [],
+            "pendingProgress": []
+          },
+          "enemyRecovery": "UNKNOWN",
+          "missionSuccess": "NOT_INFERRED_FROM_ACTIVITY_OR_DISAPPEARANCE"
+        },
+        "bases": []
+      },
+      "result": {
+        "status": "SCOUT_LOST",
+        "evidence": "SYNTHETIC_EXPLICIT_OBJECTIVE_RECEIPT"
+      },
+      "note": "Same synthetic previous terror assignment; no new cash or progress implied; completed means political objective, not conquest"
+    },
+    {
+      "name": "heldout_outcome_DISRUPTED",
+      "pair": "outcome",
+      "stage": "PLAN",
+      "data": {
+        "schemaVersion": 1,
+        "budget": {
+          "policyVersion": "monthly-portfolio-v1",
+          "epochMonth": 5,
+          "difficulty": 4,
+          "remaining": 30,
+          "pendingBonus": 0,
+          "intelligence": 3,
+          "logistics": 2,
+          "adaptation": 2,
+          "allowance": 20,
+          "carryCap": 10,
+          "nextAllowance": 24,
+          "nextBonusCap": 12,
+          "maxOperations": 4,
+          "assaultAvailable": false,
+          "terrorRewardVerified": false
+        },
+        "knowledge": {
+          "menuSource": "STATIC_RULESET_ONLY",
+          "candidates": [
+            {
+              "mission": "STR_ALIEN_RESEARCH",
+              "region": "STR_NORTH_AMERICA"
+            },
+            {
+              "mission": "STR_ALIEN_RESEARCH",
+              "region": "STR_ARCTIC"
+            },
+            {
+              "mission": "STR_ALIEN_RESEARCH",
+              "region": "STR_ANTARCTICA"
+            },
+            {
+              "mission": "STR_ALIEN_RESEARCH",
+              "region": "STR_SOUTH_AMERICA"
+            },
+            {
+              "mission": "STR_ALIEN_RESEARCH",
+              "region": "STR_EUROPE"
+            },
+            {
+              "mission": "STR_ALIEN_RESEARCH",
+              "region": "STR_NORTH_AFRICA"
+            },
+            {
+              "mission": "STR_ALIEN_RESEARCH",
+              "region": "STR_SOUTHERN_AFRICA"
+            },
+            {
+              "mission": "STR_ALIEN_RESEARCH",
+              "region": "STR_CENTRAL_ASIA"
+            },
+            {
+              "mission": "STR_ALIEN_RESEARCH",
+              "region": "STR_SIBERIA"
+            },
+            {
+              "mission": "STR_ALIEN_RESEARCH",
+              "region": "STR_AUSTRALASIA"
+            },
+            {
+              "mission": "STR_ALIEN_RESEARCH",
+              "region": "STR_PACIFIC"
+            },
+            {
+              "mission": "STR_ALIEN_HARVEST",
+              "region": "STR_NORTH_AMERICA"
+            },
+            {
+              "mission": "STR_ALIEN_HARVEST",
+              "region": "STR_SOUTH_AMERICA"
+            },
+            {
+              "mission": "STR_ALIEN_HARVEST",
+              "region": "STR_EUROPE"
+            },
+            {
+              "mission": "STR_ALIEN_HARVEST",
+              "region": "STR_NORTH_AFRICA"
+            },
+            {
+              "mission": "STR_ALIEN_HARVEST",
+              "region": "STR_SOUTHERN_AFRICA"
+            },
+            {
+              "mission": "STR_ALIEN_HARVEST",
+              "region": "STR_CENTRAL_ASIA"
+            },
+            {
+              "mission": "STR_ALIEN_HARVEST",
+              "region": "STR_AUSTRALASIA"
+            },
+            {
+              "mission": "STR_ALIEN_ABDUCTION",
+              "region": "STR_NORTH_AMERICA"
+            },
+            {
+              "mission": "STR_ALIEN_ABDUCTION",
+              "region": "STR_SOUTH_AMERICA"
+            },
+            {
+              "mission": "STR_ALIEN_ABDUCTION",
+              "region": "STR_EUROPE"
+            },
+            {
+              "mission": "STR_ALIEN_ABDUCTION",
+              "region": "STR_NORTH_AFRICA"
+            },
+            {
+              "mission": "STR_ALIEN_ABDUCTION",
+              "region": "STR_SOUTHERN_AFRICA"
+            },
+            {
+              "mission": "STR_ALIEN_ABDUCTION",
+              "region": "STR_CENTRAL_ASIA"
+            },
+            {
+              "mission": "STR_ALIEN_ABDUCTION",
+              "region": "STR_SOUTH_EAST_ASIA"
+            },
+            {
+              "mission": "STR_ALIEN_ABDUCTION",
+              "region": "STR_SIBERIA"
+            },
+            {
+              "mission": "STR_ALIEN_TERROR",
+              "region": "STR_NORTH_AMERICA"
+            },
+            {
+              "mission": "STR_ALIEN_TERROR",
+              "region": "STR_SOUTH_AMERICA"
+            },
+            {
+              "mission": "STR_ALIEN_TERROR",
+              "region": "STR_EUROPE"
+            },
+            {
+              "mission": "STR_ALIEN_TERROR",
+              "region": "STR_NORTH_AFRICA"
+            },
+            {
+              "mission": "STR_ALIEN_TERROR",
+              "region": "STR_SOUTHERN_AFRICA"
+            },
+            {
+              "mission": "STR_ALIEN_TERROR",
+              "region": "STR_CENTRAL_ASIA"
+            },
+            {
+              "mission": "STR_ALIEN_TERROR",
+              "region": "STR_SOUTH_EAST_ASIA"
+            },
+            {
+              "mission": "STR_ALIEN_TERROR",
+              "region": "STR_SIBERIA"
+            },
+            {
+              "mission": "STR_ALIEN_TERROR",
+              "region": "STR_AUSTRALASIA"
+            },
+            {
+              "mission": "STR_ALIEN_RETALIATION",
+              "region": "STR_NORTH_AMERICA"
+            },
+            {
+              "mission": "STR_ALIEN_RETALIATION",
+              "region": "STR_ARCTIC"
+            },
+            {
+              "mission": "STR_ALIEN_RETALIATION",
+              "region": "STR_ANTARCTICA"
+            },
+            {
+              "mission": "STR_ALIEN_RETALIATION",
+              "region": "STR_SOUTH_AMERICA"
+            },
+            {
+              "mission": "STR_ALIEN_RETALIATION",
+              "region": "STR_EUROPE"
+            },
+            {
+              "mission": "STR_ALIEN_RETALIATION",
+              "region": "STR_NORTH_AFRICA"
+            },
+            {
+              "mission": "STR_ALIEN_RETALIATION",
+              "region": "STR_SOUTHERN_AFRICA"
+            },
+            {
+              "mission": "STR_ALIEN_RETALIATION",
+              "region": "STR_CENTRAL_ASIA"
+            },
+            {
+              "mission": "STR_ALIEN_RETALIATION",
+              "region": "STR_SOUTH_EAST_ASIA"
+            },
+            {
+              "mission": "STR_ALIEN_RETALIATION",
+              "region": "STR_SIBERIA"
+            },
+            {
+              "mission": "STR_ALIEN_RETALIATION",
+              "region": "STR_AUSTRALASIA"
+            },
+            {
+              "mission": "STR_ALIEN_RETALIATION",
+              "region": "STR_PACIFIC"
+            },
+            {
+              "mission": "STR_ALIEN_BASE",
+              "region": "STR_NORTH_AMERICA"
+            },
+            {
+              "mission": "STR_ALIEN_BASE",
+              "region": "STR_ARCTIC"
+            },
+            {
+              "mission": "STR_ALIEN_BASE",
+              "region": "STR_ANTARCTICA"
+            },
+            {
+              "mission": "STR_ALIEN_BASE",
+              "region": "STR_SOUTH_AMERICA"
+            },
+            {
+              "mission": "STR_ALIEN_BASE",
+              "region": "STR_EUROPE"
+            },
+            {
+              "mission": "STR_ALIEN_BASE",
+              "region": "STR_NORTH_AFRICA"
+            },
+            {
+              "mission": "STR_ALIEN_BASE",
+              "region": "STR_SOUTHERN_AFRICA"
+            },
+            {
+              "mission": "STR_ALIEN_BASE",
+              "region": "STR_CENTRAL_ASIA"
+            },
+            {
+              "mission": "STR_ALIEN_BASE",
+              "region": "STR_SOUTH_EAST_ASIA"
+            },
+            {
+              "mission": "STR_ALIEN_BASE",
+              "region": "STR_SIBERIA"
+            },
+            {
+              "mission": "STR_ALIEN_BASE",
+              "region": "STR_AUSTRALASIA"
+            },
+            {
+              "mission": "STR_ALIEN_BASE",
+              "region": "STR_PACIFIC"
+            },
+            {
+              "mission": "STR_ALIEN_INFILTRATION",
+              "region": "STR_NORTH_AMERICA"
+            },
+            {
+              "mission": "STR_ALIEN_INFILTRATION",
+              "region": "STR_SOUTH_AMERICA"
+            },
+            {
+              "mission": "STR_ALIEN_INFILTRATION",
+              "region": "STR_EUROPE"
+            },
+            {
+              "mission": "STR_ALIEN_INFILTRATION",
+              "region": "STR_NORTH_AFRICA"
+            },
+            {
+              "mission": "STR_ALIEN_INFILTRATION",
+              "region": "STR_SOUTHERN_AFRICA"
+            },
+            {
+              "mission": "STR_ALIEN_INFILTRATION",
+              "region": "STR_CENTRAL_ASIA"
+            },
+            {
+              "mission": "STR_ALIEN_INFILTRATION",
+              "region": "STR_SOUTH_EAST_ASIA"
+            },
+            {
+              "mission": "STR_ALIEN_INFILTRATION",
+              "region": "STR_SIBERIA"
+            },
+            {
+              "mission": "STR_ALIEN_INFILTRATION",
+              "region": "STR_AUSTRALASIA"
+            }
+          ],
+          "beliefs": [],
+          "evidence": []
+        },
+        "sitrep": {
+          "schemaVersion": 1,
+          "period": "1999-05",
+          "coverage": "PARTIAL_FLEET_OUTCOMES",
+          "previousStrategy": "INTELLIGENCE",
+          "previousPortfolio": [
+            {
+              "mission": "STR_ALIEN_ABDUCTION",
+              "region": "STR_AUSTRALASIA"
+            },
+            {
+              "mission": "STR_ALIEN_RESEARCH",
+              "region": "STR_SOUTH_EAST_ASIA"
+            },
+            {
+              "mission": "STR_ALIEN_RESEARCH",
+              "region": "STR_ARCTIC"
+            },
+            {
+              "mission": "STR_ALIEN_RESEARCH",
+              "region": "STR_ANTARCTICA"
+            }
+          ],
+          "previousReceiptId": 252,
+          "assets": {
+            "deployed": 21,
+            "returned": 13,
+            "unavailable": 3
+          },
+          "lossAssignments": [
+            {
+              "region": "STR_SOUTHERN_AFRICA",
+              "count": 3,
+              "evidenceIds": [
+                900001,
+                900002,
+                900003
+              ]
+            }
+          ],
+          "contacts": [],
+          "verifiedActivities": [
+            {
+              "mission": "STR_ALIEN_RESEARCH",
+              "count": 2,
+              "evidenceIds": [
+                259,
+                268
+              ]
+            }
+          ],
+          "pendingOperations": [],
+          "pendingTotal": 0,
+          "pendingTruncated": false,
+          "operationalReview": {
+            "loss_roles": {
+              "OBJECTIVE_CARRIER": 0,
+              "PREPARATION": 0,
+              "SEARCH": 0,
+              "UNKNOWN": 3
+            },
+            "terror_objective_waves_pending": 0,
+            "rolling_results": [
+              [
+                "1999-04",
+                17,
+                1
+              ],
+              [
+                "1999-05",
+                3,
+                2
+              ]
+            ],
+            "limits": "Partial own telemetry. Pending objective is not success; scout loss is not mission failure.",
+            "roleSupport": [],
+            "pendingProgress": []
+          },
+          "enemyRecovery": "UNKNOWN",
+          "missionSuccess": "NOT_INFERRED_FROM_ACTIVITY_OR_DISAPPEARANCE"
+        },
+        "bases": []
+      },
+      "result": {
+        "status": "DISRUPTED",
+        "evidence": "SYNTHETIC_EXPLICIT_OBJECTIVE_RECEIPT"
+      },
+      "note": "Same synthetic previous terror assignment; no new cash or progress implied; completed means political objective, not conquest"
+    },
+    {
+      "name": "heldout_outcome_COMPLETED",
+      "pair": "outcome",
+      "stage": "PLAN",
+      "data": {
+        "schemaVersion": 1,
+        "budget": {
+          "policyVersion": "monthly-portfolio-v1",
+          "epochMonth": 5,
+          "difficulty": 4,
+          "remaining": 30,
+          "pendingBonus": 0,
+          "intelligence": 3,
+          "logistics": 2,
+          "adaptation": 2,
+          "allowance": 20,
+          "carryCap": 10,
+          "nextAllowance": 24,
+          "nextBonusCap": 12,
+          "maxOperations": 4,
+          "assaultAvailable": false,
+          "terrorRewardVerified": false
+        },
+        "knowledge": {
+          "menuSource": "STATIC_RULESET_ONLY",
+          "candidates": [
+            {
+              "mission": "STR_ALIEN_RESEARCH",
+              "region": "STR_NORTH_AMERICA"
+            },
+            {
+              "mission": "STR_ALIEN_RESEARCH",
+              "region": "STR_ARCTIC"
+            },
+            {
+              "mission": "STR_ALIEN_RESEARCH",
+              "region": "STR_ANTARCTICA"
+            },
+            {
+              "mission": "STR_ALIEN_RESEARCH",
+              "region": "STR_SOUTH_AMERICA"
+            },
+            {
+              "mission": "STR_ALIEN_RESEARCH",
+              "region": "STR_EUROPE"
+            },
+            {
+              "mission": "STR_ALIEN_RESEARCH",
+              "region": "STR_NORTH_AFRICA"
+            },
+            {
+              "mission": "STR_ALIEN_RESEARCH",
+              "region": "STR_SOUTHERN_AFRICA"
+            },
+            {
+              "mission": "STR_ALIEN_RESEARCH",
+              "region": "STR_CENTRAL_ASIA"
+            },
+            {
+              "mission": "STR_ALIEN_RESEARCH",
+              "region": "STR_SIBERIA"
+            },
+            {
+              "mission": "STR_ALIEN_RESEARCH",
+              "region": "STR_AUSTRALASIA"
+            },
+            {
+              "mission": "STR_ALIEN_RESEARCH",
+              "region": "STR_PACIFIC"
+            },
+            {
+              "mission": "STR_ALIEN_HARVEST",
+              "region": "STR_NORTH_AMERICA"
+            },
+            {
+              "mission": "STR_ALIEN_HARVEST",
+              "region": "STR_SOUTH_AMERICA"
+            },
+            {
+              "mission": "STR_ALIEN_HARVEST",
+              "region": "STR_EUROPE"
+            },
+            {
+              "mission": "STR_ALIEN_HARVEST",
+              "region": "STR_NORTH_AFRICA"
+            },
+            {
+              "mission": "STR_ALIEN_HARVEST",
+              "region": "STR_SOUTHERN_AFRICA"
+            },
+            {
+              "mission": "STR_ALIEN_HARVEST",
+              "region": "STR_CENTRAL_ASIA"
+            },
+            {
+              "mission": "STR_ALIEN_HARVEST",
+              "region": "STR_AUSTRALASIA"
+            },
+            {
+              "mission": "STR_ALIEN_ABDUCTION",
+              "region": "STR_NORTH_AMERICA"
+            },
+            {
+              "mission": "STR_ALIEN_ABDUCTION",
+              "region": "STR_SOUTH_AMERICA"
+            },
+            {
+              "mission": "STR_ALIEN_ABDUCTION",
+              "region": "STR_EUROPE"
+            },
+            {
+              "mission": "STR_ALIEN_ABDUCTION",
+              "region": "STR_NORTH_AFRICA"
+            },
+            {
+              "mission": "STR_ALIEN_ABDUCTION",
+              "region": "STR_SOUTHERN_AFRICA"
+            },
+            {
+              "mission": "STR_ALIEN_ABDUCTION",
+              "region": "STR_CENTRAL_ASIA"
+            },
+            {
+              "mission": "STR_ALIEN_ABDUCTION",
+              "region": "STR_SOUTH_EAST_ASIA"
+            },
+            {
+              "mission": "STR_ALIEN_ABDUCTION",
+              "region": "STR_SIBERIA"
+            },
+            {
+              "mission": "STR_ALIEN_TERROR",
+              "region": "STR_NORTH_AMERICA"
+            },
+            {
+              "mission": "STR_ALIEN_TERROR",
+              "region": "STR_SOUTH_AMERICA"
+            },
+            {
+              "mission": "STR_ALIEN_TERROR",
+              "region": "STR_EUROPE"
+            },
+            {
+              "mission": "STR_ALIEN_TERROR",
+              "region": "STR_NORTH_AFRICA"
+            },
+            {
+              "mission": "STR_ALIEN_TERROR",
+              "region": "STR_SOUTHERN_AFRICA"
+            },
+            {
+              "mission": "STR_ALIEN_TERROR",
+              "region": "STR_CENTRAL_ASIA"
+            },
+            {
+              "mission": "STR_ALIEN_TERROR",
+              "region": "STR_SOUTH_EAST_ASIA"
+            },
+            {
+              "mission": "STR_ALIEN_TERROR",
+              "region": "STR_SIBERIA"
+            },
+            {
+              "mission": "STR_ALIEN_TERROR",
+              "region": "STR_AUSTRALASIA"
+            },
+            {
+              "mission": "STR_ALIEN_RETALIATION",
+              "region": "STR_NORTH_AMERICA"
+            },
+            {
+              "mission": "STR_ALIEN_RETALIATION",
+              "region": "STR_ARCTIC"
+            },
+            {
+              "mission": "STR_ALIEN_RETALIATION",
+              "region": "STR_ANTARCTICA"
+            },
+            {
+              "mission": "STR_ALIEN_RETALIATION",
+              "region": "STR_SOUTH_AMERICA"
+            },
+            {
+              "mission": "STR_ALIEN_RETALIATION",
+              "region": "STR_EUROPE"
+            },
+            {
+              "mission": "STR_ALIEN_RETALIATION",
+              "region": "STR_NORTH_AFRICA"
+            },
+            {
+              "mission": "STR_ALIEN_RETALIATION",
+              "region": "STR_SOUTHERN_AFRICA"
+            },
+            {
+              "mission": "STR_ALIEN_RETALIATION",
+              "region": "STR_CENTRAL_ASIA"
+            },
+            {
+              "mission": "STR_ALIEN_RETALIATION",
+              "region": "STR_SOUTH_EAST_ASIA"
+            },
+            {
+              "mission": "STR_ALIEN_RETALIATION",
+              "region": "STR_SIBERIA"
+            },
+            {
+              "mission": "STR_ALIEN_RETALIATION",
+              "region": "STR_AUSTRALASIA"
+            },
+            {
+              "mission": "STR_ALIEN_RETALIATION",
+              "region": "STR_PACIFIC"
+            },
+            {
+              "mission": "STR_ALIEN_BASE",
+              "region": "STR_NORTH_AMERICA"
+            },
+            {
+              "mission": "STR_ALIEN_BASE",
+              "region": "STR_ARCTIC"
+            },
+            {
+              "mission": "STR_ALIEN_BASE",
+              "region": "STR_ANTARCTICA"
+            },
+            {
+              "mission": "STR_ALIEN_BASE",
+              "region": "STR_SOUTH_AMERICA"
+            },
+            {
+              "mission": "STR_ALIEN_BASE",
+              "region": "STR_EUROPE"
+            },
+            {
+              "mission": "STR_ALIEN_BASE",
+              "region": "STR_NORTH_AFRICA"
+            },
+            {
+              "mission": "STR_ALIEN_BASE",
+              "region": "STR_SOUTHERN_AFRICA"
+            },
+            {
+              "mission": "STR_ALIEN_BASE",
+              "region": "STR_CENTRAL_ASIA"
+            },
+            {
+              "mission": "STR_ALIEN_BASE",
+              "region": "STR_SOUTH_EAST_ASIA"
+            },
+            {
+              "mission": "STR_ALIEN_BASE",
+              "region": "STR_SIBERIA"
+            },
+            {
+              "mission": "STR_ALIEN_BASE",
+              "region": "STR_AUSTRALASIA"
+            },
+            {
+              "mission": "STR_ALIEN_BASE",
+              "region": "STR_PACIFIC"
+            },
+            {
+              "mission": "STR_ALIEN_INFILTRATION",
+              "region": "STR_NORTH_AMERICA"
+            },
+            {
+              "mission": "STR_ALIEN_INFILTRATION",
+              "region": "STR_SOUTH_AMERICA"
+            },
+            {
+              "mission": "STR_ALIEN_INFILTRATION",
+              "region": "STR_EUROPE"
+            },
+            {
+              "mission": "STR_ALIEN_INFILTRATION",
+              "region": "STR_NORTH_AFRICA"
+            },
+            {
+              "mission": "STR_ALIEN_INFILTRATION",
+              "region": "STR_SOUTHERN_AFRICA"
+            },
+            {
+              "mission": "STR_ALIEN_INFILTRATION",
+              "region": "STR_CENTRAL_ASIA"
+            },
+            {
+              "mission": "STR_ALIEN_INFILTRATION",
+              "region": "STR_SOUTH_EAST_ASIA"
+            },
+            {
+              "mission": "STR_ALIEN_INFILTRATION",
+              "region": "STR_SIBERIA"
+            },
+            {
+              "mission": "STR_ALIEN_INFILTRATION",
+              "region": "STR_AUSTRALASIA"
+            }
+          ],
+          "beliefs": [],
+          "evidence": []
+        },
+        "sitrep": {
+          "schemaVersion": 1,
+          "period": "1999-05",
+          "coverage": "PARTIAL_FLEET_OUTCOMES",
+          "previousStrategy": "INTELLIGENCE",
+          "previousPortfolio": [
+            {
+              "mission": "STR_ALIEN_ABDUCTION",
+              "region": "STR_AUSTRALASIA"
+            },
+            {
+              "mission": "STR_ALIEN_RESEARCH",
+              "region": "STR_SOUTH_EAST_ASIA"
+            },
+            {
+              "mission": "STR_ALIEN_RESEARCH",
+              "region": "STR_ARCTIC"
+            },
+            {
+              "mission": "STR_ALIEN_RESEARCH",
+              "region": "STR_ANTARCTICA"
+            }
+          ],
+          "previousReceiptId": 252,
+          "assets": {
+            "deployed": 21,
+            "returned": 13,
+            "unavailable": 3
+          },
+          "lossAssignments": [
+            {
+              "region": "STR_SOUTHERN_AFRICA",
+              "count": 3,
+              "evidenceIds": [
+                900001,
+                900002,
+                900003
+              ]
+            }
+          ],
+          "contacts": [],
+          "verifiedActivities": [
+            {
+              "mission": "STR_ALIEN_RESEARCH",
+              "count": 2,
+              "evidenceIds": [
+                259,
+                268
+              ]
+            }
+          ],
+          "pendingOperations": [],
+          "pendingTotal": 0,
+          "pendingTruncated": false,
+          "operationalReview": {
+            "loss_roles": {
+              "OBJECTIVE_CARRIER": 0,
+              "PREPARATION": 0,
+              "SEARCH": 0,
+              "UNKNOWN": 3
+            },
+            "terror_objective_waves_pending": 0,
+            "rolling_results": [
+              [
+                "1999-04",
+                17,
+                1
+              ],
+              [
+                "1999-05",
+                3,
+                2
+              ]
+            ],
+            "limits": "Partial own telemetry. Pending objective is not success; scout loss is not mission failure.",
+            "roleSupport": [],
+            "pendingProgress": []
+          },
+          "enemyRecovery": "UNKNOWN",
+          "missionSuccess": "NOT_INFERRED_FROM_ACTIVITY_OR_DISAPPEARANCE"
+        },
+        "bases": []
+      },
+      "result": {
+        "status": "COMPLETED",
+        "evidence": "SYNTHETIC_EXPLICIT_OBJECTIVE_RECEIPT"
+      },
+      "note": "Same synthetic previous terror assignment; no new cash or progress implied; completed means political objective, not conquest"
+    }
+  ],
+  "packets": {
+    "heldout_target_STR_EUROPE": {
+      "state": "{\"capability\":{\"adaptation\":2,\"intelligence\":3,\"logistics\":2},\"cash\":{\"carry\":10,\"now\":30},\"commitments\":[[\"HARVEST\",\"SOUTH_EAST_ASIA\"],[\"ABDUCTION\",\"AUSTRALASIA\"],[\"RESEARCH\",\"SOUTH_EAST_ASIA\"]],\"gates\":{\"base\":\"month1 logistics2\",\"infiltration\":\"month2 intelligence1 adaptation2\"},\"goal\":\"Conquer Earth\",\"interference\":[[\"EUROPE\",5]],\"limits\":\"Loss locations uncertain; other regions unknown. Gains conditional; cash next month/capped. Odds unknown.\",\"month\":5,\"outcome\":\"UNKNOWN\",\"task\":\"Choose harvest region; seek capacity while considering interference\"}",
+      "criteria": {
+        "AUSTRALASIA": "AUSTRALASIA",
+        "CENTRAL_ASIA": "CENTRAL_ASIA",
+        "EUROPE": "EUROPE",
+        "NORTH_AFRICA": "NORTH_AFRICA",
+        "NORTH_AMERICA": "NORTH_AMERICA",
+        "SOUTHERN_AFRICA": "SOUTHERN_AFRICA",
+        "SOUTH_AMERICA": "SOUTH_AMERICA"
+      },
+      "instructions": "Choose an executable conquest investment using known gains, commitments and evidence."
+    },
+    "heldout_target_STR_NORTH_AFRICA": {
+      "state": "{\"capability\":{\"adaptation\":2,\"intelligence\":3,\"logistics\":2},\"cash\":{\"carry\":10,\"now\":30},\"commitments\":[[\"HARVEST\",\"SOUTH_EAST_ASIA\"],[\"ABDUCTION\",\"AUSTRALASIA\"],[\"RESEARCH\",\"SOUTH_EAST_ASIA\"]],\"gates\":{\"base\":\"month1 logistics2\",\"infiltration\":\"month2 intelligence1 adaptation2\"},\"goal\":\"Conquer Earth\",\"interference\":[[\"NORTH_AFRICA\",5]],\"limits\":\"Loss locations uncertain; other regions unknown. Gains conditional; cash next month/capped. Odds unknown.\",\"month\":5,\"outcome\":\"UNKNOWN\",\"task\":\"Choose harvest region; seek capacity while considering interference\"}",
+      "criteria": {
+        "AUSTRALASIA": "AUSTRALASIA",
+        "CENTRAL_ASIA": "CENTRAL_ASIA",
+        "EUROPE": "EUROPE",
+        "NORTH_AFRICA": "NORTH_AFRICA",
+        "NORTH_AMERICA": "NORTH_AMERICA",
+        "SOUTHERN_AFRICA": "SOUTHERN_AFRICA",
+        "SOUTH_AMERICA": "SOUTH_AMERICA"
+      },
+      "instructions": "Choose an executable conquest investment using known gains, commitments and evidence."
+    },
+    "heldout_adaptation_1": {
+      "state": "{\"capability\":{\"adaptation\":1,\"intelligence\":1,\"logistics\":2},\"cash\":{\"carry\":10,\"now\":30},\"commitments\":[[\"HARVEST\",\"SOUTH_EAST_ASIA\"],[\"ABDUCTION\",\"AUSTRALASIA\"],[\"RESEARCH\",\"SOUTH_EAST_ASIA\"]],\"gates\":{\"base\":\"month1 logistics2\",\"infiltration\":\"month2 intelligence1 adaptation2\"},\"goal\":\"Conquer Earth\",\"interference\":[[\"SOUTHERN_AFRICA\",3]],\"limits\":\"Loss locations uncertain; other regions unknown. Gains conditional; cash next month/capped. Odds unknown.\",\"month\":5,\"outcome\":\"UNKNOWN\"}",
+      "criteria": {
+        "ABDUCTION": "ABDUCTION cost3: activity +2 cash,+1 adaptation",
+        "BASE": "BASE cost6: surviving +1-2 cash/month, progress, influence",
+        "HARVEST": "HARVEST cost3: activity +2 cash,+1 logistics",
+        "RESEARCH": "RESEARCH cost2: flight +1 cash,+1 intelligence",
+        "RETALIATION": "RETALIATION cost2: possible base discovery; assault unavailable",
+        "TERROR": "TERROR cost4: delivered political pressure; no cash",
+        "SAVE": "SAVE: defer within carry cap; excess expires"
+      },
+      "instructions": "Choose an executable conquest investment using known gains, commitments and evidence."
+    },
+    "heldout_adaptation_2": {
+      "state": "{\"capability\":{\"adaptation\":2,\"intelligence\":1,\"logistics\":2},\"cash\":{\"carry\":10,\"now\":30},\"commitments\":[[\"HARVEST\",\"SOUTH_EAST_ASIA\"],[\"ABDUCTION\",\"AUSTRALASIA\"],[\"RESEARCH\",\"SOUTH_EAST_ASIA\"]],\"gates\":{\"base\":\"month1 logistics2\",\"infiltration\":\"month2 intelligence1 adaptation2\"},\"goal\":\"Conquer Earth\",\"interference\":[[\"SOUTHERN_AFRICA\",3]],\"limits\":\"Loss locations uncertain; other regions unknown. Gains conditional; cash next month/capped. Odds unknown.\",\"month\":5,\"outcome\":\"UNKNOWN\"}",
+      "criteria": {
+        "ABDUCTION": "ABDUCTION cost3: activity +2 cash,+1 adaptation",
+        "BASE": "BASE cost6: surviving +1-2 cash/month, progress, influence",
+        "HARVEST": "HARVEST cost3: activity +2 cash,+1 logistics",
+        "INFILTRATION": "INFILTRATION cost6: possible pact and base",
+        "RESEARCH": "RESEARCH cost2: flight +1 cash,+1 intelligence",
+        "RETALIATION": "RETALIATION cost2: possible base discovery; assault unavailable",
+        "TERROR": "TERROR cost4: delivered political pressure; no cash",
+        "SAVE": "SAVE: defer within carry cap; excess expires"
+      },
+      "instructions": "Choose an executable conquest investment using known gains, commitments and evidence."
+    },
+    "heldout_outcome_UNKNOWN": {
+      "state": "{\"capability\":{\"adaptation\":2,\"intelligence\":3,\"logistics\":2},\"cash\":{\"carry\":10,\"now\":30},\"commitments\":[],\"gates\":{\"base\":\"month1 logistics2\",\"infiltration\":\"month2 intelligence1 adaptation2\"},\"goal\":\"Conquer Earth\",\"interference\":[[\"SOUTHERN_AFRICA\",3]],\"limits\":\"Loss locations uncertain; other regions unknown. Gains conditional; cash next month/capped. Odds unknown.\",\"month\":5,\"outcome\":\"UNKNOWN\",\"reviewed_operation\":[\"TERROR\",\"SOUTHERN_AFRICA\"]}",
+      "criteria": {
+        "ABDUCTION": "ABDUCTION cost3: activity +2 cash,+1 adaptation",
+        "BASE": "BASE cost6: surviving +1-2 cash/month, progress, influence",
+        "HARVEST": "HARVEST cost3: activity +2 cash,+1 logistics",
+        "INFILTRATION": "INFILTRATION cost6: possible pact and base",
+        "RESEARCH": "RESEARCH cost2: flight +1 cash,+1 intelligence",
+        "RETALIATION": "RETALIATION cost2: possible base discovery; assault unavailable",
+        "TERROR": "TERROR cost4: delivered political pressure; no cash",
+        "SAVE": "SAVE: defer within carry cap; excess expires"
+      },
+      "instructions": "Choose an executable conquest investment using known gains, commitments and evidence."
+    },
+    "heldout_outcome_SCOUT_LOST": {
+      "state": "{\"capability\":{\"adaptation\":2,\"intelligence\":3,\"logistics\":2},\"cash\":{\"carry\":10,\"now\":30},\"commitments\":[],\"gates\":{\"base\":\"month1 logistics2\",\"infiltration\":\"month2 intelligence1 adaptation2\"},\"goal\":\"Conquer Earth\",\"interference\":[[\"SOUTHERN_AFRICA\",3]],\"limits\":\"Loss locations uncertain; other regions unknown. Gains conditional; cash next month/capped. Odds unknown.\",\"month\":5,\"outcome\":\"SCOUT_LOST\",\"reviewed_operation\":[\"TERROR\",\"SOUTHERN_AFRICA\"]}",
+      "criteria": {
+        "ABDUCTION": "ABDUCTION cost3: activity +2 cash,+1 adaptation",
+        "BASE": "BASE cost6: surviving +1-2 cash/month, progress, influence",
+        "HARVEST": "HARVEST cost3: activity +2 cash,+1 logistics",
+        "INFILTRATION": "INFILTRATION cost6: possible pact and base",
+        "RESEARCH": "RESEARCH cost2: flight +1 cash,+1 intelligence",
+        "RETALIATION": "RETALIATION cost2: possible base discovery; assault unavailable",
+        "TERROR": "TERROR cost4: delivered political pressure; no cash",
+        "SAVE": "SAVE: defer within carry cap; excess expires"
+      },
+      "instructions": "Choose an executable conquest investment using known gains, commitments and evidence."
+    },
+    "heldout_outcome_DISRUPTED": {
+      "state": "{\"capability\":{\"adaptation\":2,\"intelligence\":3,\"logistics\":2},\"cash\":{\"carry\":10,\"now\":30},\"commitments\":[],\"gates\":{\"base\":\"month1 logistics2\",\"infiltration\":\"month2 intelligence1 adaptation2\"},\"goal\":\"Conquer Earth\",\"interference\":[[\"SOUTHERN_AFRICA\",3]],\"limits\":\"Loss locations uncertain; other regions unknown. Gains conditional; cash next month/capped. Odds unknown.\",\"month\":5,\"outcome\":\"DISRUPTED\",\"reviewed_operation\":[\"TERROR\",\"SOUTHERN_AFRICA\"]}",
+      "criteria": {
+        "ABDUCTION": "ABDUCTION cost3: activity +2 cash,+1 adaptation",
+        "BASE": "BASE cost6: surviving +1-2 cash/month, progress, influence",
+        "HARVEST": "HARVEST cost3: activity +2 cash,+1 logistics",
+        "INFILTRATION": "INFILTRATION cost6: possible pact and base",
+        "RESEARCH": "RESEARCH cost2: flight +1 cash,+1 intelligence",
+        "RETALIATION": "RETALIATION cost2: possible base discovery; assault unavailable",
+        "TERROR": "TERROR cost4: delivered political pressure; no cash",
+        "SAVE": "SAVE: defer within carry cap; excess expires"
+      },
+      "instructions": "Choose an executable conquest investment using known gains, commitments and evidence."
+    },
+    "heldout_outcome_COMPLETED": {
+      "state": "{\"capability\":{\"adaptation\":2,\"intelligence\":3,\"logistics\":2},\"cash\":{\"carry\":10,\"now\":30},\"commitments\":[],\"gates\":{\"base\":\"month1 logistics2\",\"infiltration\":\"month2 intelligence1 adaptation2\"},\"goal\":\"Conquer Earth\",\"interference\":[[\"SOUTHERN_AFRICA\",3]],\"limits\":\"Loss locations uncertain; other regions unknown. Gains conditional; cash next month/capped. Odds unknown.\",\"month\":5,\"outcome\":\"COMPLETED\",\"reviewed_operation\":[\"TERROR\",\"SOUTHERN_AFRICA\"]}",
+      "criteria": {
+        "ABDUCTION": "ABDUCTION cost3: activity +2 cash,+1 adaptation",
+        "BASE": "BASE cost6: surviving +1-2 cash/month, progress, influence",
+        "HARVEST": "HARVEST cost3: activity +2 cash,+1 logistics",
+        "INFILTRATION": "INFILTRATION cost6: possible pact and base",
+        "RESEARCH": "RESEARCH cost2: flight +1 cash,+1 intelligence",
+        "RETALIATION": "RETALIATION cost2: possible base discovery; assault unavailable",
+        "TERROR": "TERROR cost4: delivered political pressure; no cash",
+        "SAVE": "SAVE: defer within carry cap; excess expires"
+      },
+      "instructions": "Choose an executable conquest investment using known gains, commitments and evidence."
+    }
+  },
+  "hashes": {
+    "G:\\OpenXcom\\scripts\\test-compact-command.py": "16984f6d8fa4169570293f4223ee555f4f4b7d0c91f30c1cf165eaeac033ca6e",
+    "G:\\OpenXcom\\scripts\\compact_command_probe.py": "c5553555eb5b732baf326616adce233d26bd9d1b3a0de5cd1815c42d9d362215",
+    "G:\\OpenXcom\\build\\local\\user\\xcom1\\Pre-Junes.sav": "d095e3dd2850ee74751309d8a7570356aff20577b12916b434a3345f296d3ec7",
+    "G:\\OpenXcom\\scripts\\campaign_plans.py": "560044d31c91ddeb3d235258c0d9db934e3270b80f53983fedf5a2fd9ce524ef",
+    "G:\\OpenXcom\\scripts\\alien-command-model.py": "49b9ecc4bbdf75065147988fb30bb91a66be9964a5fd1dabd20931294b1745f3"
+  },
+  "rules": {
+    "heldout_target_STR_EUROPE": [
+      "AUSTRALASIA",
+      "Least assigned interference; alphabetical tie break; unknown is not proven safe"
+    ],
+    "heldout_target_STR_NORTH_AFRICA": [
+      "AUSTRALASIA",
+      "Least assigned interference; alphabetical tie break; unknown is not proven safe"
+    ],
+    "heldout_adaptation_1": [
+      "BASE",
+      "Fill progression gaps, diversify commitments, then persistent conquest; disrupted objective favors rebuilding"
+    ],
+    "heldout_adaptation_2": [
+      "BASE",
+      "Fill progression gaps, diversify commitments, then persistent conquest; disrupted objective favors rebuilding"
+    ],
+    "heldout_outcome_UNKNOWN": [
+      "BASE",
+      "Fill progression gaps, diversify commitments, then persistent conquest; disrupted objective favors rebuilding"
+    ],
+    "heldout_outcome_SCOUT_LOST": [
+      "BASE",
+      "Fill progression gaps, diversify commitments, then persistent conquest; disrupted objective favors rebuilding"
+    ],
+    "heldout_outcome_DISRUPTED": [
+      "HARVEST",
+      "Fill progression gaps, diversify commitments, then persistent conquest; disrupted objective favors rebuilding"
+    ],
+    "heldout_outcome_COMPLETED": [
+      "BASE",
+      "Fill progression gaps, diversify commitments, then persistent conquest; disrupted objective favors rebuilding"
+    ]
+  },
+  "heldoutMeaning": "New synthetic scenarios fixed before inference; not a blinded independent benchmark",
+  "liveChanged": false,
+  "nativeOutcomeWiring": false
+}

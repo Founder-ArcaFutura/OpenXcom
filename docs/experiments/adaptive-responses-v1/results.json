@@ -1,0 +1,570 @@
+{
+  "manifest": {
+    "model": {
+      "checkpointSha256": "bcbb891d21cf081a9d7a941b97f8b0f10cf3dac7473b4b9450fab0d07b885175",
+      "modelName": "uppward-laya-evidence-lambda-probe-v4-production-packet",
+      "encoderRevision": "45bb4654a4d5aaff24dd11d4781fa46d39bf8c13",
+      "device": "cpu",
+      "torchVersion": "2.10.0+cpu",
+      "layaVersion": "0.1.6",
+      "domainValidation": "NOT_VALIDATED_FOR_XCOM",
+      "protocol": "alien-recon-laya-v2"
+    },
+    "sources": {
+      "G:\\OpenXcom\\build\\local\\user\\xcom1\\Pre-Junes.sav": "d095e3dd2850ee74751309d8a7570356aff20577b12916b434a3345f296d3ec7",
+      "G:\\OpenXcom\\build\\local\\adaptation-native-v1\\logistics-1\\xcom1\\strategy-input.json": "b28f94458b6df8e4901a6ef830e86aa2f8ce39302c1dcfec5421de8613044908",
+      "G:\\OpenXcom\\build\\local\\adaptation-native-v1\\logistics-2\\xcom1\\strategy-input.json": "e797adb245057ce2901fcbb1634d53ef1999c2b58f6cff4429011112dc265f9d"
+    },
+    "scripts": {
+      "scripts/test-adaptive-responses.py": "fa01be3d5ac8bdff4b9b69ddf64f7670c44b249ff7eae4f13bbb914156e3b056",
+      "scripts/test-permutation-commander.py": "5dbb13e5b60996971253f261ff01db477b47600cbdc654ee3eda56d09bff6233",
+      "scripts/campaign_plans.py": "560044d31c91ddeb3d235258c0d9db934e3270b80f53983fedf5a2fd9ce524ef",
+      "scripts/alien-command-model.py": "49b9ecc4bbdf75065147988fb30bb91a66be9964a5fd1dabd20931294b1745f3"
+    },
+    "syntheticVariants": true,
+    "verifiedDefeatTested": false,
+    "fullPortfoliosGenerated": false,
+    "liveChanged": false,
+    "APICalls": 0,
+    "newModelInferences": 88,
+    "cacheReuses": 28
+  },
+  "rows": [
+    {
+      "case": "risk_AUSTRALASIA",
+      "pair": "risk",
+      "stage": "TARGET_HARVEST",
+      "encoding": "compact",
+      "intervention": {
+        "assignedLossRegion": "STR_AUSTRALASIA",
+        "ownAssignedLosses": 8,
+        "contactBeliefs": 0
+      },
+      "family": "A",
+      "choice": "R0",
+      "description": "AUSTRALASIA",
+      "meanScores": {
+        "R0": 0.1781714285714286,
+        "R1": 0.1372,
+        "R2": 0.15394285714285713,
+        "R3": 0.14124285714285714,
+        "R4": 0.09482857142857143,
+        "R5": 0.15595714285714285,
+        "R6": 0.1386857142857143
+      },
+      "votes": {
+        "R0": 5,
+        "R1": 0,
+        "R2": 1,
+        "R3": 0,
+        "R4": 0,
+        "R5": 1,
+        "R6": 0
+      },
+      "margin": 0.022214285714285742
+    },
+    {
+      "case": "risk_AUSTRALASIA",
+      "pair": "risk",
+      "stage": "TARGET_HARVEST",
+      "encoding": "compact",
+      "intervention": {
+        "assignedLossRegion": "STR_AUSTRALASIA",
+        "ownAssignedLosses": 8,
+        "contactBeliefs": 0
+      },
+      "family": "B",
+      "choice": "R0",
+      "description": "AUSTRALASIA",
+      "meanScores": {
+        "R0": 0.18227142857142858,
+        "R1": 0.12935714285714284,
+        "R2": 0.17397142857142855,
+        "R3": 0.1593857142857143,
+        "R4": 0.09611428571428571,
+        "R5": 0.14414285714285713,
+        "R6": 0.11471428571428571
+      },
+      "votes": {
+        "R0": 2,
+        "R1": 0,
+        "R2": 3,
+        "R3": 1,
+        "R4": 0,
+        "R5": 1,
+        "R6": 0
+      },
+      "margin": 0.00830000000000003
+    },
+    {
+      "case": "risk_NORTH_AMERICA",
+      "pair": "risk",
+      "stage": "TARGET_HARVEST",
+      "encoding": "compact",
+      "intervention": {
+        "assignedLossRegion": "STR_NORTH_AMERICA",
+        "ownAssignedLosses": 8,
+        "contactBeliefs": 0
+      },
+      "family": "A",
+      "choice": "R0",
+      "description": "AUSTRALASIA",
+      "meanScores": {
+        "R0": 0.2374285714285714,
+        "R1": 0.11272857142857141,
+        "R2": 0.15317142857142857,
+        "R3": 0.14572857142857143,
+        "R4": 0.09722857142857141,
+        "R5": 0.1391,
+        "R6": 0.11457142857142857
+      },
+      "votes": {
+        "R0": 5,
+        "R1": 0,
+        "R2": 0,
+        "R3": 1,
+        "R4": 0,
+        "R5": 1,
+        "R6": 0
+      },
+      "margin": 0.08425714285714284
+    },
+    {
+      "case": "risk_NORTH_AMERICA",
+      "pair": "risk",
+      "stage": "TARGET_HARVEST",
+      "encoding": "compact",
+      "intervention": {
+        "assignedLossRegion": "STR_NORTH_AMERICA",
+        "ownAssignedLosses": 8,
+        "contactBeliefs": 0
+      },
+      "family": "B",
+      "choice": "R0",
+      "description": "AUSTRALASIA",
+      "meanScores": {
+        "R0": 0.23938571428571426,
+        "R1": 0.11237142857142855,
+        "R2": 0.17807142857142857,
+        "R3": 0.16297142857142857,
+        "R4": 0.08428571428571428,
+        "R5": 0.11854285714285714,
+        "R6": 0.10438571428571429
+      },
+      "votes": {
+        "R0": 5,
+        "R1": 0,
+        "R2": 2,
+        "R3": 0,
+        "R4": 0,
+        "R5": 0,
+        "R6": 0
+      },
+      "margin": 0.06131428571428568
+    },
+    {
+      "case": "gate_compact_1",
+      "pair": "capability",
+      "stage": "PLAN",
+      "encoding": "compact",
+      "intervention": {
+        "logistics": 1,
+        "baseCandidates": 0,
+        "cashHeldFixed": true
+      },
+      "family": "A",
+      "choice": "P1",
+      "description": "HARVEST: productive +2 cash, +1 logistics; bases need logistics 2; cost 3",
+      "meanScores": {
+        "P0": 0.16131428571428574,
+        "P1": 0.18132857142857142,
+        "P2": 0.1623857142857143,
+        "P3": 0.16431428571428572,
+        "P4": 0.14618571428571428,
+        "P5": 0.10175714285714285,
+        "SAVE": 0.08272857142857143
+      },
+      "votes": {
+        "P0": 1,
+        "P1": 2,
+        "P2": 1,
+        "P3": 2,
+        "P4": 1,
+        "P5": 0,
+        "SAVE": 0
+      },
+      "margin": 0.017014285714285704
+    },
+    {
+      "case": "gate_compact_1",
+      "pair": "capability",
+      "stage": "PLAN",
+      "encoding": "compact",
+      "intervention": {
+        "logistics": 1,
+        "baseCandidates": 0,
+        "cashHeldFixed": true
+      },
+      "family": "B",
+      "choice": "P1",
+      "description": "HARVEST: productive +2 cash, +1 logistics; bases need logistics 2; cost 3",
+      "meanScores": {
+        "P0": 0.16277142857142857,
+        "P1": 0.18728571428571428,
+        "P2": 0.17384285714285716,
+        "P3": 0.15417142857142857,
+        "P4": 0.13825714285714286,
+        "P5": 0.1093,
+        "SAVE": 0.07434285714285714
+      },
+      "votes": {
+        "P0": 1,
+        "P1": 3,
+        "P2": 3,
+        "P3": 0,
+        "P4": 0,
+        "P5": 0,
+        "SAVE": 0
+      },
+      "margin": 0.013442857142857118
+    },
+    {
+      "case": "gate_compact_2",
+      "pair": "capability",
+      "stage": "PLAN",
+      "encoding": "compact",
+      "intervention": {
+        "logistics": 2,
+        "baseCandidates": 12,
+        "cashHeldFixed": true
+      },
+      "family": "A",
+      "choice": "P1",
+      "description": "BASE: surviving +1-2 cash/month, progress, local influence; cost 6",
+      "meanScores": {
+        "P0": 0.1262375,
+        "P1": 0.19594999999999999,
+        "P2": 0.15327500000000002,
+        "P3": 0.1482875,
+        "P4": 0.12313750000000001,
+        "P5": 0.10712500000000001,
+        "P6": 0.0979,
+        "SAVE": 0.048112499999999996
+      },
+      "votes": {
+        "P0": 0,
+        "P1": 6,
+        "P2": 1,
+        "P3": 1,
+        "P4": 0,
+        "P5": 0,
+        "P6": 0,
+        "SAVE": 0
+      },
+      "margin": 0.04267499999999996
+    },
+    {
+      "case": "gate_compact_2",
+      "pair": "capability",
+      "stage": "PLAN",
+      "encoding": "compact",
+      "intervention": {
+        "logistics": 2,
+        "baseCandidates": 12,
+        "cashHeldFixed": true
+      },
+      "family": "B",
+      "choice": "P3",
+      "description": "INFILTRATION: possible pact and base (+1-2 cash/month); cost 6",
+      "meanScores": {
+        "P0": 0.15595,
+        "P1": 0.1469375,
+        "P2": 0.14728750000000002,
+        "P3": 0.163975,
+        "P4": 0.119675,
+        "P5": 0.12345,
+        "P6": 0.09181249999999999,
+        "SAVE": 0.05093750000000001
+      },
+      "votes": {
+        "P0": 3,
+        "P1": 2,
+        "P2": 1,
+        "P3": 2,
+        "P4": 0,
+        "P5": 0,
+        "P6": 0,
+        "SAVE": 0
+      },
+      "margin": 0.008025000000000004
+    },
+    {
+      "case": "gate_named_capability_1",
+      "pair": "capability",
+      "stage": "PLAN",
+      "encoding": "named_capability",
+      "intervention": {
+        "logistics": 1,
+        "baseCandidates": 0,
+        "cashHeldFixed": true
+      },
+      "family": "A",
+      "choice": "P0",
+      "description": "ABDUCTION: productive +2 cash, +1 adaptation; cost 3",
+      "meanScores": {
+        "P0": 0.24812857142857142,
+        "P1": 0.14365714285714287,
+        "P2": 0.17031428571428572,
+        "P3": 0.15125714285714284,
+        "P4": 0.15215714285714288,
+        "P5": 0.07092857142857142,
+        "SAVE": 0.06354285714285714
+      },
+      "votes": {
+        "P0": 7,
+        "P1": 0,
+        "P2": 0,
+        "P3": 0,
+        "P4": 0,
+        "P5": 0,
+        "SAVE": 0
+      },
+      "margin": 0.0778142857142857
+    },
+    {
+      "case": "gate_named_capability_1",
+      "pair": "capability",
+      "stage": "PLAN",
+      "encoding": "named_capability",
+      "intervention": {
+        "logistics": 1,
+        "baseCandidates": 0,
+        "cashHeldFixed": true
+      },
+      "family": "B",
+      "choice": "P0",
+      "description": "ABDUCTION: productive +2 cash, +1 adaptation; cost 3",
+      "meanScores": {
+        "P0": 0.28544285714285716,
+        "P1": 0.1535571428571429,
+        "P2": 0.1628142857142857,
+        "P3": 0.13561428571428571,
+        "P4": 0.1275,
+        "P5": 0.08035714285714286,
+        "SAVE": 0.05468571428571428
+      },
+      "votes": {
+        "P0": 7,
+        "P1": 0,
+        "P2": 0,
+        "P3": 0,
+        "P4": 0,
+        "P5": 0,
+        "SAVE": 0
+      },
+      "margin": 0.12262857142857148
+    },
+    {
+      "case": "gate_named_capability_2",
+      "pair": "capability",
+      "stage": "PLAN",
+      "encoding": "named_capability",
+      "intervention": {
+        "logistics": 2,
+        "baseCandidates": 12,
+        "cashHeldFixed": true
+      },
+      "family": "A",
+      "choice": "P0",
+      "description": "ABDUCTION: productive +2 cash, +1 adaptation; cost 3",
+      "meanScores": {
+        "P0": 0.20184999999999997,
+        "P1": 0.1847,
+        "P2": 0.1655,
+        "P3": 0.1324375,
+        "P4": 0.11345000000000001,
+        "P5": 0.094075,
+        "P6": 0.07005,
+        "SAVE": 0.037950000000000005
+      },
+      "votes": {
+        "P0": 3,
+        "P1": 4,
+        "P2": 1,
+        "P3": 0,
+        "P4": 0,
+        "P5": 0,
+        "P6": 0,
+        "SAVE": 0
+      },
+      "margin": 0.01714999999999997
+    },
+    {
+      "case": "gate_named_capability_2",
+      "pair": "capability",
+      "stage": "PLAN",
+      "encoding": "named_capability",
+      "intervention": {
+        "logistics": 2,
+        "baseCandidates": 12,
+        "cashHeldFixed": true
+      },
+      "family": "B",
+      "choice": "P0",
+      "description": "ABDUCTION: productive +2 cash, +1 adaptation; cost 3",
+      "meanScores": {
+        "P0": 0.25334999999999996,
+        "P1": 0.139775,
+        "P2": 0.1423125,
+        "P3": 0.1431125,
+        "P4": 0.114475,
+        "P5": 0.10114999999999999,
+        "P6": 0.069,
+        "SAVE": 0.03685
+      },
+      "votes": {
+        "P0": 7,
+        "P1": 1,
+        "P2": 0,
+        "P3": 0,
+        "P4": 0,
+        "P5": 0,
+        "P6": 0,
+        "SAVE": 0
+      },
+      "margin": 0.11023749999999996
+    },
+    {
+      "case": "role_PREPARATION",
+      "pair": "operational_role",
+      "stage": "PLAN",
+      "encoding": "compact",
+      "intervention": {
+        "lostRole": "PREPARATION",
+        "furtherObjectiveWavePending": true,
+        "wholeMissionOutcome": "UNKNOWN"
+      },
+      "family": "A",
+      "choice": "P1",
+      "description": "HARVEST: productive +2 cash, +1 logistics; bases need logistics 2; cost 3",
+      "meanScores": {
+        "P0": 0.16781428571428572,
+        "P1": 0.20112857142857143,
+        "P2": 0.1451714285714286,
+        "P3": 0.1659,
+        "P4": 0.1280142857142857,
+        "P5": 0.11200000000000002,
+        "SAVE": 0.07995714285714287
+      },
+      "votes": {
+        "P0": 1,
+        "P1": 3,
+        "P2": 1,
+        "P3": 1,
+        "P4": 1,
+        "P5": 0,
+        "SAVE": 0
+      },
+      "margin": 0.03331428571428571
+    },
+    {
+      "case": "role_PREPARATION",
+      "pair": "operational_role",
+      "stage": "PLAN",
+      "encoding": "compact",
+      "intervention": {
+        "lostRole": "PREPARATION",
+        "furtherObjectiveWavePending": true,
+        "wholeMissionOutcome": "UNKNOWN"
+      },
+      "family": "B",
+      "choice": "P1",
+      "description": "HARVEST: productive +2 cash, +1 logistics; bases need logistics 2; cost 3",
+      "meanScores": {
+        "P0": 0.16105714285714284,
+        "P1": 0.21672857142857144,
+        "P2": 0.15241428571428572,
+        "P3": 0.1586857142857143,
+        "P4": 0.1271142857142857,
+        "P5": 0.11068571428571429,
+        "SAVE": 0.0733
+      },
+      "votes": {
+        "P0": 0,
+        "P1": 5,
+        "P2": 0,
+        "P3": 2,
+        "P4": 0,
+        "P5": 0,
+        "SAVE": 0
+      },
+      "margin": 0.055671428571428594
+    },
+    {
+      "case": "role_OBJECTIVE_CARRIER",
+      "pair": "operational_role",
+      "stage": "PLAN",
+      "encoding": "compact",
+      "intervention": {
+        "lostRole": "OBJECTIVE_CARRIER",
+        "furtherObjectiveWavePending": false,
+        "wholeMissionOutcome": "UNKNOWN"
+      },
+      "family": "A",
+      "choice": "P1",
+      "description": "HARVEST: productive +2 cash, +1 logistics; bases need logistics 2; cost 3",
+      "meanScores": {
+        "P0": 0.16172857142857142,
+        "P1": 0.19377142857142857,
+        "P2": 0.14982857142857142,
+        "P3": 0.16207142857142856,
+        "P4": 0.13304285714285713,
+        "P5": 0.11461428571428571,
+        "SAVE": 0.08491428571428572
+      },
+      "votes": {
+        "P0": 1,
+        "P1": 4,
+        "P2": 1,
+        "P3": 0,
+        "P4": 1,
+        "P5": 0,
+        "SAVE": 0
+      },
+      "margin": 0.031700000000000006
+    },
+    {
+      "case": "role_OBJECTIVE_CARRIER",
+      "pair": "operational_role",
+      "stage": "PLAN",
+      "encoding": "compact",
+      "intervention": {
+        "lostRole": "OBJECTIVE_CARRIER",
+        "furtherObjectiveWavePending": false,
+        "wholeMissionOutcome": "UNKNOWN"
+      },
+      "family": "B",
+      "choice": "P1",
+      "description": "HARVEST: productive +2 cash, +1 logistics; bases need logistics 2; cost 3",
+      "meanScores": {
+        "P0": 0.15370000000000003,
+        "P1": 0.2159,
+        "P2": 0.15485714285714286,
+        "P3": 0.1564714285714286,
+        "P4": 0.1281142857142857,
+        "P5": 0.11327142857142858,
+        "SAVE": 0.07771428571428571
+      },
+      "votes": {
+        "P0": 0,
+        "P1": 5,
+        "P2": 0,
+        "P3": 2,
+        "P4": 0,
+        "P5": 0,
+        "SAVE": 0
+      },
+      "margin": 0.059428571428571414
+    }
+  ]
+}

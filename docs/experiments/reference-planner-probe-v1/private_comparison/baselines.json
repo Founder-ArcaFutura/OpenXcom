@@ -1,0 +1,991 @@
+{
+  "recordedLaya": {
+    "assessmentLimits": "Productive activity is verified; unique recorded assignment suggests region, not full mission success. Resistance rows are reporters and assignment losses, not base coordinates. Pending coverage is partial.",
+    "campaignAssessment": {
+      "other_hotspots": 0,
+      "other_pending": 0,
+      "pending": [
+        [
+          "HARVEST",
+          "SOUTH_EAST_ASIA"
+        ],
+        [
+          "RETALIATION",
+          "EUROPE"
+        ],
+        [
+          "RETALIATION",
+          "NORTH_AFRICA"
+        ]
+      ],
+      "period": "1999-04",
+      "productive": [
+        [
+          "RESEARCH",
+          "ARCTIC",
+          1
+        ]
+      ],
+      "progress": [
+        1,
+        1,
+        2
+      ],
+      "resistance": [
+        [
+          "NORTH_AFRICA",
+          4,
+          5
+        ],
+        [
+          "EUROPE",
+          1,
+          5
+        ],
+        [
+          "CENTRAL_ASIA",
+          0,
+          4
+        ],
+        [
+          "SOUTH_EAST_ASIA",
+          1,
+          3
+        ]
+      ]
+    },
+    "checkpointSha256": "bcbb891d21cf081a9d7a941b97f8b0f10cf3dac7473b4b9450fab0d07b885175",
+    "decisions": [
+      {
+        "answer": {
+          "action": {
+            "act_probability": 1.0
+          },
+          "choice": "P0",
+          "confidence": 0.0774,
+          "probabilities": {
+            "P0": 0.2503,
+            "P1": 0.1796,
+            "P2": 0.0391,
+            "P3": 0.2,
+            "P4": 0.1195,
+            "P5": 0.0448,
+            "SAVE": 0.1668
+          },
+          "type": "choice"
+        },
+        "packetSha256": "0f3112baa4e6f87a1f35b63335cebdb9253544ec3f4e260ae712a8b854d28c60",
+        "question": {
+          "criteria": {
+            "P0": "Abduct to build capacity; cost 3",
+            "P1": "Harvest to build capacity; cost 3",
+            "P2": "Infiltrate to seek national control; cost 6",
+            "P3": "Research to develop intelligence; cost 2",
+            "P4": "Search for XCOM base; cost 2",
+            "P5": "Terror to apply political pressure; cost 4",
+            "SAVE": "Defer: carry 8, forfeit 17"
+          },
+          "instructions": "Choose a concrete campaign investment or defer. Compare achievable gains and risks.",
+          "type": "choice"
+        },
+        "stage": "PLAN",
+        "state": "{\"carry\":8,\"expires_if_idle\":17,\"goal\":\"Conquer Earth through executable investments. Balance future capacity, pressure and locating XCOM.\",\"lessons\":{\"other_hotspots\":0,\"other_pending\":0,\"pending\":[[\"HARVEST\",\"SOUTH_EAST_ASIA\"],[\"RETALIATION\",\"EUROPE\"],[\"RETALIATION\",\"NORTH_AFRICA\"]],\"period\":\"1999-04\",\"productive\":[[\"RESEARCH\",\"ARCTIC\",1]],\"progress\":[1,1,2],\"resistance\":[[\"NORTH_AFRICA\",4,5],[\"EUROPE\",1,5],[\"CENTRAL_ASIA\",0,4],[\"SOUTH_EAST_ASIA\",1,3]]},\"loss_roles\":{\"OBJECTIVE_CARRIER\":0,\"PREPARATION\":0,\"SEARCH\":10,\"UNKNOWN\":7},\"pending_objectives\":0,\"remaining\":25,\"selected\":[]}",
+        "tokenCount": 331
+      },
+      {
+        "answer": {
+          "action": {
+            "act_probability": 1.0
+          },
+          "choice": "R0",
+          "confidence": 0.0806,
+          "probabilities": {
+            "R0": 0.2239,
+            "R1": 0.1735,
+            "R2": 0.0697,
+            "R3": 0.0718,
+            "R4": 0.0479,
+            "R5": 0.0663,
+            "R6": 0.083,
+            "R7": 0.0464,
+            "R8": 0.2175
+          },
+          "type": "choice"
+        },
+        "packetSha256": "3b53b3fabc0f496ba10143264ec25bb48b1a4333defe2aee7ce228469bc03681",
+        "question": {
+          "criteria": {
+            "R0": "AUSTRALASIA",
+            "R1": "CENTRAL ASIA",
+            "R2": "EUROPE",
+            "R3": "NORTH AFRICA",
+            "R4": "NORTH AMERICA",
+            "R5": "SIBERIA",
+            "R6": "SOUTHERN AFRICA",
+            "R7": "SOUTH AMERICA",
+            "R8": "SOUTH EAST ASIA"
+          },
+          "instructions": "Choose a target suited to this objective. Search near evidence; productive missions balance gains against interference risk.",
+          "type": "choice"
+        },
+        "stage": "TARGET",
+        "state": "{\"limits\":\"Report locations show XCOM reach, not bases. Assignment losses are uncertain clues. Zero reports is unknown exposure, not safety.\",\"objective\":\"BUILD_CAPACITY\",\"operation\":\"STR_ALIEN_ABDUCTION\",\"productive_history\":[[\"RESEARCH\",\"ARCTIC\",1]],\"regions_reports_assignment_losses\":[[\"AUSTRALASIA\",0,0],[\"CENTRAL_ASIA\",0,4],[\"EUROPE\",1,5],[\"NORTH_AFRICA\",4,5],[\"NORTH_AMERICA\",0,0],[\"SIBERIA\",0,0],[\"SOUTHERN_AFRICA\",0,0],[\"SOUTH_AMERICA\",0,0],[\"SOUTH_EAST_ASIA\",1,3]]}",
+        "tokenCount": 292
+      },
+      {
+        "answer": {
+          "action": {
+            "act_probability": 1.0
+          },
+          "choice": "P3",
+          "confidence": 0.0631,
+          "probabilities": {
+            "P0": 0.203,
+            "P1": 0.1588,
+            "P2": 0.0439,
+            "P3": 0.2394,
+            "P4": 0.1486,
+            "P5": 0.0542,
+            "SAVE": 0.1522
+          },
+          "type": "choice"
+        },
+        "packetSha256": "ed8bc44f0a8ec71e48e0754ce3296b1769a4c87d72f5f7a82ea06d9df4611c52",
+        "question": {
+          "criteria": {
+            "P0": "Abduct to build capacity; cost 3",
+            "P1": "Harvest to build capacity; cost 3",
+            "P2": "Infiltrate to seek national control; cost 6",
+            "P3": "Research to develop intelligence; cost 2",
+            "P4": "Search for XCOM base; cost 2",
+            "P5": "Terror to apply political pressure; cost 4",
+            "SAVE": "Defer: carry 8, forfeit 14"
+          },
+          "instructions": "Choose a concrete campaign investment or defer. Compare achievable gains and risks.",
+          "type": "choice"
+        },
+        "stage": "PLAN",
+        "state": "{\"carry\":8,\"expires_if_idle\":14,\"goal\":\"Conquer Earth through executable investments. Balance future capacity, pressure and locating XCOM.\",\"lessons\":{\"other_hotspots\":0,\"other_pending\":0,\"pending\":[[\"HARVEST\",\"SOUTH_EAST_ASIA\"],[\"RETALIATION\",\"EUROPE\"],[\"RETALIATION\",\"NORTH_AFRICA\"]],\"period\":\"1999-04\",\"productive\":[[\"RESEARCH\",\"ARCTIC\",1]],\"progress\":[1,1,2],\"resistance\":[[\"NORTH_AFRICA\",4,5],[\"EUROPE\",1,5],[\"CENTRAL_ASIA\",0,4],[\"SOUTH_EAST_ASIA\",1,3]]},\"loss_roles\":{\"OBJECTIVE_CARRIER\":0,\"PREPARATION\":0,\"SEARCH\":10,\"UNKNOWN\":7},\"pending_objectives\":0,\"remaining\":22,\"selected\":[[\"BUILD_CAPACITY\",\"AUSTRALASIA\"]]}",
+        "tokenCount": 344
+      },
+      {
+        "answer": {
+          "action": {
+            "act_probability": 1.0
+          },
+          "choice": "R11",
+          "confidence": 0.681,
+          "probabilities": {
+            "R0": 0.0091,
+            "R1": 0.4789,
+            "R10": 0.0,
+            "R11": 0.5011,
+            "R2": 0.0001,
+            "R3": 0.0002,
+            "R4": 0.0,
+            "R5": 0.0,
+            "R6": 0.0,
+            "R7": 0.0106,
+            "R8": 0.0,
+            "R9": 0.0
+          },
+          "type": "choice"
+        },
+        "packetSha256": "8b63b9f1ec0478cdba5d512cce00722392effff34f67025e9c49f160c073da7f",
+        "question": {
+          "criteria": {
+            "R0": "ANTARCTICA",
+            "R1": "ARCTIC",
+            "R10": "SOUTH AMERICA",
+            "R11": "SOUTH EAST ASIA",
+            "R2": "AUSTRALASIA",
+            "R3": "CENTRAL ASIA",
+            "R4": "EUROPE",
+            "R5": "NORTH AFRICA",
+            "R6": "NORTH AMERICA",
+            "R7": "PACIFIC",
+            "R8": "SIBERIA",
+            "R9": "SOUTHERN AFRICA"
+          },
+          "instructions": "Choose a target suited to this objective. Search near evidence; productive missions balance gains against interference risk.",
+          "type": "choice"
+        },
+        "stage": "TARGET",
+        "state": "{\"limits\":\"Report locations show XCOM reach, not bases. Assignment losses are uncertain clues. Zero reports is unknown exposure, not safety.\",\"objective\":\"DEVELOP_INTELLIGENCE\",\"operation\":\"STR_ALIEN_RESEARCH\",\"productive_history\":[[\"RESEARCH\",\"ARCTIC\",1]],\"regions_reports_assignment_losses\":[[\"ANTARCTICA\",0,0],[\"ARCTIC\",0,0],[\"AUSTRALASIA\",0,0],[\"CENTRAL_ASIA\",0,4],[\"EUROPE\",1,5],[\"NORTH_AFRICA\",4,5],[\"NORTH_AMERICA\",0,0],[\"PACIFIC\",0,0],[\"SIBERIA\",0,0],[\"SOUTHERN_AFRICA\",0,0],[\"SOUTH_AMERICA\",0,0],[\"SOUTH_EAST_ASIA\",1,3]]}",
+        "tokenCount": 345
+      },
+      {
+        "answer": {
+          "action": {
+            "act_probability": 1.0
+          },
+          "choice": "P3",
+          "confidence": 0.0916,
+          "probabilities": {
+            "P0": 0.1434,
+            "P1": 0.1395,
+            "P2": 0.0701,
+            "P3": 0.3414,
+            "P4": 0.1139,
+            "P5": 0.0393,
+            "SAVE": 0.1525
+          },
+          "type": "choice"
+        },
+        "packetSha256": "126236897889570ddd222c00d1eacfb67803350f172f11beaad243c14b3e33d6",
+        "question": {
+          "criteria": {
+            "P0": "Abduct to build capacity; cost 3",
+            "P1": "Harvest to build capacity; cost 3",
+            "P2": "Infiltrate to seek national control; cost 6",
+            "P3": "Research to develop intelligence; cost 2",
+            "P4": "Search for XCOM base; cost 2",
+            "P5": "Terror to apply political pressure; cost 4",
+            "SAVE": "Defer: carry 8, forfeit 12"
+          },
+          "instructions": "Choose a concrete campaign investment or defer. Compare achievable gains and risks.",
+          "type": "choice"
+        },
+        "stage": "PLAN",
+        "state": "{\"carry\":8,\"expires_if_idle\":12,\"goal\":\"Conquer Earth through executable investments. Balance future capacity, pressure and locating XCOM.\",\"lessons\":{\"other_hotspots\":0,\"other_pending\":0,\"pending\":[[\"HARVEST\",\"SOUTH_EAST_ASIA\"],[\"RETALIATION\",\"EUROPE\"],[\"RETALIATION\",\"NORTH_AFRICA\"]],\"period\":\"1999-04\",\"productive\":[[\"RESEARCH\",\"ARCTIC\",1]],\"progress\":[1,1,2],\"resistance\":[[\"NORTH_AFRICA\",4,5],[\"EUROPE\",1,5],[\"CENTRAL_ASIA\",0,4],[\"SOUTH_EAST_ASIA\",1,3]]},\"loss_roles\":{\"OBJECTIVE_CARRIER\":0,\"PREPARATION\":0,\"SEARCH\":10,\"UNKNOWN\":7},\"pending_objectives\":0,\"remaining\":20,\"selected\":[[\"BUILD_CAPACITY\",\"AUSTRALASIA\"],[\"DEVELOP_INTELLIGENCE\",\"SOUTH_EAST_ASIA\"]]}",
+        "tokenCount": 364
+      },
+      {
+        "answer": {
+          "action": {
+            "act_probability": 1.0
+          },
+          "choice": "R1",
+          "confidence": 0.6818,
+          "probabilities": {
+            "R0": 0.0609,
+            "R1": 0.7316,
+            "R10": 0.199,
+            "R2": 0.0,
+            "R3": 0.0,
+            "R4": 0.0,
+            "R5": 0.0,
+            "R6": 0.0,
+            "R7": 0.008,
+            "R8": 0.0,
+            "R9": 0.0005
+          },
+          "type": "choice"
+        },
+        "packetSha256": "9fa1d64c9060720671d0e0264d2ca3ac757601036e2465bc0cb1ce7c4ff4fe62",
+        "question": {
+          "criteria": {
+            "R0": "ANTARCTICA",
+            "R1": "ARCTIC",
+            "R10": "SOUTH AMERICA",
+            "R2": "AUSTRALASIA",
+            "R3": "CENTRAL ASIA",
+            "R4": "EUROPE",
+            "R5": "NORTH AFRICA",
+            "R6": "NORTH AMERICA",
+            "R7": "PACIFIC",
+            "R8": "SIBERIA",
+            "R9": "SOUTHERN AFRICA"
+          },
+          "instructions": "Choose a target suited to this objective. Search near evidence; productive missions balance gains against interference risk.",
+          "type": "choice"
+        },
+        "stage": "TARGET",
+        "state": "{\"limits\":\"Report locations show XCOM reach, not bases. Assignment losses are uncertain clues. Zero reports is unknown exposure, not safety.\",\"objective\":\"DEVELOP_INTELLIGENCE\",\"operation\":\"STR_ALIEN_RESEARCH\",\"productive_history\":[[\"RESEARCH\",\"ARCTIC\",1]],\"regions_reports_assignment_losses\":[[\"ANTARCTICA\",0,0],[\"ARCTIC\",0,0],[\"AUSTRALASIA\",0,0],[\"CENTRAL_ASIA\",0,4],[\"EUROPE\",1,5],[\"NORTH_AFRICA\",4,5],[\"NORTH_AMERICA\",0,0],[\"PACIFIC\",0,0],[\"SIBERIA\",0,0],[\"SOUTHERN_AFRICA\",0,0],[\"SOUTH_AMERICA\",0,0]]}",
+        "tokenCount": 319
+      },
+      {
+        "answer": {
+          "action": {
+            "act_probability": 1.0
+          },
+          "choice": "P3",
+          "confidence": 0.2565,
+          "probabilities": {
+            "P0": 0.103,
+            "P1": 0.1008,
+            "P2": 0.0555,
+            "P3": 0.5588,
+            "P4": 0.0832,
+            "P5": 0.0295,
+            "SAVE": 0.0693
+          },
+          "type": "choice"
+        },
+        "packetSha256": "685c0c6e03205d8133ca9b0db170c55ddd9700670fc25b2e675073bbfa62a1bb",
+        "question": {
+          "criteria": {
+            "P0": "Abduct to build capacity; cost 3",
+            "P1": "Harvest to build capacity; cost 3",
+            "P2": "Infiltrate to seek national control; cost 6",
+            "P3": "Research to develop intelligence; cost 2",
+            "P4": "Search for XCOM base; cost 2",
+            "P5": "Terror to apply political pressure; cost 4",
+            "SAVE": "Defer: carry 8, forfeit 10"
+          },
+          "instructions": "Choose a concrete campaign investment or defer. Compare achievable gains and risks.",
+          "type": "choice"
+        },
+        "stage": "PLAN",
+        "state": "{\"carry\":8,\"expires_if_idle\":10,\"goal\":\"Conquer Earth through executable investments. Balance future capacity, pressure and locating XCOM.\",\"lessons\":{\"other_hotspots\":0,\"other_pending\":0,\"pending\":[[\"HARVEST\",\"SOUTH_EAST_ASIA\"],[\"RETALIATION\",\"EUROPE\"],[\"RETALIATION\",\"NORTH_AFRICA\"]],\"period\":\"1999-04\",\"productive\":[[\"RESEARCH\",\"ARCTIC\",1]],\"progress\":[1,1,2],\"resistance\":[[\"NORTH_AFRICA\",4,5],[\"EUROPE\",1,5],[\"CENTRAL_ASIA\",0,4],[\"SOUTH_EAST_ASIA\",1,3]]},\"loss_roles\":{\"OBJECTIVE_CARRIER\":0,\"PREPARATION\":0,\"SEARCH\":10,\"UNKNOWN\":7},\"pending_objectives\":0,\"remaining\":18,\"selected\":[[\"BUILD_CAPACITY\",\"AUSTRALASIA\"],[\"DEVELOP_INTELLIGENCE\",\"SOUTH_EAST_ASIA\"],[\"DEVELOP_INTELLIGENCE\",\"ARCTIC\"]]}",
+        "tokenCount": 378
+      },
+      {
+        "answer": {
+          "action": {
+            "act_probability": 1.0
+          },
+          "choice": "R0",
+          "confidence": 0.0354,
+          "probabilities": {
+            "R0": 0.2078,
+            "R1": 0.0693,
+            "R2": 0.0883,
+            "R3": 0.0634,
+            "R4": 0.0919,
+            "R5": 0.0609,
+            "R6": 0.1522,
+            "R7": 0.0874,
+            "R8": 0.0817,
+            "R9": 0.0972
+          },
+          "type": "choice"
+        },
+        "packetSha256": "6c84fe7d89fc03b1610d01e6c0e5b040076294490038cb60fab6965725e72f76",
+        "question": {
+          "criteria": {
+            "R0": "ANTARCTICA",
+            "R1": "AUSTRALASIA",
+            "R2": "CENTRAL ASIA",
+            "R3": "EUROPE",
+            "R4": "NORTH AFRICA",
+            "R5": "NORTH AMERICA",
+            "R6": "PACIFIC",
+            "R7": "SIBERIA",
+            "R8": "SOUTHERN AFRICA",
+            "R9": "SOUTH AMERICA"
+          },
+          "instructions": "Choose a target suited to this objective. Search near evidence; productive missions balance gains against interference risk.",
+          "type": "choice"
+        },
+        "stage": "TARGET",
+        "state": "{\"limits\":\"Report locations show XCOM reach, not bases. Assignment losses are uncertain clues. Zero reports is unknown exposure, not safety.\",\"objective\":\"DEVELOP_INTELLIGENCE\",\"operation\":\"STR_ALIEN_RESEARCH\",\"productive_history\":[[\"RESEARCH\",\"ARCTIC\",1]],\"regions_reports_assignment_losses\":[[\"ANTARCTICA\",0,0],[\"AUSTRALASIA\",0,0],[\"CENTRAL_ASIA\",0,4],[\"EUROPE\",1,5],[\"NORTH_AFRICA\",4,5],[\"NORTH_AMERICA\",0,0],[\"PACIFIC\",0,0],[\"SIBERIA\",0,0],[\"SOUTHERN_AFRICA\",0,0],[\"SOUTH_AMERICA\",0,0]]}",
+        "tokenCount": 303
+      }
+    ],
+    "device": "cpu",
+    "domainValidation": "NOT_VALIDATED_FOR_XCOM",
+    "encoderRevision": "45bb4654a4d5aaff24dd11d4781fa46d39bf8c13",
+    "inputSha256": "74c8b9f7eb64c2c9f50f250beeeeb50ca03a6b73a7c133c2f06bb6401029a732",
+    "latencyMs": 13485.78,
+    "layaVersion": "0.1.6",
+    "modelName": "uppward-laya-evidence-lambda-probe-v4-production-packet",
+    "operations": [
+      {
+        "mission": "STR_ALIEN_ABDUCTION",
+        "region": "STR_AUSTRALASIA"
+      },
+      {
+        "mission": "STR_ALIEN_RESEARCH",
+        "region": "STR_SOUTH_EAST_ASIA"
+      },
+      {
+        "mission": "STR_ALIEN_RESEARCH",
+        "region": "STR_ARCTIC"
+      },
+      {
+        "mission": "STR_ALIEN_RESEARCH",
+        "region": "STR_ANTARCTICA"
+      }
+    ],
+    "plans": [
+      {
+        "assignmentLosses": 0,
+        "con": "Interception can prevent gains; low reported exposure may reflect little observation.",
+        "cost": 3,
+        "gainStatus": "CONDITIONAL_NOT_REALIZED",
+        "goal": "BUILD_CAPACITY",
+        "mission": "STR_ALIEN_ABDUCTION",
+        "pro": "Verified activity earns +2 pending income and +1 adaptation.",
+        "region": "STR_AUSTRALASIA",
+        "reports": 0,
+        "safety": "UNKNOWN",
+        "searchBasis": null,
+        "supportIds": []
+      },
+      {
+        "assignmentLosses": 3,
+        "con": "Cannot discover XCOM bases; craft can be intercepted.",
+        "cost": 2,
+        "gainStatus": "CONDITIONAL_NOT_REALIZED",
+        "goal": "DEVELOP_INTELLIGENCE",
+        "mission": "STR_ALIEN_RESEARCH",
+        "pro": "Completed flight earns +1 pending income and +1 intelligence.",
+        "region": "STR_SOUTH_EAST_ASIA",
+        "reports": 1,
+        "safety": "UNKNOWN",
+        "searchBasis": null,
+        "supportIds": [
+          185,
+          202,
+          203,
+          234
+        ]
+      },
+      {
+        "assignmentLosses": 0,
+        "con": "Cannot discover XCOM bases; craft can be intercepted.",
+        "cost": 2,
+        "gainStatus": "CONDITIONAL_NOT_REALIZED",
+        "goal": "DEVELOP_INTELLIGENCE",
+        "mission": "STR_ALIEN_RESEARCH",
+        "pro": "Completed flight earns +1 pending income and +1 intelligence.",
+        "region": "STR_ARCTIC",
+        "reports": 0,
+        "safety": "UNKNOWN",
+        "searchBasis": null,
+        "supportIds": []
+      },
+      {
+        "assignmentLosses": 0,
+        "con": "Cannot discover XCOM bases; craft can be intercepted.",
+        "cost": 2,
+        "gainStatus": "CONDITIONAL_NOT_REALIZED",
+        "goal": "DEVELOP_INTELLIGENCE",
+        "mission": "STR_ALIEN_RESEARCH",
+        "pro": "Completed flight earns +1 pending income and +1 intelligence.",
+        "region": "STR_ANTARCTICA",
+        "reports": 0,
+        "safety": "UNKNOWN",
+        "searchBasis": null,
+        "supportIds": []
+      }
+    ],
+    "portfolioPromptVersion": "progressive-portfolio-v8",
+    "protocol": "alien-strategy-laya-v2",
+    "remainingProposed": 16,
+    "schemaVersion": 1,
+    "scoreMeaning": "Unvalidated choice probabilities; engine validates entire portfolio.",
+    "searchEligibility": "SURVIVING_INTERCEPTION_REPORTS",
+    "status": "PREDICTED",
+    "strategy": "INTELLIGENCE",
+    "strategySource": "DERIVED_SPEND_LABEL_NOT_MODEL_STRATEGY",
+    "torchVersion": "2.10.0+cpu"
+  },
+  "randomNegativeControls": [
+    {
+      "seed": 0,
+      "operations": [],
+      "remaining": 25
+    },
+    {
+      "seed": 1,
+      "operations": [
+        {
+          "mission": "STR_ALIEN_HARVEST",
+          "region": "STR_NORTH_AMERICA"
+        }
+      ],
+      "remaining": 22
+    },
+    {
+      "seed": 2,
+      "operations": [],
+      "remaining": 25
+    },
+    {
+      "seed": 3,
+      "operations": [
+        {
+          "mission": "STR_ALIEN_HARVEST",
+          "region": "STR_NORTH_AMERICA"
+        },
+        {
+          "mission": "STR_ALIEN_RETALIATION",
+          "region": "STR_SOUTH_EAST_ASIA"
+        },
+        {
+          "mission": "STR_ALIEN_INFILTRATION",
+          "region": "STR_SOUTHERN_AFRICA"
+        },
+        {
+          "mission": "STR_ALIEN_RESEARCH",
+          "region": "STR_SOUTH_AMERICA"
+        }
+      ],
+      "remaining": 12
+    },
+    {
+      "seed": 4,
+      "operations": [
+        {
+          "mission": "STR_ALIEN_HARVEST",
+          "region": "STR_EUROPE"
+        },
+        {
+          "mission": "STR_ALIEN_ABDUCTION",
+          "region": "STR_SOUTHERN_AFRICA"
+        },
+        {
+          "mission": "STR_ALIEN_RESEARCH",
+          "region": "STR_AUSTRALASIA"
+        },
+        {
+          "mission": "STR_ALIEN_ABDUCTION",
+          "region": "STR_CENTRAL_ASIA"
+        }
+      ],
+      "remaining": 14
+    },
+    {
+      "seed": 5,
+      "operations": [
+        {
+          "mission": "STR_ALIEN_RETALIATION",
+          "region": "STR_SOUTH_EAST_ASIA"
+        }
+      ],
+      "remaining": 23
+    },
+    {
+      "seed": 6,
+      "operations": [],
+      "remaining": 25
+    },
+    {
+      "seed": 7,
+      "operations": [
+        {
+          "mission": "STR_ALIEN_INFILTRATION",
+          "region": "STR_AUSTRALASIA"
+        },
+        {
+          "mission": "STR_ALIEN_RESEARCH",
+          "region": "STR_SOUTH_AMERICA"
+        },
+        {
+          "mission": "STR_ALIEN_ABDUCTION",
+          "region": "STR_CENTRAL_ASIA"
+        }
+      ],
+      "remaining": 14
+    },
+    {
+      "seed": 8,
+      "operations": [
+        {
+          "mission": "STR_ALIEN_HARVEST",
+          "region": "STR_EUROPE"
+        },
+        {
+          "mission": "STR_ALIEN_RESEARCH",
+          "region": "STR_AUSTRALASIA"
+        },
+        {
+          "mission": "STR_ALIEN_HARVEST",
+          "region": "STR_SOUTH_AMERICA"
+        },
+        {
+          "mission": "STR_ALIEN_ABDUCTION",
+          "region": "STR_CENTRAL_ASIA"
+        }
+      ],
+      "remaining": 14
+    },
+    {
+      "seed": 9,
+      "operations": [
+        {
+          "mission": "STR_ALIEN_RESEARCH",
+          "region": "STR_SOUTHERN_AFRICA"
+        },
+        {
+          "mission": "STR_ALIEN_INFILTRATION",
+          "region": "STR_EUROPE"
+        },
+        {
+          "mission": "STR_ALIEN_HARVEST",
+          "region": "STR_CENTRAL_ASIA"
+        }
+      ],
+      "remaining": 14
+    },
+    {
+      "seed": 10,
+      "operations": [
+        {
+          "mission": "STR_ALIEN_RETALIATION",
+          "region": "STR_SOUTH_EAST_ASIA"
+        },
+        {
+          "mission": "STR_ALIEN_RESEARCH",
+          "region": "STR_PACIFIC"
+        },
+        {
+          "mission": "STR_ALIEN_TERROR",
+          "region": "STR_AUSTRALASIA"
+        },
+        {
+          "mission": "STR_ALIEN_HARVEST",
+          "region": "STR_NORTH_AFRICA"
+        }
+      ],
+      "remaining": 14
+    },
+    {
+      "seed": 11,
+      "operations": [
+        {
+          "mission": "STR_ALIEN_RESEARCH",
+          "region": "STR_SIBERIA"
+        }
+      ],
+      "remaining": 23
+    },
+    {
+      "seed": 12,
+      "operations": [
+        {
+          "mission": "STR_ALIEN_RESEARCH",
+          "region": "STR_EUROPE"
+        },
+        {
+          "mission": "STR_ALIEN_TERROR",
+          "region": "STR_SOUTH_EAST_ASIA"
+        },
+        {
+          "mission": "STR_ALIEN_TERROR",
+          "region": "STR_SIBERIA"
+        },
+        {
+          "mission": "STR_ALIEN_HARVEST",
+          "region": "STR_NORTH_AFRICA"
+        }
+      ],
+      "remaining": 12
+    },
+    {
+      "seed": 13,
+      "operations": [
+        {
+          "mission": "STR_ALIEN_INFILTRATION",
+          "region": "STR_EUROPE"
+        },
+        {
+          "mission": "STR_ALIEN_TERROR",
+          "region": "STR_EUROPE"
+        },
+        {
+          "mission": "STR_ALIEN_TERROR",
+          "region": "STR_NORTH_AMERICA"
+        },
+        {
+          "mission": "STR_ALIEN_TERROR",
+          "region": "STR_CENTRAL_ASIA"
+        }
+      ],
+      "remaining": 7
+    },
+    {
+      "seed": 14,
+      "operations": [
+        {
+          "mission": "STR_ALIEN_ABDUCTION",
+          "region": "STR_SOUTH_EAST_ASIA"
+        },
+        {
+          "mission": "STR_ALIEN_HARVEST",
+          "region": "STR_EUROPE"
+        },
+        {
+          "mission": "STR_ALIEN_TERROR",
+          "region": "STR_NORTH_AMERICA"
+        },
+        {
+          "mission": "STR_ALIEN_INFILTRATION",
+          "region": "STR_SOUTH_EAST_ASIA"
+        }
+      ],
+      "remaining": 9
+    },
+    {
+      "seed": 15,
+      "operations": [
+        {
+          "mission": "STR_ALIEN_HARVEST",
+          "region": "STR_AUSTRALASIA"
+        },
+        {
+          "mission": "STR_ALIEN_RETALIATION",
+          "region": "STR_SOUTH_EAST_ASIA"
+        },
+        {
+          "mission": "STR_ALIEN_HARVEST",
+          "region": "STR_EUROPE"
+        },
+        {
+          "mission": "STR_ALIEN_ABDUCTION",
+          "region": "STR_AUSTRALASIA"
+        }
+      ],
+      "remaining": 14
+    },
+    {
+      "seed": 16,
+      "operations": [
+        {
+          "mission": "STR_ALIEN_INFILTRATION",
+          "region": "STR_PACIFIC"
+        },
+        {
+          "mission": "STR_ALIEN_RESEARCH",
+          "region": "STR_EUROPE"
+        },
+        {
+          "mission": "STR_ALIEN_RESEARCH",
+          "region": "STR_CENTRAL_ASIA"
+        },
+        {
+          "mission": "STR_ALIEN_RESEARCH",
+          "region": "STR_ANTARCTICA"
+        }
+      ],
+      "remaining": 13
+    },
+    {
+      "seed": 17,
+      "operations": [
+        {
+          "mission": "STR_ALIEN_RETALIATION",
+          "region": "STR_SOUTH_EAST_ASIA"
+        },
+        {
+          "mission": "STR_ALIEN_INFILTRATION",
+          "region": "STR_NORTH_AFRICA"
+        },
+        {
+          "mission": "STR_ALIEN_INFILTRATION",
+          "region": "STR_AUSTRALASIA"
+        }
+      ],
+      "remaining": 11
+    },
+    {
+      "seed": 18,
+      "operations": [
+        {
+          "mission": "STR_ALIEN_HARVEST",
+          "region": "STR_AUSTRALASIA"
+        },
+        {
+          "mission": "STR_ALIEN_TERROR",
+          "region": "STR_SOUTH_AMERICA"
+        },
+        {
+          "mission": "STR_ALIEN_INFILTRATION",
+          "region": "STR_CENTRAL_ASIA"
+        },
+        {
+          "mission": "STR_ALIEN_HARVEST",
+          "region": "STR_NORTH_AMERICA"
+        }
+      ],
+      "remaining": 9
+    },
+    {
+      "seed": 19,
+      "operations": [
+        {
+          "mission": "STR_ALIEN_TERROR",
+          "region": "STR_AUSTRALASIA"
+        }
+      ],
+      "remaining": 21
+    },
+    {
+      "seed": 20,
+      "operations": [
+        {
+          "mission": "STR_ALIEN_TERROR",
+          "region": "STR_EUROPE"
+        },
+        {
+          "mission": "STR_ALIEN_INFILTRATION",
+          "region": "STR_SOUTH_AMERICA"
+        },
+        {
+          "mission": "STR_ALIEN_TERROR",
+          "region": "STR_CENTRAL_ASIA"
+        }
+      ],
+      "remaining": 11
+    },
+    {
+      "seed": 21,
+      "operations": [
+        {
+          "mission": "STR_ALIEN_HARVEST",
+          "region": "STR_NORTH_AFRICA"
+        },
+        {
+          "mission": "STR_ALIEN_TERROR",
+          "region": "STR_SOUTHERN_AFRICA"
+        },
+        {
+          "mission": "STR_ALIEN_TERROR",
+          "region": "STR_NORTH_AMERICA"
+        },
+        {
+          "mission": "STR_ALIEN_RESEARCH",
+          "region": "STR_CENTRAL_ASIA"
+        }
+      ],
+      "remaining": 12
+    },
+    {
+      "seed": 22,
+      "operations": [
+        {
+          "mission": "STR_ALIEN_HARVEST",
+          "region": "STR_CENTRAL_ASIA"
+        },
+        {
+          "mission": "STR_ALIEN_ABDUCTION",
+          "region": "STR_SOUTH_AMERICA"
+        },
+        {
+          "mission": "STR_ALIEN_HARVEST",
+          "region": "STR_SOUTH_AMERICA"
+        },
+        {
+          "mission": "STR_ALIEN_ABDUCTION",
+          "region": "STR_SIBERIA"
+        }
+      ],
+      "remaining": 13
+    },
+    {
+      "seed": 23,
+      "operations": [],
+      "remaining": 25
+    },
+    {
+      "seed": 24,
+      "operations": [
+        {
+          "mission": "STR_ALIEN_TERROR",
+          "region": "STR_SOUTHERN_AFRICA"
+        }
+      ],
+      "remaining": 21
+    },
+    {
+      "seed": 25,
+      "operations": [
+        {
+          "mission": "STR_ALIEN_RESEARCH",
+          "region": "STR_ANTARCTICA"
+        },
+        {
+          "mission": "STR_ALIEN_HARVEST",
+          "region": "STR_SOUTH_AMERICA"
+        },
+        {
+          "mission": "STR_ALIEN_INFILTRATION",
+          "region": "STR_SOUTH_AMERICA"
+        },
+        {
+          "mission": "STR_ALIEN_RESEARCH",
+          "region": "STR_ARCTIC"
+        }
+      ],
+      "remaining": 12
+    },
+    {
+      "seed": 26,
+      "operations": [
+        {
+          "mission": "STR_ALIEN_TERROR",
+          "region": "STR_NORTH_AFRICA"
+        },
+        {
+          "mission": "STR_ALIEN_TERROR",
+          "region": "STR_NORTH_AMERICA"
+        },
+        {
+          "mission": "STR_ALIEN_RESEARCH",
+          "region": "STR_SOUTHERN_AFRICA"
+        },
+        {
+          "mission": "STR_ALIEN_RETALIATION",
+          "region": "STR_SOUTH_EAST_ASIA"
+        }
+      ],
+      "remaining": 13
+    },
+    {
+      "seed": 27,
+      "operations": [
+        {
+          "mission": "STR_ALIEN_TERROR",
+          "region": "STR_SOUTH_AMERICA"
+        },
+        {
+          "mission": "STR_ALIEN_TERROR",
+          "region": "STR_NORTH_AMERICA"
+        },
+        {
+          "mission": "STR_ALIEN_INFILTRATION",
+          "region": "STR_CENTRAL_ASIA"
+        },
+        {
+          "mission": "STR_ALIEN_ABDUCTION",
+          "region": "STR_CENTRAL_ASIA"
+        }
+      ],
+      "remaining": 8
+    },
+    {
+      "seed": 28,
+      "operations": [
+        {
+          "mission": "STR_ALIEN_ABDUCTION",
+          "region": "STR_EUROPE"
+        },
+        {
+          "mission": "STR_ALIEN_RETALIATION",
+          "region": "STR_SOUTH_EAST_ASIA"
+        },
+        {
+          "mission": "STR_ALIEN_HARVEST",
+          "region": "STR_CENTRAL_ASIA"
+        }
+      ],
+      "remaining": 17
+    },
+    {
+      "seed": 29,
+      "operations": [
+        {
+          "mission": "STR_ALIEN_RETALIATION",
+          "region": "STR_SOUTH_EAST_ASIA"
+        },
+        {
+          "mission": "STR_ALIEN_INFILTRATION",
+          "region": "STR_SOUTHERN_AFRICA"
+        },
+        {
+          "mission": "STR_ALIEN_TERROR",
+          "region": "STR_NORTH_AMERICA"
+        },
+        {
+          "mission": "STR_ALIEN_ABDUCTION",
+          "region": "STR_SOUTH_EAST_ASIA"
+        }
+      ],
+      "remaining": 10
+    }
+  ],
+  "sampling": "Python Random seeds 0-29; uniform available labels at each PLAN (including SAVE), then uniform region labels. Not uniform over whole portfolios. No inference calls.",
+  "randomMedianSpent": 11.0
+}

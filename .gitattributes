@@ -14,3 +14,7 @@
 # Denote all files that are truly binary and should not be modified.
 *.png binary
 *.gif binary
+
+# Preserve recorded experiment/transcript bytes and provenance hashes.
+docs/experiments/** -text
+llm_responses/** -text

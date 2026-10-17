@@ -1,0 +1,34 @@
+{
+  "packetVersion": "manual-reference-planner-v1",
+  "sourceSave": "G:\\OpenXcom\\build\\local\\user\\xcom1\\And into may.sav",
+  "sourceSaveSha256": "a275c2cbaeb2dab37797552ea6c4e78d4775fea912a52536c4be59d594c5badd",
+  "recordedDecisionId": 252,
+  "decisionTime": "1999-05-01 00:00:00",
+  "nativeInputSha256": "74c8b9f7eb64c2c9f50f250beeeeb50ca03a6b73a7c133c2f06bb6401029a732",
+  "sourceFilesSha256": {
+    "scripts/campaign_plans.py": "a832b30178ce732672043cda468e1012a52a937f2cf82efcbe403ed7b391875b",
+    "scripts/alien-command-model.py": "659513e7ca9545e9d9c51f66d7e3ed8746e1bcc636df4afdc0f9d80805dd21bf",
+    "src/Savegame/AlienCommand.cpp": "9b3bde9e6d0004dc0149d6a68f73cb7ec019930b37443e21e1c0af548ec236ea",
+    "src/Savegame/AlienCommand.h": "70e2b3d39ddf20ea415e33b16eeecea5776617722283068654209bfdc6425bb5",
+    "src/Geoscape/AlienCommandAudit.cpp": "da676a32d3144da3242c5f2ab7ee859803fa99085b21ee62aaf8823e76cae8e6",
+    "src/Savegame/AlienMission.cpp": "1bdbf93688c3f68fa53388e9a03d94dc300d0f547bf06d53880f9b5703abef34"
+  },
+  "packetFilesSha256": {
+    "01_FULL_MAY_PROMPT.md": "bce858b4d28954f02c77c77b36c0719d6889f6884646960d0390e22b56b2a80b",
+    "02_MATCHED_FIRST_CHOICE_PROMPT.md": "8de928eadc1ecc0d4f7ad3b6d68c9564a1590f360e52b7b212e033b1151af412",
+    "03_TRANSCRIPT_TEMPLATE.md": "a46d560ac090994a494b3de49531245ea4db88b96c58c951903856fb795cb07c",
+    "04_EVALUATION_RUBRIC.md": "62fcf76bb5710779a3cfd6187066efb00fbc6573467ce59fc11e2f3ccf450fa4",
+    "frozen_packet.json": "8aa130c1f2a80899069035be34be471a38e036866611c4009374f1f27259df14",
+    "README.md": "14760ad0b879569a707d9a891dafbbdc98401957f41c72db467adf640c641290",
+    "private_comparison\\baselines.json": "99b0fba7f084a867101d11b5e0cf4d501df83b3a1bd47a623c6e396fe4e8b45d"
+  },
+  "checks": {
+    "eligibleMenuSubset": true,
+    "randomSamplesLegal": 30,
+    "matchedStateAndQuestionExact": true,
+    "apiCalls": 0,
+    "modelInferenceCalls": 0,
+    "livePolicyChanged": false,
+    "missionsExecuted": false
+  }
+}
