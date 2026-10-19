@@ -1,5 +1,19 @@
 # Local Laya reconnaissance integration
 
+For current monthly execution use `scripts/run-local.ps1 -Portfolio`; see
+[Monthly portfolios](ALIEN_COMMAND_PORTFOLIO.md) and
+[Operation feedback v10](ALIEN_COMMAND_OPERATION_LEDGER.md). The launcher requires
+service prompt version `progressive-portfolio-v10`. The career checkpoint below
+remains the live default; no online training has been introduced.
+
+The publisher's English base checkpoint was separately compared using 238 exact
+frozen evaluations, matching 31/32 aggregate choices. It did not demonstrate a
+strategic upgrade and was not installed as the live default. See the
+[comparison report](experiments/base-laya-comparison-v1/REPORT.md).
+
+The shadow and v2 reconnaissance sections below describe earlier modes, not a
+claim that all current learned decisions remain shadow-only.
+
 The v2 operational test is available with `scripts/run-local.ps1 -ModelExecute`; see [Intent and operation test](#intent-and-operation-test-v2) below. Default `-ModelAudit` remains shadow.
 
 ## What is connected

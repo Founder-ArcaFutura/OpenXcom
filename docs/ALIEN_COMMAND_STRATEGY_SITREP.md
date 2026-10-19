@@ -1,4 +1,11 @@
-# Monthly sitrep and campaign strategy — implementation
+# Monthly sitrep and campaign strategy — historical strategy-stage contract
+
+Current v10 execution uses concrete investment/target choices with a derived
+strategy label and a progressive three-to-six operation cap. See
+[Monthly portfolios](ALIEN_COMMAND_PORTFOLIO.md) and
+[Operation feedback](ALIEN_COMMAND_OPERATION_LEDGER.md). The strategy-stage loop
+and three-operation limit described below are retained as historical design and
+validation context, not current execution behavior.
 
 The commander loop is: engine-generated monthly sitrep -> learned campaign strategy -> up to three eligible funded operations and targets -> engine execution -> next month's observed outcome review. Protocol `alien-strategy-laya-v2`, prompt `roles-defer-v4`. Strategy changes the decision context; native costs and allowance curves remain unchanged.
 

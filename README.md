@@ -12,6 +12,61 @@ and the [wiki](https://www.ufopaedia.org/index.php/OpenXcom).
 
 Uses modified code from SDL\_gfx (LGPL) with permission from author.
 
+## Adaptive alien commander (this fork)
+
+The `true_difficulty` branch adds an opt-in, budget-aware monthly commander.
+A local Laya classifier proposes mission/region investments; the native engine
+enforces costs, prerequisites, geography and progressive operation limits, then
+executes the existing mission waves and trajectories. Battlescape AI is unchanged.
+
+The current v10 feedback loop connects decision receipts to funded operations,
+verified gains, craft losses and objective delivery. It distinguishes pending,
+ended and unknown outcomes, retains three months of regional loss clues, and
+persists a monthly reconciliation before the next decision. Older saves remain
+usable with incomplete historical evidence explicitly marked as partial.
+
+From PowerShell in the repository root (`G:\OpenXcom` on this machine):
+
+```powershell
+# First-time native build/resource staging and classifier environment:
+.\scripts\setup-local.ps1
+.\scripts\setup-alien-command-model.ps1
+
+# Monthly portfolio execution:
+.\scripts\run-local.ps1 -Portfolio
+```
+
+Setup requires original game resources, the documented Windows C++ build tools,
+and a source Python with working PyTorch. The launcher defaults to this machine's
+career-trained V4 checkpoint; elsewhere pass
+`-Checkpoint 'C:\path\to\uppward-v4'`. Checkpoint weights are not bundled and their
+identity is enforced. The publisher-base checkpoint was tested offline and is not
+the live default. Inference is local, with no paid inference calls.
+
+| Launch option | Behavior |
+|---|---|
+| No option | Standard scheduler; new adaptive auditing disabled |
+| `-Audit` | Native audit and deterministic shadow proposals |
+| `-ModelAudit` | Learned reconnaissance proposals in shadow |
+| `-ModelExecute` | Earlier bounded reconnaissance execution experiment |
+| `-Portfolio` | Monthly learned portfolios, native economy and v10 feedback |
+
+Add `-Game TFTD` for Terror from the Deep. Development runtime, settings and saves
+live under ignored `build/local`; original Steam saves are not rewritten. Continue
+your latest campaign through a monthly boundary and save under a new name. A rewind
+is optional for controlled comparisons.
+
+- [Setup and inspection](docs/ADAPTIVE_COMMAND_START.md)
+- [Monthly portfolios and progressive capacity](docs/ALIEN_COMMAND_PORTFOLIO.md)
+- [Operation ledger and review export](docs/ALIEN_COMMAND_OPERATION_LEDGER.md)
+- [Budget rules](docs/ALIEN_COMMAND_BUDGET.md) and [base economy](docs/ALIEN_BASE_ECONOMY.md)
+- [Checkpoint details](docs/ALIEN_COMMAND_MODEL.md)
+- [Experiment archive](docs/experiments/README.md)
+
+Recorded validation: 108 Python tests, 184 UFO and 173 TFTD native checks, plus
+scripted and learned copied-save transitions. This demonstrates integration, not
+optimal strategy or balanced campaign play.
+
 ## Installation
 
 OpenXcom requires a vanilla copy of the X-COM resources -- from either or both

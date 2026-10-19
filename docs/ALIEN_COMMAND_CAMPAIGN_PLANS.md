@@ -1,6 +1,15 @@
 # Concrete campaign plans experiment
 
-## Current live revision: progressive-portfolio-v8
+## Current live revision: progressive-portfolio-v10
+
+The progressive capacity rules below remain in force. V9 added persistent alien-base
+income/progression/influence; v10 adds parent-linked operation outcomes, monthly
+reconciliation and three-month regional loss memory. See
+[Operation feedback](ALIEN_COMMAND_OPERATION_LEDGER.md) for the current launch,
+inspection and validation instructions. Concrete investment/target choices remain
+the live planner; the broad strategy label is derived rather than separately chosen.
+
+## Historical v8 capacity revision
 
 Operation capacity is a deterministic native campaign-age rule: months 0-2 allow
 3 operations, months 3-5 allow 4, months 6-8 allow 5, and month 9 onward allows 6.

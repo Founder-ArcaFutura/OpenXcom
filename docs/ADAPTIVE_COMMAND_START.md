@@ -1,8 +1,34 @@
-# Adaptive alien command: first Geoscape slice
+# Adaptive alien command: setup and current modes
 
 The supplied design is preserved verbatim in ADAPTIVE_COMMAND_DESIGN.txt.
 
-## Current behavior
+## Current behavior: v10 monthly feedback
+
+Run `.\scripts\run-local.ps1 -Portfolio` from the repository root for the current
+monthly commander. Native code validates its learned mission/region portfolio
+against the budget, progression gates, geography and operation cap, then executes
+stock waves. Capacity rises from three to six over successive campaign quarters.
+Battlescape AI and original difficulty coefficients remain unchanged.
+
+The persistent ledger links funded parents to decisions, verified gains, craft
+losses and objective delivery. Monthly reconciliation supplies recent outcomes
+and three-month regional loss memory to the next decision. A lost scout does not
+mean a failed mission; delivery of a terror site does not prove tactical victory.
+Older saves retain explicitly partial historical coverage.
+
+Continue an existing campaign through its next monthly boundary and save. See
+[Operation ledger](ALIEN_COMMAND_OPERATION_LEDGER.md) for review export and
+validation, [Monthly portfolios](ALIEN_COMMAND_PORTFOLIO.md) for execution, and
+[Model integration](ALIEN_COMMAND_MODEL.md) for setup/checkpoint details.
+
+`-Audit` and `-ModelAudit` remain observation/shadow modes; `-ModelExecute` is the
+earlier bounded reconnaissance experiment. Without these flags, new adaptive
+auditing/execution is disabled and saved knowledge remains preserved.
+
+## Historical first-slice behavior
+
+The material below preserves the initial shadow-only implementation and original
+test counts. It is historical context, not the current portfolio feature boundary.
 
 Alien-command auditing is opt-in and defaults off. With it enabled, the engine
 records existing mission-command attempts and evaluates a small reconnaissance
