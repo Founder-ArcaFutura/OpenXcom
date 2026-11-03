@@ -1,0 +1,67 @@
+{
+  "protocol": "preserved-human-playtest-v1",
+  "run": "defend-area-human-playtest-20261102-v1",
+  "sourceSession": "G:\\OpenXcom\\build\\local\\tactical-session-20261102-193021-461",
+  "gitHead": "358e1140586f0df13d335d448c15a4a318b60ec5",
+  "gitState": "UNCOMMITTED_IMPLEMENTATION_SNAPSHOTTED",
+  "runtimeIdentity": "POST_RUN_SNAPSHOT_CAPTURE_TIME_EXECUTABLE_HASH_NOT_RECORDED",
+  "sourceSnapshotFiles": [
+    "README.md",
+    "docs/BATTLESCAPE_PROBE.md",
+    "docs/DEFEND_AREA_EXPERIMENT.md",
+    "docs/TACTICAL_INSPECTION.md",
+    "scripts/catalog-tactical-saves.py",
+    "scripts/compare-defend-area.py",
+    "scripts/probe-battlescape.py",
+    "scripts/run-local.ps1",
+    "scripts/run-tactical-inspection.ps1",
+    "scripts/setup-local.ps1",
+    "scripts/test-tactical-telemetry.py",
+    "scripts/view-tactical-telemetry.py",
+    "src/Battlescape/AIModule.cpp",
+    "src/Battlescape/AIModule.h",
+    "src/Battlescape/BattlescapeGame.cpp",
+    "src/Battlescape/BattlescapeGame.h",
+    "src/Battlescape/BattlescapeState.cpp",
+    "src/Battlescape/Map.cpp",
+    "src/Battlescape/NextTurnState.cpp",
+    "src/Battlescape/TacticalTelemetry.h",
+    "src/Battlescape/UnitWalkBState.cpp",
+    "src/Engine/Options.cpp",
+    "src/Engine/Options.inc.h",
+    "src/OpenXcom.2010.vcxproj",
+    "tests/AlienCommandTests.cpp",
+    "tests/AlienCommandTests.vcxproj",
+    "tests/BattlescapeProbe.h",
+    "tests/TacticalTelemetryTests.h"
+  ],
+  "sourceSessionFiles": {
+    "launch.ps1": "ca0629885a03fa8ccbf594e74b5df5516869f58fa2be9f4147150cdd4ee8821b",
+    "manifest.json": "6a23ec581c6ab2c39e32b8e3afd2a15f10d22667fe5f97b86646bf5e778cad38",
+    "openxcom.log": "d9b6626724c14effd0d88a56150ed37ad05b76a686a9d424345f75243bc69e05",
+    "options.cfg": "3f80eaca36dec4ddb58f443ad759d560b79e9d9f417c823f6a0628cfada86a5f",
+    "review\\index.html": "bcb94418fed46fd53513973566383d1d4088bd8eee85e26e73c5e74c38089c43",
+    "review\\summary.json": "55f3b659cea984e0f6a8f91dc1a40bc96079fee444b24a8991d957eaa5707e1d",
+    "xcom1\\inspection-start.sav": "5538ec1431401a6995887f39ab8ec6ff69fe1ea5defb04b3fce5cce99c64f18c",
+    "xcom1\\tactical-17936658222308450.jsonl": "ce1c84ea22699e725cc0441a9614cbec1f65a51987f4cf08477f9edf034f215e",
+    "xcom1\\tactical-17936658869354966.jsonl": "30b97ccb68eecb8a1c71b285308901a29253a27ebb85e89f03685a28219aa962",
+    "xcom1\\Test complete.sav": "390d3ef50fc8571ea000c2cbf8382fde8e54cf080e547ae2ebc9a36208b67537",
+    "xcom1\\Test complete.sav.alien-command.jsonl": "6c4e1bc28e1dc2add07d50b1d09a5aa97d1fdddc8c734fe69323ed2dba48bb95",
+    "xcom1\\_autobattle_.asav": "8ac3acbff885179fc6abce01841382b092511bf1248375a015162561d805e272",
+    "xcom1\\_autobattle_.asav.alien-command.jsonl": "6c4e1bc28e1dc2add07d50b1d09a5aa97d1fdddc8c734fe69323ed2dba48bb95",
+    "xcom1\\_autogeo_.asav": "5ff7b790c42648a720f71786d97f7db64c8275c9e06cf57f7f280d8e05e4e604",
+    "xcom1\\_autogeo_.asav.alien-command.jsonl": "6c4e1bc28e1dc2add07d50b1d09a5aa97d1fdddc8c734fe69323ed2dba48bb95"
+  },
+  "captures": [
+    {
+      "file": "captures\\tactical-17936658222308450.jsonl",
+      "sha256": "ce1c84ea22699e725cc0441a9614cbec1f65a51987f4cf08477f9edf034f215e"
+    },
+    {
+      "file": "captures\\tactical-17936658869354966.jsonl",
+      "sha256": "30b97ccb68eecb8a1c71b285308901a29253a27ebb85e89f03685a28219aa962"
+    }
+  ],
+  "localArchive": "G:\\OpenXcom\\build\\local\\preserved-runs\\defend-area-human-playtest-20261102-v1",
+  "limits": "Reload segments are separate. Human strategy is reported by participant, not a fixed-policy benchmark. No tactical superiority or model-learning claim."
+}

@@ -1,5 +1,10 @@
 # Alien commander experiment artifacts
 
+The local [first preserved human defence playtest](defend-area-human-playtest-20261102-v1/REPORT.md)
+retains raw tactical receipts for perimeter formation, contact interruption, and
+the stationary-guard limitation. It is a scripted tactical experiment, separate
+from the learned campaign-planner comparisons below.
+
 This archive preserves the progression from manual reference-planner probes through incentive, ordering, adaptation, compact-briefing and publisher-base checkpoint comparisons. Each experiment has its own scope and limitations; earlier mechanics descriptions are historical, not necessarily the current runtime.
 
 Start with [base checkpoint comparison](base-laya-comparison-v1/REPORT.md), [compact briefing](compact-command-v1/REPORT.md), [matched adaptation](adaptive-responses-v1/REPORT.md), and the [adaptation rubric](../ALIEN_COMMAND_ADAPTATION_RUBRIC.md). Reports, protocols, tables, harnesses and tests are committed. The twelve manual frontier-model transcripts are in `llm_responses/`; the reference packet's `private_comparison` means withheld from those test chats, not personal/private account data.

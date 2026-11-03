@@ -1,0 +1,3871 @@
+{
+  "protocol": "preserved-human-playtest-v1",
+  "segments": [
+    {
+      "capture": "tactical-17936658222308450.jsonl",
+      "sha256": "ce1c84ea22699e725cc0441a9614cbec1f65a51987f4cf08477f9edf034f215e",
+      "records": 168,
+      "turnRange": [
+        1,
+        4
+      ],
+      "lastEvent": "STATE_RESOLVED",
+      "events": {
+        "BATTLE_OPEN": 1,
+        "STATE_RESOLVED": 40,
+        "SIDE_END": 9,
+        "SIDE_START": 9,
+        "SIDE_READY": 6,
+        "ORDER_TRANSITION": 8,
+        "AI_DECISION": 41,
+        "MOVE_STEP": 54
+      },
+      "initialActive": {
+        "0": 14,
+        "1": 5,
+        "2": 0
+      },
+      "finalActive": {
+        "0": 14,
+        "1": 5,
+        "2": 0
+      },
+      "decisions": [
+        {
+          "sequence": 9,
+          "turn": 1,
+          "action": {
+            "actor": 1000000,
+            "controller": "DEFEND_AREA",
+            "type": "NONE",
+            "typeCode": 0,
+            "target": [
+              -1,
+              -1,
+              -1
+            ],
+            "result": "",
+            "weapon": "STR_HEAVY_PLASMA",
+            "finalFacing": -1,
+            "finalAction": true
+          },
+          "position": [
+            15,
+            17,
+            0
+          ],
+          "facing": 2,
+          "aiMode": 0,
+          "visibleIds": [],
+          "order": {
+            "policy": "defend-area-v1",
+            "revision": 1,
+            "id": "1000000:1",
+            "assignedTurn": 1,
+            "post": [
+              15,
+              17,
+              0
+            ],
+            "role": "GUARD",
+            "status": "HOLDING"
+          }
+        },
+        {
+          "sequence": 11,
+          "turn": 1,
+          "action": {
+            "actor": 1000002,
+            "controller": "DEFEND_AREA",
+            "type": "WALK",
+            "typeCode": 2,
+            "target": [
+              14,
+              13,
+              0
+            ],
+            "result": "",
+            "weapon": "STR_PLASMA_RIFLE",
+            "finalFacing": -1,
+            "finalAction": false
+          },
+          "position": [
+            27,
+            32,
+            0
+          ],
+          "facing": 0,
+          "aiMode": 0,
+          "visibleIds": [],
+          "order": {
+            "policy": "defend-area-v1",
+            "revision": 1,
+            "id": "1000002:1",
+            "assignedTurn": 1,
+            "post": [
+              14,
+              13,
+              0
+            ],
+            "role": "GUARD",
+            "status": "MOVING"
+          }
+        },
+        {
+          "sequence": 18,
+          "turn": 1,
+          "action": {
+            "actor": 1000002,
+            "controller": "DEFEND_AREA",
+            "type": "WALK",
+            "typeCode": 2,
+            "target": [
+              14,
+              13,
+              0
+            ],
+            "result": "",
+            "weapon": "STR_PLASMA_RIFLE",
+            "finalFacing": -1,
+            "finalAction": false
+          },
+          "position": [
+            30,
+            30,
+            0
+          ],
+          "facing": 1,
+          "aiMode": 0,
+          "visibleIds": [],
+          "order": {
+            "policy": "defend-area-v1",
+            "revision": 1,
+            "id": "1000002:1",
+            "assignedTurn": 1,
+            "post": [
+              14,
+              13,
+              0
+            ],
+            "role": "GUARD",
+            "status": "MOVING"
+          }
+        },
+        {
+          "sequence": 21,
+          "turn": 1,
+          "action": {
+            "actor": 1000003,
+            "controller": "DEFEND_AREA",
+            "type": "WALK",
+            "typeCode": 2,
+            "target": [
+              20,
+              24,
+              0
+            ],
+            "result": "",
+            "weapon": "STR_PLASMA_PISTOL",
+            "finalFacing": -1,
+            "finalAction": false
+          },
+          "position": [
+            22,
+            38,
+            0
+          ],
+          "facing": 0,
+          "aiMode": 0,
+          "visibleIds": [],
+          "order": {
+            "policy": "defend-area-v1",
+            "revision": 1,
+            "id": "1000003:1",
+            "assignedTurn": 1,
+            "post": [
+              20,
+              24,
+              0
+            ],
+            "role": "SCREEN_FALLBACK",
+            "status": "MOVING"
+          }
+        },
+        {
+          "sequence": 33,
+          "turn": 1,
+          "action": {
+            "actor": 1000003,
+            "controller": "DEFEND_AREA",
+            "type": "WALK",
+            "typeCode": 2,
+            "target": [
+              20,
+              24,
+              0
+            ],
+            "result": "",
+            "weapon": "STR_PLASMA_PISTOL",
+            "finalFacing": -1,
+            "finalAction": false
+          },
+          "position": [
+            24,
+            30,
+            0
+          ],
+          "facing": 0,
+          "aiMode": 0,
+          "visibleIds": [],
+          "order": {
+            "policy": "defend-area-v1",
+            "revision": 1,
+            "id": "1000003:1",
+            "assignedTurn": 1,
+            "post": [
+              20,
+              24,
+              0
+            ],
+            "role": "SCREEN_FALLBACK",
+            "status": "MOVING"
+          }
+        },
+        {
+          "sequence": 36,
+          "turn": 1,
+          "action": {
+            "actor": 1000005,
+            "controller": "DEFEND_AREA",
+            "type": "WALK",
+            "typeCode": 2,
+            "target": [
+              15,
+              21,
+              0
+            ],
+            "result": "",
+            "weapon": "STR_PLASMA_PISTOL",
+            "finalFacing": -1,
+            "finalAction": false
+          },
+          "position": [
+            16,
+            15,
+            0
+          ],
+          "facing": 3,
+          "aiMode": 0,
+          "visibleIds": [],
+          "order": {
+            "policy": "defend-area-v1",
+            "revision": 1,
+            "id": "1000005:1",
+            "assignedTurn": 1,
+            "post": [
+              15,
+              21,
+              0
+            ],
+            "role": "SCREEN_FALLBACK",
+            "status": "MOVING"
+          }
+        },
+        {
+          "sequence": 45,
+          "turn": 1,
+          "action": {
+            "actor": 1000005,
+            "controller": "DEFEND_AREA",
+            "type": "NONE",
+            "typeCode": 0,
+            "target": [
+              -1,
+              -1,
+              -1
+            ],
+            "result": "",
+            "weapon": "STR_PLASMA_PISTOL",
+            "finalFacing": -1,
+            "finalAction": true
+          },
+          "position": [
+            15,
+            21,
+            0
+          ],
+          "facing": 4,
+          "aiMode": 0,
+          "visibleIds": [],
+          "order": {
+            "policy": "defend-area-v1",
+            "revision": 1,
+            "id": "1000005:1",
+            "assignedTurn": 1,
+            "post": [
+              15,
+              21,
+              0
+            ],
+            "role": "SCREEN_FALLBACK",
+            "status": "HOLDING"
+          }
+        },
+        {
+          "sequence": 47,
+          "turn": 1,
+          "action": {
+            "actor": 1000006,
+            "controller": "DEFEND_AREA",
+            "type": "WALK",
+            "typeCode": 2,
+            "target": [
+              12,
+              22,
+              0
+            ],
+            "result": "",
+            "weapon": "STR_HEAVY_PLASMA",
+            "finalFacing": -1,
+            "finalAction": false
+          },
+          "position": [
+            14,
+            15,
+            0
+          ],
+          "facing": 2,
+          "aiMode": 0,
+          "visibleIds": [],
+          "order": {
+            "policy": "defend-area-v1",
+            "revision": 1,
+            "id": "1000006:1",
+            "assignedTurn": 1,
+            "post": [
+              12,
+              22,
+              0
+            ],
+            "role": "SCREEN",
+            "status": "MOVING"
+          }
+        },
+        {
+          "sequence": 57,
+          "turn": 1,
+          "action": {
+            "actor": 1000006,
+            "controller": "DEFEND_AREA",
+            "type": "NONE",
+            "typeCode": 0,
+            "target": [
+              -1,
+              -1,
+              -1
+            ],
+            "result": "",
+            "weapon": "STR_HEAVY_PLASMA",
+            "finalFacing": -1,
+            "finalAction": true
+          },
+          "position": [
+            12,
+            22,
+            0
+          ],
+          "facing": 5,
+          "aiMode": 0,
+          "visibleIds": [],
+          "order": {
+            "policy": "defend-area-v1",
+            "revision": 1,
+            "id": "1000006:1",
+            "assignedTurn": 1,
+            "post": [
+              12,
+              22,
+              0
+            ],
+            "role": "SCREEN",
+            "status": "HOLDING"
+          }
+        },
+        {
+          "sequence": 58,
+          "turn": 1,
+          "action": {
+            "actor": 1000000,
+            "controller": "DEFEND_AREA",
+            "type": "NONE",
+            "typeCode": 0,
+            "target": [
+              -1,
+              -1,
+              -1
+            ],
+            "result": "",
+            "weapon": "STR_HEAVY_PLASMA",
+            "finalFacing": -1,
+            "finalAction": true
+          },
+          "position": [
+            15,
+            17,
+            0
+          ],
+          "facing": 2,
+          "aiMode": 0,
+          "visibleIds": [],
+          "order": {
+            "policy": "defend-area-v1",
+            "revision": 1,
+            "id": "1000000:1",
+            "assignedTurn": 1,
+            "post": [
+              15,
+              17,
+              0
+            ],
+            "role": "GUARD",
+            "status": "HOLDING"
+          }
+        },
+        {
+          "sequence": 59,
+          "turn": 1,
+          "action": {
+            "actor": 1000002,
+            "controller": "DEFEND_AREA",
+            "type": "WALK",
+            "typeCode": 2,
+            "target": [
+              14,
+              13,
+              0
+            ],
+            "result": "",
+            "weapon": "STR_PLASMA_RIFLE",
+            "finalFacing": -1,
+            "finalAction": false
+          },
+          "position": [
+            30,
+            30,
+            0
+          ],
+          "facing": 1,
+          "aiMode": 0,
+          "visibleIds": [],
+          "order": {
+            "policy": "defend-area-v1",
+            "revision": 1,
+            "id": "1000002:1",
+            "assignedTurn": 1,
+            "post": [
+              14,
+              13,
+              0
+            ],
+            "role": "GUARD",
+            "status": "MOVING"
+          }
+        },
+        {
+          "sequence": 61,
+          "turn": 1,
+          "action": {
+            "actor": 1000002,
+            "controller": "DEFEND_AREA",
+            "type": "WALK",
+            "typeCode": 2,
+            "target": [
+              14,
+              13,
+              0
+            ],
+            "result": "",
+            "weapon": "STR_PLASMA_RIFLE",
+            "finalFacing": -1,
+            "finalAction": false
+          },
+          "position": [
+            30,
+            30,
+            0
+          ],
+          "facing": 1,
+          "aiMode": 0,
+          "visibleIds": [],
+          "order": {
+            "policy": "defend-area-v1",
+            "revision": 1,
+            "id": "1000002:1",
+            "assignedTurn": 1,
+            "post": [
+              14,
+              13,
+              0
+            ],
+            "role": "GUARD",
+            "status": "MOVING"
+          }
+        },
+        {
+          "sequence": 63,
+          "turn": 1,
+          "action": {
+            "actor": 1000003,
+            "controller": "DEFEND_AREA",
+            "type": "WALK",
+            "typeCode": 2,
+            "target": [
+              20,
+              24,
+              0
+            ],
+            "result": "",
+            "weapon": "STR_PLASMA_PISTOL",
+            "finalFacing": -1,
+            "finalAction": false
+          },
+          "position": [
+            24,
+            30,
+            0
+          ],
+          "facing": 0,
+          "aiMode": 0,
+          "visibleIds": [],
+          "order": {
+            "policy": "defend-area-v1",
+            "revision": 1,
+            "id": "1000003:1",
+            "assignedTurn": 1,
+            "post": [
+              20,
+              24,
+              0
+            ],
+            "role": "SCREEN_FALLBACK",
+            "status": "MOVING"
+          }
+        },
+        {
+          "sequence": 65,
+          "turn": 1,
+          "action": {
+            "actor": 1000003,
+            "controller": "DEFEND_AREA",
+            "type": "WALK",
+            "typeCode": 2,
+            "target": [
+              20,
+              24,
+              0
+            ],
+            "result": "",
+            "weapon": "STR_PLASMA_PISTOL",
+            "finalFacing": -1,
+            "finalAction": false
+          },
+          "position": [
+            24,
+            30,
+            0
+          ],
+          "facing": 0,
+          "aiMode": 0,
+          "visibleIds": [],
+          "order": {
+            "policy": "defend-area-v1",
+            "revision": 1,
+            "id": "1000003:1",
+            "assignedTurn": 1,
+            "post": [
+              20,
+              24,
+              0
+            ],
+            "role": "SCREEN_FALLBACK",
+            "status": "MOVING"
+          }
+        },
+        {
+          "sequence": 67,
+          "turn": 1,
+          "action": {
+            "actor": 1000005,
+            "controller": "DEFEND_AREA",
+            "type": "NONE",
+            "typeCode": 0,
+            "target": [
+              -1,
+              -1,
+              -1
+            ],
+            "result": "",
+            "weapon": "STR_PLASMA_PISTOL",
+            "finalFacing": -1,
+            "finalAction": true
+          },
+          "position": [
+            15,
+            21,
+            0
+          ],
+          "facing": 4,
+          "aiMode": 0,
+          "visibleIds": [],
+          "order": {
+            "policy": "defend-area-v1",
+            "revision": 1,
+            "id": "1000005:1",
+            "assignedTurn": 1,
+            "post": [
+              15,
+              21,
+              0
+            ],
+            "role": "SCREEN_FALLBACK",
+            "status": "HOLDING"
+          }
+        },
+        {
+          "sequence": 68,
+          "turn": 1,
+          "action": {
+            "actor": 1000006,
+            "controller": "DEFEND_AREA",
+            "type": "NONE",
+            "typeCode": 0,
+            "target": [
+              -1,
+              -1,
+              -1
+            ],
+            "result": "",
+            "weapon": "STR_HEAVY_PLASMA",
+            "finalFacing": -1,
+            "finalAction": true
+          },
+          "position": [
+            12,
+            22,
+            0
+          ],
+          "facing": 5,
+          "aiMode": 0,
+          "visibleIds": [],
+          "order": {
+            "policy": "defend-area-v1",
+            "revision": 1,
+            "id": "1000006:1",
+            "assignedTurn": 1,
+            "post": [
+              12,
+              22,
+              0
+            ],
+            "role": "SCREEN",
+            "status": "HOLDING"
+          }
+        },
+        {
+          "sequence": 77,
+          "turn": 2,
+          "action": {
+            "actor": 1000000,
+            "controller": "DEFEND_AREA",
+            "type": "NONE",
+            "typeCode": 0,
+            "target": [
+              -1,
+              -1,
+              -1
+            ],
+            "result": "",
+            "weapon": "STR_HEAVY_PLASMA",
+            "finalFacing": -1,
+            "finalAction": true
+          },
+          "position": [
+            15,
+            17,
+            0
+          ],
+          "facing": 2,
+          "aiMode": 0,
+          "visibleIds": [],
+          "order": {
+            "policy": "defend-area-v1",
+            "revision": 1,
+            "id": "1000000:1",
+            "assignedTurn": 1,
+            "post": [
+              15,
+              17,
+              0
+            ],
+            "role": "GUARD",
+            "status": "HOLDING"
+          }
+        },
+        {
+          "sequence": 78,
+          "turn": 2,
+          "action": {
+            "actor": 1000002,
+            "controller": "DEFEND_AREA",
+            "type": "WALK",
+            "typeCode": 2,
+            "target": [
+              14,
+              13,
+              0
+            ],
+            "result": "",
+            "weapon": "STR_PLASMA_RIFLE",
+            "finalFacing": -1,
+            "finalAction": false
+          },
+          "position": [
+            30,
+            30,
+            0
+          ],
+          "facing": 1,
+          "aiMode": 0,
+          "visibleIds": [],
+          "order": {
+            "policy": "defend-area-v1",
+            "revision": 1,
+            "id": "1000002:1",
+            "assignedTurn": 1,
+            "post": [
+              14,
+              13,
+              0
+            ],
+            "role": "GUARD",
+            "status": "MOVING"
+          }
+        },
+        {
+          "sequence": 88,
+          "turn": 2,
+          "action": {
+            "actor": 1000002,
+            "controller": "DEFEND_AREA",
+            "type": "WALK",
+            "typeCode": 2,
+            "target": [
+              14,
+              13,
+              0
+            ],
+            "result": "",
+            "weapon": "STR_PLASMA_RIFLE",
+            "finalFacing": -1,
+            "finalAction": false
+          },
+          "position": [
+            24,
+            23,
+            0
+          ],
+          "facing": 7,
+          "aiMode": 0,
+          "visibleIds": [],
+          "order": {
+            "policy": "defend-area-v1",
+            "revision": 1,
+            "id": "1000002:1",
+            "assignedTurn": 1,
+            "post": [
+              14,
+              13,
+              0
+            ],
+            "role": "GUARD",
+            "status": "MOVING"
+          }
+        },
+        {
+          "sequence": 90,
+          "turn": 2,
+          "action": {
+            "actor": 1000003,
+            "controller": "DEFEND_AREA",
+            "type": "WALK",
+            "typeCode": 2,
+            "target": [
+              20,
+              24,
+              0
+            ],
+            "result": "",
+            "weapon": "STR_PLASMA_PISTOL",
+            "finalFacing": -1,
+            "finalAction": false
+          },
+          "position": [
+            24,
+            30,
+            0
+          ],
+          "facing": 0,
+          "aiMode": 0,
+          "visibleIds": [],
+          "order": {
+            "policy": "defend-area-v1",
+            "revision": 1,
+            "id": "1000003:1",
+            "assignedTurn": 1,
+            "post": [
+              20,
+              24,
+              0
+            ],
+            "role": "SCREEN_FALLBACK",
+            "status": "MOVING"
+          }
+        },
+        {
+          "sequence": 99,
+          "turn": 2,
+          "action": {
+            "actor": 1000003,
+            "controller": "DEFEND_AREA",
+            "type": "NONE",
+            "typeCode": 0,
+            "target": [
+              -1,
+              -1,
+              -1
+            ],
+            "result": "",
+            "weapon": "STR_PLASMA_PISTOL",
+            "finalFacing": -1,
+            "finalAction": true
+          },
+          "position": [
+            20,
+            24,
+            0
+          ],
+          "facing": 7,
+          "aiMode": 0,
+          "visibleIds": [],
+          "order": {
+            "policy": "defend-area-v1",
+            "revision": 1,
+            "id": "1000003:1",
+            "assignedTurn": 1,
+            "post": [
+              20,
+              24,
+              0
+            ],
+            "role": "SCREEN_FALLBACK",
+            "status": "HOLDING"
+          }
+        },
+        {
+          "sequence": 100,
+          "turn": 2,
+          "action": {
+            "actor": 1000005,
+            "controller": "DEFEND_AREA",
+            "type": "NONE",
+            "typeCode": 0,
+            "target": [
+              -1,
+              -1,
+              -1
+            ],
+            "result": "",
+            "weapon": "STR_PLASMA_PISTOL",
+            "finalFacing": -1,
+            "finalAction": true
+          },
+          "position": [
+            15,
+            21,
+            0
+          ],
+          "facing": 4,
+          "aiMode": 0,
+          "visibleIds": [],
+          "order": {
+            "policy": "defend-area-v1",
+            "revision": 1,
+            "id": "1000005:1",
+            "assignedTurn": 1,
+            "post": [
+              15,
+              21,
+              0
+            ],
+            "role": "SCREEN_FALLBACK",
+            "status": "HOLDING"
+          }
+        },
+        {
+          "sequence": 101,
+          "turn": 2,
+          "action": {
+            "actor": 1000006,
+            "controller": "DEFEND_AREA",
+            "type": "NONE",
+            "typeCode": 0,
+            "target": [
+              -1,
+              -1,
+              -1
+            ],
+            "result": "",
+            "weapon": "STR_HEAVY_PLASMA",
+            "finalFacing": -1,
+            "finalAction": true
+          },
+          "position": [
+            12,
+            22,
+            0
+          ],
+          "facing": 5,
+          "aiMode": 0,
+          "visibleIds": [],
+          "order": {
+            "policy": "defend-area-v1",
+            "revision": 1,
+            "id": "1000006:1",
+            "assignedTurn": 1,
+            "post": [
+              12,
+              22,
+              0
+            ],
+            "role": "SCREEN",
+            "status": "HOLDING"
+          }
+        },
+        {
+          "sequence": 102,
+          "turn": 2,
+          "action": {
+            "actor": 1000000,
+            "controller": "DEFEND_AREA",
+            "type": "NONE",
+            "typeCode": 0,
+            "target": [
+              -1,
+              -1,
+              -1
+            ],
+            "result": "",
+            "weapon": "STR_HEAVY_PLASMA",
+            "finalFacing": -1,
+            "finalAction": true
+          },
+          "position": [
+            15,
+            17,
+            0
+          ],
+          "facing": 2,
+          "aiMode": 0,
+          "visibleIds": [],
+          "order": {
+            "policy": "defend-area-v1",
+            "revision": 1,
+            "id": "1000000:1",
+            "assignedTurn": 1,
+            "post": [
+              15,
+              17,
+              0
+            ],
+            "role": "GUARD",
+            "status": "HOLDING"
+          }
+        },
+        {
+          "sequence": 103,
+          "turn": 2,
+          "action": {
+            "actor": 1000002,
+            "controller": "DEFEND_AREA",
+            "type": "WALK",
+            "typeCode": 2,
+            "target": [
+              14,
+              13,
+              0
+            ],
+            "result": "",
+            "weapon": "STR_PLASMA_RIFLE",
+            "finalFacing": -1,
+            "finalAction": false
+          },
+          "position": [
+            24,
+            23,
+            0
+          ],
+          "facing": 7,
+          "aiMode": 0,
+          "visibleIds": [],
+          "order": {
+            "policy": "defend-area-v1",
+            "revision": 1,
+            "id": "1000002:1",
+            "assignedTurn": 1,
+            "post": [
+              14,
+              13,
+              0
+            ],
+            "role": "GUARD",
+            "status": "MOVING"
+          }
+        },
+        {
+          "sequence": 105,
+          "turn": 2,
+          "action": {
+            "actor": 1000002,
+            "controller": "DEFEND_AREA",
+            "type": "WALK",
+            "typeCode": 2,
+            "target": [
+              14,
+              13,
+              0
+            ],
+            "result": "",
+            "weapon": "STR_PLASMA_RIFLE",
+            "finalFacing": -1,
+            "finalAction": false
+          },
+          "position": [
+            24,
+            23,
+            0
+          ],
+          "facing": 7,
+          "aiMode": 0,
+          "visibleIds": [],
+          "order": {
+            "policy": "defend-area-v1",
+            "revision": 1,
+            "id": "1000002:1",
+            "assignedTurn": 1,
+            "post": [
+              14,
+              13,
+              0
+            ],
+            "role": "GUARD",
+            "status": "MOVING"
+          }
+        },
+        {
+          "sequence": 107,
+          "turn": 2,
+          "action": {
+            "actor": 1000003,
+            "controller": "DEFEND_AREA",
+            "type": "NONE",
+            "typeCode": 0,
+            "target": [
+              -1,
+              -1,
+              -1
+            ],
+            "result": "",
+            "weapon": "STR_PLASMA_PISTOL",
+            "finalFacing": -1,
+            "finalAction": true
+          },
+          "position": [
+            20,
+            24,
+            0
+          ],
+          "facing": 7,
+          "aiMode": 0,
+          "visibleIds": [],
+          "order": {
+            "policy": "defend-area-v1",
+            "revision": 1,
+            "id": "1000003:1",
+            "assignedTurn": 1,
+            "post": [
+              20,
+              24,
+              0
+            ],
+            "role": "SCREEN_FALLBACK",
+            "status": "HOLDING"
+          }
+        },
+        {
+          "sequence": 108,
+          "turn": 2,
+          "action": {
+            "actor": 1000005,
+            "controller": "DEFEND_AREA",
+            "type": "NONE",
+            "typeCode": 0,
+            "target": [
+              -1,
+              -1,
+              -1
+            ],
+            "result": "",
+            "weapon": "STR_PLASMA_PISTOL",
+            "finalFacing": -1,
+            "finalAction": true
+          },
+          "position": [
+            15,
+            21,
+            0
+          ],
+          "facing": 4,
+          "aiMode": 0,
+          "visibleIds": [],
+          "order": {
+            "policy": "defend-area-v1",
+            "revision": 1,
+            "id": "1000005:1",
+            "assignedTurn": 1,
+            "post": [
+              15,
+              21,
+              0
+            ],
+            "role": "SCREEN_FALLBACK",
+            "status": "HOLDING"
+          }
+        },
+        {
+          "sequence": 109,
+          "turn": 2,
+          "action": {
+            "actor": 1000006,
+            "controller": "DEFEND_AREA",
+            "type": "NONE",
+            "typeCode": 0,
+            "target": [
+              -1,
+              -1,
+              -1
+            ],
+            "result": "",
+            "weapon": "STR_HEAVY_PLASMA",
+            "finalFacing": -1,
+            "finalAction": true
+          },
+          "position": [
+            12,
+            22,
+            0
+          ],
+          "facing": 5,
+          "aiMode": 0,
+          "visibleIds": [],
+          "order": {
+            "policy": "defend-area-v1",
+            "revision": 1,
+            "id": "1000006:1",
+            "assignedTurn": 1,
+            "post": [
+              12,
+              22,
+              0
+            ],
+            "role": "SCREEN",
+            "status": "HOLDING"
+          }
+        },
+        {
+          "sequence": 118,
+          "turn": 3,
+          "action": {
+            "actor": 1000000,
+            "controller": "DEFEND_AREA",
+            "type": "NONE",
+            "typeCode": 0,
+            "target": [
+              -1,
+              -1,
+              -1
+            ],
+            "result": "",
+            "weapon": "STR_HEAVY_PLASMA",
+            "finalFacing": -1,
+            "finalAction": true
+          },
+          "position": [
+            15,
+            17,
+            0
+          ],
+          "facing": 2,
+          "aiMode": 0,
+          "visibleIds": [],
+          "order": {
+            "policy": "defend-area-v1",
+            "revision": 1,
+            "id": "1000000:1",
+            "assignedTurn": 1,
+            "post": [
+              15,
+              17,
+              0
+            ],
+            "role": "GUARD",
+            "status": "HOLDING"
+          }
+        },
+        {
+          "sequence": 119,
+          "turn": 3,
+          "action": {
+            "actor": 1000002,
+            "controller": "DEFEND_AREA",
+            "type": "WALK",
+            "typeCode": 2,
+            "target": [
+              14,
+              13,
+              0
+            ],
+            "result": "",
+            "weapon": "STR_PLASMA_RIFLE",
+            "finalFacing": -1,
+            "finalAction": false
+          },
+          "position": [
+            24,
+            23,
+            0
+          ],
+          "facing": 7,
+          "aiMode": 0,
+          "visibleIds": [],
+          "order": {
+            "policy": "defend-area-v1",
+            "revision": 1,
+            "id": "1000002:1",
+            "assignedTurn": 1,
+            "post": [
+              14,
+              13,
+              0
+            ],
+            "role": "GUARD",
+            "status": "MOVING"
+          }
+        },
+        {
+          "sequence": 129,
+          "turn": 3,
+          "action": {
+            "actor": 1000002,
+            "controller": "DEFEND_AREA",
+            "type": "WALK",
+            "typeCode": 2,
+            "target": [
+              14,
+              13,
+              0
+            ],
+            "result": "",
+            "weapon": "STR_PLASMA_RIFLE",
+            "finalFacing": -1,
+            "finalAction": false
+          },
+          "position": [
+            16,
+            19,
+            0
+          ],
+          "facing": 6,
+          "aiMode": 0,
+          "visibleIds": [],
+          "order": {
+            "policy": "defend-area-v1",
+            "revision": 1,
+            "id": "1000002:1",
+            "assignedTurn": 1,
+            "post": [
+              14,
+              13,
+              0
+            ],
+            "role": "GUARD",
+            "status": "MOVING"
+          }
+        },
+        {
+          "sequence": 131,
+          "turn": 3,
+          "action": {
+            "actor": 1000003,
+            "controller": "DEFEND_AREA",
+            "type": "NONE",
+            "typeCode": 0,
+            "target": [
+              -1,
+              -1,
+              -1
+            ],
+            "result": "",
+            "weapon": "STR_PLASMA_PISTOL",
+            "finalFacing": -1,
+            "finalAction": true
+          },
+          "position": [
+            20,
+            24,
+            0
+          ],
+          "facing": 7,
+          "aiMode": 0,
+          "visibleIds": [],
+          "order": {
+            "policy": "defend-area-v1",
+            "revision": 1,
+            "id": "1000003:1",
+            "assignedTurn": 1,
+            "post": [
+              20,
+              24,
+              0
+            ],
+            "role": "SCREEN_FALLBACK",
+            "status": "HOLDING"
+          }
+        },
+        {
+          "sequence": 132,
+          "turn": 3,
+          "action": {
+            "actor": 1000005,
+            "controller": "DEFEND_AREA",
+            "type": "NONE",
+            "typeCode": 0,
+            "target": [
+              -1,
+              -1,
+              -1
+            ],
+            "result": "",
+            "weapon": "STR_PLASMA_PISTOL",
+            "finalFacing": -1,
+            "finalAction": true
+          },
+          "position": [
+            15,
+            21,
+            0
+          ],
+          "facing": 4,
+          "aiMode": 0,
+          "visibleIds": [],
+          "order": {
+            "policy": "defend-area-v1",
+            "revision": 1,
+            "id": "1000005:1",
+            "assignedTurn": 1,
+            "post": [
+              15,
+              21,
+              0
+            ],
+            "role": "SCREEN_FALLBACK",
+            "status": "HOLDING"
+          }
+        },
+        {
+          "sequence": 133,
+          "turn": 3,
+          "action": {
+            "actor": 1000006,
+            "controller": "DEFEND_AREA",
+            "type": "NONE",
+            "typeCode": 0,
+            "target": [
+              -1,
+              -1,
+              -1
+            ],
+            "result": "",
+            "weapon": "STR_HEAVY_PLASMA",
+            "finalFacing": -1,
+            "finalAction": true
+          },
+          "position": [
+            12,
+            22,
+            0
+          ],
+          "facing": 5,
+          "aiMode": 0,
+          "visibleIds": [],
+          "order": {
+            "policy": "defend-area-v1",
+            "revision": 1,
+            "id": "1000006:1",
+            "assignedTurn": 1,
+            "post": [
+              12,
+              22,
+              0
+            ],
+            "role": "SCREEN",
+            "status": "HOLDING"
+          }
+        },
+        {
+          "sequence": 134,
+          "turn": 3,
+          "action": {
+            "actor": 1000000,
+            "controller": "DEFEND_AREA",
+            "type": "NONE",
+            "typeCode": 0,
+            "target": [
+              -1,
+              -1,
+              -1
+            ],
+            "result": "",
+            "weapon": "STR_HEAVY_PLASMA",
+            "finalFacing": -1,
+            "finalAction": true
+          },
+          "position": [
+            15,
+            17,
+            0
+          ],
+          "facing": 2,
+          "aiMode": 0,
+          "visibleIds": [],
+          "order": {
+            "policy": "defend-area-v1",
+            "revision": 1,
+            "id": "1000000:1",
+            "assignedTurn": 1,
+            "post": [
+              15,
+              17,
+              0
+            ],
+            "role": "GUARD",
+            "status": "HOLDING"
+          }
+        },
+        {
+          "sequence": 135,
+          "turn": 3,
+          "action": {
+            "actor": 1000002,
+            "controller": "DEFEND_AREA",
+            "type": "WALK",
+            "typeCode": 2,
+            "target": [
+              14,
+              13,
+              0
+            ],
+            "result": "",
+            "weapon": "STR_PLASMA_RIFLE",
+            "finalFacing": -1,
+            "finalAction": false
+          },
+          "position": [
+            16,
+            19,
+            0
+          ],
+          "facing": 6,
+          "aiMode": 0,
+          "visibleIds": [],
+          "order": {
+            "policy": "defend-area-v1",
+            "revision": 1,
+            "id": "1000002:1",
+            "assignedTurn": 1,
+            "post": [
+              14,
+              13,
+              0
+            ],
+            "role": "GUARD",
+            "status": "MOVING"
+          }
+        },
+        {
+          "sequence": 137,
+          "turn": 3,
+          "action": {
+            "actor": 1000002,
+            "controller": "DEFEND_AREA",
+            "type": "WALK",
+            "typeCode": 2,
+            "target": [
+              14,
+              13,
+              0
+            ],
+            "result": "",
+            "weapon": "STR_PLASMA_RIFLE",
+            "finalFacing": -1,
+            "finalAction": false
+          },
+          "position": [
+            16,
+            19,
+            0
+          ],
+          "facing": 6,
+          "aiMode": 0,
+          "visibleIds": [],
+          "order": {
+            "policy": "defend-area-v1",
+            "revision": 1,
+            "id": "1000002:1",
+            "assignedTurn": 1,
+            "post": [
+              14,
+              13,
+              0
+            ],
+            "role": "GUARD",
+            "status": "MOVING"
+          }
+        },
+        {
+          "sequence": 139,
+          "turn": 3,
+          "action": {
+            "actor": 1000003,
+            "controller": "DEFEND_AREA",
+            "type": "NONE",
+            "typeCode": 0,
+            "target": [
+              -1,
+              -1,
+              -1
+            ],
+            "result": "",
+            "weapon": "STR_PLASMA_PISTOL",
+            "finalFacing": -1,
+            "finalAction": true
+          },
+          "position": [
+            20,
+            24,
+            0
+          ],
+          "facing": 7,
+          "aiMode": 0,
+          "visibleIds": [],
+          "order": {
+            "policy": "defend-area-v1",
+            "revision": 1,
+            "id": "1000003:1",
+            "assignedTurn": 1,
+            "post": [
+              20,
+              24,
+              0
+            ],
+            "role": "SCREEN_FALLBACK",
+            "status": "HOLDING"
+          }
+        },
+        {
+          "sequence": 140,
+          "turn": 3,
+          "action": {
+            "actor": 1000005,
+            "controller": "DEFEND_AREA",
+            "type": "NONE",
+            "typeCode": 0,
+            "target": [
+              -1,
+              -1,
+              -1
+            ],
+            "result": "",
+            "weapon": "STR_PLASMA_PISTOL",
+            "finalFacing": -1,
+            "finalAction": true
+          },
+          "position": [
+            15,
+            21,
+            0
+          ],
+          "facing": 4,
+          "aiMode": 0,
+          "visibleIds": [],
+          "order": {
+            "policy": "defend-area-v1",
+            "revision": 1,
+            "id": "1000005:1",
+            "assignedTurn": 1,
+            "post": [
+              15,
+              21,
+              0
+            ],
+            "role": "SCREEN_FALLBACK",
+            "status": "HOLDING"
+          }
+        },
+        {
+          "sequence": 141,
+          "turn": 3,
+          "action": {
+            "actor": 1000006,
+            "controller": "DEFEND_AREA",
+            "type": "NONE",
+            "typeCode": 0,
+            "target": [
+              -1,
+              -1,
+              -1
+            ],
+            "result": "",
+            "weapon": "STR_HEAVY_PLASMA",
+            "finalFacing": -1,
+            "finalAction": true
+          },
+          "position": [
+            12,
+            22,
+            0
+          ],
+          "facing": 5,
+          "aiMode": 0,
+          "visibleIds": [],
+          "order": {
+            "policy": "defend-area-v1",
+            "revision": 1,
+            "id": "1000006:1",
+            "assignedTurn": 1,
+            "post": [
+              12,
+              22,
+              0
+            ],
+            "role": "SCREEN",
+            "status": "HOLDING"
+          }
+        }
+      ],
+      "finalUnits": [
+        {
+          "id": 43,
+          "type": "SOLDIER",
+          "faction": 0,
+          "originalFaction": 0,
+          "position": [
+            23,
+            18,
+            0
+          ],
+          "direction": 6,
+          "status": 0,
+          "out": false,
+          "health": 39,
+          "stun": 0,
+          "morale": 100,
+          "tu": 9,
+          "energy": 48,
+          "playerVisible": true,
+          "aiMode": -1,
+          "fromNode": -1,
+          "toNode": -1,
+          "order": {
+            "policy": "defend-area-v1",
+            "revision": 0,
+            "id": "",
+            "assignedTurn": -1,
+            "post": [
+              -1,
+              -1,
+              -1
+            ],
+            "role": "",
+            "status": ""
+          },
+          "visibleIds": [
+            1000002,
+            1000005
+          ]
+        },
+        {
+          "id": 44,
+          "type": "SOLDIER",
+          "faction": 0,
+          "originalFaction": 0,
+          "position": [
+            23,
+            17,
+            0
+          ],
+          "direction": 6,
+          "status": 0,
+          "out": false,
+          "health": 36,
+          "stun": 2,
+          "morale": 100,
+          "tu": 11,
+          "energy": 42,
+          "playerVisible": true,
+          "aiMode": -1,
+          "fromNode": -1,
+          "toNode": -1,
+          "order": {
+            "policy": "defend-area-v1",
+            "revision": 0,
+            "id": "",
+            "assignedTurn": -1,
+            "post": [
+              -1,
+              -1,
+              -1
+            ],
+            "role": "",
+            "status": ""
+          },
+          "visibleIds": [
+            1000002,
+            1000005,
+            1000006
+          ]
+        },
+        {
+          "id": 40,
+          "type": "SOLDIER",
+          "faction": 0,
+          "originalFaction": 0,
+          "position": [
+            24,
+            20,
+            1
+          ],
+          "direction": 0,
+          "status": 0,
+          "out": false,
+          "health": 43,
+          "stun": 1,
+          "morale": 100,
+          "tu": 56,
+          "energy": 60,
+          "playerVisible": true,
+          "aiMode": -1,
+          "fromNode": -1,
+          "toNode": -1,
+          "order": {
+            "policy": "defend-area-v1",
+            "revision": 0,
+            "id": "",
+            "assignedTurn": -1,
+            "post": [
+              -1,
+              -1,
+              -1
+            ],
+            "role": "",
+            "status": ""
+          },
+          "visibleIds": []
+        },
+        {
+          "id": 42,
+          "type": "SOLDIER",
+          "faction": 0,
+          "originalFaction": 0,
+          "position": [
+            25,
+            20,
+            1
+          ],
+          "direction": 0,
+          "status": 0,
+          "out": false,
+          "health": 36,
+          "stun": 4,
+          "morale": 100,
+          "tu": 60,
+          "energy": 60,
+          "playerVisible": true,
+          "aiMode": -1,
+          "fromNode": -1,
+          "toNode": -1,
+          "order": {
+            "policy": "defend-area-v1",
+            "revision": 0,
+            "id": "",
+            "assignedTurn": -1,
+            "post": [
+              -1,
+              -1,
+              -1
+            ],
+            "role": "",
+            "status": ""
+          },
+          "visibleIds": []
+        },
+        {
+          "id": 41,
+          "type": "SOLDIER",
+          "faction": 0,
+          "originalFaction": 0,
+          "position": [
+            24,
+            21,
+            1
+          ],
+          "direction": 0,
+          "status": 0,
+          "out": false,
+          "health": 36,
+          "stun": 1,
+          "morale": 100,
+          "tu": 62,
+          "energy": 53,
+          "playerVisible": true,
+          "aiMode": -1,
+          "fromNode": -1,
+          "toNode": -1,
+          "order": {
+            "policy": "defend-area-v1",
+            "revision": 0,
+            "id": "",
+            "assignedTurn": -1,
+            "post": [
+              -1,
+              -1,
+              -1
+            ],
+            "role": "",
+            "status": ""
+          },
+          "visibleIds": []
+        },
+        {
+          "id": 30,
+          "type": "SOLDIER",
+          "faction": 0,
+          "originalFaction": 0,
+          "position": [
+            25,
+            21,
+            1
+          ],
+          "direction": 0,
+          "status": 0,
+          "out": false,
+          "health": 46,
+          "stun": 2,
+          "morale": 100,
+          "tu": 65,
+          "energy": 69,
+          "playerVisible": true,
+          "aiMode": -1,
+          "fromNode": -1,
+          "toNode": -1,
+          "order": {
+            "policy": "defend-area-v1",
+            "revision": 0,
+            "id": "",
+            "assignedTurn": -1,
+            "post": [
+              -1,
+              -1,
+              -1
+            ],
+            "role": "",
+            "status": ""
+          },
+          "visibleIds": []
+        },
+        {
+          "id": 13,
+          "type": "SOLDIER",
+          "faction": 0,
+          "originalFaction": 0,
+          "position": [
+            24,
+            22,
+            1
+          ],
+          "direction": 0,
+          "status": 0,
+          "out": false,
+          "health": 48,
+          "stun": 3,
+          "morale": 100,
+          "tu": 61,
+          "energy": 72,
+          "playerVisible": true,
+          "aiMode": -1,
+          "fromNode": -1,
+          "toNode": -1,
+          "order": {
+            "policy": "defend-area-v1",
+            "revision": 0,
+            "id": "",
+            "assignedTurn": -1,
+            "post": [
+              -1,
+              -1,
+              -1
+            ],
+            "role": "",
+            "status": ""
+          },
+          "visibleIds": []
+        },
+        {
+          "id": 9,
+          "type": "SOLDIER",
+          "faction": 0,
+          "originalFaction": 0,
+          "position": [
+            25,
+            22,
+            1
+          ],
+          "direction": 0,
+          "status": 0,
+          "out": false,
+          "health": 54,
+          "stun": 3,
+          "morale": 100,
+          "tu": 71,
+          "energy": 82,
+          "playerVisible": true,
+          "aiMode": -1,
+          "fromNode": -1,
+          "toNode": -1,
+          "order": {
+            "policy": "defend-area-v1",
+            "revision": 0,
+            "id": "",
+            "assignedTurn": -1,
+            "post": [
+              -1,
+              -1,
+              -1
+            ],
+            "role": "",
+            "status": ""
+          },
+          "visibleIds": []
+        },
+        {
+          "id": 12,
+          "type": "SOLDIER",
+          "faction": 0,
+          "originalFaction": 0,
+          "position": [
+            24,
+            23,
+            1
+          ],
+          "direction": 0,
+          "status": 0,
+          "out": false,
+          "health": 52,
+          "stun": 1,
+          "morale": 100,
+          "tu": 66,
+          "energy": 63,
+          "playerVisible": true,
+          "aiMode": -1,
+          "fromNode": -1,
+          "toNode": -1,
+          "order": {
+            "policy": "defend-area-v1",
+            "revision": 0,
+            "id": "",
+            "assignedTurn": -1,
+            "post": [
+              -1,
+              -1,
+              -1
+            ],
+            "role": "",
+            "status": ""
+          },
+          "visibleIds": []
+        },
+        {
+          "id": 15,
+          "type": "SOLDIER",
+          "faction": 0,
+          "originalFaction": 0,
+          "position": [
+            25,
+            23,
+            1
+          ],
+          "direction": 0,
+          "status": 0,
+          "out": false,
+          "health": 59,
+          "stun": 1,
+          "morale": 100,
+          "tu": 77,
+          "energy": 78,
+          "playerVisible": true,
+          "aiMode": -1,
+          "fromNode": -1,
+          "toNode": -1,
+          "order": {
+            "policy": "defend-area-v1",
+            "revision": 0,
+            "id": "",
+            "assignedTurn": -1,
+            "post": [
+              -1,
+              -1,
+              -1
+            ],
+            "role": "",
+            "status": ""
+          },
+          "visibleIds": []
+        },
+        {
+          "id": 29,
+          "type": "SOLDIER",
+          "faction": 0,
+          "originalFaction": 0,
+          "position": [
+            24,
+            24,
+            1
+          ],
+          "direction": 0,
+          "status": 0,
+          "out": false,
+          "health": 50,
+          "stun": 4,
+          "morale": 100,
+          "tu": 69,
+          "energy": 65,
+          "playerVisible": true,
+          "aiMode": -1,
+          "fromNode": -1,
+          "toNode": -1,
+          "order": {
+            "policy": "defend-area-v1",
+            "revision": 0,
+            "id": "",
+            "assignedTurn": -1,
+            "post": [
+              -1,
+              -1,
+              -1
+            ],
+            "role": "",
+            "status": ""
+          },
+          "visibleIds": []
+        },
+        {
+          "id": 31,
+          "type": "SOLDIER",
+          "faction": 0,
+          "originalFaction": 0,
+          "position": [
+            25,
+            24,
+            1
+          ],
+          "direction": 0,
+          "status": 0,
+          "out": false,
+          "health": 44,
+          "stun": 1,
+          "morale": 100,
+          "tu": 62,
+          "energy": 68,
+          "playerVisible": true,
+          "aiMode": -1,
+          "fromNode": -1,
+          "toNode": -1,
+          "order": {
+            "policy": "defend-area-v1",
+            "revision": 0,
+            "id": "",
+            "assignedTurn": -1,
+            "post": [
+              -1,
+              -1,
+              -1
+            ],
+            "role": "",
+            "status": ""
+          },
+          "visibleIds": []
+        },
+        {
+          "id": 32,
+          "type": "SOLDIER",
+          "faction": 0,
+          "originalFaction": 0,
+          "position": [
+            24,
+            25,
+            1
+          ],
+          "direction": 0,
+          "status": 0,
+          "out": false,
+          "health": 37,
+          "stun": 1,
+          "morale": 100,
+          "tu": 58,
+          "energy": 67,
+          "playerVisible": true,
+          "aiMode": -1,
+          "fromNode": -1,
+          "toNode": -1,
+          "order": {
+            "policy": "defend-area-v1",
+            "revision": 0,
+            "id": "",
+            "assignedTurn": -1,
+            "post": [
+              -1,
+              -1,
+              -1
+            ],
+            "role": "",
+            "status": ""
+          },
+          "visibleIds": []
+        },
+        {
+          "id": 39,
+          "type": "SOLDIER",
+          "faction": 0,
+          "originalFaction": 0,
+          "position": [
+            25,
+            25,
+            1
+          ],
+          "direction": 0,
+          "status": 0,
+          "out": false,
+          "health": 40,
+          "stun": 3,
+          "morale": 100,
+          "tu": 55,
+          "energy": 66,
+          "playerVisible": true,
+          "aiMode": -1,
+          "fromNode": -1,
+          "toNode": -1,
+          "order": {
+            "policy": "defend-area-v1",
+            "revision": 0,
+            "id": "",
+            "assignedTurn": -1,
+            "post": [
+              -1,
+              -1,
+              -1
+            ],
+            "role": "",
+            "status": ""
+          },
+          "visibleIds": []
+        },
+        {
+          "id": 1000000,
+          "type": "STR_MUTON_SOLDIER",
+          "faction": 1,
+          "originalFaction": 1,
+          "position": [
+            15,
+            17,
+            0
+          ],
+          "direction": 2,
+          "status": 0,
+          "out": false,
+          "health": 125,
+          "stun": 0,
+          "morale": 88,
+          "tu": 64,
+          "energy": 104,
+          "playerVisible": false,
+          "aiMode": 0,
+          "fromNode": 52,
+          "toNode": -1,
+          "order": {
+            "policy": "defend-area-v1",
+            "revision": 1,
+            "id": "1000000:1",
+            "assignedTurn": 1,
+            "post": [
+              15,
+              17,
+              0
+            ],
+            "role": "GUARD",
+            "status": "HOLDING"
+          },
+          "visibleIds": []
+        },
+        {
+          "id": 1000001,
+          "type": "STR_MUTON_SOLDIER",
+          "faction": 1,
+          "originalFaction": 1,
+          "position": [
+            27,
+            2,
+            0
+          ],
+          "direction": 3,
+          "status": 7,
+          "out": true,
+          "health": 7,
+          "stun": 7,
+          "morale": 53,
+          "tu": 7,
+          "energy": 104,
+          "playerVisible": false,
+          "aiMode": 0,
+          "fromNode": 6,
+          "toNode": -1,
+          "order": {
+            "policy": "defend-area-v1",
+            "revision": 0,
+            "id": "",
+            "assignedTurn": -1,
+            "post": [
+              -1,
+              -1,
+              -1
+            ],
+            "role": "",
+            "status": ""
+          },
+          "visibleIds": []
+        },
+        {
+          "id": 1000002,
+          "type": "STR_MUTON_SOLDIER",
+          "faction": 1,
+          "originalFaction": 1,
+          "position": [
+            16,
+            19,
+            0
+          ],
+          "direction": 6,
+          "status": 0,
+          "out": false,
+          "health": 115,
+          "stun": 2,
+          "morale": 85,
+          "tu": 22,
+          "energy": 84,
+          "playerVisible": true,
+          "aiMode": 0,
+          "fromNode": 36,
+          "toNode": -1,
+          "order": {
+            "policy": "defend-area-v1",
+            "revision": 1,
+            "id": "1000002:1",
+            "assignedTurn": 1,
+            "post": [
+              14,
+              13,
+              0
+            ],
+            "role": "GUARD",
+            "status": "MOVING"
+          },
+          "visibleIds": []
+        },
+        {
+          "id": 1000003,
+          "type": "STR_MUTON_SOLDIER",
+          "faction": 1,
+          "originalFaction": 1,
+          "position": [
+            20,
+            24,
+            0
+          ],
+          "direction": 7,
+          "status": 0,
+          "out": false,
+          "health": 125,
+          "stun": 0,
+          "morale": 88,
+          "tu": 64,
+          "energy": 104,
+          "playerVisible": true,
+          "aiMode": 0,
+          "fromNode": 40,
+          "toNode": -1,
+          "order": {
+            "policy": "defend-area-v1",
+            "revision": 1,
+            "id": "1000003:1",
+            "assignedTurn": 1,
+            "post": [
+              20,
+              24,
+              0
+            ],
+            "role": "SCREEN_FALLBACK",
+            "status": "HOLDING"
+          },
+          "visibleIds": []
+        },
+        {
+          "id": 1000004,
+          "type": "STR_MUTON_SOLDIER",
+          "faction": 1,
+          "originalFaction": 1,
+          "position": [
+            22,
+            8,
+            0
+          ],
+          "direction": 3,
+          "status": 6,
+          "out": true,
+          "health": 0,
+          "stun": 30,
+          "morale": 35,
+          "tu": 7,
+          "energy": 104,
+          "playerVisible": false,
+          "aiMode": -1,
+          "fromNode": -1,
+          "toNode": -1,
+          "order": {
+            "policy": "defend-area-v1",
+            "revision": 0,
+            "id": "",
+            "assignedTurn": -1,
+            "post": [
+              -1,
+              -1,
+              -1
+            ],
+            "role": "",
+            "status": ""
+          },
+          "visibleIds": []
+        },
+        {
+          "id": 1000005,
+          "type": "STR_MUTON_NAVIGATOR",
+          "faction": 1,
+          "originalFaction": 1,
+          "position": [
+            15,
+            21,
+            0
+          ],
+          "direction": 4,
+          "status": 0,
+          "out": false,
+          "health": 125,
+          "stun": 0,
+          "morale": 88,
+          "tu": 64,
+          "energy": 104,
+          "playerVisible": true,
+          "aiMode": 0,
+          "fromNode": 54,
+          "toNode": -1,
+          "order": {
+            "policy": "defend-area-v1",
+            "revision": 1,
+            "id": "1000005:1",
+            "assignedTurn": 1,
+            "post": [
+              15,
+              21,
+              0
+            ],
+            "role": "SCREEN_FALLBACK",
+            "status": "HOLDING"
+          },
+          "visibleIds": []
+        },
+        {
+          "id": 1000006,
+          "type": "STR_MUTON_NAVIGATOR",
+          "faction": 1,
+          "originalFaction": 1,
+          "position": [
+            12,
+            22,
+            0
+          ],
+          "direction": 5,
+          "status": 0,
+          "out": false,
+          "health": 125,
+          "stun": 0,
+          "morale": 88,
+          "tu": 64,
+          "energy": 104,
+          "playerVisible": true,
+          "aiMode": 0,
+          "fromNode": 53,
+          "toNode": -1,
+          "order": {
+            "policy": "defend-area-v1",
+            "revision": 1,
+            "id": "1000006:1",
+            "assignedTurn": 1,
+            "post": [
+              12,
+              22,
+              0
+            ],
+            "role": "SCREEN",
+            "status": "HOLDING"
+          },
+          "visibleIds": []
+        },
+        {
+          "id": 1000007,
+          "type": "STR_MUTON_NAVIGATOR",
+          "faction": 1,
+          "originalFaction": 1,
+          "position": [
+            22,
+            4,
+            0
+          ],
+          "direction": 3,
+          "status": 6,
+          "out": true,
+          "health": 0,
+          "stun": 11,
+          "morale": 47,
+          "tu": 26,
+          "energy": 104,
+          "playerVisible": false,
+          "aiMode": -1,
+          "fromNode": -1,
+          "toNode": -1,
+          "order": {
+            "policy": "defend-area-v1",
+            "revision": 0,
+            "id": "",
+            "assignedTurn": -1,
+            "post": [
+              -1,
+              -1,
+              -1
+            ],
+            "role": "",
+            "status": ""
+          },
+          "visibleIds": []
+        }
+      ]
+    },
+    {
+      "capture": "tactical-17936658869354966.jsonl",
+      "sha256": "30b97ccb68eecb8a1c71b285308901a29253a27ebb85e89f03685a28219aa962",
+      "records": 228,
+      "turnRange": [
+        4,
+        7
+      ],
+      "lastEvent": "BATTLE_FINISH",
+      "events": {
+        "BATTLE_OPEN": 1,
+        "MOVE_STEP": 84,
+        "STATE_RESOLVED": 99,
+        "SIDE_END": 10,
+        "SIDE_START": 10,
+        "SIDE_READY": 7,
+        "AI_DECISION": 13,
+        "ORDER_TRANSITION": 3,
+        "BATTLE_FINISH": 1
+      },
+      "initialActive": {
+        "0": 14,
+        "1": 5,
+        "2": 0
+      },
+      "finalActive": {
+        "0": 13,
+        "1": 0,
+        "2": 0
+      },
+      "decisions": [
+        {
+          "sequence": 77,
+          "turn": 4,
+          "action": {
+            "actor": 1000000,
+            "controller": "DEFEND_AREA",
+            "type": "NONE",
+            "typeCode": 0,
+            "target": [
+              -1,
+              -1,
+              -1
+            ],
+            "result": "",
+            "weapon": "STR_HEAVY_PLASMA",
+            "finalFacing": -1,
+            "finalAction": true
+          },
+          "position": [
+            15,
+            17,
+            0
+          ],
+          "facing": 2,
+          "aiMode": 0,
+          "visibleIds": [],
+          "order": {
+            "policy": "defend-area-v1",
+            "revision": 1,
+            "id": "1000000:1",
+            "assignedTurn": 1,
+            "post": [
+              15,
+              17,
+              0
+            ],
+            "role": "GUARD",
+            "status": "HOLDING"
+          }
+        },
+        {
+          "sequence": 79,
+          "turn": 4,
+          "action": {
+            "actor": 1000002,
+            "controller": "NATIVE",
+            "type": "WALK",
+            "typeCode": 2,
+            "target": [
+              20,
+              20,
+              0
+            ],
+            "result": "",
+            "weapon": "STR_PLASMA_RIFLE",
+            "finalFacing": 1,
+            "finalAction": false
+          },
+          "position": [
+            16,
+            19,
+            0
+          ],
+          "facing": 6,
+          "aiMode": 2,
+          "visibleIds": [],
+          "order": {
+            "policy": "defend-area-v1",
+            "revision": 1,
+            "id": "1000002:1",
+            "assignedTurn": 1,
+            "post": [
+              14,
+              13,
+              0
+            ],
+            "role": "GUARD",
+            "status": "SUSPENDED_CONTACT"
+          }
+        },
+        {
+          "sequence": 83,
+          "turn": 4,
+          "action": {
+            "actor": 1000002,
+            "controller": "NATIVE",
+            "type": "SNAPSHOT",
+            "typeCode": 8,
+            "target": [
+              23,
+              18,
+              0
+            ],
+            "result": "",
+            "weapon": "STR_PLASMA_RIFLE",
+            "finalFacing": 1,
+            "finalAction": false
+          },
+          "position": [
+            18,
+            20,
+            0
+          ],
+          "facing": 2,
+          "aiMode": 2,
+          "visibleIds": [
+            43
+          ],
+          "order": {
+            "policy": "defend-area-v1",
+            "revision": 1,
+            "id": "1000002:1",
+            "assignedTurn": 1,
+            "post": [
+              14,
+              13,
+              0
+            ],
+            "role": "GUARD",
+            "status": "SUSPENDED_CONTACT"
+          }
+        },
+        {
+          "sequence": 88,
+          "turn": 4,
+          "action": {
+            "actor": 1000002,
+            "controller": "NATIVE",
+            "type": "WALK",
+            "typeCode": 2,
+            "target": [
+              18,
+              22,
+              0
+            ],
+            "result": "",
+            "weapon": "STR_PLASMA_RIFLE",
+            "finalFacing": 1,
+            "finalAction": false
+          },
+          "position": [
+            18,
+            20,
+            0
+          ],
+          "facing": 2,
+          "aiMode": 2,
+          "visibleIds": [],
+          "order": {
+            "policy": "defend-area-v1",
+            "revision": 1,
+            "id": "1000002:1",
+            "assignedTurn": 1,
+            "post": [
+              14,
+              13,
+              0
+            ],
+            "role": "GUARD",
+            "status": "SUSPENDED_CONTACT"
+          }
+        },
+        {
+          "sequence": 92,
+          "turn": 4,
+          "action": {
+            "actor": 1000002,
+            "controller": "NATIVE",
+            "type": "WALK",
+            "typeCode": 2,
+            "target": [
+              18,
+              23,
+              0
+            ],
+            "result": "",
+            "weapon": "STR_PLASMA_RIFLE",
+            "finalFacing": 1,
+            "finalAction": false
+          },
+          "position": [
+            18,
+            22,
+            0
+          ],
+          "facing": 1,
+          "aiMode": 2,
+          "visibleIds": [],
+          "order": {
+            "policy": "defend-area-v1",
+            "revision": 1,
+            "id": "1000002:1",
+            "assignedTurn": 1,
+            "post": [
+              14,
+              13,
+              0
+            ],
+            "role": "GUARD",
+            "status": "SUSPENDED_CONTACT"
+          }
+        },
+        {
+          "sequence": 95,
+          "turn": 4,
+          "action": {
+            "actor": 1000002,
+            "controller": "NATIVE",
+            "type": "WALK",
+            "typeCode": 2,
+            "target": [
+              18,
+              24,
+              0
+            ],
+            "result": "",
+            "weapon": "STR_PLASMA_RIFLE",
+            "finalFacing": 1,
+            "finalAction": false
+          },
+          "position": [
+            18,
+            23,
+            0
+          ],
+          "facing": 1,
+          "aiMode": 2,
+          "visibleIds": [],
+          "order": {
+            "policy": "defend-area-v1",
+            "revision": 1,
+            "id": "1000002:1",
+            "assignedTurn": 1,
+            "post": [
+              14,
+              13,
+              0
+            ],
+            "role": "GUARD",
+            "status": "SUSPENDED_CONTACT"
+          }
+        },
+        {
+          "sequence": 98,
+          "turn": 4,
+          "action": {
+            "actor": 1000002,
+            "controller": "NATIVE",
+            "type": "WALK",
+            "typeCode": 2,
+            "target": [
+              21,
+              22,
+              0
+            ],
+            "result": "",
+            "weapon": "STR_PLASMA_RIFLE",
+            "finalFacing": -1,
+            "finalAction": true
+          },
+          "position": [
+            18,
+            24,
+            0
+          ],
+          "facing": 1,
+          "aiMode": 3,
+          "visibleIds": [],
+          "order": {
+            "policy": "defend-area-v1",
+            "revision": 1,
+            "id": "1000002:1",
+            "assignedTurn": 1,
+            "post": [
+              14,
+              13,
+              0
+            ],
+            "role": "GUARD",
+            "status": "SUSPENDED_CONTACT"
+          }
+        },
+        {
+          "sequence": 103,
+          "turn": 4,
+          "action": {
+            "actor": 1000000,
+            "controller": "DEFEND_AREA",
+            "type": "NONE",
+            "typeCode": 0,
+            "target": [
+              -1,
+              -1,
+              -1
+            ],
+            "result": "",
+            "weapon": "STR_HEAVY_PLASMA",
+            "finalFacing": -1,
+            "finalAction": true
+          },
+          "position": [
+            15,
+            17,
+            0
+          ],
+          "facing": 2,
+          "aiMode": 0,
+          "visibleIds": [],
+          "order": {
+            "policy": "defend-area-v1",
+            "revision": 1,
+            "id": "1000000:1",
+            "assignedTurn": 1,
+            "post": [
+              15,
+              17,
+              0
+            ],
+            "role": "GUARD",
+            "status": "HOLDING"
+          }
+        },
+        {
+          "sequence": 138,
+          "turn": 5,
+          "action": {
+            "actor": 1000000,
+            "controller": "DEFEND_AREA",
+            "type": "NONE",
+            "typeCode": 0,
+            "target": [
+              -1,
+              -1,
+              -1
+            ],
+            "result": "",
+            "weapon": "STR_HEAVY_PLASMA",
+            "finalFacing": -1,
+            "finalAction": true
+          },
+          "position": [
+            15,
+            17,
+            0
+          ],
+          "facing": 2,
+          "aiMode": 0,
+          "visibleIds": [],
+          "order": {
+            "policy": "defend-area-v1",
+            "revision": 1,
+            "id": "1000000:1",
+            "assignedTurn": 1,
+            "post": [
+              15,
+              17,
+              0
+            ],
+            "role": "GUARD",
+            "status": "HOLDING"
+          }
+        },
+        {
+          "sequence": 140,
+          "turn": 5,
+          "action": {
+            "actor": 1000001,
+            "controller": "NATIVE",
+            "type": "WALK",
+            "typeCode": 2,
+            "target": [
+              24,
+              2,
+              0
+            ],
+            "result": "",
+            "weapon": "",
+            "finalFacing": -1,
+            "finalAction": false
+          },
+          "position": [
+            27,
+            2,
+            0
+          ],
+          "facing": 3,
+          "aiMode": 0,
+          "visibleIds": [],
+          "order": {
+            "policy": "defend-area-v1",
+            "revision": 0,
+            "id": "",
+            "assignedTurn": -1,
+            "post": [
+              -1,
+              -1,
+              -1
+            ],
+            "role": "",
+            "status": "SUSPENDED_EQUIPMENT"
+          }
+        },
+        {
+          "sequence": 149,
+          "turn": 5,
+          "action": {
+            "actor": 1000001,
+            "controller": "NATIVE",
+            "type": "WALK",
+            "typeCode": 2,
+            "target": [
+              14,
+              24,
+              0
+            ],
+            "result": "",
+            "weapon": "",
+            "finalFacing": -1,
+            "finalAction": false
+          },
+          "position": [
+            24,
+            2,
+            0
+          ],
+          "facing": 7,
+          "aiMode": 0,
+          "visibleIds": [],
+          "order": {
+            "policy": "defend-area-v1",
+            "revision": 0,
+            "id": "",
+            "assignedTurn": -1,
+            "post": [
+              -1,
+              -1,
+              -1
+            ],
+            "role": "",
+            "status": "SUSPENDED_EQUIPMENT"
+          }
+        },
+        {
+          "sequence": 157,
+          "turn": 5,
+          "action": {
+            "actor": 1000000,
+            "controller": "DEFEND_AREA",
+            "type": "NONE",
+            "typeCode": 0,
+            "target": [
+              -1,
+              -1,
+              -1
+            ],
+            "result": "",
+            "weapon": "STR_HEAVY_PLASMA",
+            "finalFacing": -1,
+            "finalAction": true
+          },
+          "position": [
+            15,
+            17,
+            0
+          ],
+          "facing": 2,
+          "aiMode": 0,
+          "visibleIds": [],
+          "order": {
+            "policy": "defend-area-v1",
+            "revision": 1,
+            "id": "1000000:1",
+            "assignedTurn": 1,
+            "post": [
+              15,
+              17,
+              0
+            ],
+            "role": "GUARD",
+            "status": "HOLDING"
+          }
+        },
+        {
+          "sequence": 183,
+          "turn": 6,
+          "action": {
+            "actor": 1000002,
+            "controller": "NATIVE",
+            "type": "WALK",
+            "typeCode": 2,
+            "target": [
+              22,
+              25,
+              0
+            ],
+            "result": "",
+            "weapon": "",
+            "finalFacing": -1,
+            "finalAction": true
+          },
+          "position": [
+            21,
+            22,
+            0
+          ],
+          "facing": 3,
+          "aiMode": 3,
+          "visibleIds": [],
+          "order": {
+            "policy": "defend-area-v1",
+            "revision": 1,
+            "id": "1000002:1",
+            "assignedTurn": 1,
+            "post": [
+              14,
+              13,
+              0
+            ],
+            "role": "GUARD",
+            "status": "SUSPENDED_EQUIPMENT"
+          }
+        }
+      ],
+      "finalUnits": [
+        {
+          "id": 43,
+          "type": "SOLDIER",
+          "faction": 0,
+          "originalFaction": 0,
+          "position": [
+            23,
+            18,
+            0
+          ],
+          "direction": 3,
+          "status": 6,
+          "out": true,
+          "health": -9,
+          "stun": 17,
+          "morale": 50,
+          "tu": 9,
+          "energy": 48,
+          "playerVisible": true,
+          "aiMode": -1,
+          "fromNode": -1,
+          "toNode": -1,
+          "order": {
+            "policy": "defend-area-v1",
+            "revision": 0,
+            "id": "",
+            "assignedTurn": -1,
+            "post": [
+              -1,
+              -1,
+              -1
+            ],
+            "role": "",
+            "status": ""
+          },
+          "visibleIds": []
+        },
+        {
+          "id": 44,
+          "type": "SOLDIER",
+          "faction": 0,
+          "originalFaction": 0,
+          "position": [
+            22,
+            19,
+            0
+          ],
+          "direction": 4,
+          "status": 0,
+          "out": false,
+          "health": 36,
+          "stun": 0,
+          "morale": 100,
+          "tu": 5,
+          "energy": 46,
+          "playerVisible": true,
+          "aiMode": -1,
+          "fromNode": -1,
+          "toNode": -1,
+          "order": {
+            "policy": "defend-area-v1",
+            "revision": 0,
+            "id": "",
+            "assignedTurn": -1,
+            "post": [
+              -1,
+              -1,
+              -1
+            ],
+            "role": "",
+            "status": ""
+          },
+          "visibleIds": []
+        },
+        {
+          "id": 40,
+          "type": "SOLDIER",
+          "faction": 0,
+          "originalFaction": 0,
+          "position": [
+            15,
+            18,
+            0
+          ],
+          "direction": 0,
+          "status": 0,
+          "out": false,
+          "health": 43,
+          "stun": 1,
+          "morale": 100,
+          "tu": 56,
+          "energy": 60,
+          "playerVisible": true,
+          "aiMode": -1,
+          "fromNode": -1,
+          "toNode": -1,
+          "order": {
+            "policy": "defend-area-v1",
+            "revision": 0,
+            "id": "",
+            "assignedTurn": -1,
+            "post": [
+              -1,
+              -1,
+              -1
+            ],
+            "role": "",
+            "status": ""
+          },
+          "visibleIds": []
+        },
+        {
+          "id": 42,
+          "type": "SOLDIER",
+          "faction": 0,
+          "originalFaction": 0,
+          "position": [
+            27,
+            21,
+            0
+          ],
+          "direction": 5,
+          "status": 0,
+          "out": false,
+          "health": 15,
+          "stun": 10,
+          "morale": 100,
+          "tu": 16,
+          "energy": 53,
+          "playerVisible": true,
+          "aiMode": -1,
+          "fromNode": -1,
+          "toNode": -1,
+          "order": {
+            "policy": "defend-area-v1",
+            "revision": 0,
+            "id": "",
+            "assignedTurn": -1,
+            "post": [
+              -1,
+              -1,
+              -1
+            ],
+            "role": "",
+            "status": ""
+          },
+          "visibleIds": []
+        },
+        {
+          "id": 41,
+          "type": "SOLDIER",
+          "faction": 0,
+          "originalFaction": 0,
+          "position": [
+            16,
+            19,
+            0
+          ],
+          "direction": 6,
+          "status": 0,
+          "out": false,
+          "health": 36,
+          "stun": 4,
+          "morale": 100,
+          "tu": 62,
+          "energy": 53,
+          "playerVisible": true,
+          "aiMode": -1,
+          "fromNode": -1,
+          "toNode": -1,
+          "order": {
+            "policy": "defend-area-v1",
+            "revision": 0,
+            "id": "",
+            "assignedTurn": -1,
+            "post": [
+              -1,
+              -1,
+              -1
+            ],
+            "role": "",
+            "status": ""
+          },
+          "visibleIds": []
+        },
+        {
+          "id": 30,
+          "type": "SOLDIER",
+          "faction": 0,
+          "originalFaction": 0,
+          "position": [
+            26,
+            17,
+            0
+          ],
+          "direction": 4,
+          "status": 0,
+          "out": false,
+          "health": 46,
+          "stun": 1,
+          "morale": 100,
+          "tu": 65,
+          "energy": 69,
+          "playerVisible": true,
+          "aiMode": -1,
+          "fromNode": -1,
+          "toNode": -1,
+          "order": {
+            "policy": "defend-area-v1",
+            "revision": 0,
+            "id": "",
+            "assignedTurn": -1,
+            "post": [
+              -1,
+              -1,
+              -1
+            ],
+            "role": "",
+            "status": ""
+          },
+          "visibleIds": []
+        },
+        {
+          "id": 13,
+          "type": "SOLDIER",
+          "faction": 0,
+          "originalFaction": 0,
+          "position": [
+            21,
+            19,
+            0
+          ],
+          "direction": 4,
+          "status": 0,
+          "out": false,
+          "health": 48,
+          "stun": 4,
+          "morale": 100,
+          "tu": 23,
+          "energy": 62,
+          "playerVisible": true,
+          "aiMode": -1,
+          "fromNode": -1,
+          "toNode": -1,
+          "order": {
+            "policy": "defend-area-v1",
+            "revision": 0,
+            "id": "",
+            "assignedTurn": -1,
+            "post": [
+              -1,
+              -1,
+              -1
+            ],
+            "role": "",
+            "status": ""
+          },
+          "visibleIds": []
+        },
+        {
+          "id": 9,
+          "type": "SOLDIER",
+          "faction": 0,
+          "originalFaction": 0,
+          "position": [
+            25,
+            14,
+            0
+          ],
+          "direction": 0,
+          "status": 0,
+          "out": false,
+          "health": 54,
+          "stun": 8,
+          "morale": 100,
+          "tu": 71,
+          "energy": 82,
+          "playerVisible": true,
+          "aiMode": -1,
+          "fromNode": -1,
+          "toNode": -1,
+          "order": {
+            "policy": "defend-area-v1",
+            "revision": 0,
+            "id": "",
+            "assignedTurn": -1,
+            "post": [
+              -1,
+              -1,
+              -1
+            ],
+            "role": "",
+            "status": ""
+          },
+          "visibleIds": []
+        },
+        {
+          "id": 12,
+          "type": "SOLDIER",
+          "faction": 0,
+          "originalFaction": 0,
+          "position": [
+            24,
+            23,
+            1
+          ],
+          "direction": 0,
+          "status": 0,
+          "out": false,
+          "health": 52,
+          "stun": 0,
+          "morale": 100,
+          "tu": 66,
+          "energy": 63,
+          "playerVisible": true,
+          "aiMode": -1,
+          "fromNode": -1,
+          "toNode": -1,
+          "order": {
+            "policy": "defend-area-v1",
+            "revision": 0,
+            "id": "",
+            "assignedTurn": -1,
+            "post": [
+              -1,
+              -1,
+              -1
+            ],
+            "role": "",
+            "status": ""
+          },
+          "visibleIds": []
+        },
+        {
+          "id": 15,
+          "type": "SOLDIER",
+          "faction": 0,
+          "originalFaction": 0,
+          "position": [
+            25,
+            23,
+            1
+          ],
+          "direction": 0,
+          "status": 0,
+          "out": false,
+          "health": 59,
+          "stun": 0,
+          "morale": 100,
+          "tu": 77,
+          "energy": 78,
+          "playerVisible": true,
+          "aiMode": -1,
+          "fromNode": -1,
+          "toNode": -1,
+          "order": {
+            "policy": "defend-area-v1",
+            "revision": 0,
+            "id": "",
+            "assignedTurn": -1,
+            "post": [
+              -1,
+              -1,
+              -1
+            ],
+            "role": "",
+            "status": ""
+          },
+          "visibleIds": []
+        },
+        {
+          "id": 29,
+          "type": "SOLDIER",
+          "faction": 0,
+          "originalFaction": 0,
+          "position": [
+            24,
+            24,
+            1
+          ],
+          "direction": 0,
+          "status": 0,
+          "out": false,
+          "health": 50,
+          "stun": 7,
+          "morale": 100,
+          "tu": 69,
+          "energy": 65,
+          "playerVisible": true,
+          "aiMode": -1,
+          "fromNode": -1,
+          "toNode": -1,
+          "order": {
+            "policy": "defend-area-v1",
+            "revision": 0,
+            "id": "",
+            "assignedTurn": -1,
+            "post": [
+              -1,
+              -1,
+              -1
+            ],
+            "role": "",
+            "status": ""
+          },
+          "visibleIds": []
+        },
+        {
+          "id": 31,
+          "type": "SOLDIER",
+          "faction": 0,
+          "originalFaction": 0,
+          "position": [
+            25,
+            24,
+            1
+          ],
+          "direction": 0,
+          "status": 0,
+          "out": false,
+          "health": 44,
+          "stun": 3,
+          "morale": 100,
+          "tu": 62,
+          "energy": 68,
+          "playerVisible": true,
+          "aiMode": -1,
+          "fromNode": -1,
+          "toNode": -1,
+          "order": {
+            "policy": "defend-area-v1",
+            "revision": 0,
+            "id": "",
+            "assignedTurn": -1,
+            "post": [
+              -1,
+              -1,
+              -1
+            ],
+            "role": "",
+            "status": ""
+          },
+          "visibleIds": []
+        },
+        {
+          "id": 32,
+          "type": "SOLDIER",
+          "faction": 0,
+          "originalFaction": 0,
+          "position": [
+            24,
+            25,
+            1
+          ],
+          "direction": 0,
+          "status": 0,
+          "out": false,
+          "health": 37,
+          "stun": 2,
+          "morale": 100,
+          "tu": 58,
+          "energy": 67,
+          "playerVisible": true,
+          "aiMode": -1,
+          "fromNode": -1,
+          "toNode": -1,
+          "order": {
+            "policy": "defend-area-v1",
+            "revision": 0,
+            "id": "",
+            "assignedTurn": -1,
+            "post": [
+              -1,
+              -1,
+              -1
+            ],
+            "role": "",
+            "status": ""
+          },
+          "visibleIds": []
+        },
+        {
+          "id": 39,
+          "type": "SOLDIER",
+          "faction": 0,
+          "originalFaction": 0,
+          "position": [
+            25,
+            25,
+            1
+          ],
+          "direction": 0,
+          "status": 0,
+          "out": false,
+          "health": 40,
+          "stun": 2,
+          "morale": 100,
+          "tu": 55,
+          "energy": 66,
+          "playerVisible": true,
+          "aiMode": -1,
+          "fromNode": -1,
+          "toNode": -1,
+          "order": {
+            "policy": "defend-area-v1",
+            "revision": 0,
+            "id": "",
+            "assignedTurn": -1,
+            "post": [
+              -1,
+              -1,
+              -1
+            ],
+            "role": "",
+            "status": ""
+          },
+          "visibleIds": []
+        },
+        {
+          "id": 1000000,
+          "type": "STR_MUTON_SOLDIER",
+          "faction": 1,
+          "originalFaction": 1,
+          "position": [
+            15,
+            17,
+            0
+          ],
+          "direction": 3,
+          "status": 6,
+          "out": true,
+          "health": 0,
+          "stun": 12,
+          "morale": 31,
+          "tu": 64,
+          "energy": 104,
+          "playerVisible": false,
+          "aiMode": -1,
+          "fromNode": -1,
+          "toNode": -1,
+          "order": {
+            "policy": "defend-area-v1",
+            "revision": 0,
+            "id": "",
+            "assignedTurn": -1,
+            "post": [
+              -1,
+              -1,
+              -1
+            ],
+            "role": "",
+            "status": ""
+          },
+          "visibleIds": []
+        },
+        {
+          "id": 1000001,
+          "type": "STR_MUTON_SOLDIER",
+          "faction": 1,
+          "originalFaction": 1,
+          "position": [
+            24,
+            8,
+            0
+          ],
+          "direction": 3,
+          "status": 6,
+          "out": true,
+          "health": 0,
+          "stun": 29,
+          "morale": 0,
+          "tu": 2,
+          "energy": 73,
+          "playerVisible": false,
+          "aiMode": -1,
+          "fromNode": -1,
+          "toNode": -1,
+          "order": {
+            "policy": "defend-area-v1",
+            "revision": 0,
+            "id": "",
+            "assignedTurn": -1,
+            "post": [
+              -1,
+              -1,
+              -1
+            ],
+            "role": "",
+            "status": ""
+          },
+          "visibleIds": []
+        },
+        {
+          "id": 1000002,
+          "type": "STR_MUTON_SOLDIER",
+          "faction": 1,
+          "originalFaction": 1,
+          "position": [
+            22,
+            25,
+            0
+          ],
+          "direction": 3,
+          "status": 6,
+          "out": true,
+          "health": 0,
+          "stun": 35,
+          "morale": 11,
+          "tu": 50,
+          "energy": 97,
+          "playerVisible": false,
+          "aiMode": -1,
+          "fromNode": -1,
+          "toNode": -1,
+          "order": {
+            "policy": "defend-area-v1",
+            "revision": 0,
+            "id": "",
+            "assignedTurn": -1,
+            "post": [
+              -1,
+              -1,
+              -1
+            ],
+            "role": "",
+            "status": ""
+          },
+          "visibleIds": []
+        },
+        {
+          "id": 1000003,
+          "type": "STR_MUTON_SOLDIER",
+          "faction": 1,
+          "originalFaction": 1,
+          "position": [
+            20,
+            24,
+            0
+          ],
+          "direction": 3,
+          "status": 6,
+          "out": true,
+          "health": 0,
+          "stun": 20,
+          "morale": 41,
+          "tu": 64,
+          "energy": 104,
+          "playerVisible": false,
+          "aiMode": -1,
+          "fromNode": -1,
+          "toNode": -1,
+          "order": {
+            "policy": "defend-area-v1",
+            "revision": 0,
+            "id": "",
+            "assignedTurn": -1,
+            "post": [
+              -1,
+              -1,
+              -1
+            ],
+            "role": "",
+            "status": ""
+          },
+          "visibleIds": []
+        },
+        {
+          "id": 1000004,
+          "type": "STR_MUTON_SOLDIER",
+          "faction": 1,
+          "originalFaction": 1,
+          "position": [
+            22,
+            8,
+            0
+          ],
+          "direction": 3,
+          "status": 6,
+          "out": true,
+          "health": 0,
+          "stun": 26,
+          "morale": 35,
+          "tu": 7,
+          "energy": 104,
+          "playerVisible": false,
+          "aiMode": -1,
+          "fromNode": -1,
+          "toNode": -1,
+          "order": {
+            "policy": "defend-area-v1",
+            "revision": 0,
+            "id": "",
+            "assignedTurn": -1,
+            "post": [
+              -1,
+              -1,
+              -1
+            ],
+            "role": "",
+            "status": ""
+          },
+          "visibleIds": []
+        },
+        {
+          "id": 1000005,
+          "type": "STR_MUTON_NAVIGATOR",
+          "faction": 1,
+          "originalFaction": 1,
+          "position": [
+            15,
+            21,
+            0
+          ],
+          "direction": 3,
+          "status": 6,
+          "out": true,
+          "health": 0,
+          "stun": 13,
+          "morale": 24,
+          "tu": 7,
+          "energy": 104,
+          "playerVisible": false,
+          "aiMode": -1,
+          "fromNode": -1,
+          "toNode": -1,
+          "order": {
+            "policy": "defend-area-v1",
+            "revision": 0,
+            "id": "",
+            "assignedTurn": -1,
+            "post": [
+              -1,
+              -1,
+              -1
+            ],
+            "role": "",
+            "status": ""
+          },
+          "visibleIds": []
+        },
+        {
+          "id": 1000006,
+          "type": "STR_MUTON_NAVIGATOR",
+          "faction": 1,
+          "originalFaction": 1,
+          "position": [
+            12,
+            22,
+            0
+          ],
+          "direction": 3,
+          "status": 6,
+          "out": true,
+          "health": 0,
+          "stun": 25,
+          "morale": 27,
+          "tu": 64,
+          "energy": 104,
+          "playerVisible": false,
+          "aiMode": -1,
+          "fromNode": -1,
+          "toNode": -1,
+          "order": {
+            "policy": "defend-area-v1",
+            "revision": 0,
+            "id": "",
+            "assignedTurn": -1,
+            "post": [
+              -1,
+              -1,
+              -1
+            ],
+            "role": "",
+            "status": ""
+          },
+          "visibleIds": []
+        },
+        {
+          "id": 1000007,
+          "type": "STR_MUTON_NAVIGATOR",
+          "faction": 1,
+          "originalFaction": 1,
+          "position": [
+            22,
+            4,
+            0
+          ],
+          "direction": 3,
+          "status": 6,
+          "out": true,
+          "health": 0,
+          "stun": 7,
+          "morale": 47,
+          "tu": 26,
+          "energy": 104,
+          "playerVisible": false,
+          "aiMode": -1,
+          "fromNode": -1,
+          "toNode": -1,
+          "order": {
+            "policy": "defend-area-v1",
+            "revision": 0,
+            "id": "",
+            "assignedTurn": -1,
+            "post": [
+              -1,
+              -1,
+              -1
+            ],
+            "role": "",
+            "status": ""
+          },
+          "visibleIds": []
+        }
+      ]
+    }
+  ]
+}
