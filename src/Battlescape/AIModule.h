@@ -64,6 +64,11 @@ private:
 	UnitFaction _targetFaction;
 
 	BattleAction _escapeAction, _ambushAction, _attackAction, _patrolAction, _psiAction;
+	Position _defendPost = Position(-1, -1, -1);
+	int _defendAssignedTurn = -1;
+	int _defendRevision = 0, _defendBlockedTurn = -1, _defendBlockedCount = 0;
+	std::string _defendRole, _defendStatus;
+	bool defendArea(BattleAction *action);
 
 	bool selectPointNearTargetLeeroy(BattleUnit *target, bool canRun);
 	int selectNearestTargetLeeroy(bool canRun);
@@ -84,6 +89,15 @@ public:
 	void load(const YAML::YamlNodeReader& reader);
 	/// Saves the AI Module to YAML.
 	void save(YAML::YamlNodeWriter writer) const;
+	/// Read-only inspection of current AI state; does not evaluate targets or consume RNG.
+	int getModeForTelemetry() const { return _AIMode; }
+	const Node *getFromNodeForTelemetry() const { return _fromNode; }
+	const Node *getToNodeForTelemetry() const { return _toNode; }
+	Position getDefendPost() const { return _defendPost; }
+	int getDefendAssignedTurn() const { return _defendAssignedTurn; }
+	int getDefendRevision() const { return _defendRevision; }
+	const std::string &getDefendRole() const { return _defendRole; }
+	const std::string &getDefendStatus() const { return _defendStatus; }
 	/// Runs Module functionality every AI cycle.
 	void think(BattleAction *action);
 	/// Sets the "unit was hit" flag true.

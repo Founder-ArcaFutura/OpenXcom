@@ -798,15 +798,21 @@ void replayCampaign(Game &game)
 	std::cout << "REPLAY: baseline " << proposal.mission << " / " << proposal.region
 		<< "; model " << model.status << " " << model.proposal.region << "; exported " << path << std::endl;
 }
+#include "BattlescapeProbe.h"
+#include "TacticalTelemetryTests.h"
+
 int main(int argc, char *argv[])
 {
 	try
 	{
 		const char *replayFlag = std::getenv("OPENXCOM_ALIEN_REPLAY");
 		const bool replay = replayFlag && std::string(replayFlag) == "1";
+		const bool tacticalProbe = std::getenv("OPENXCOM_BATTLESCAPE_PROBE") != nullptr;
+		const bool tacticalTurns = std::getenv("OPENXCOM_TACTICAL_TURNS") != nullptr;
+		const bool tacticalVerify = std::getenv("OPENXCOM_TACTICAL_VERIFY") != nullptr;
 		CrossPlatform::processArgs(argc, argv); YAML::setGlobalErrorHandler();
 		if (!Options::init()) throw std::runtime_error("Options initialization failed");
-		if (!replay) { coreTests(); budgetStateTests(); baseEconomyTests(); operationLedgerTests(); }
+		if (!replay && !tacticalProbe && !tacticalTurns && !tacticalVerify) { coreTests(); budgetStateTests(); baseEconomyTests(); operationLedgerTests(); }
 		Game game("Alien command engine tests"); State::setGamePtr(&game);
 		Options::newDisplayWidth = Options::displayWidth; Options::newDisplayHeight = Options::displayHeight;
 		Screen::updateScale(Options::geoscapeScale, Options::baseXGeoscape, Options::baseYGeoscape, false);
@@ -814,6 +820,9 @@ int main(int argc, char *argv[])
 		Options::baseXResolution = Options::displayWidth; Options::baseYResolution = Options::displayHeight;
 		game.getScreen()->resetDisplay(false, true);
 		Options::updateMods(); game.loadMods(); game.loadLanguages();
+		if (tacticalProbe) { battlescapeProbe(game); return 0; }
+		if (tacticalTurns) { tacticalTurnReplay(game); return 0; }
+		if (tacticalVerify) { verifyTacticalCheckpoint(game); return 0; }
 		if (replay) { replayCampaign(game); return 0; }
 		const int modelPort = Options::alienCommandModelPort;
 		if (std::getenv("OPENXCOM_OPERATION_FIXTURE") || std::getenv("OPENXCOM_PORTFOLIO_FIXTURE")) Options::alienCommandModelPort = 0;

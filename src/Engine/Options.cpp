@@ -575,6 +575,9 @@ void createOptionsOTHER()
 	_info.push_back(OptionInfo(OPTION_OTHER, "alienCommandModelPort", &alienCommandModelPort, 0));
 	_info.push_back(OptionInfo(OPTION_OTHER, "alienCommandModelExecute", &alienCommandModelExecute, false));
  _info.push_back(OptionInfo(OPTION_OTHER, "alienCommandPortfolio", &alienCommandPortfolio, false));
+ _info.push_back(OptionInfo(OPTION_OTHER, "tacticalTelemetry", &tacticalTelemetry, false));
+ _info.push_back(OptionInfo(OPTION_OTHER, "tacticalObserver", &tacticalObserver, false));
+ _info.push_back(OptionInfo(OPTION_OTHER, "tacticalDefend", &tacticalDefend, false));
 }
 
 void createAdvancedOptionsOTHER()

@@ -1260,6 +1260,10 @@
     <Natvis Include="..\libs\rapidyaml\c4\c4core.natvis" />
     <Natvis Include="..\libs\rapidyaml\ryml.natvis" />
   </ItemGroup>
+  <ItemDefinitionGroup Condition="'$(CodexEmbeddedDebug)'=='true'">
+    <ClCompile><DebugInformationFormat>OldStyle</DebugInformationFormat></ClCompile>
+    <Link><GenerateDebugInformation>false</GenerateDebugInformation></Link>
+  </ItemDefinitionGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>

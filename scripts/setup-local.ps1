@@ -2,7 +2,9 @@
 param(
     [string]$SteamApps = 'C:\Program Files (x86)\Steam\steamapps',
     [string]$MSBuildPath = 'C:\Program Files (x86)\Microsoft Visual Studio\2019\BuildTools\MSBuild\Current\Bin\MSBuild.exe',
-    [switch]$SkipBuild
+    [switch]$SkipBuild,
+    [ValidateRange(1,16)][int]$BuildJobs = 2,
+    [switch]$EmbeddedDebug
 )
 $ErrorActionPreference = 'Stop'
 $repoRoot = Split-Path -Parent $PSScriptRoot
@@ -26,11 +28,11 @@ New-Item -ItemType Directory -Path $runtimeRoot -Force | Out-Null
 # The upstream project copies dependency DLLs here even when OutDir is overridden.
 New-Item -ItemType Directory -Path (Join-Path $repoRoot 'bin\x64') -Force | Out-Null
 if (-not $SkipBuild) {
-    # SavedGame embeds AlienCommand. Rebuild all users when its layout changes;
-    # stale objects can otherwise link successfully with incompatible offsets.
-    $layoutHeader = Join-Path $repoRoot 'src\Savegame\AlienCommand.h'
-    $layoutMarker = Join-Path $localRoot 'alien-command-layout.sha256'
-    $layoutHash = (Get-FileHash -LiteralPath $layoutHeader -Algorithm SHA256).Hash
+    # These native layouts are used by many callers, including the separately
+    # linked test harness. Stale objects can link with incompatible sizes/offsets.
+    $layoutHeaders = @('src\Savegame\AlienCommand.h','src\Battlescape\AIModule.h','src\Battlescape\BattlescapeGame.h')
+    $layoutMarker = Join-Path $localRoot 'engine-layout.sha256'
+    $layoutHash = (@($layoutHeaders | ForEach-Object { (Get-FileHash -LiteralPath (Join-Path $repoRoot $_) -Algorithm SHA256).Hash }) -join ':')
     $layoutChanged = -not (Test-Path -LiteralPath $layoutMarker) -or (Get-Content -LiteralPath $layoutMarker -Raw).Trim() -ne $layoutHash
     if (-not (Test-Path -LiteralPath $MSBuildPath -PathType Leaf)) {
         throw 'MSBuild was not found. Supply -MSBuildPath for your Visual Studio C++ installation.'
@@ -39,11 +41,12 @@ if (-not $SkipBuild) {
         (Join-Path $repoRoot 'src\OpenXcom.2010.vcxproj'),
         '/m:2', '/nologo', '/v:minimal', '/clp:ErrorsOnly;Summary',
         '/p:Configuration=Release', '/p:Platform=x64', '/p:PlatformToolset=v142',
-        '/p:WindowsTargetPlatformVersion=10.0.19041.0', '/p:PreferredToolArchitecture=x64', '/p:CL_MPCount=2',
+        '/p:WindowsTargetPlatformVersion=10.0.19041.0', '/p:PreferredToolArchitecture=x64', "/p:CL_MPCount=$BuildJobs",
         "/p:OutDir=$runtimeRoot\", "/p:IntDir=$localRoot\obj\", '/fl',
         "/flp:logfile=$localRoot\baseline-build.log;verbosity=normal"
     )
     if ($layoutChanged) { $buildArguments += '/t:Rebuild' }
+    if ($EmbeddedDebug) { $buildArguments += '/p:CodexEmbeddedDebug=true' }
     & $MSBuildPath @buildArguments
     if ($LASTEXITCODE -ne 0) { throw "Engine build failed with exit code $LASTEXITCODE" }
     Set-Content -LiteralPath $layoutMarker -Value $layoutHash

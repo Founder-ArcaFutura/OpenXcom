@@ -24,6 +24,9 @@ OPT bool alienCommandAudit;
 OPT int alienCommandModelPort;
 OPT bool alienCommandModelExecute;
 OPT bool alienCommandPortfolio;
+// Development observation; display and telemetry never enter AI knowledge.
+OPT bool tacticalTelemetry, tacticalObserver;
+OPT bool tacticalDefend;
 
 // Geoscape options
 OPT int geoClockSpeed, dogfightSpeed, geoScrollSpeed, geoDragScrollButton, geoscapeScale;

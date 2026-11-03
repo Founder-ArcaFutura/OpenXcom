@@ -34,6 +34,7 @@
 #include "UnitDieBState.h"
 #include "UnitPanicBState.h"
 #include "AIModule.h"
+#include "TacticalTelemetry.h"
 #include "Pathfinding.h"
 #include "../Mod/AlienDeployment.h"
 #include "../Engine/Game.h"
@@ -178,7 +179,7 @@ bool BattleActionCost::spendTU(std::string *message)
 BattlescapeGame::BattlescapeGame(SavedBattleGame *save, BattlescapeState *parentState) :
 	_save(save), _parentState(parentState),
 	_playerPanicHandled(true), _AIActionCounter(0), _AISecondMove(false), _playedAggroSound(false),
-	_endTurnRequested(false), _endConfirmationHandled(false), _allEnemiesNeutralized(false)
+	_endTurnRequested(false), _endConfirmationHandled(false), _allEnemiesNeutralized(false), _tacticalTelemetry(nullptr)
 {
 	if (_save->isPreview())
 	{
@@ -194,6 +195,11 @@ BattlescapeGame::BattlescapeGame(SavedBattleGame *save, BattlescapeState *parent
 
 	checkForCasualties(nullptr, BattleActionAttack{ }, true);
 	cancelCurrentAction();
+	if (Options::tacticalTelemetry && !_save->isPreview())
+	{
+		try { _tacticalTelemetry = new TacticalTelemetry(); recordTelemetry("BATTLE_OPEN"); }
+		catch (const std::exception &e) { Log(LOG_WARNING) << "Tactical capture could not start: " << e.what(); }
+	}
 }
 
 
@@ -202,11 +208,25 @@ BattlescapeGame::BattlescapeGame(SavedBattleGame *save, BattlescapeState *parent
  */
 BattlescapeGame::~BattlescapeGame()
 {
+	delete _tacticalTelemetry;
 	for (auto* bs : _states)
 	{
 		delete bs;
 	}
 	cleanupDeleted();
+}
+
+void BattlescapeGame::recordTelemetry(const char *event, const BattleAction *action)
+{
+	if (_tacticalTelemetry)
+	{
+		try { _tacticalTelemetry->record(_save, event, action); }
+		catch (const std::exception &e)
+		{
+			Log(LOG_WARNING) << "Tactical capture stopped: " << e.what();
+			delete _tacticalTelemetry; _tacticalTelemetry = nullptr;
+		}
+	}
 }
 
 /**
@@ -359,6 +379,8 @@ void BattlescapeGame::handleAI(BattleUnit *unit)
 	}
 
 	BattleAction action;
+	const auto previousOrderStatus = ai->getDefendStatus();
+	const int previousOrderRevision = ai->getDefendRevision();
 	action.actor = unit;
 	action.number = _AIActionCounter;
 	unit->think(&action);
@@ -400,6 +422,9 @@ void BattlescapeGame::handleAI(BattleUnit *unit)
 			_playedAggroSound = true;
 		}
 	}
+	if (ai->getDefendRevision()!=previousOrderRevision || ai->getDefendStatus()!=previousOrderStatus)
+		recordTelemetry("ORDER_TRANSITION", &action);
+	recordTelemetry("AI_DECISION", &action);
 	if (action.type == BA_WALK)
 	{
 		ss << "Walking to " << action.target;
@@ -619,7 +644,9 @@ void BattlescapeGame::endTurn()
 		}
 
 
+		recordTelemetry("SIDE_END");
 		_save->endTurn();
+		recordTelemetry("SIDE_START");
 		t = _save->getTileEngine()->checkForTerrainExplosions();
 		if (t)
 		{
@@ -1245,6 +1272,9 @@ void BattlescapeGame::popState()
 	_deleted.push_back(first);
 	_states.pop_front();
 	first->deinit();
+	// A state resolved; subsequent states (projectiles, explosions, reactions) may
+	// still be pending. This does not claim the requested action succeeded.
+	recordTelemetry("STATE_RESOLVED", &action);
 
 	// handle the end of this unit's actions
 	if (action.actor && noActionsPending(action.actor))

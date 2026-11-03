@@ -5,6 +5,8 @@ param(
     [switch]$ModelAudit,
     [switch]$ModelExecute,
     [switch]$Portfolio,
+    [switch]$TacticalTelemetry,
+    [switch]$TacticalObserver,
     [string]$Checkpoint = 'C:\Users\Main PC 2\AppData\Local\Temp\uppward-v4',
     [ValidateRange(1,65535)][int]$ModelPort = 18867
 )
@@ -55,6 +57,9 @@ try {
         '-master', $master, '-alienCommandAudit', $auditEnabled, '-alienCommandModelPort', "$port",
         '-alienCommandModelExecute', $(if ($ModelExecute) { 'true' } else { 'false' }),
         '-alienCommandPortfolio', $(if ($Portfolio) { 'true' } else { 'false' }))
+    $gameArguments += @('-tacticalTelemetry', $(if ($TacticalTelemetry) { 'true' } else { 'false' }),
+        '-tacticalObserver', $(if ($TacticalObserver) { 'true' } else { 'false' }))
+    $gameArguments += @('-tacticalDefend','false')
     # Explicitly wait for the GUI process so its owned classifier lives for the game session.
     $gameProcess = Start-Process -FilePath $executable -ArgumentList $gameArguments -Wait -PassThru
     if ($gameProcess.ExitCode -ne 0) { throw "Game exited with code $($gameProcess.ExitCode)." }

@@ -7,6 +7,10 @@
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Label="Configuration"><ConfigurationType>Application</ConfigurationType><PlatformToolset>v142</PlatformToolset><CharacterSet>Unicode</CharacterSet></PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <PropertyGroup>
+    <PreferredToolArchitecture>x64</PreferredToolArchitecture>
+    <CodexEmbeddedDebug Condition="'$(CodexEmbeddedDebug)'==''">true</CodexEmbeddedDebug>
+  </PropertyGroup>
   <PropertyGroup><OutDir>$(ProjectDir)..\build\local\runtime\</OutDir><IntDir>$(ProjectDir)..\build\local\test-obj\</IntDir><TargetName>AlienCommandTests</TargetName></PropertyGroup>
   <ItemDefinitionGroup>
     <ClCompile>
@@ -22,5 +26,9 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup><ClCompile Include="AlienCommandTests.cpp" /><Object Include="$(ProjectDir)..\build\local\obj\**\*.obj" /></ItemGroup>
+  <ItemDefinitionGroup Condition="'$(CodexEmbeddedDebug)'=='true'">
+    <ClCompile><DebugInformationFormat>OldStyle</DebugInformationFormat></ClCompile>
+    <Link><GenerateDebugInformation>false</GenerateDebugInformation></Link>
+  </ItemDefinitionGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
 </Project>

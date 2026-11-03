@@ -101,6 +101,13 @@ void AIModule::reset()
  */
 void AIModule::load(const YAML::YamlNodeReader& reader)
 {
+	reader.tryRead("defendPost", _defendPost);
+	reader.tryRead("defendAssignedTurn", _defendAssignedTurn);
+	reader.tryRead("defendRole", _defendRole);
+	reader.tryRead("defendStatus", _defendStatus);
+	reader.tryRead("defendRevision", _defendRevision);
+	reader.tryRead("defendBlockedTurn", _defendBlockedTurn);
+	reader.tryRead("defendBlockedCount", _defendBlockedCount);
 	int fromNodeID = reader["fromNode"].readVal(-1);
 	int toNodeID = reader["toNode"].readVal(-1);
 	_AIMode = reader["AIMode"].readVal(AI_PATROL);
@@ -127,6 +134,16 @@ void AIModule::save(YAML::YamlNodeWriter writer) const
 {
 	writer.setAsMap();
 	writer.setFlowStyle();
+	if (_defendRevision > 0)
+	{
+		writer.write("defendPost", _defendPost);
+		writer.write("defendAssignedTurn", _defendAssignedTurn);
+		writer.write("defendRole", _defendRole);
+		writer.write("defendStatus", _defendStatus);
+		writer.write("defendRevision", _defendRevision);
+		writer.write("defendBlockedTurn", _defendBlockedTurn);
+		writer.write("defendBlockedCount", _defendBlockedCount);
+	}
 	writer.write("fromNode", _fromNode ? _fromNode->getID() : -1);
 	writer.write("toNode", _toNode ? _toNode->getID() : -1);
 	writer.write("AIMode", _AIMode);
@@ -422,6 +439,132 @@ bool AIModule::medikit_think(BattleMediKitType healOrStim)
  * Runs any code the state needs to keep updating every AI cycle.
  * @param action (possible) AI action to execute after thinking is done.
  */
+// Experimental persistent area orders. Only own positions and known map geometry
+// choose posts. All contact/fighting uses the existing native knowledge and AI.
+bool AIModule::defendArea(BattleAction *action)
+{
+ if (_unit->getFaction() != FACTION_HOSTILE || _unit->getOriginalFaction() != FACTION_HOSTILE ||
+     _unit->isLeeroyJenkins() || !_unit->isSmallUnit() ||
+     (_save->getMissionType() != "STR_UFO_CRASH_RECOVERY" && _save->getMissionType() != "STR_UFO_GROUND_ASSAULT"))
+ { _defendStatus="SUSPENDED_UNSUPPORTED"; return false; }
+ auto *mainWeapon = _unit->getMainHandWeapon();
+ if (!mainWeapon || !mainWeapon->haveAnyAmmo() || mainWeapon->getRules()->getBattleType()!=BT_FIREARM)
+ { _defendStatus="SUSPENDED_EQUIPMENT"; return false; }
+ if (_unit->getUtilityWeapon(BT_PSIAMP) || mainWeapon->getCurrentWaypoints()!=0)
+ { _defendStatus="SUSPENDED_SPECIALIST"; return false; }
+ if (_visibleEnemies || _spottingEnemies || (_knownEnemies && _AIMode!=AI_PATROL))
+ { _defendStatus = "SUSPENDED_CONTACT"; return false; }
+ if (_unit->getHealth() < 2 * _unit->getBaseStats()->health / 3)
+ { _defendStatus = "SUSPENDED_INJURY"; return false; }
+ auto *currentTile = _save->getTile(_unit->getPosition());
+ if (!currentTile || currentTile->getFire() || currentTile->getDangerous())
+ { _defendStatus = "SUSPENDED_HAZARD"; return false; }
+ auto &grid = _save->getFlattenedMapTerrainNames();
+ auto footprint = [&](Position p)
+ {
+  return p.x >= 0 && p.y >= 0 && size_t(p.x / 10) < grid.size() &&
+   size_t(p.y / 10) < grid[p.x / 10].size() && _save->getMod()->getUfo(grid[p.x / 10][p.y / 10], false);
+ };
+ int minX = INT_MAX, minY = INT_MAX, maxX = -1, maxY = -1;
+ for (size_t x = 0; x < grid.size(); ++x) for (size_t y = 0; y < grid[x].size(); ++y)
+  if (_save->getMod()->getUfo(grid[x][y], false))
+  { minX = std::min(minX, int(x)*10); minY = std::min(minY, int(y)*10); maxX = std::max(maxX, int(x)*10+9); maxY = std::max(maxY, int(y)*10+9); }
+ if (maxX < 0) { _defendStatus = "NO_OBJECTIVE"; return false; }
+ auto valid = [&](Position p)
+ {
+  auto *tile = _save->getTile(p);
+  if (!tile || tile->getFire() || tile->getDangerous() || !_save->setUnitPosition(_unit, p, true)) return false;
+  for (auto *ally : *_save->getUnits())
+   if (ally != _unit && ally->getFaction() == FACTION_HOSTILE && !ally->isOut() && ally->getAIModule() &&
+       ally->getAIModule()->_defendAssignedTurn >= 0 &&
+       Position::distanceSq(p, ally->getAIModule()->_defendPost) < 9) return false;
+  return true;
+ };
+ auto *pf = _save->getPathfinding();
+ auto routeTo = [&](Position p, int &cost)
+ {
+  if (p==_unit->getPosition()) { cost=0; return true; }
+  pf->calculate(_unit,p,BAM_NORMAL);
+  bool reachable=pf->getStartDirection()!=-1;
+  cost=pf->getTotalTUCost();
+  Position endpoint=_unit->getPosition();
+  if (reachable)
+  {
+   auto path=pf->copyPath();
+   for (auto step=path.rbegin(); step!=path.rend(); ++step)
+    endpoint=pf->getTUCost(endpoint,*step,_unit,nullptr,BAM_NORMAL).pos;
+   reachable=endpoint==p;
+  }
+  pf->abortPath(); return reachable;
+ };
+ if (_defendAssignedTurn < 0)
+ {
+  std::vector<BattleUnit*> own;
+  for (auto *ally : *_save->getUnits()) if (!ally->isOut() && ally->getFaction() == FACTION_HOSTILE) own.push_back(ally);
+  // Role preference must not change as earlier units move during this side.
+  std::sort(own.begin(), own.end(), [](BattleUnit *a, BattleUnit *b) { return a->getId()<b->getId(); });
+  const auto index = std::find(own.begin(), own.end(), _unit) - own.begin();
+  const bool guard = size_t(index) < (2*own.size()+2)/3;
+  _defendRole = guard ? "GUARD" : "SCREEN";
+  bool found = false;
+  for (int pass = 0; pass < (guard ? 2 : 1) && !found; ++pass)
+  {
+   std::vector<Position> candidates;
+   if (guard && pass == 0)
+   {
+    for (auto *node : *_save->getNodes()) if (!node->isDummy() && node->getRank() >= NR_SOLDIER &&
+       !(node->getType() & Node::TYPE_DANGEROUS) && footprint(node->getPosition()) && valid(node->getPosition())) candidates.push_back(node->getPosition());
+   }
+   else
+   {
+    if (guard) _defendRole = "SCREEN_FALLBACK";
+    for (int x = std::max(0,minX-5); x <= std::min(_save->getMapSizeX()-1,maxX+5); ++x)
+     for (int y = std::max(0,minY-5); y <= std::min(_save->getMapSizeY()-1,maxY+5); ++y)
+     {
+      Position p(x,y,0);
+      const int ring = std::max({minX-x, x-maxX, minY-y, y-maxY});
+      if (ring >= 2 && ring <= 5 && valid(p)) candidates.push_back(p);
+     }
+   }
+   std::stable_sort(candidates.begin(), candidates.end(), [&](Position a, Position b)
+   { return Position::distanceSq(a,_unit->getPosition()) < Position::distanceSq(b,_unit->getPosition()); });
+   // Bound expensive path searches; allow posts beyond a single turn's TU.
+   int best = INT_MAX;
+   for (size_t i=0; i<std::min(size_t(32), candidates.size()); ++i)
+   {
+    const Position p = candidates[i];
+    int cost=0; const bool reachable=routeTo(p,cost);
+    if (reachable && cost < best) { best=cost; _defendPost=p; found=true; }
+   }
+  }
+  if (!found) { _defendStatus="NO_VALID_POST"; return false; }
+  _defendAssignedTurn = _save->getTurn();
+  ++_defendRevision; _defendBlockedCount=0; _defendBlockedTurn=-1;
+  freePatrolTarget(); _toNode=nullptr;
+ }
+ auto *postTile = _save->getTile(_defendPost);
+ if (!postTile || postTile->getFire() || postTile->getDangerous())
+ { _defendStatus="POST_INVALIDATED"; _defendAssignedTurn=-1; return false; }
+ _reserve = BA_NONE;
+ auto *weapon = _unit->getMainHandWeapon();
+ if (weapon && weapon->getRules()->getBattleType()==BT_FIREARM) _reserve=BA_SNAPSHOT;
+ _AIMode=AI_PATROL;
+ if (_unit->getPosition()==_defendPost)
+ { _defendStatus="HOLDING"; action->type=BA_NONE; action->finalAction=true; return true; }
+ int remainingCost=0; const bool reachable=routeTo(_defendPost,remainingCost);
+ if (!reachable)
+ {
+  if (_defendBlockedTurn!=_save->getTurn()) { _defendBlockedTurn=_save->getTurn(); ++_defendBlockedCount; }
+  _defendStatus="BLOCKED_NATIVE_FALLBACK";
+  if (_defendBlockedCount>=3) { _defendAssignedTurn=-1; _defendStatus="EXPIRED_BLOCKED"; }
+  return false;
+ }
+ _defendBlockedCount=0;
+ _defendStatus="MOVING";
+ action->type=BA_WALK; action->target=_defendPost; action->desperate=false;
+ return true;
+}
+
 void AIModule::think(BattleAction *action)
 {
 	// Workaround: AI freeze
@@ -448,6 +591,7 @@ void AIModule::think(BattleAction *action)
 	_reachable = _save->getPathfinding()->findReachable(_unit, BattleActionCost());
 	_wasHitBy.clear();
 	_foundBaseModuleToDestroy = false;
+	if (Options::tacticalDefend && defendArea(action)) return;
 
 	if (_unit->getCharging() && _unit->getCharging()->isOut())
 	{

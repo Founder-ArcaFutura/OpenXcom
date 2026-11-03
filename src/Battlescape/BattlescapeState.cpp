@@ -3510,6 +3510,7 @@ void BattlescapeState::popup(State *state)
  */
 void BattlescapeState::finishBattle(bool abort, int inExitArea)
 {
+	_battleGame->recordTelemetry(abort ? "BATTLE_ABORT" : "BATTLE_FINISH");
 	bool isPreview = _save->isPreview();
 
 	while (!_game->isState(this))

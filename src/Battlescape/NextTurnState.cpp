@@ -313,6 +313,7 @@ NextTurnState::NextTurnState(SavedBattleGame *battleGame, BattlescapeState *stat
 		_timer->onTimer((StateHandler)&NextTurnState::close);
 		_timer->start();
 	}
+	_battleGame->getBattleGame()->recordTelemetry("SIDE_READY");
 }
 
 /**

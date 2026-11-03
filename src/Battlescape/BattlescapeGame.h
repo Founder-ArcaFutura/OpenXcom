@@ -39,6 +39,7 @@ class Mod;
 class InfoboxOKState;
 class SoldierDiary;
 class RuleSkill;
+class TacticalTelemetry;
 
 enum BattleActionMove : char { BAM_NORMAL = 0, BAM_RUN = 1, BAM_STRAFE = 2, BAM_SNEAK = 3, BAM_MISSILE = 4 };
 
@@ -143,6 +144,7 @@ private:
 	bool _endTurnRequested;
 	bool _endConfirmationHandled;
 	bool _allEnemiesNeutralized;
+	TacticalTelemetry *_tacticalTelemetry;
 
 	helper::SingleRun _endTurnProcessed;
 	helper::SingleRun _triggerProcessed;
@@ -170,6 +172,8 @@ public:
 	int think();
 	/// Initializes the Battlescape game.
 	void init();
+	/// Writes an opt-in observational snapshot without evaluating or changing AI state.
+	void recordTelemetry(const char *event, const BattleAction *action = nullptr);
 	/// Determines whether a playable unit is selected.
 	bool playableUnitSelected() const;
 	/// Handles states timer.

@@ -17,7 +17,8 @@ Uses modified code from SDL\_gfx (LGPL) with permission from author.
 The `true_difficulty` branch adds an opt-in, budget-aware monthly commander.
 A local Laya classifier proposes mission/region investments; the native engine
 enforces costs, prerequisites, geography and progressive operation limits, then
-executes the existing mission waves and trajectories. Battlescape AI is unchanged.
+executes the existing mission waves and trajectories. A separate opt-in
+Battlescape experiment adds persistent scripted UFO defence orders.
 
 The current v10 feedback loop connects decision receipts to funded operations,
 verified gains, craft losses and objective delivery. It distinguishes pending,
@@ -62,6 +63,9 @@ is optional for controlled comparisons.
 - [Budget rules](docs/ALIEN_COMMAND_BUDGET.md) and [base economy](docs/ALIEN_BASE_ECONOMY.md)
 - [Checkpoint details](docs/ALIEN_COMMAND_MODEL.md)
 - [Experiment archive](docs/experiments/README.md)
+- [Battlescape destination scaffold](docs/BATTLESCAPE_PROBE.md) (offline native tests)
+- [Turn telemetry and observer inspection](docs/TACTICAL_INSPECTION.md) (copied-save sessions)
+- [Persistent UFO defence experiment](docs/DEFEND_AREA_EXPERIMENT.md) (opt-in scripted orders)
 
 Recorded validation: 108 Python tests, 184 UFO and 173 TFTD native checks, plus
 scripted and learned copied-save transitions. This demonstrates integration, not

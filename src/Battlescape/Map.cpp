@@ -328,7 +328,7 @@ void Map::draw()
 
 	Tile *t;
 
-	_projectileInFOV = _save->getDebugMode();
+	_projectileInFOV = (_save->getDebugMode() || Options::tacticalObserver);
 	if (_projectile)
 	{
 		t = _save->getTile(_projectile->getPosition(0).toTile());
@@ -337,7 +337,7 @@ void Map::draw()
 			_projectileInFOV = true;
 		}
 	}
-	_explosionInFOV = _save->getDebugMode();
+	_explosionInFOV = (_save->getDebugMode() || Options::tacticalObserver);
 	if (!_explosions.empty())
 	{
 		for (auto* explosion : _explosions)
@@ -356,7 +356,7 @@ void Map::draw()
 		}
 	}
 
-	if ((_save->getSelectedUnit() && _save->getSelectedUnit()->getVisible()) || _unitDying || _save->getSide() == FACTION_PLAYER || _save->getDebugMode() || _projectileInFOV || _explosionInFOV)
+	if ((_save->getSelectedUnit() && _save->getSelectedUnit()->getVisible()) || _unitDying || _save->getSide() == FACTION_PLAYER || (_save->getDebugMode() || Options::tacticalObserver) || _projectileInFOV || _explosionInFOV)
 	{
 		drawTerrain(this);
 	}
@@ -412,7 +412,7 @@ void Map::refreshHiddenMovementBackground()
 int Map::getWallShade(TilePart part, Tile* tileFrot)
 {
 	int shade;
-	if (tileFrot->isDiscovered(O_FLOOR))
+	if ((tileFrot->isDiscovered(O_FLOOR) || Options::tacticalObserver))
 	{
 		shade = reShade(tileFrot);
 	}
@@ -422,7 +422,7 @@ int Map::getWallShade(TilePart part, Tile* tileFrot)
 	}
 	if (part)
 	{
-		if ((tileFrot->isDoor(part) || tileFrot->isUfoDoor(part)) && tileFrot->isDiscovered(part))
+		if ((tileFrot->isDoor(part) || tileFrot->isUfoDoor(part)) && (tileFrot->isDiscovered(part) || Options::tacticalObserver))
 		{
 			Position offset =
 				part == O_NORTHWALL ? Position(1,0,0) :
@@ -525,7 +525,7 @@ void Map::drawUnit(UnitSprite &unitSprite, Tile *unitTile, Tile *currTile, Posit
 		return;
 	}
 
-	if (!(bu->getVisible() || _save->getDebugMode()))
+	if (!(bu->getVisible() || (_save->getDebugMode() || Options::tacticalObserver)))
 	{
 		return;
 	}
@@ -682,7 +682,7 @@ void Map::drawUnit(UnitSprite &unitSprite, Tile *unitTile, Tile *currTile, Posit
 	//get shade helpers
 	auto getTileShade = [&](Tile* tile)
 	{
-		return tile ? (tile->isDiscovered(O_FLOOR) ? reShade(tile) : 16) : 16;
+		return tile ? ((tile->isDiscovered(O_FLOOR) || Options::tacticalObserver) ? reShade(tile) : 16) : 16;
 	};
 	auto getMixedTileShade = [&](Tile* tile, int heightOffset, bool below)
 	{
@@ -915,7 +915,7 @@ void Map::drawTerrain(Surface *surface)
 				{
 					bool isUnitMovingNearby = movingUnit && positionInRangeXY(movingUnitPosition, mapPosition, 2);
 
-					if (tile->isDiscovered(O_FLOOR))
+					if ((tile->isDiscovered(O_FLOOR) || Options::tacticalObserver))
 					{
 						tileShade = reShade(tile);
 						obstacleShade = tileShade;
@@ -954,14 +954,14 @@ void Map::drawTerrain(Surface *surface)
 						{
 							if (_cursorType != CT_AIM)
 							{
-								if (unit && (unit->getVisible() || _save->getDebugMode()))
+								if (unit && (unit->getVisible() || (_save->getDebugMode() || Options::tacticalObserver)))
 									frameNumber = halfAnimFrameRest; // yellow box
 								else
 									frameNumber = 0; // red box
 							}
 							else
 							{
-								if (unit && (unit->getVisible() || _save->getDebugMode()))
+								if (unit && (unit->getVisible() || (_save->getDebugMode() || Options::tacticalObserver)))
 									frameNumber = 7 + halfAnimFrame; // yellow animated crosshairs
 								else
 									frameNumber = 6; // red static crosshairs
@@ -1221,7 +1221,7 @@ void Map::drawTerrain(Surface *surface)
 					}
 
 					// Draw smoke/fire
-					if (tile->getSmoke() && tile->isDiscovered(O_FLOOR))
+					if (tile->getSmoke() && (tile->isDiscovered(O_FLOOR) || Options::tacticalObserver))
 					{
 						frameNumber = 0;
 						int shade = 0;
@@ -1285,7 +1285,7 @@ void Map::drawTerrain(Surface *surface)
 					}
 
 					// Draw Path Preview
-					if (_previewSettingArrows && tile->getPreview() != -1 && tile->isDiscovered(O_FLOOR))
+					if (_previewSettingArrows && tile->getPreview() != -1 && (tile->isDiscovered(O_FLOOR) || Options::tacticalObserver))
 					{
 						if (itZ > 0 && tile->hasNoFloor(_save))
 						{
@@ -1323,14 +1323,14 @@ void Map::drawTerrain(Surface *surface)
 						{
 							if (_cursorType != CT_AIM)
 							{
-								if (unit && (unit->getVisible() || _save->getDebugMode()))
+								if (unit && (unit->getVisible() || (_save->getDebugMode() || Options::tacticalObserver)))
 									frameNumber = 3 + halfAnimFrameRest; // yellow box
 								else
 									frameNumber = 3; // red box
 							}
 							else
 							{
-								if (unit && (unit->getVisible() || _save->getDebugMode()))
+								if (unit && (unit->getVisible() || (_save->getDebugMode() || Options::tacticalObserver)))
 									frameNumber = 7 + halfAnimFrame; // yellow animated crosshairs
 								else
 									frameNumber = 6; // red static crosshairs
@@ -1388,7 +1388,7 @@ void Map::drawTerrain(Surface *surface)
 										else
 										{
 											// recalculate
-											if (unit && (unit->getVisible() || _save->getDebugMode()))
+											if (unit && (unit->getVisible() || (_save->getDebugMode() || Options::tacticalObserver)))
 											{
 												hasLOS = _save->getTileEngine()->visible(action->actor, tile);
 											}
@@ -1619,7 +1619,7 @@ void Map::drawTerrain(Surface *surface)
 						screenPosition.y > -_spriteHeight && screenPosition.y < surface->getHeight() + _spriteHeight )
 					{
 						tile = _save->getTile(mapPosition);
-						if (!tile || !tile->isDiscovered(O_FLOOR) || tile->getPreview() == -1)
+						if (!tile || !(tile->isDiscovered(O_FLOOR) || Options::tacticalObserver) || tile->getPreview() == -1)
 							continue;
 						int adjustment = -tile->getTerrainLevel();
 						if (_previewSettingArrows)
@@ -1695,7 +1695,7 @@ void Map::drawTerrain(Surface *surface)
 	}
 
 	auto* selectedUnit = _save->getSelectedUnit();
-	if (selectedUnit && (_save->getSide() == FACTION_PLAYER || _save->getDebugMode()) && selectedUnit->getPosition().z <= _camera->getViewLevel())
+	if (selectedUnit && (_save->getSide() == FACTION_PLAYER || (_save->getDebugMode() || Options::tacticalObserver)) && selectedUnit->getPosition().z <= _camera->getViewLevel())
 	{
 		_camera->convertMapToScreen(selectedUnit->getPosition(), &screenPosition);
 		screenPosition += _camera->getMapOffset();
@@ -1929,6 +1929,7 @@ void Map::persistToggles()
 
 int Map::reShade(Tile *tile) const
 {
+	if (Options::tacticalObserver) return 0; // display only; no tile discovery or lighting mutation
 	// when modders just don't know where to stop...
 	if (_debugVisionMode > 0)
 	{
